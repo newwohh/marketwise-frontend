@@ -77,7 +77,7 @@ function CryptoNews() {
   useEffect(() => {
     getProducts();
   }, [dataApi]);
-  // card = news.results?.map((el, i) => newsCard(el, i));
+  card = news.results?.map((el, i) => newsCard(el, i));
   return (
     <div className={CryptoNewsClasses.csection}>
       <div className={CryptoNewsClasses.cndivtop}>
@@ -101,9 +101,9 @@ function CryptoNews() {
         <div className={CryptoNewsClasses.cnewscarddiv}>
           <div>
             <div style={{ margin: "100px" }}>
-              {/* <Carousel cols={2} rows={2} gap={10} loop>
+              <Carousel cols={2} rows={2} gap={10} loop>
                 {card}
-              </Carousel> */}
+              </Carousel>
             </div>
           </div>
         </div>

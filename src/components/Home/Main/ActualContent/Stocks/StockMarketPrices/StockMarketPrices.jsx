@@ -61,15 +61,14 @@ function StockMarketPrices() {
   };
   const getProducts = useCallback(() => {
     dispatch(getStockPrice());
-    console.log(stockprice);
   }, [dataApi]);
   useEffect(() => {
     getProducts();
-  }, [dataApi]);
+  }, [dispatch]);
   console.log(stockprice);
-  // const tickers = stockprice[0].results.slice(0, 20);
-  // const exchanges = stockprice[1].results;
-  // const dividents = stockprice[2].results;
+  const tickers = stockprice[0].results.slice(0, 20);
+  const exchanges = stockprice[1].results;
+  const dividents = stockprice[2].results;
 
   return (
     <div className={StockPriceClasses.containerstockprice}>
@@ -100,7 +99,8 @@ function StockMarketPrices() {
               <Tab label="Tickers" />
             </Tabs>
           </AppBar>
-          {/* <SwipeableViews
+
+          <SwipeableViews
             axis={themes.direction === "rtl" ? "x-reverse" : "x"}
             index={value}
             onChangeIndex={handleChangeIndex}
@@ -309,7 +309,7 @@ function StockMarketPrices() {
                 </TableBody>
               </Table>
             </TableContainer>
-          </SwipeableViews> */}
+          </SwipeableViews>
         </Box>
       </div>
     </div>

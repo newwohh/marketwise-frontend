@@ -37,7 +37,7 @@ function ContentTop() {
 
   return (
     <section className={contentTopClasses.section}>
-      <Fade left>
+      <Fade bottom>
         <div className={contentTopClasses.firstdiv}>
           <Typography
             variant="h3"
@@ -172,7 +172,7 @@ function ContentTop() {
           </Container>
         </div>
       </Fade>
-      <Fade right>
+      <Fade bottom>
         <div className={contentTopClasses.seconddiv}>
           <div className={contentTopClasses.secondivtitle}>
             <div>

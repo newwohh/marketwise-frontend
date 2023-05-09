@@ -44,6 +44,8 @@ const forexCard = (data, i) => {
         <Button
           variant="outlined"
           sx={{
+            marginTop: "10px",
+            marginBottom: "10px",
             width: "150px",
             height: 30,
             fontSize: "10px",
@@ -78,7 +80,7 @@ function ForexPairs() {
   const forexDataClass = useForexDataStyles();
   console.log(forexdata);
   const forexCardData = forexdata;
-  console.log(forexCardData);
+  // console.log(forexCardData);
   return (
     <div className={forexDataClass.containerdiv}>
       <div className={forexDataClass.titlediv}>
@@ -112,7 +114,7 @@ function ForexPairs() {
         <div className={forexDataClass.seconddiv}>
           <div style={{ display: "flex" }}>
             <div>
-              <img src={blog} style={{ width: 100, height: 100 }} />
+              <img src={blog} alt="blog" style={{ width: 100, height: 100 }} />
             </div>
             <div className={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">Blog</Typography>
@@ -124,7 +126,7 @@ function ForexPairs() {
           </div>
           <div style={{ display: "flex" }}>
             <div>
-              <img src={faq} style={{ width: 100, height: 100 }} />
+              <img src={faq} alt="faq" style={{ width: 100, height: 100 }} />
             </div>
             <div className={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">FAQs</Typography>
@@ -136,7 +138,11 @@ function ForexPairs() {
           </div>
           <div style={{ display: "flex" }}>
             <div>
-              <img src={chatsupport} style={{ width: 100, height: 100 }} />
+              <img
+                src={chatsupport}
+                alt="chat-support"
+                style={{ width: 100, height: 100 }}
+              />
             </div>
             <div className={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">24/7 Chat Support</Typography>

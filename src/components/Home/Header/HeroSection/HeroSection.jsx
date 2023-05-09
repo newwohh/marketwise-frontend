@@ -12,7 +12,7 @@ function HeroSection() {
     <section
       className={headerClasses.section}
       style={{
-        backgroundColor: "black",
+        background: "linear-gradient(to top, #09203f 0%, #537895 100%)",
       }}
     >
       <div className={headerClasses.headerintrodiv}>
@@ -80,6 +80,7 @@ function HeroSection() {
               width: "200px",
               borderRadius: "40px",
               height: "55px",
+              border: "3px solid #F5F5F5",
               marginTop: "600px",
               color: "white",
               position: "absolute",
@@ -87,7 +88,9 @@ function HeroSection() {
               marginLeft: "50%",
               marginRight: "50%",
               "&:hover": {
-                backgroundColor: "#002244",
+                backgroundColor: "#F5F5F5",
+                border: "1px solid #F5F5F5",
+                color: "black",
               },
             }}
           >
@@ -96,7 +99,7 @@ function HeroSection() {
         </ThemeProvider>
       </div>
       <div style={{ overflow: "hidden", height: "100vh" }}>
-        <Box>
+        {/* <Box>
           <video
             autoPlay
             loop
@@ -108,7 +111,7 @@ function HeroSection() {
           >
             <source src={vdo}></source>
           </video>
-        </Box>
+        </Box> */}
       </div>
     </section>
   );

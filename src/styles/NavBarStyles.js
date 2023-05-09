@@ -3,8 +3,6 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles(() => ({
   toolbar: {
     display: "flex",
-    // background:
-    //   "linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%)",
     backgroundColor: "hsla(0, 0%, 0%, 0)",
     alignItems: "center",
     height: 50,

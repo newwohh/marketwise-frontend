@@ -12,6 +12,7 @@ const useStockNews = makeStyles(() => ({
   newscontent: {
     marginTop: "50px",
     margin: "50px",
+    // height: "600px",
     "&:hover": {
       color: "#F0F8FF",
     },
@@ -23,6 +24,11 @@ const useStockNews = makeStyles(() => ({
     "&:hover": {
       color: "#002244",
       textDecoration: "underline",
+    },
+  },
+  cardTitle: {
+    "@media (max-width: 1000px)": {
+      fontSize: "15px",
     },
   },
 }));

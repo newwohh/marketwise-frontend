@@ -1,8 +1,7 @@
 import React from "react";
-import useHeaderStyles from "../../../../styles/HeaderSectionStyles";
-import { Box, ThemeProvider, Typography, Button } from "@mui/material";
+import useHeaderStyles from "../../../../styles/Home/HeaderSectionStyles";
+import { ThemeProvider, Typography, Button } from "@mui/material";
 import theme from "../../../../styles/Theme";
-import vdo from "./../../../../assets/trade.mp4";
 import TextAnimation from "react-text-animations";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
@@ -28,6 +27,7 @@ function HeroSection() {
               left: 0,
               right: 0,
               textAlign: "center",
+              fontWeight: 1000,
             }}
           >
             TradeView Let's You
@@ -45,6 +45,11 @@ function HeroSection() {
               left: 0,
               right: 0,
               textAlign: "center",
+              fontWeight: 1000,
+              background:
+                "radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%)",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
             }}
           >
             <TextAnimation.Slide
@@ -75,6 +80,7 @@ function HeroSection() {
             level!
           </Typography>
           <Button
+            href="/explore"
             variant="outlined"
             sx={{
               width: "200px",
@@ -98,21 +104,7 @@ function HeroSection() {
           </Button>
         </ThemeProvider>
       </div>
-      <div style={{ overflow: "hidden", height: "100vh" }}>
-        {/* <Box>
-          <video
-            autoPlay
-            loop
-            muted
-            style={{
-              width: "100%",
-              filter: "blur(10px)",
-            }}
-          >
-            <source src={vdo}></source>
-          </video>
-        </Box> */}
-      </div>
+      <div style={{ overflow: "hidden", height: "100vh" }}></div>
     </section>
   );
 }

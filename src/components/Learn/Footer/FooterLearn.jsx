@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import useFooterStyles from "../../../styles/Home/FooterStyles";
+import useFooterLearnStyles from "../../../styles/Home/FooterStyles";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -17,8 +17,8 @@ import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
-function Footer() {
-  const FooterClasses = useFooterStyles();
+function FooterLearn() {
+  const FooterLearnClasses = useFooterLearnStyles();
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -35,15 +35,15 @@ function Footer() {
   }
   return (
     <footer
-      className={FooterClasses.footer}
+      className={FooterLearnClasses.footer}
       style={{ backgroundColor: "#002244" }}
     >
-      <div className={FooterClasses.footercontainter}>
+      <div className={FooterLearnClasses.footercontainter}>
         {isMatch ? (
           <TableContainer
             component={Paper}
             sx={{
-              padding: 10,
+              //   padding: 10,
               backgroundColor: "#002244",
               "@media (max-width : 1000px)": {
                 padding: 0,
@@ -146,7 +146,7 @@ function Footer() {
                       }}
                     >
                       {i === 0 ? (
-                        <Link className={FooterClasses.footerlinks}>
+                        <Link className={FooterLearnClasses.footerlinks}>
                           <InstagramIcon sx={{ marginRight: 1 }} />
                           <TwitterIcon sx={{ marginRight: 1 }} />
                           <GitHubIcon />
@@ -167,7 +167,7 @@ function Footer() {
                         },
                       }}
                     >
-                      <Link className={FooterClasses.footerlinks}>
+                      <Link className={FooterLearnClasses.footerlinks}>
                         {row.products}
                       </Link>
                     </TableCell>
@@ -181,17 +181,17 @@ function Footer() {
                         },
                       }}
                     >
-                      <Link className={FooterClasses.footerlinks}>
+                      <Link className={FooterLearnClasses.footerlinks}>
                         {row.company}
                       </Link>
                     </TableCell>
                     <TableCell align="left" sx={{ border: "none" }}>
-                      <Link className={FooterClasses.footerlinks}>
+                      <Link className={FooterLearnClasses.footerlinks}>
                         {row.community}
                       </Link>
                     </TableCell>
                     <TableCell align="left" sx={{ border: "none" }}>
-                      <Link className={FooterClasses.footerlinks}>
+                      <Link className={FooterLearnClasses.footerlinks}>
                         {row.faq}
                       </Link>
                     </TableCell>
@@ -326,4 +326,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterLearn;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useStyles from "../../../../styles/NavBarStyles";
+import useStyles from "../../../../styles/Home/NavBarStyles";
 import {
   AppBar,
   Collapse,
@@ -85,6 +85,7 @@ function NavBar() {
         <Box>
           <CssBaseline />
           <AppBar
+            position="fixed"
             open={open}
             sx={{
               backgroundColor: "hsla(0, 0%, 0%, 0)",
@@ -148,11 +149,11 @@ function NavBar() {
             </List>
             <Divider />
             <List>
-              {["All mail", "Trash", "Spam"].map((text, index) => (
+              {["Log-in"].map((text, index) => (
                 <ListItem key={text} disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                      {index % 2 !== 0 ? "error getting icon" : <Person2Icon />}
                     </ListItemIcon>
                     <ListItemText primary={text} />
                   </ListItemButton>
@@ -177,6 +178,7 @@ function NavBar() {
             </div>
             <div className={classes.navdivtwo}>
               <Button
+                href="/"
                 // color="inherit"
                 variant="text"
                 sx={{

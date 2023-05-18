@@ -1,18 +1,27 @@
 import { makeStyles } from "@mui/styles";
 
-const useCryptoMarket = makeStyles(() => ({
+const useCryptoMarket = makeStyles((theme) => ({
   cryptomarkettopdiv: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "left",
     textAlign: "center",
   },
-  cryptomarketcontainer: {},
+  cryptomarketcontainer: {
+    // width: "1000px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    textAlign: "center",
+  },
   cryptopricediv: {
     marginTop: "50px",
     display: "flex",
     justifyContent: "space-evenly",
     textAlign: "center",
+    "@media (max-width : 1000px)": {
+      flexDirection: "column",
+    },
   },
 }));
 

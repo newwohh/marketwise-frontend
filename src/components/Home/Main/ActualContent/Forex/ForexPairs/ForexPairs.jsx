@@ -4,7 +4,7 @@ import { getForexData } from "../../../../../../store/store-actions";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import useForexDataStyles from "../../../../../../styles/ForexData";
+import useForexDataStyles from "../../../../../../styles/Home/ForexData";
 import Carousel from "better-react-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
@@ -85,18 +85,58 @@ function ForexPairs() {
     <div className={forexDataClass.containerdiv}>
       <div className={forexDataClass.titlediv}>
         <ThemeProvider theme={theme}>
-          <Typography variant="h2">
+          <Typography
+            variant="h2"
+            sx={{
+              "@media (max-width : 1000px)": {
+                fontSize: "25px",
+              },
+            }}
+          >
             <Link className={forexDataClass.titlelink}>
-              Forex <ArrowForwardIosIcon sx={{ marginLeft: "10px" }} />
+              Forex{" "}
+              <ArrowForwardIosIcon
+                sx={{
+                  marginLeft: "-10px",
+                  "@media (max-width : 1000px)": {
+                    height: "9px",
+                    marginLeft: "-10px",
+                  },
+                }}
+              />
             </Link>
           </Typography>
-          <Typography variant="p">Know all the exchanges available</Typography>
+          <Typography
+            variant="p"
+            sx={{
+              "@media (max-width : 1000px)": {
+                fontSize: "10px",
+              },
+            }}
+          >
+            Know all the exchanges available
+          </Typography>
         </ThemeProvider>
       </div>
       <div>
-        <Carousel cols={5} rows={1} gap={15} loop>
+        <Carousel
+          cols={5}
+          rows={1}
+          gap={15}
+          loop
+          responsiveLayout={[
+            {
+              breakpoint: 700,
+              cols: 1,
+              rows: 1,
+              gap: 0,
+              loop: true,
+              autoplay: 2000,
+            },
+          ]}
+        >
           {forexCardData.map((el, i) => (
-            <Carousel.Item>{forexCard(el, i)}</Carousel.Item>
+            <Carousel.Item key={i}>{forexCard(el, i)}</Carousel.Item>
           ))}
         </Carousel>
       </div>
@@ -112,7 +152,7 @@ function ForexPairs() {
           </div>
         </div>
         <div className={forexDataClass.seconddiv}>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" }} className={forexDataClass.carddiv}>
             <div>
               <img src={blog} alt="blog" style={{ width: 100, height: 100 }} />
             </div>
@@ -124,7 +164,7 @@ function ForexPairs() {
               <Link className={forexDataClass.lastdivlink}>Learn More</Link>
             </div>
           </div>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" }} className={forexDataClass.carddiv}>
             <div>
               <img src={faq} alt="faq" style={{ width: 100, height: 100 }} />
             </div>
@@ -136,7 +176,7 @@ function ForexPairs() {
               <Link className={forexDataClass.lastdivlink}>Learn more</Link>
             </div>
           </div>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex" }} className={forexDataClass.carddiv}>
             <div>
               <img
                 src={chatsupport}

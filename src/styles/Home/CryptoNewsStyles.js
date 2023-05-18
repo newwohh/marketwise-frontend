@@ -25,7 +25,14 @@ const useCryptoNewsStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     textAlign: "center",
-    // border: "1px solid black",
+    "@media (max-width: 1000px)": {
+      marginTop: 0,
+    },
+  },
+  cardiv: {
+    "@media (max-width: 1000px)": {
+      width: "200px",
+    },
   },
 }));
 

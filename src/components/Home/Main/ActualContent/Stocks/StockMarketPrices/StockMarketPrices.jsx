@@ -18,7 +18,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import useStockMarketPrices from "../../../../../../styles/StockMarketPricesStyles";
+import useStockMarketPrices from "../../../../../../styles/Home/StockMarketPricesStyles";
 import { Link } from "react-router-dom";
 
 function TabPanel(props) {
@@ -48,10 +48,10 @@ TabPanel.propTypes = {
 
 function StockMarketPrices() {
   const [dataApi, setDataApi] = useState("");
+  const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();
   const stockprice = useSelector((state) => state.news.stockprice);
   const themes = useTheme();
-  const [value, setValue] = React.useState(0);
   const StockPriceClasses = useStockMarketPrices();
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -62,31 +62,70 @@ function StockMarketPrices() {
   const getProducts = useCallback(() => {
     dispatch(getStockPrice());
   }, [dataApi]);
+
   useEffect(() => {
     getProducts();
-  }, [dispatch]);
-  console.log(stockprice);
-  const tickers = stockprice[0].results.slice(0, 20);
-  const exchanges = stockprice[1].results;
-  const dividents = stockprice[2].results;
+    console.log(stockprice);
+  }, [setDataApi]);
+  const tickers =
+    stockprice[0] === undefined ? [] : stockprice[0].results.slice(0, 20);
+  const exchanges = stockprice[1] === undefined ? [] : stockprice[1].results;
+  const dividents = stockprice[2] === undefined ? [] : stockprice[2].results;
 
   return (
     <div className={StockPriceClasses.containerstockprice}>
       <div className={StockPriceClasses.firstdiv}>
         <div>
           <ThemeProvider theme={theme}>
-            <Typography variant="h3" sx={{ color: "#002244" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                color: "#002244",
+                "@media (max-width: 1000px)": {
+                  fontSize: "25px",
+                },
+              }}
+            >
               Stock Exchange
             </Typography>
-            <Typography variant="p" sx={{ color: "#002244" }}>
+            <Typography
+              variant="p"
+              sx={{
+                color: "#002244",
+                "@media (max-width: 1000px)": {
+                  fontSize: "10px",
+                },
+              }}
+            >
               Know What's UP in Stocks
             </Typography>
           </ThemeProvider>
         </div>
       </div>
       <div className={StockPriceClasses.firstdiv}>
-        <Box sx={{ width: 1500, height: "800px" }}>
-          <AppBar position="static" sx={{ backgroundColor: "#002244" }}>
+        <Box
+          sx={{
+            width: 1500,
+            height: "800px",
+            "@media (max-width: 1000px)": {
+              width: 300,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              textAlign: "center",
+            },
+          }}
+        >
+          <AppBar
+            position="static"
+            sx={{
+              backgroundColor: "#002244",
+              "@media (max-width: 1000px)": {
+                width: 300,
+                textAlign: "center",
+              },
+            }}
+          >
             <Tabs
               value={value}
               onChange={handleChange}
@@ -94,9 +133,33 @@ function StockMarketPrices() {
               textColor="inherit"
               indicatorColor="secondary"
             >
-              <Tab label="Exchanges" />
-              <Tab label="Dividents" />
-              <Tab label="Tickers" />
+              <Tab
+                label="Exchanges"
+                sx={{
+                  "@media (max-width: 1000px)": {
+                    width: "50px",
+                    fontSize: "10px",
+                  },
+                }}
+              />
+              <Tab
+                label="Dividents"
+                sx={{
+                  "@media (max-width: 1000px)": {
+                    width: "50px",
+                    fontSize: "10px",
+                  },
+                }}
+              />
+              <Tab
+                label="Tickers"
+                sx={{
+                  "@media (max-width: 1000px)": {
+                    width: "50px",
+                    fontSize: "10px",
+                  },
+                }}
+              />
             </Tabs>
           </AppBar>
 
@@ -107,12 +170,25 @@ function StockMarketPrices() {
           >
             <TableContainer
               component={Paper}
-              sx={{ height: 800, width: 1500 }}
+              sx={{
+                height: 800,
+                width: 1500,
+                "@media (max-width: 1000px)": {
+                  width: "300px",
+                },
+              }}
               value={value}
               index={0}
               dir={themes.direction}
             >
-              <Table sx={{ width: 1500 }}>
+              <Table
+                sx={{
+                  width: 1500,
+                  "@media (max-width: 1000px)": {
+                    width: "300px",
+                  },
+                }}
+              >
                 <TableHead>
                   <TableRow>
                     <TableCell sx={{ color: "grey" }}>Name</TableCell>
@@ -140,18 +216,22 @@ function StockMarketPrices() {
                       <TableCell component="th" scope="row">
                         <Link
                           className={StockPriceClasses.exchangesLink}
-                          to={row.url}
+                          to={row.url || ""}
                         >
-                          {row.name}
+                          {row.name ? row.name : "Data not found!"}
                         </Link>
                       </TableCell>
                       <TableCell align="right" sx={{ color: "#002244" }}>
                         <Typography variant="p" sx={{ fontWeight: 600 }}>
-                          {row.asset_class.toUpperCase()}
+                          {row.asset_class.toUpperCase()
+                            ? row.asset_class.toUpperCase()
+                            : "Data not found!"}
                         </Typography>
                       </TableCell>
                       <TableCell align="right">
-                        {row.locale.toUpperCase()}
+                        {row.locale.toUpperCase()
+                          ? row.locale.toUpperCase()
+                          : "Data not found!"}
                       </TableCell>
                       <TableCell align="right">{row.operating_mic}</TableCell>
                       <TableCell align="right">{row.currency_name}</TableCell>
@@ -162,12 +242,23 @@ function StockMarketPrices() {
             </TableContainer>
             <TableContainer
               component={Paper}
-              sx={{ height: 800, width: 1500 }}
+              sx={{
+                height: 800,
+                width: 1500,
+              }}
               value={value}
               index={1}
               dir={themes.direction}
             >
-              <Table sx={{ width: 1500 }}>
+              <Table
+                sx={{
+                  width: 1500,
+                  height: 800,
+                  "@media (max-width: 1000px)": {
+                    width: "300px",
+                  },
+                }}
+              >
                 <TableHead>
                   <TableRow>
                     <TableCell sx={{ color: "grey" }}>Ticker</TableCell>
@@ -194,10 +285,10 @@ function StockMarketPrices() {
                     >
                       <TableCell component="th" scope="row">
                         <Link
-                          to={row.url}
+                          to={row.url || "#"}
                           className={StockPriceClasses.exchangesLink}
                         >
-                          {row.ticker}
+                          {row.ticker ? row.ticker : "Data not found!"}
                         </Link>
                       </TableCell>
                       <TableCell align="right">{row.cash_amount}</TableCell>
@@ -214,10 +305,14 @@ function StockMarketPrices() {
                             },
                           }}
                         >
-                          {row.currency}
+                          {row.currency ? row.currency : "Data not found!"}
                         </Button>
                       </TableCell>
-                      <TableCell align="right">{row.dividend_type}</TableCell>
+                      <TableCell align="right">
+                        {row.dividend_type
+                          ? row.dividend_type
+                          : "Data not found!"}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -225,12 +320,23 @@ function StockMarketPrices() {
             </TableContainer>
             <TableContainer
               component={Paper}
-              sx={{ height: 800, width: 1500 }}
+              sx={{
+                height: 800,
+                width: 1500,
+              }}
               value={value}
               index={2}
               dir={themes.direction}
             >
-              <Table sx={{ width: 1500, height: 800 }}>
+              <Table
+                sx={{
+                  width: 1500,
+                  height: 800,
+                  "@media (max-width: 1000px)": {
+                    width: "300px",
+                  },
+                }}
+              >
                 <TableHead>
                   <TableRow>
                     <TableCell sx={{ color: "grey" }}>Name</TableCell>
@@ -260,7 +366,7 @@ function StockMarketPrices() {
                     >
                       <TableCell component="th" scope="row">
                         <Link className={StockPriceClasses.exchangesLink}>
-                          {row.name}
+                          {row.name ? row.name : "Data not found!"}
                         </Link>
                       </TableCell>
                       <TableCell align="right">
@@ -276,7 +382,9 @@ function StockMarketPrices() {
                             },
                           }}
                         >
-                          {row.currency_name.toUpperCase()}
+                          {row.currency_name.toUpperCase()
+                            ? row.currency_name.toUpperCase()
+                            : "Data not found!"}
                         </Button>
                       </TableCell>
                       <TableCell align="right">
@@ -294,16 +402,22 @@ function StockMarketPrices() {
                               },
                             }}
                           >
-                            {row.primary_exchange}
+                            {row.primary_exchange
+                              ? row.primary_exchange
+                              : "Data not found!"}
                           </Button>
                         ) : (
                           ""
                         )}
                       </TableCell>
                       <TableCell align="right">
-                        {row.locale.toUpperCase()}
+                        {row.locale.toUpperCase()
+                          ? row.locale
+                          : "Data not found!"}
                       </TableCell>
-                      <TableCell align="right">{row.ticker}</TableCell>
+                      <TableCell align="right">
+                        {row.ticker ? row.ticker : "Data not found!"}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

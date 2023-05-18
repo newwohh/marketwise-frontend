@@ -2,14 +2,14 @@ import { makeStyles } from "@mui/styles";
 
 const useStockMarketPrices = makeStyles(() => ({
   containerstockprice: {
-    marginTop: "100px",
+    backgroundColor: "#09203f",
   },
   firstdiv: {
+    // marginTop: "100px",
     textAlign: "center",
     display: "flex",
-
     justifyContent: "center",
-    marginBottom: "70px",
+    // marginBottom: "70px",
   },
   seconddiv: {
     textAlign: "center",

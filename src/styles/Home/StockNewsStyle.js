@@ -7,12 +7,10 @@ const useStockNews = makeStyles(() => ({
     textAlign: "center",
   },
   containerdiv: {
-    marginTop: "80px",
+    backgroundColor: "#09203f",
   },
   newscontent: {
     marginTop: "50px",
-    margin: "50px",
-    // height: "600px",
     "&:hover": {
       color: "#F0F8FF",
     },
@@ -20,9 +18,10 @@ const useStockNews = makeStyles(() => ({
   },
   titlelink: {
     textDecoration: "none",
-    color: "#002244",
+    color: "white",
+    marginTop: "100px",
     "&:hover": {
-      color: "#002244",
+      color: "white",
       textDecoration: "underline",
     },
   },

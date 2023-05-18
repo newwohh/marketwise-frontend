@@ -9,13 +9,14 @@ const useCryptoMarket = makeStyles((theme) => ({
   },
   cryptomarketcontainer: {
     // width: "1000px",
+    backgroundColor: "#09203f",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     textAlign: "center",
   },
   cryptopricediv: {
-    marginTop: "50px",
+    // marginTop: "50px",
     display: "flex",
     justifyContent: "space-evenly",
     textAlign: "center",

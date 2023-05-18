@@ -80,7 +80,8 @@ function StockMarketPrices() {
             <Typography
               variant="h3"
               sx={{
-                color: "#002244",
+                marginTop: "100px",
+                color: "white",
                 "@media (max-width: 1000px)": {
                   fontSize: "25px",
                 },
@@ -91,7 +92,7 @@ function StockMarketPrices() {
             <Typography
               variant="p"
               sx={{
-                color: "#002244",
+                color: "white",
                 "@media (max-width: 1000px)": {
                   fontSize: "10px",
                 },

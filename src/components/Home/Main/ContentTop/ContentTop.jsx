@@ -44,7 +44,7 @@ function ContentTop() {
               textAlign="center"
               sx={{
                 fontFamily: "Arial",
-                color: "#002244",
+                color: "white",
                 fontWeight: 1000,
                 "@media (max-width: 1000px)": {
                   fontSize: "25px",
@@ -69,12 +69,17 @@ function ContentTop() {
             >
               <Card
                 sx={{
+                  width: "300vh",
                   marginRight: 5,
-                  width: "200vh",
-                  height: 650,
+                  height: 350,
+                  backgroundColor: "#09203f",
+                  color: "white",
+                  transition: "transform 0.3s",
+                  boxShadow:
+                    "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
                   "&:hover": {
-                    boxShadow:
-                      "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
+                    transform: "scale(1.03)",
+                    boxShadow: "13px 13px 0px #000000",
                   },
                   "@media (max-width: 1000px)": {
                     marginTop: "30px",
@@ -90,12 +95,12 @@ function ContentTop() {
                 onMouseLeave={handleExpandClick1}
               >
                 <CardHeader />
-                <CardMedia component="img" height="300" image={cardimgone} />
+                {/* <CardMedia component="img" height="300" image={cardimgone} /> */}
                 <CardContent>
                   <ThemeProvider theme={theme}>
                     <Typography variant="h5">Learn with Trade View</Typography>
                   </ThemeProvider>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2">
                     TradeView is the ultimate platform for anyone looking to
                     learn about trading. With its comprehensive resources,
                     including up-to-date news, analysis, and expert insights on
@@ -116,12 +121,17 @@ function ContentTop() {
               </Card>
               <Card
                 sx={{
-                  width: "200vh",
+                  backgroundColor: "#09203f",
+                  color: "white",
+                  width: "300vh",
                   marginRight: 5,
-                  height: 650,
+                  height: 350,
+                  transition: "transform 0.3s",
+                  boxShadow:
+                    "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
                   "&:hover": {
-                    boxShadow:
-                      "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
+                    transform: "scale(1.03)",
+                    boxShadow: "13px 13px 0px #000000",
                   },
                   "@media (max-width: 1000px)": {
                     marginTop: "30px",
@@ -141,7 +151,7 @@ function ContentTop() {
                   <ThemeProvider theme={theme}>
                     <Typography variant="h5">Grow with Trade View</Typography>
                   </ThemeProvider>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2">
                     Our platform provides traders and investors with advanced
                     tools to track, analyze and monitor their investments. With
                     TradeView, you can stay up-to-date with the latest market
@@ -159,7 +169,7 @@ function ContentTop() {
                     </Link>
                   </CardContent>
                 </Collapse>
-                <CardMedia
+                {/* <CardMedia
                   component="img"
                   height="300"
                   image={cardimgtwo}
@@ -170,16 +180,21 @@ function ContentTop() {
                       height: "250px",
                     },
                   }}
-                />
+                /> */}
               </Card>
               <Card
                 sx={{
+                  width: "300vh",
                   marginRight: 5,
-                  width: "200vh",
-                  height: 650,
+                  height: 350,
+                  backgroundColor: "#09203f",
+                  color: "white",
+                  transition: "transform 0.3s",
+                  boxShadow:
+                    "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
                   "&:hover": {
-                    boxShadow:
-                      "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
+                    transform: "scale(1.03)",
+                    boxShadow: "13px 13px 0px #000000",
                   },
                   "@media (max-width: 1000px)": {
                     marginTop: "30px",
@@ -195,7 +210,7 @@ function ContentTop() {
                 onMouseLeave={handleExpandClick2}
               >
                 <CardHeader />
-                <CardMedia
+                {/* <CardMedia
                   component="img"
                   height="300"
                   image={cardimgthree}
@@ -205,14 +220,14 @@ function ContentTop() {
                       height: "300px",
                     },
                   }}
-                />
-                <CardContent>
+                /> */}
+                <CardContent sx={{ color: "white" }}>
                   <ThemeProvider theme={theme}>
                     <Typography variant="h5">
                       Dive into endless opportunities
                     </Typography>
                   </ThemeProvider>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2">
                     With TradeView, you can dive into the world of trading and
                     unlock your potential for financial growth.
                   </Typography>
@@ -239,7 +254,7 @@ function ContentTop() {
                   variant="h3"
                   sx={{
                     fontFamily: "Arial",
-                    color: "#002244",
+                    color: "White",
                     fontWeight: 1000,
                     "@media (max-width: 1000px)": {
                       fontSize: "25px",
@@ -256,22 +271,29 @@ function ContentTop() {
                 </Link>
               </div>
               <div className={contentTopClasses.securecontentdiv}>
-                <div className={contentTopClasses.secondivimg}>
+                {/* <div className={contentTopClasses.secondivimg}>
                   <img
                     alt="secure"
                     src={securedata}
                     className={contentTopClasses.secureimg}
                   />
-                </div>
+                </div> */}
                 <div>
                   <div className={contentTopClasses.secondivsecurity}>
                     <Card
                       sx={{
-                        width: 600,
-                        height: "180px",
+                        width: 800,
+                        height: "150px",
                         border: "0px solid white",
                         display: "flex",
                         alignItems: "center",
+                        backgroundColor: "#09203f",
+                        color: "white",
+                        boxShadow:
+                          "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+                        "&:hover": {
+                          boxShadow: "13px 13px 0px #000000",
+                        },
                         "@media (max-width: 1000px)": {
                           flexDirection: "column",
                           height: "400px",
@@ -279,7 +301,7 @@ function ContentTop() {
                       }}
                       elevation={0}
                     >
-                      <CardMedia
+                      {/* <CardMedia
                         component="img"
                         height="140"
                         image={securedpayment}
@@ -289,7 +311,7 @@ function ContentTop() {
                             width: "200px",
                           },
                         }}
-                      />
+                      /> */}
                       <CardContent
                         sx={{
                           "@media (max-width: 1000px)": {
@@ -300,7 +322,7 @@ function ContentTop() {
                         <Typography gutterBottom variant="h5" component="div">
                           Secured Payment
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2">
                           Our website ensures secure payment methods to protect
                           your financial information and give you peace of mind
                           while making transactions.
@@ -311,11 +333,18 @@ function ContentTop() {
                   <div className={contentTopClasses.secondivsecurity}>
                     <Card
                       sx={{
-                        width: 600,
-                        height: "180px",
+                        width: 800,
+                        height: "150px",
                         border: "0px solid white",
                         display: "flex",
                         alignItems: "center",
+                        backgroundColor: "#09203f",
+                        color: "white",
+                        boxShadow:
+                          "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+                        "&:hover": {
+                          boxShadow: "13px 13px 0px #000000",
+                        },
                         "@media (max-width: 1000px)": {
                           flexDirection: "column",
                           height: "400px",
@@ -323,7 +352,7 @@ function ContentTop() {
                       }}
                       elevation={0}
                     >
-                      <CardMedia
+                      {/* <CardMedia
                         component="img"
                         height="140"
                         image={privacy}
@@ -333,7 +362,7 @@ function ContentTop() {
                             width: "200px",
                           },
                         }}
-                      />
+                      /> */}
                       <CardContent
                         sx={{
                           "@media (max-width: 1000px)": {
@@ -344,7 +373,7 @@ function ContentTop() {
                         <Typography gutterBottom variant="h5" component="div">
                           We value your Privacy
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2">
                           TradeView takes your privacy seriously. We use
                           industry-standard security measures to protect your
                           personal information and ensure that it is not shared
@@ -356,11 +385,18 @@ function ContentTop() {
                   <div className={contentTopClasses.secondivsecurity}>
                     <Card
                       sx={{
-                        width: 600,
-                        height: "180px",
+                        width: 800,
+                        height: "150px",
                         border: "0px solid white",
                         display: "flex",
                         alignItems: "center",
+                        backgroundColor: "#09203f",
+                        color: "white",
+                        boxShadow:
+                          "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+                        "&:hover": {
+                          boxShadow: "13px 13px 0px #000000",
+                        },
                         "@media (max-width: 1000px)": {
                           flexDirection: "column",
                           height: "450px",
@@ -369,7 +405,7 @@ function ContentTop() {
                       }}
                       elevation={0}
                     >
-                      <CardMedia
+                      {/* <CardMedia
                         component="img"
                         height="140"
                         image={encrypttion}
@@ -379,7 +415,7 @@ function ContentTop() {
                             width: "200px",
                           },
                         }}
-                      />
+                      /> */}
                       <CardContent
                         sx={{
                           "@media (max-width: 1000px)": {
@@ -390,7 +426,7 @@ function ContentTop() {
                         <Typography gutterBottom variant="h5" component="div">
                           Data Encryption
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2">
                           TradeView prioritizes the protection of our users'
                           data and implements strong encryption methods to
                           ensure the confidentiality and integrity of all

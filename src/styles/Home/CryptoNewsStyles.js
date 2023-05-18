@@ -3,10 +3,11 @@ import { makeStyles } from "@mui/styles";
 const useCryptoNewsStyles = makeStyles(() => ({
   csection: {
     width: "100%",
-    marginTop: "150px",
+    // marginTop: "150px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    backgroundColor: "#09203f",
   },
   cndivtop: {
     width: "100%",

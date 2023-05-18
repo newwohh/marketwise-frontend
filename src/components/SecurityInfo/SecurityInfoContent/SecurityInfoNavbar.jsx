@@ -24,6 +24,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import { styled, useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../../assets/profit(1).png";
+import { Link } from "react-router-dom";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -56,11 +57,13 @@ function SecurityInfoNavbar() {
           <Toolbar
             sx={{ display: "flex", alignItems: "center", height: "100px" }}
           >
-            <img
-              src={logo}
-              alt="logo"
-              style={{ width: "40px", height: "40px" }}
-            />
+            <Link to="/">
+              <img
+                src={logo}
+                alt="logo"
+                style={{ width: "40px", height: "40px" }}
+              />
+            </Link>
             <Button
               sx={{
                 color: "white",

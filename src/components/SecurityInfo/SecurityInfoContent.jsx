@@ -8,7 +8,7 @@ import safesign from "../../assets/4957136.jpg";
 import control from "../../assets/8353343.jpg";
 import secnot from "../../assets/4966443.jpg";
 import useSecurityInfoContentStyles from "../../styles/SecurityInfo/SecurityInfo";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 function SecurityInfoContent() {
   const SecurityInfoContentClass = useSecurityInfoContentStyles();
@@ -42,7 +42,14 @@ function SecurityInfoContent() {
       </section>
       <section className={SecurityInfoContentClass.securityinfoseconddiv}>
         <div className={SecurityInfoContentClass.securityinfosecondsubdiv}>
-          <div style={{ margin: "100px" }}>
+          <div
+            style={{
+              margin: "100px",
+              "@media (max-width:1000px)": {
+                margin: "0px",
+              },
+            }}
+          >
             <div>
               <Typography variant="h4" sx={{ fontWeight: 600 }}>
                 Data encryption
@@ -57,10 +64,16 @@ function SecurityInfoContent() {
             </div>
           </div>
           <div className={SecurityInfoContentClass.firstcontentsecurityinfo}>
-            <div style={{ marginRight: "200px" }}>
+            <div className={SecurityInfoContentClass.securityinfocontentmain}>
               <Typography
                 variant="h5"
-                sx={{ fontWeight: 1000, margin: "50px" }}
+                sx={{
+                  fontWeight: 1000,
+                  margin: "50px",
+                  "@media (max-width:1000px)": {
+                    margin: 5,
+                  },
+                }}
               >
                 Platform Security
               </Typography>
@@ -185,7 +198,13 @@ function SecurityInfoContent() {
             <div>
               <Typography
                 variant="h5"
-                sx={{ fontWeight: 1000, margin: "50px" }}
+                sx={{
+                  fontWeight: 1000,
+                  margin: "50px",
+                  "@media (max-width:1000px)": {
+                    margin: 5,
+                  },
+                }}
               >
                 User-Level Security
               </Typography>
@@ -272,25 +291,34 @@ function SecurityInfoContent() {
                 </div>
               </div>
             </div>
-          </div>{" "}
+          </div>
         </div>
       </section>
       <section className={SecurityInfoContentClass.middledivsecurityinfo}>
-        <div className={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
-          <Typography variant="h4" sx={{ fontWeight: 600 }}>
-            Working Together To Establish Global Crypto Compliance
-          </Typography>
-          <Typography variant="p">
-            In order to shape the future of crypto compliance across the globe,
-            Binance partners with regulators and third parties to develop clear
-            regulatory frameworks, guidelines and standards. In parts of the
-            world where regulation is still under development, we strive to set
-            proactive initiatives to protect our users according to global
-            compliance standards. We continue to invest in our compliance
-            program and partner with cutting-edge compliance technology
-            providers to meet and exceed global regulations.
-          </Typography>
-        </div>
+        <Box
+          sx={{
+            backgroundColor: "#0a2140",
+            padding: "100px",
+            borderRadius: "20px",
+            color: "white",
+          }}
+        >
+          <div className={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
+            <Typography variant="h4" sx={{ fontWeight: 600 }}>
+              Working Together To Establish Global Crypto Compliance
+            </Typography>
+            <Typography variant="p">
+              In order to shape the future of crypto compliance across the
+              globe, Binance partners with regulators and third parties to
+              develop clear regulatory frameworks, guidelines and standards. In
+              parts of the world where regulation is still under development, we
+              strive to set proactive initiatives to protect our users according
+              to global compliance standards. We continue to invest in our
+              compliance program and partner with cutting-edge compliance
+              technology providers to meet and exceed global regulations.
+            </Typography>
+          </div>
+        </Box>
       </section>
       <section>
         <div style={{ margin: "100px" }}>

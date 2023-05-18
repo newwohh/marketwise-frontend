@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 const useSecurityInfoContentStyles = makeStyles({
   securityinfofirstdiv: {
-    marginTop: "100px",
+    marginTop: "60px",
 
     backgroundColor: "#000519",
     display: "flex",
@@ -25,18 +25,33 @@ const useSecurityInfoContentStyles = makeStyles({
     alignItems: "center",
   },
   securityinfosecondsubdiv: {
-    width: "800px",
+    width: "150vh",
   },
   firstcontentsecurityinfo: {
     display: "flex",
-    justifyContent: "space-between",
   },
   contentfirstsecurityinfo: {
     display: "flex",
+    justifyContent: "space-between",
+    margin: "50px",
   },
   contentfirstsecuritinfoimg: {
     width: "100px",
     height: "100px",
+  },
+  middledivsecurityinfo: {
+    marginTop: "100px",
+    display: "flex",
+    justifyContent: "center",
+    textAlign: "center",
+  },
+  middledivsecurityinfosubdiv: {
+    width: "800px",
+  },
+  lastdivsecurityinfo: {
+    margin: 100,
+    display: "flex",
+    justifyContent: "space-evenly",
   },
 });
 

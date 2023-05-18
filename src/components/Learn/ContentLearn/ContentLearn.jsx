@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
-import learn from "../../../assets/3d-render-online-education-survey-test-concept.jpg";
 import StarIcon from "@mui/icons-material/Star";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import ShowChartIcon from "@mui/icons-material/ShowChart";

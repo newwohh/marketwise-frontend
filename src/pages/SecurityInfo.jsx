@@ -1,12 +1,12 @@
 import React from "react";
 import SecurityInfoContent from "../components/SecurityInfo/SecurityInfoContent";
-import NavBar from "../components/Home/Header/NavBar/NavBar";
 import FooterLearn from "../components/Learn/Footer/FooterLearn";
+import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/SecurityInfoNavbar";
 
 function SecurityInfo() {
   return (
     <React.Fragment>
-      <NavBar />
+      <SecurityInfoNavbar />
       <SecurityInfoContent />
       <FooterLearn />
     </React.Fragment>

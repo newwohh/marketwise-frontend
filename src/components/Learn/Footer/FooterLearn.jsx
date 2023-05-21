@@ -36,15 +36,16 @@ function FooterLearn() {
   return (
     <footer
       className={FooterLearnClasses.footer}
-      style={{ backgroundColor: "#002244" }}
+      style={{ backgroundColor: "#F0F8FF" }}
     >
       <div className={FooterLearnClasses.footercontainter}>
         {isMatch ? (
           <TableContainer
             component={Paper}
             sx={{
-              //   padding: 10,
-              backgroundColor: "#002244",
+              padding: 10,
+              // marginTop: "100px",
+              backgroundColor: "#F0F8FF",
               "@media (max-width : 1000px)": {
                 padding: 0,
                 width: "600px",
@@ -53,6 +54,7 @@ function FooterLearn() {
           >
             <Table
               sx={{
+                marginTop: "150px",
                 minWidth: 650,
                 "@media (max-width : 1000px)": {
                   width: "600px",
@@ -68,12 +70,12 @@ function FooterLearn() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                       }}
                     >
                       Trade View
                     </Typography>
-                    <Typography sx={{ color: "white" }} variant="p">
+                    <Typography sx={{ color: "#002244" }} variant="p">
                       Break the limits
                     </Typography>
                   </TableCell>
@@ -83,7 +85,7 @@ function FooterLearn() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >
@@ -96,7 +98,7 @@ function FooterLearn() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >
@@ -109,7 +111,7 @@ function FooterLearn() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >
@@ -122,7 +124,7 @@ function FooterLearn() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >

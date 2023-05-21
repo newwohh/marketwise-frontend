@@ -46,6 +46,7 @@ function CryptoMarket() {
                 variant="h2"
                 align="center"
                 sx={{
+                  marginTop: "100px",
                   color: "#002244",
                   fontFamily: "Arial",
                   fontWeight: 600,
@@ -60,6 +61,8 @@ function CryptoMarket() {
                 variant="p"
                 align="center"
                 sx={{
+                  color: "#002244",
+                  marginBottom: "100px",
                   "@media (max-width : 1000px)": {
                     fontSize: "10px",
                   },
@@ -78,6 +81,7 @@ function CryptoMarket() {
               <TableContainer
                 component={Paper}
                 sx={{
+                  backgroundColor: "#F0F8FF",
                   "@media (max-width : 1000px)": {
                     width: "350px",
                   },
@@ -152,31 +156,36 @@ function CryptoMarket() {
                         sx={{
                           cursor: "pointer",
                           "&:hover": {
-                            backgroundColor: "azure",
+                            // backgroundColor: "azure",
                           },
                           "@media (max-width : 1000px)": {
                             width: "10px",
                           },
                         }}
                       >
-                        <TableCell component="th" scope="row">
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          sx={{ color: "#002244" }}
+                        >
                           {row.rank}
                         </TableCell>
                         <TableCell
                           align="right"
-                          sx={{ color: "blue", fontWeight: 1000 }}
+                          sx={{ color: "#002244", fontWeight: 1000 }}
                         >
                           {row.symbol}
                         </TableCell>
                         <TableCell
                           align="right"
-                          sx={{ color: "black", fontWeight: 1000 }}
+                          sx={{ color: "#002244", fontWeight: 1000 }}
                         >
                           <Button
                             variant="outlined"
                             sx={{
                               borderRadius: "15px",
                               fontWeight: 600,
+                              color: "#002244",
                               "&:hover": {
                                 backgroundColor: "#002244",
                                 color: "white",
@@ -202,6 +211,7 @@ function CryptoMarket() {
               <TableContainer
                 component={Paper}
                 sx={{
+                  backgroundColor: "#F0F8FF",
                   "@media (max-width : 1000px)": {
                     width: "350px",
                   },
@@ -271,30 +281,35 @@ function CryptoMarket() {
                           border: "none",
                           cursor: "pointer",
                           "&:hover": {
-                            backgroundColor: "azure",
+                            // backgroundColor: "azure",
                           },
                         }}
                       >
-                        <TableCell component="th" scope="row">
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          sx={{ color: "#002244" }}
+                        >
                           {row.rank}
                         </TableCell>
                         <TableCell
                           align="right"
-                          sx={{ color: "blue", fontWeight: 1000 }}
+                          sx={{ color: "#002244", fontWeight: 1000 }}
                         >
                           {row.symbol}
                         </TableCell>
                         <TableCell
                           align="right"
-                          sx={{ color: "black", fontWeight: 1000 }}
+                          sx={{ color: "#002244", fontWeight: 1000 }}
                         >
                           <Button
                             variant="outlined"
                             sx={{
                               borderRadius: "15px",
                               fontWeight: 600,
+                              color: "#002244",
                               "&:hover": {
-                                backgroundColor: "blue",
+                                backgroundColor: "#002244",
                                 color: "white",
                               },
                             }}

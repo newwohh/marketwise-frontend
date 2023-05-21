@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStockMarketPrices = makeStyles(() => ({
   containerstockprice: {
-    backgroundColor: "#09203f",
+    backgroundColor: "#F0F8FF",
   },
   firstdiv: {
     // marginTop: "100px",

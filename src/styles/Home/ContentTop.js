@@ -8,7 +8,7 @@ const useContentTopStyles = makeStyles((theme) => ({
     textAlign: "center",
     justifyItems: "center",
     justifyContent: "center",
-    backgroundColor: "#09203f",
+    backgroundColor: "#F0F8FF",
   },
   firstdiv: {
     marginTop: "200px",
@@ -19,9 +19,9 @@ const useContentTopStyles = makeStyles((theme) => ({
     },
   },
   firstcardlinks: {
-    color: "white",
+    color: "#002244",
     textDecoration: "none",
-    "&:hover": { textDecoration: "underline", color: "white" },
+    "&:hover": { textDecoration: "underline", color: "#002244" },
   },
   secureimg: {
     width: "700px",
@@ -39,7 +39,7 @@ const useContentTopStyles = makeStyles((theme) => ({
     textAlign: "center",
     justifyItems: "center",
     justifyContent: "center",
-    backgroundColor: "#09203f",
+    backgroundColor: "#F0F8FF",
   },
   secondivsecurity: {
     height: "200px",
@@ -69,12 +69,12 @@ const useContentTopStyles = makeStyles((theme) => ({
     color: "grey",
     textDecoration: "none",
     "&:hover": {
-      color: "white",
+      color: "#002244",
       textDecoration: "underline",
     },
   },
   secondivtitle: {
-    backgroundColor: "#09203f",
+    backgroundColor: "#F0F8FF",
     [theme.breakpoints.down("lg")]: {
       // display: "none",
     },

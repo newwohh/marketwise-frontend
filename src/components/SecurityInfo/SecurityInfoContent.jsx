@@ -14,7 +14,7 @@ function SecurityInfoContent() {
   const SecurityInfoContentClass = useSecurityInfoContentStyles();
 
   return (
-    <main>
+    <main style={{ backgroundColor: "#F0F8FF" }}>
       <section className={SecurityInfoContentClass.securityinfofirstdiv}>
         <div className={SecurityInfoContentClass.securityinfofirstsubdiv}>
           <div>
@@ -51,7 +51,10 @@ function SecurityInfoContent() {
             }}
           >
             <div>
-              <Typography variant="h4" sx={{ fontWeight: 600 }}>
+              <Typography
+                variant="h4"
+                sx={{ fontWeight: 600, color: "#002244" }}
+              >
                 Data encryption
               </Typography>
             </div>
@@ -70,6 +73,7 @@ function SecurityInfoContent() {
                 sx={{
                   fontWeight: 1000,
                   margin: "50px",
+                  color: "#002244",
                   "@media (max-width:1000px)": {
                     margin: 5,
                   },
@@ -91,7 +95,9 @@ function SecurityInfoContent() {
                     />
                   </div>
                   <div>
-                    <Typography variant="h5">Secure Storage</Typography>
+                    <Typography variant="h5" sx={{ color: "#002244" }}>
+                      Secure Storage
+                    </Typography>
                     <Typography
                       variant="p"
                       sx={{
@@ -117,7 +123,9 @@ function SecurityInfoContent() {
                     />
                   </div>
                   <div>
-                    <Typography variant="h5">Real Time Monitoring </Typography>
+                    <Typography variant="h5" sx={{ color: "#002244" }}>
+                      Real Time Monitoring{" "}
+                    </Typography>
                     <Typography
                       variant="p"
                       sx={{
@@ -145,7 +153,7 @@ function SecurityInfoContent() {
                     />
                   </div>
                   <div>
-                    <Typography variant="h5">
+                    <Typography variant="h5" sx={{ color: "#002244" }}>
                       Organizational Security
                     </Typography>
                     <Typography
@@ -175,7 +183,7 @@ function SecurityInfoContent() {
                     />
                   </div>
                   <div>
-                    <Typography variant="h5">
+                    <Typography variant="h5" sx={{ color: "#002244" }}>
                       Advanced Data Encryption
                     </Typography>
                     <Typography
@@ -201,6 +209,7 @@ function SecurityInfoContent() {
                 sx={{
                   fontWeight: 1000,
                   margin: "50px",
+                  color: "#002244",
                   "@media (max-width:1000px)": {
                     margin: 5,
                   },
@@ -221,7 +230,9 @@ function SecurityInfoContent() {
                   />
                 </div>
                 <div>
-                  <Typography variant="h5">Safe Sign In</Typography>
+                  <Typography variant="h5" sx={{ color: "#002244" }}>
+                    Safe Sign In
+                  </Typography>
                   <Typography
                     variant="p"
                     sx={{
@@ -248,7 +259,9 @@ function SecurityInfoContent() {
                   />
                 </div>
                 <div>
-                  <Typography variant="h5">Access Control</Typography>
+                  <Typography variant="h5" sx={{ color: "#002244" }}>
+                    Access Control
+                  </Typography>
                   <Typography
                     variant="p"
                     sx={{
@@ -275,7 +288,9 @@ function SecurityInfoContent() {
                   />
                 </div>
                 <div>
-                  <Typography variant="h5">Security Notifications</Typography>
+                  <Typography variant="h5" sx={{ color: "#002244" }}>
+                    Security Notifications
+                  </Typography>
                   <Typography
                     variant="p"
                     sx={{
@@ -297,14 +312,14 @@ function SecurityInfoContent() {
       <section className={SecurityInfoContentClass.middledivsecurityinfo}>
         <Box
           sx={{
-            backgroundColor: "#0a2140",
+            backgroundColor: "#5D76A9",
             padding: "100px",
             borderRadius: "20px",
             color: "white",
           }}
         >
           <div className={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
-            <Typography variant="h4" sx={{ fontWeight: 600 }}>
+            <Typography variant="h4" sx={{ fontWeight: 600, color: "#002244" }}>
               Working Together To Establish Global Crypto Compliance
             </Typography>
             <Typography variant="p">
@@ -320,9 +335,13 @@ function SecurityInfoContent() {
           </div>
         </Box>
       </section>
-      <section>
-        <div style={{ margin: "100px" }}>
-          <Typography align="center" variant="h3" sx={{ fontWeight: 1000 }}>
+      <section style={{ backgroundColor: "#F0F8FF" }}>
+        <div>
+          <Typography
+            align="center"
+            variant="h3"
+            sx={{ fontWeight: 1000, margin: "100px", color: "#002244" }}
+          >
             Contact Trade View
           </Typography>
         </div>

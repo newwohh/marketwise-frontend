@@ -7,7 +7,7 @@ const useCryptoNewsStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#09203f",
+    backgroundColor: "#F0F8FF",
   },
   cndivtop: {
     width: "100%",
@@ -15,7 +15,6 @@ const useCryptoNewsStyles = makeStyles(() => ({
   },
   titlelink: {
     textDecoration: "none",
-    color: "#002244",
     "&:hover": {
       textDecoration: "underline",
     },
@@ -34,6 +33,9 @@ const useCryptoNewsStyles = makeStyles(() => ({
     "@media (max-width: 1000px)": {
       width: "200px",
     },
+  },
+  modalStyle: {
+    // opacity: 0.5,
   },
 }));
 

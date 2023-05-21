@@ -36,7 +36,7 @@ function Footer() {
   return (
     <footer
       className={FooterClasses.footer}
-      style={{ backgroundColor: "#002244" }}
+      style={{ backgroundColor: "#F0F8FF" }}
     >
       <div className={FooterClasses.footercontainter}>
         {isMatch ? (
@@ -44,7 +44,7 @@ function Footer() {
             component={Paper}
             sx={{
               padding: 10,
-              backgroundColor: "#002244",
+              backgroundColor: "#F0F8FF",
               "@media (max-width : 1000px)": {
                 padding: 0,
                 width: "600px",
@@ -68,12 +68,12 @@ function Footer() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                       }}
                     >
                       Trade View
                     </Typography>
-                    <Typography sx={{ color: "white" }} variant="p">
+                    <Typography sx={{ color: "#002244" }} variant="p">
                       Break the limits
                     </Typography>
                   </TableCell>
@@ -83,7 +83,7 @@ function Footer() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >
@@ -96,7 +96,7 @@ function Footer() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >
@@ -109,7 +109,7 @@ function Footer() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >
@@ -122,7 +122,7 @@ function Footer() {
                       sx={{
                         fontWeight: 600,
                         fontFamily: "Arial",
-                        color: "white",
+                        color: "#002244",
                         textDecoration: "underline",
                       }}
                     >

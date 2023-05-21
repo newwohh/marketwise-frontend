@@ -81,7 +81,7 @@ function StockMarketPrices() {
               variant="h3"
               sx={{
                 marginTop: "100px",
-                color: "white",
+                color: "#002244",
                 "@media (max-width: 1000px)": {
                   fontSize: "25px",
                 },
@@ -92,7 +92,8 @@ function StockMarketPrices() {
             <Typography
               variant="p"
               sx={{
-                color: "white",
+                color: "#002244",
+                marginBottom: "150px",
                 "@media (max-width: 1000px)": {
                   fontSize: "10px",
                 },
@@ -174,6 +175,8 @@ function StockMarketPrices() {
               sx={{
                 height: 800,
                 width: 1500,
+                color: "white",
+                backgroundColor: "#F0F8FF",
                 "@media (max-width: 1000px)": {
                   width: "300px",
                 },
@@ -185,6 +188,7 @@ function StockMarketPrices() {
               <Table
                 sx={{
                   width: 1500,
+                  color: "white",
                   "@media (max-width: 1000px)": {
                     width: "300px",
                   },
@@ -209,15 +213,21 @@ function StockMarketPrices() {
                     <TableRow
                       key={i}
                       sx={{
+                        color: "#002244",
                         "&:hover": {
                           backgroundColor: "#E1EBEE",
                         },
                       }}
                     >
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        sx={{ color: "#002244" }}
+                      >
                         <Link
                           className={StockPriceClasses.exchangesLink}
                           to={row.url || ""}
+                          style={{ color: "#002244" }}
                         >
                           {row.name ? row.name : "Data not found!"}
                         </Link>
@@ -229,13 +239,17 @@ function StockMarketPrices() {
                             : "Data not found!"}
                         </Typography>
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="right" sx={{ color: "#002244" }}>
                         {row.locale.toUpperCase()
                           ? row.locale.toUpperCase()
                           : "Data not found!"}
                       </TableCell>
-                      <TableCell align="right">{row.operating_mic}</TableCell>
-                      <TableCell align="right">{row.currency_name}</TableCell>
+                      <TableCell align="right" sx={{ color: "#002244" }}>
+                        {row.operating_mic}
+                      </TableCell>
+                      <TableCell align="right" sx={{ color: "#002244" }}>
+                        {row.currency_name}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -246,6 +260,7 @@ function StockMarketPrices() {
               sx={{
                 height: 800,
                 width: 1500,
+                backgroundColor: "#F0F8FF",
               }}
               value={value}
               index={1}
@@ -279,6 +294,7 @@ function StockMarketPrices() {
                     <TableRow
                       key={i}
                       sx={{
+                        color: "#002244",
                         "&:hover": {
                           backgroundColor: "#E1EBEE",
                         },
@@ -288,12 +304,15 @@ function StockMarketPrices() {
                         <Link
                           to={row.url || "#"}
                           className={StockPriceClasses.exchangesLink}
+                          style={{ color: "#002244" }}
                         >
                           {row.ticker ? row.ticker : "Data not found!"}
                         </Link>
                       </TableCell>
-                      <TableCell align="right">{row.cash_amount}</TableCell>
-                      <TableCell align="right">
+                      <TableCell align="right" sx={{ color: "#002244" }}>
+                        {row.cash_amount}
+                      </TableCell>
+                      <TableCell align="right" sx={{ color: "#002244" }}>
                         <Button
                           variant="outlined"
                           sx={{
@@ -302,14 +321,14 @@ function StockMarketPrices() {
                             borderRadius: 3,
                             "&:hover": {
                               backgroundColor: "#002244",
-                              color: "white",
+                              color: "#002244",
                             },
                           }}
                         >
                           {row.currency ? row.currency : "Data not found!"}
                         </Button>
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="right" sx={{ color: "#002244" }}>
                         {row.dividend_type
                           ? row.dividend_type
                           : "Data not found!"}
@@ -324,6 +343,7 @@ function StockMarketPrices() {
               sx={{
                 height: 800,
                 width: 1500,
+                backgroundColor: "#F0F8FF",
               }}
               value={value}
               index={2}
@@ -366,7 +386,10 @@ function StockMarketPrices() {
                       }}
                     >
                       <TableCell component="th" scope="row">
-                        <Link className={StockPriceClasses.exchangesLink}>
+                        <Link
+                          className={StockPriceClasses.exchangesLink}
+                          style={{ color: "#002244" }}
+                        >
                           {row.name ? row.name : "Data not found!"}
                         </Link>
                       </TableCell>
@@ -411,12 +434,12 @@ function StockMarketPrices() {
                           ""
                         )}
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="right" sx={{ color: "#002244" }}>
                         {row.locale.toUpperCase()
                           ? row.locale
                           : "Data not found!"}
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="right" sx={{ color: "#002244" }}>
                         {row.ticker ? row.ticker : "Data not found!"}
                       </TableCell>
                     </TableRow>

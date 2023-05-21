@@ -5,19 +5,21 @@ const useLearnContentStyles = makeStyles({
     color: "black",
     width: "100%",
     overflow: "none",
+    backgroundColor: "#F0F8FF",
   },
   titledivlearn: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     overflow: "none",
-    background: "linear-gradient(to top, #09203f 0%, #537895 100%)",
+    background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",
     color: "white",
     "@media (max-width:1000px)": {
       flexDirection: "column",
     },
   },
   introdiv: {
+    color: "#002244",
     width: "900px",
     display: "flex",
     flexDirection: "column",

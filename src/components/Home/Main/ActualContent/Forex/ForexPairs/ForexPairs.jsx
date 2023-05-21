@@ -19,24 +19,29 @@ const forexCard = (data, i) => {
     <Card
       key={i}
       sx={{
+        margin: "25px",
+        backgroundColor: "#F0F8FF",
+        color: "#002244",
         display: "flex",
         justifyContent: "flex",
         alignItems: "center",
         width: "250px",
         height: 200,
         padding: 1,
+        transition: "transform 0.3s",
         boxShadow: "0px 0px 0px 5px rgba(0, 0, 0, 0.05)",
         cursor: "pointer",
         "&:hover": {
           color: "#002244",
           backgroundColor: "#E1EBEE",
+          boxShadow: "8px 8px 0px #000000",
         },
       }}
     >
       <CardContent sx={{ textAlign: "center" }}>
         <Typography
           variant="h3"
-          sx={{ fontWeight: 700, fontFamily: "Malgun Gothic", color: "navy" }}
+          sx={{ fontWeight: 700, fontFamily: "Malgun Gothic" }}
         >
           {data ? data.symbol : "Currency Symbol"}
         </Typography>
@@ -88,12 +93,17 @@ function ForexPairs() {
           <Typography
             variant="h2"
             sx={{
+              marginTop: "100px",
+              color: "white",
               "@media (max-width : 1000px)": {
                 fontSize: "25px",
               },
             }}
           >
-            <Link className={forexDataClass.titlelink}>
+            <Link
+              className={forexDataClass.titlelink}
+              style={{ color: "#002244" }}
+            >
               Forex{" "}
               <ArrowForwardIosIcon
                 sx={{
@@ -109,6 +119,7 @@ function ForexPairs() {
           <Typography
             variant="p"
             sx={{
+              color: "white",
               "@media (max-width : 1000px)": {
                 fontSize: "10px",
               },

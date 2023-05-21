@@ -5,6 +5,7 @@ import Learn from "./pages/Learn";
 import Grow from "./pages/Grow";
 import Explore from "./pages/Explore";
 import SecurityInfo from "./pages/SecurityInfo";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/education" element={<Learn />} />
         <Route path="/grow" element={<Grow />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="/user_protecttion" element={<SecurityInfo />} />
+        <Route path="/user_protection" element={<SecurityInfo />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </React.Fragment>
   );

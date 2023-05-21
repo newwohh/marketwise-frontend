@@ -5,7 +5,8 @@ const useFooterLearnStyles = makeStyles(() => ({
     marginTop: 200,
   },
   footercontainter: {
-    backgroundColor: "blue",
+    marginTop: "100px",
+    backgroundColor: "#F0F8FF",
   },
   footerlinks: {
     color: "white",

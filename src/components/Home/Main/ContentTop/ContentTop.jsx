@@ -44,7 +44,7 @@ function ContentTop() {
               textAlign="center"
               sx={{
                 fontFamily: "Arial",
-                color: "white",
+                color: "#002244",
                 fontWeight: 1000,
                 "@media (max-width: 1000px)": {
                   fontSize: "25px",
@@ -72,13 +72,10 @@ function ContentTop() {
                   width: "300vh",
                   marginRight: 5,
                   height: 350,
-                  backgroundColor: "#09203f",
-                  color: "white",
+                  backgroundColor: "#F0F8FF",
+                  color: "#002244",
                   transition: "transform 0.3s",
-                  boxShadow:
-                    "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
                   "&:hover": {
-                    transform: "scale(1.03)",
                     boxShadow: "13px 13px 0px #000000",
                   },
                   "@media (max-width: 1000px)": {
@@ -121,16 +118,13 @@ function ContentTop() {
               </Card>
               <Card
                 sx={{
-                  backgroundColor: "#09203f",
-                  color: "white",
+                  backgroundColor: "#F0F8FF",
                   width: "300vh",
                   marginRight: 5,
                   height: 350,
                   transition: "transform 0.3s",
-                  boxShadow:
-                    "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+                  color: "#002244",
                   "&:hover": {
-                    transform: "scale(1.03)",
                     boxShadow: "13px 13px 0px #000000",
                   },
                   "@media (max-width: 1000px)": {
@@ -187,13 +181,10 @@ function ContentTop() {
                   width: "300vh",
                   marginRight: 5,
                   height: 350,
-                  backgroundColor: "#09203f",
-                  color: "white",
+                  backgroundColor: "#F0F8FF",
+                  color: "#002244",
                   transition: "transform 0.3s",
-                  boxShadow:
-                    "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
                   "&:hover": {
-                    transform: "scale(1.03)",
                     boxShadow: "13px 13px 0px #000000",
                   },
                   "@media (max-width: 1000px)": {
@@ -221,7 +212,7 @@ function ContentTop() {
                     },
                   }}
                 /> */}
-                <CardContent sx={{ color: "white" }}>
+                <CardContent sx={{ color: "#002244" }}>
                   <ThemeProvider theme={theme}>
                     <Typography variant="h5">
                       Dive into endless opportunities
@@ -254,7 +245,7 @@ function ContentTop() {
                   variant="h3"
                   sx={{
                     fontFamily: "Arial",
-                    color: "White",
+                    color: "#002244",
                     fontWeight: 1000,
                     "@media (max-width: 1000px)": {
                       fontSize: "25px",
@@ -264,7 +255,7 @@ function ContentTop() {
                   Trusted Market Tracker
                 </Typography>
                 <Link
-                  to="/user_protecttion"
+                  to="/user_protection"
                   className={contentTopClasses.secondivlink}
                 >
                   Learn More
@@ -284,13 +275,11 @@ function ContentTop() {
                       sx={{
                         width: 800,
                         height: "150px",
-                        border: "0px solid white",
                         display: "flex",
                         alignItems: "center",
-                        backgroundColor: "#09203f",
-                        color: "white",
-                        boxShadow:
-                          "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+                        backgroundColor: "#F0F8FF",
+                        color: "#002244",
+                        transition: "transform 0.3s",
                         "&:hover": {
                           boxShadow: "13px 13px 0px #000000",
                         },
@@ -299,7 +288,6 @@ function ContentTop() {
                           height: "400px",
                         },
                       }}
-                      elevation={0}
                     >
                       {/* <CardMedia
                         component="img"
@@ -335,22 +323,20 @@ function ContentTop() {
                       sx={{
                         width: 800,
                         height: "150px",
-                        border: "0px solid white",
                         display: "flex",
                         alignItems: "center",
-                        backgroundColor: "#09203f",
-                        color: "white",
-                        boxShadow:
-                          "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+                        backgroundColor: "#F0F8FF",
+                        transition: "transform 0.3s",
+
+                        color: "#002244",
                         "&:hover": {
                           boxShadow: "13px 13px 0px #000000",
                         },
                         "@media (max-width: 1000px)": {
                           flexDirection: "column",
-                          height: "400px",
+                          height: "300px",
                         },
                       }}
-                      elevation={0}
                     >
                       {/* <CardMedia
                         component="img"
@@ -387,13 +373,11 @@ function ContentTop() {
                       sx={{
                         width: 800,
                         height: "150px",
-                        border: "0px solid white",
                         display: "flex",
                         alignItems: "center",
-                        backgroundColor: "#09203f",
-                        color: "white",
-                        boxShadow:
-                          "0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20)",
+                        backgroundColor: "#F0F8FF",
+                        transition: "transform 0.3s",
+                        color: "#002244",
                         "&:hover": {
                           boxShadow: "13px 13px 0px #000000",
                         },
@@ -403,7 +387,6 @@ function ContentTop() {
                           width: "600px",
                         },
                       }}
-                      elevation={0}
                     >
                       {/* <CardMedia
                         component="img"

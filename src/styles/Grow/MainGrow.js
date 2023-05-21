@@ -2,13 +2,12 @@ import { makeStyles } from "@mui/styles";
 
 const useMainGrowStyles = makeStyles({
   firstsection: {
-    background: "linear-gradient(to top, #09203f 0%, #537895 100%)",
+    background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     height: "100vh",
-    border: "1px solid black",
     textAlign: "center",
   },
   introtextgrow: {
@@ -21,6 +20,7 @@ const useMainGrowStyles = makeStyles({
     justifyContent: "center",
     textAlign: "center",
     alignItems: "center",
+    marginTop: "100px",
     "@media (max-width:1000px)": {
       marginTop: "100px",
     },
@@ -41,6 +41,11 @@ const useMainGrowStyles = makeStyles({
     alignItems: "center",
     justifyContent: "space-evenly",
     marginBottom: "100px",
+    borderRadius: "25px",
+    backgroundColor: "white",
+    border: "1rem solid #aaaaff",
+    borderImage:
+      "repeating-linear-gradient(45deg, transparent, transparent 5px, $accentColor 6px, $accentColor 15px, transparent 16px, transparent 20px) 20/1rem",
     "@media (max-width:1000px)": {
       flexDirection: "column",
       width: "300px",

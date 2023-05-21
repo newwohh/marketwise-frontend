@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useExploreContent = makeStyles((theme) => ({
   sectionexplore: {
-    background: "linear-gradient(to top, #09203f 0%, #537895 100%)",
+    background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",
     height: "1000px",
   },
   titledivexplore: {
@@ -17,7 +17,7 @@ const useExploreContent = makeStyles((theme) => ({
   secondsection: {
     height: "1000px",
     width: "100%",
-    // backgroundColor: "#09203f",
+    // backgroundColor: "#F0F8FF",
   },
 }));
 

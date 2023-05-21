@@ -2,13 +2,13 @@ import { makeStyles } from "@mui/styles";
 
 const useFooterStyles = makeStyles(() => ({
   footer: {
-    marginTop: 200,
+    // marginTop: 200,
   },
   footercontainter: {
     backgroundColor: "blue",
   },
   footerlinks: {
-    color: "white",
+    color: "#002244",
     textDecoration: "none",
     "&:hover": {
       textDecoration: "underline",

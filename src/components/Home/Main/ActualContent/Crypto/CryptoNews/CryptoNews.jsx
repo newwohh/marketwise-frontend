@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -11,7 +13,41 @@ import { Button, ThemeProvider } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import Carousel from "better-react-carousel";
 
+const style = {
+  overflow: "scroll",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 800,
+  height: "800px",
+  backgroundColor: "white",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+  zIndex: 1,
+  opacity: 1,
+};
+
 function CryptoNews() {
+  const [open, setOpen] = React.useState(false);
+  const [cryptoNewsModal, setCryptoNewsModal] = useState({
+    title: "",
+    description: "",
+    content: "",
+    author: "",
+  });
+  const handleOpen = (el) => {
+    setCryptoNewsModal({
+      title: el.title,
+      description: el.description,
+      content: el.content,
+      author: el.author,
+    });
+    setOpen(true);
+  };
+
+  const handleClose = () => setOpen(false);
   const newsCard = (news, i) => {
     return (
       <Carousel.Item key={i} style={{ width: 100 }}>
@@ -21,9 +57,11 @@ function CryptoNews() {
             cursor: "pointer",
             marginRight: "50px",
             border: "1px solid #F0F0F0",
-            backgroundColor: "white",
+            backgroundColor: "#F0F8FF",
             boxShadow: "none",
-            "&:hover": { backgroundColor: "#E1EBEE", color: "blue" },
+            color: "#002244",
+            marginBottom: "10px",
+            "&:hover": { color: "" },
             "@media (max-width: 1000px)": {
               width: "150px",
               height: "350px",
@@ -43,15 +81,16 @@ function CryptoNews() {
             <Typography
               variant="h6"
               sx={{
-                color: "#002D62",
                 fontWeight: 700,
                 fontSize: "15px",
+                "&:hover": { textDecoration: "underline" },
               }}
             >
               <Link
-                to={news.link}
+                onClick={() => handleOpen(news)}
                 style={{
-                  color: "#002D62",
+                  "&:hover": { textDecoration: "underline" },
+                  color: "#002244",
                   textDecoration: "none",
                 }}
               >
@@ -59,12 +98,13 @@ function CryptoNews() {
               </Link>
             </Typography>
             <Typography variant="p" sx={{ fontSize: "12px" }}>
-              {news.description}
+              {news.description} <br></br>
             </Typography>
             <Button
               href={news.link}
               sx={{
-                "&:hover": { color: "#011F5B" },
+                color: "white",
+                "&:hover": { color: "white" },
                 borderRadius: "13px",
                 height: "30px",
               }}
@@ -72,10 +112,33 @@ function CryptoNews() {
               Click To Know More
             </Button>
           </CardContent>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            className={CryptoNewsClasses.modalStyle}
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                {cryptoNewsModal.author}
+              </Typography>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                {cryptoNewsModal.title}
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                {cryptoNewsModal.description}
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                {cryptoNewsModal.content}
+              </Typography>
+            </Box>
+          </Modal>
         </Card>
       </Carousel.Item>
     );
   };
+
   const [dataApi, setDataApi] = useState("");
   let card;
   const CryptoNewsClasses = useCryptoNewsStyles();
@@ -102,6 +165,8 @@ function CryptoNews() {
                 <Typography
                   variant="h2"
                   sx={{
+                    marginTop: "150px",
+                    color: "#002244",
                     "@media (max-width: 1000px)": {
                       fontSize: "25px",
                     },
@@ -123,6 +188,7 @@ function CryptoNews() {
           <Typography
             variant="p"
             sx={{
+              color: "#002244",
               fontFamily: "sans-serif",
               "@media (max-width: 1000px)": {
                 fontSize: "10px",

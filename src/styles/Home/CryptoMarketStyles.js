@@ -9,7 +9,7 @@ const useCryptoMarket = makeStyles((theme) => ({
   },
   cryptomarketcontainer: {
     // width: "1000px",
-    backgroundColor: "#09203f",
+    backgroundColor: "#F0F8FF",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

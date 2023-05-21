@@ -29,6 +29,7 @@ const useSecurityInfoContentStyles = makeStyles({
     textAlign: "center",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: "#F0F8FF",
     "@media (max-width:1000px)": {
       width: "350px",
     },
@@ -48,9 +49,15 @@ const useSecurityInfoContentStyles = makeStyles({
     },
   },
   contentfirstsecurityinfo: {
+    borderRadius: "23px",
+    padding: "35px",
     display: "flex",
     justifyContent: "space-between",
     margin: "50px",
+    backgroundColor: "white",
+    border: "2px solid #aaaaff",
+    borderImage:
+      "repeating-linear-gradient(45deg, transparent, transparent 5px, $accentColor 6px, $accentColor 15px, transparent 16px, transparent 20px) 20/1rem",
     "@media (max-width:1000px)": {
       margin: 0,
       flexDirection: "column",
@@ -61,10 +68,10 @@ const useSecurityInfoContentStyles = makeStyles({
     height: "100px",
   },
   middledivsecurityinfo: {
-    marginTop: "100px",
     display: "flex",
     justifyContent: "center",
     textAlign: "center",
+    backgroundColor: "#F0F8FF",
     "@media (max-width:1000px)": {
       margin: 100,
     },
@@ -73,7 +80,7 @@ const useSecurityInfoContentStyles = makeStyles({
     width: "800px",
   },
   lastdivsecurityinfo: {
-    margin: 100,
+    backgroundColor: "#F0F8FF",
     display: "flex",
     justifyContent: "space-evenly",
     "@media (max-width:1000px)": {

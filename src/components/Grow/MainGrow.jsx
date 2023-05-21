@@ -9,22 +9,23 @@ import dataReal from "../../assets/2210.i039.005.S.m004.c13.data economy isometr
 import bgrowth from "../../assets/sl_033020_29450_24.jpg";
 import research from "../../assets/MyApril6.jpg";
 import education from "../../assets/5836.jpg";
+import { Link } from "react-router-dom";
 
 function MainGrow() {
   const refgrow = useRef(null);
   const MainGrowClasses = useMainGrowStyles();
   return (
-    <main>
+    <main style={{ backgroundColor: "#F0F8FF" }}>
       <ThemeProvider theme={theme}>
         <section className={MainGrowClasses.firstsection}>
           <Typography
             align="center"
             variant="h1"
-            sx={{ marginTop: "50px", color: "white" }}
+            sx={{ marginTop: "50px", color: "#002244" }}
           >
             Grow with Trade View
           </Typography>
-          <Typography sx={{ color: "white", margin: 5 }}>
+          <Typography sx={{ color: "#002244", margin: 5 }}>
             Trade View is a comprehensive market tracking platform that provides
             you with the tools you need to make informed investment decisions.
           </Typography>
@@ -36,10 +37,10 @@ function MainGrow() {
               left: 0,
               right: 0,
               textAlign: "center",
-              border: "3px solid white",
+              border: "3px solid #002244",
               borderRadius: "13px",
               width: "250px",
-              color: "white",
+              color: "#002244",
             }}
           >
             Click to See
@@ -133,7 +134,28 @@ function MainGrow() {
             </div>
             <div className={MainGrowClasses.infosubdivgrow}>
               <div className={MainGrowClasses.infosubcontentdivgrow}>
-                <Typography variant="h6">Security</Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    marginBottom: "10px",
+                    "&:hover": {
+                      textDecoration: "underline",
+                    },
+                  }}
+                >
+                  <Link
+                    to="/user_protection"
+                    style={{
+                      color: "white",
+                      textDecoration: "none",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
+                    }}
+                  >
+                    Security
+                  </Link>
+                </Typography>
                 <Typography variant="p">
                   Trade View is committed to security and uses the latest
                   security measures to protect your data. You can be confident
@@ -141,7 +163,27 @@ function MainGrow() {
                 </Typography>
               </div>
               <div className={MainGrowClasses.infosubcontentdivgrow}>
-                <Typography variant="h6">Pricing</Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    marginBottom: "10px",
+                    "&:hover": {
+                      textDecoration: "underline",
+                    },
+                  }}
+                >
+                  <Link
+                    style={{
+                      color: "white",
+                      textDecoration: "none",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
+                    }}
+                  >
+                    Pricing
+                  </Link>
+                </Typography>
                 <Typography variant="p">
                   Trade View offers a variety of pricing plans to fit your
                   needs. You can choose a plan that meets your budget and your
@@ -149,7 +191,27 @@ function MainGrow() {
                 </Typography>
               </div>
               <div className={MainGrowClasses.infosubcontentdivgrow}>
-                <Typography variant="h6">Sign up today</Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    marginBottom: "10px",
+                    "&:hover": {
+                      textDecoration: "underline",
+                    },
+                  }}
+                >
+                  <Link
+                    style={{
+                      color: "white",
+                      textDecoration: "none",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
+                    }}
+                  >
+                    Sign up today
+                  </Link>
+                </Typography>
                 <Typography variant="p">
                   f you are ready to start growing your wealth, sign up for
                   Trade View today. You won't be disappointed.

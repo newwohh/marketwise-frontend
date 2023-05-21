@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockNews } from "../../../../../../store/store-actions";
-import { ThemeProvider, Typography } from "@mui/material";
+import { Button, ThemeProvider, Typography } from "@mui/material";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -13,12 +15,50 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Carousel from "better-react-carousel";
 import { Fade } from "react-reveal";
 
+const style = {
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+  textAlign: "center",
+  alignItems: "center",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 700,
+  height: 600,
+  bgcolor: "white",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 function StockNews() {
+  const [open, setOpen] = React.useState(false);
+  const [newsModal, setNewsModal] = React.useState({
+    author: "",
+    title: "",
+    description: "",
+    image_url: "",
+    link: "",
+  });
+  const handleOpen = (i) => {
+    setNewsModal({
+      author: i.author,
+      title: i.title,
+      description: i.description,
+      image_url: i.image_url,
+      link: i.article_url,
+    });
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
   const StockNewsClasses = useStockNews();
   const dispatch = useDispatch();
   const [dataApi, setDataApi] = useState("");
   const { stocknews } = useSelector((state) => state.news);
   const getProducts = useCallback(() => {
+    setDataApi(stockNews);
     dispatch(getStockNews());
     console.log(stocknews);
   }, [dataApi]);
@@ -26,6 +66,7 @@ function StockNews() {
     getProducts();
   }, [dataApi]);
   let stockNews = stocknews;
+
   return (
     <div className={StockNewsClasses.containerdiv}>
       <Fade bottom>
@@ -89,9 +130,12 @@ function StockNews() {
                       height: 500,
                       borderRadius: "15px",
                       border: "5px solid white",
+                      margin: "15px",
+                      transition: "transform 0.3s",
                       padding: 3,
                       "&:hover": {
-                        border: "5px solid #002244",
+                        // border: "5px solid #002244",
+                        boxShadow: "8px 8px 0px #000000",
                       },
                       "@media (max-width: 1000px)": {
                         padding: 0,
@@ -140,7 +184,7 @@ function StockNews() {
                           }}
                         >
                           <Link
-                            to={el.article_url}
+                            onClick={() => handleOpen(el)}
                             className={StockNewsClasses.cardTitle}
                             style={{
                               color: "#1F305E",
@@ -158,6 +202,52 @@ function StockNews() {
                           {el.description}
                         </Typography>
                       </CardContent>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+                          <CardMedia
+                            component="img"
+                            height="250px"
+                            image={newsModal.image_url}
+                            alt="image not found"
+                            sx={{
+                              height: "350px",
+                              width: "600px",
+                              "@media (max-width: 1000px)": {
+                                height: "100px",
+                                width: "200px",
+                              },
+                            }}
+                          />
+                          <Typography
+                            id="modal-modal-title"
+                            variant="h6"
+                            component="h2"
+                          >
+                            Title: {newsModal.title}
+                          </Typography>
+                          <Typography
+                            id="modal-modal-author"
+                            variant="h6"
+                            component="h3"
+                          >
+                            Author: {newsModal.author}
+                          </Typography>
+                          <Typography
+                            id="modal-modal-description"
+                            sx={{ mt: 2 }}
+                          >
+                            Description: {newsModal.description}
+                          </Typography>
+                          <Button href={newsModal.link}>
+                            Click to Visit Website
+                          </Button>
+                        </Box>
+                      </Modal>
                     </CardActionArea>
                   </Card>
                 </Carousel.Item>

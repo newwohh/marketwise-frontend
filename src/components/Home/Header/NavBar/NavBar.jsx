@@ -196,6 +196,7 @@ function NavBar() {
               </Button>
               <Button
                 variant="text"
+                href="/about"
                 sx={{
                   marginLeft: "15px",
                   fontWeight: 300,

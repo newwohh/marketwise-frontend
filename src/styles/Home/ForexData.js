@@ -32,6 +32,8 @@ const useForexDataStyles = makeStyles(() => ({
     backgroundColor: "white",
     borderRadius: "100px",
     textAlign: "center",
+    marginLeft: "70px",
+    marginRight: "70px",
     border: "1rem solid #aaaaff",
     borderImage:
       "repeating-linear-gradient(45deg, transparent, transparent 5px, $accentColor 6px, $accentColor 15px, transparent 16px, transparent 20px) 20/1rem",

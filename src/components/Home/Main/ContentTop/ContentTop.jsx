@@ -76,7 +76,7 @@ function ContentTop() {
                   color: "#002244",
                   transition: "transform 0.3s",
                   "&:hover": {
-                    boxShadow: "13px 13px 0px #000000",
+                    boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
                   },
                   "@media (max-width: 1000px)": {
                     marginTop: "30px",
@@ -125,7 +125,7 @@ function ContentTop() {
                   transition: "transform 0.3s",
                   color: "#002244",
                   "&:hover": {
-                    boxShadow: "13px 13px 0px #000000",
+                    boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
                   },
                   "@media (max-width: 1000px)": {
                     marginTop: "30px",
@@ -185,7 +185,7 @@ function ContentTop() {
                   color: "#002244",
                   transition: "transform 0.3s",
                   "&:hover": {
-                    boxShadow: "13px 13px 0px #000000",
+                    boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
                   },
                   "@media (max-width: 1000px)": {
                     marginTop: "30px",
@@ -281,7 +281,7 @@ function ContentTop() {
                         color: "#002244",
                         transition: "transform 0.3s",
                         "&:hover": {
-                          boxShadow: "13px 13px 0px #000000",
+                          boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
                         },
                         "@media (max-width: 1000px)": {
                           flexDirection: "column",
@@ -330,7 +330,7 @@ function ContentTop() {
 
                         color: "#002244",
                         "&:hover": {
-                          boxShadow: "13px 13px 0px #000000",
+                          boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
                         },
                         "@media (max-width: 1000px)": {
                           flexDirection: "column",
@@ -379,7 +379,7 @@ function ContentTop() {
                         transition: "transform 0.3s",
                         color: "#002244",
                         "&:hover": {
-                          boxShadow: "13px 13px 0px #000000",
+                          boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
                         },
                         "@media (max-width: 1000px)": {
                           flexDirection: "column",

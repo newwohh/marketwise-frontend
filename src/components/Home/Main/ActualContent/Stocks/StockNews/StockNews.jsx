@@ -135,7 +135,7 @@ function StockNews() {
                       padding: 3,
                       "&:hover": {
                         // border: "5px solid #002244",
-                        boxShadow: "8px 8px 0px #000000",
+                        boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
                       },
                       "@media (max-width: 1000px)": {
                         padding: 0,

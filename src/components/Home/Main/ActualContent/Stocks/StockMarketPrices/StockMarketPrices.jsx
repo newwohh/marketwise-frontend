@@ -107,8 +107,9 @@ function StockMarketPrices() {
       <div className={StockPriceClasses.firstdiv}>
         <Box
           sx={{
+            marginTop: "100px",
             width: 1500,
-            height: "800px",
+            height: "250px",
             "@media (max-width: 1000px)": {
               width: 300,
               display: "flex",
@@ -121,7 +122,8 @@ function StockMarketPrices() {
           <AppBar
             position="static"
             sx={{
-              backgroundColor: "#002244",
+              backgroundColor: "#F0F8FF",
+              boxShadow: "none",
               "@media (max-width: 1000px)": {
                 width: 300,
                 textAlign: "center",
@@ -138,6 +140,7 @@ function StockMarketPrices() {
               <Tab
                 label="Exchanges"
                 sx={{
+                  color: "#002244",
                   "@media (max-width: 1000px)": {
                     width: "50px",
                     fontSize: "10px",
@@ -147,6 +150,7 @@ function StockMarketPrices() {
               <Tab
                 label="Dividents"
                 sx={{
+                  color: "#002244",
                   "@media (max-width: 1000px)": {
                     width: "50px",
                     fontSize: "10px",
@@ -156,6 +160,7 @@ function StockMarketPrices() {
               <Tab
                 label="Tickers"
                 sx={{
+                  color: "#002244",
                   "@media (max-width: 1000px)": {
                     width: "50px",
                     fontSize: "10px",
@@ -173,7 +178,7 @@ function StockMarketPrices() {
             <TableContainer
               component={Paper}
               sx={{
-                height: 800,
+                height: 500,
                 width: 1500,
                 color: "white",
                 backgroundColor: "#F0F8FF",
@@ -258,7 +263,7 @@ function StockMarketPrices() {
             <TableContainer
               component={Paper}
               sx={{
-                height: 800,
+                height: 500,
                 width: 1500,
                 backgroundColor: "#F0F8FF",
               }}
@@ -341,7 +346,7 @@ function StockMarketPrices() {
             <TableContainer
               component={Paper}
               sx={{
-                height: 800,
+                height: 500,
                 width: 1500,
                 backgroundColor: "#F0F8FF",
               }}

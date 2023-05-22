@@ -11,6 +11,9 @@ const useAbout = makeStyles({
   },
   contentdiv: {
     width: "900px",
+    "@media (max-width:1000px)": {
+      width: "300px",
+    },
   },
   contentdivtwo: {
     padding: 50,
@@ -21,6 +24,13 @@ const useAbout = makeStyles({
     backgroundColor: "#E1EBEE",
     border: "1rem solid #aaaaff",
     borderRadius: "30px",
+    "@media (max-width:1000px)": {
+      display: "none",
+      width: "300px",
+      height: "750px",
+      fontSize: "15px",
+      marginTop: 0,
+    },
   },
 });
 

@@ -119,7 +119,11 @@ function StockNews() {
                 autoplay: 7000,
               },
             ]}
-            containerStyle={{ height: "500px" }}
+            containerStyle={{
+              height: "500px",
+              marginLeft: "100px",
+              marginRight: "100px",
+            }}
           >
             {stockNews.map((el, i) => {
               return (

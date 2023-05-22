@@ -8,7 +8,15 @@ function ContentAbout() {
     <div className={ContentAboutClass.mainabout}>
       <div className={ContentAboutClass.contentdiv}>
         <Typography
-          sx={{ fontWeight: 600, marginTop: "200px", color: "#002244" }}
+          sx={{
+            fontWeight: 600,
+            marginTop: "200px",
+            color: "#002244",
+            "@media (max-width:1000px)": {
+              fontSize: "30px",
+              marginTop: "100px",
+            },
+          }}
           variant="h2"
         >
           About TradeView
@@ -25,7 +33,16 @@ function ContentAbout() {
         </Typography>
       </div>
       <div className={ContentAboutClass.contentdivtwo}>
-        <Typography variant="h4" sx={{ fontWeight: "600", color: "#002244" }}>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "600",
+            color: "#002244",
+            "@media (max-width:1000px)": {
+              fontSize: "30px",
+            },
+          }}
+        >
           Here are some additional details about TradeView:
         </Typography>
         <ul>

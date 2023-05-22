@@ -165,7 +165,7 @@ function CryptoNews() {
                 <Typography
                   variant="h2"
                   sx={{
-                    marginTop: "150px",
+                    marginTop: "400px",
                     color: "#002244",
                     "@media (max-width: 1000px)": {
                       fontSize: "25px",
@@ -211,7 +211,7 @@ function CryptoNews() {
             >
               <Carousel
                 cols={2}
-                rows={2}
+                rows={3}
                 gap={10}
                 loop
                 responsiveLayout={[

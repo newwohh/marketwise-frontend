@@ -8,7 +8,6 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import theme from "../../../../../../styles/Theme";
 import useCryptoMarket from "../../../../../../styles/Home/CryptoMarketStyles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

@@ -84,7 +84,7 @@ function StockNews() {
                   },
                 }}
               >
-                <Link className={StockNewsClasses.titlelink}>
+                <Link to="/stocks" className={StockNewsClasses.titlelink}>
                   Stocks
                   <ArrowForwardIosIcon
                     sx={{

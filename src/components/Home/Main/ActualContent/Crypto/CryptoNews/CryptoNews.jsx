@@ -160,7 +160,7 @@ function CryptoNews() {
             variant="h3"
             sx={{ fontFamily: "monospace", fontWeight: 800 }}
           >
-            <Link className={CryptoNewsClasses.titlelink}>
+            <Link to="/cryptocurrency" className={CryptoNewsClasses.titlelink}>
               <ThemeProvider theme={theme}>
                 <Typography
                   variant="h2"

@@ -212,7 +212,6 @@ function NavBar() {
               </Button>
               <Button
                 color="inherit"
-                // variant="outlined"
                 sx={{
                   marginLeft: "15px",
                   fontWeight: 300,

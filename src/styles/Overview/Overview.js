@@ -31,7 +31,7 @@ const useOverviewStyles = makeStyles({
     },
   },
 
-  //   overviewrightsection: { position: "fixed", right: "0", width: "700px" },
+  overviewrightsection: { marginLeft: "20px" },
 });
 
 export default useOverviewStyles;

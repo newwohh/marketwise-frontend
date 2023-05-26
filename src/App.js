@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Learn from "./pages/Learn";
 import Grow from "./pages/Grow";
 import Explore from "./pages/Explore";
+import Chart from "./pages/Chart";
 import SecurityInfo from "./pages/SecurityInfo";
 import About from "./pages/About";
 import { useLocation } from "react-router-dom";
@@ -54,7 +55,7 @@ function App() {
     stockNewsOverview();
   }, [dataApi]);
   const cryptoPrice = prices;
-  const cryptoNews = news ;
+  const cryptoNews = news;
   console.log(news, prices);
   const stockPrice = stockprice;
   const stockNews = stocknews;
@@ -68,10 +69,13 @@ function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/user_protection" element={<SecurityInfo />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/cryptocurrency"
-          element={<Overview crypto={cryptoPrice} cryptonews={cryptoNews} />}
-        />
+        <Route path="/cryptocurrency">
+          <Route
+            index
+            element={<Overview crypto={cryptoPrice} cryptonews={cryptoNews} />}
+          />
+          <Route path="chart" element={<Chart />} />
+        </Route>
         <Route
           path="/stocks"
           element={<Overview stocks={stockPrice} stocknews={stockNews} />}

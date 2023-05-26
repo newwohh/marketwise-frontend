@@ -8,7 +8,12 @@ import SecurityInfo from "./pages/SecurityInfo";
 import About from "./pages/About";
 import { useLocation } from "react-router-dom";
 import Overview from "./pages/Overview";
-import { getCryptoPrice, getStockPrice } from "./store/store-actions";
+import {
+  getCryptoNews,
+  getCryptoPrice,
+  getStockNews,
+  getStockPrice,
+} from "./store/store-actions";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
@@ -20,21 +25,39 @@ function App() {
   };
   const [dataApi, setDataApi] = useState("");
   const dispatch = useDispatch();
-  const { prices, stockprice } = useSelector((state) => state.news);
+  const { prices, stockprice, news, stocknews } = useSelector(
+    (state) => state.news
+  );
   const getProducts = useCallback(() => {
     dispatch(getCryptoPrice());
+  }, [dataApi]);
+  const cryptoNewsOverview = useCallback(() => {
+    dispatch(getCryptoNews());
   }, [dataApi]);
   const stockPriceOverview = useCallback(() => {
     dispatch(getStockPrice());
   }, [dataApi]);
+  const stockNewsOverview = useCallback(() => {
+    dispatch(getStockNews());
+  }, [dataApi]);
+
   useEffect(() => {
     getProducts();
   }, [dataApi]);
   useEffect(() => {
     stockPriceOverview();
   }, [dataApi]);
+  useEffect(() => {
+    cryptoNewsOverview();
+  }, [dataApi]);
+  useEffect(() => {
+    stockNewsOverview();
+  }, [dataApi]);
   const cryptoPrice = prices;
+  const cryptoNews = news ;
+  console.log(news, prices);
   const stockPrice = stockprice;
+  const stockNews = stocknews;
   return (
     <React.Fragment>
       <ScrollToTop />
@@ -47,9 +70,12 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route
           path="/cryptocurrency"
-          element={<Overview crypto={cryptoPrice} />}
+          element={<Overview crypto={cryptoPrice} cryptonews={cryptoNews} />}
         />
-        <Route path="/stocks" element={<Overview stocks={stockPrice} />} />
+        <Route
+          path="/stocks"
+          element={<Overview stocks={stockPrice} stocknews={stockNews} />}
+        />
       </Routes>
     </React.Fragment>
   );

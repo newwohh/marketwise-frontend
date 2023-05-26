@@ -1,10 +1,19 @@
-import React from "react";
-import { useAPI } from "../../store/Context";
+import React, { useCallback } from "react";
 
-function CryptoCurrency() {
-  const { cryptoprice } = useAPI();
-  console.log(cryptoprice);
-  return <div>Overview</div>;
+function Overview(props) {
+  let prices;
+  if (props.crypto) {
+    prices = props.crypto;
+  } else if (props.stocks !== props.crypto) {
+    prices = props.stocks;
+  } else if (props.forex) {
+    prices = props.forex;
+  }
+  useCallback(() => {
+    console.log(prices);
+  }, []);
+  console.log(prices);
+  return <React.Fragment>{}</React.Fragment>;
 }
 
-export default CryptoCurrency;
+export default Overview;

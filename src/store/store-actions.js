@@ -97,8 +97,13 @@ const newsSlice = createSlice({
     stockprice: [],
     forexdata: [],
     loading: "idle",
+    cryptosymbol: "",
   },
-  reducers: {},
+  reducers: {
+    setCryptoSymbol: (state, action) => {
+      state.cryptosymbol = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCryptoNews.fulfilled, (state, action) => {
       state.news = action.payload;
@@ -117,5 +122,7 @@ const newsSlice = createSlice({
     });
   },
 });
+
+export const { setCryptoSymbol } = newsSlice.actions;
 
 export default newsSlice.reducer;

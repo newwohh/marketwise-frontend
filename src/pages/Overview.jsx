@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -20,6 +20,10 @@ import Paper from "@mui/material/Paper";
 import { Button, Divider, Grid, ThemeProvider } from "@mui/material";
 import theme from "../styles/Theme";
 import { Link, Outlet } from "react-router-dom";
+import { SymbolContext } from "../Context/Context";
+import { useDispatch, useSelector } from "react-redux";
+import { setCryptoSymbol } from "../store/store-actions";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -50,6 +54,8 @@ function a11yProps(index) {
   };
 }
 function Overview(props) {
+  const { cryptosymbol } = useSelector((state) => state.news);
+  const dispatch = useDispatch();
   const OverviewClasses = useOverviewStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -78,7 +84,13 @@ function Overview(props) {
   useCallback(() => {
     console.log(prices, news);
   }, []);
-  console.log(prices, news);
+  const cryptoSymbolFn = (e) => {
+    console.log(e);
+    return dispatch(setCryptoSymbol(e.target.innerHTML));
+  };
+  // useCallback(() => {}, []);
+  // console.log(prices, news);
+  console.log(cryptosymbol);
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
@@ -203,8 +215,11 @@ function Overview(props) {
                             >
                               <TableCell>
                                 <Button
-                                  href="/cryptocurrency/chart"
+                                  // href="/cryptocurrency/chart"
                                   variant="outlined"
+                                  // onClick={(e) =>
+                                  //   console.log()
+                                  // }
                                   sx={{
                                     borderColor: "#002244",
                                     borderRadius: "15px",
@@ -232,7 +247,13 @@ function Overview(props) {
                               </TableCell>
                               <TableCell align="right">
                                 <Button
+                                  href={`cryptocurrency/chart/${row.symbol}`}
                                   variant="outlined"
+                                  onClick={(e) => {
+                                    dispatch(
+                                      setCryptoSymbol(e.target.textContent)
+                                    );
+                                  }}
                                   sx={{
                                     borderColor: "#002244",
                                     borderRadius: "15px",

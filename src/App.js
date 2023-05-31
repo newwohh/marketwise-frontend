@@ -74,7 +74,7 @@ function App() {
             index
             element={<Overview crypto={cryptoPrice} cryptonews={cryptoNews} />}
           />
-          <Route path="chart" element={<Chart />} />
+          <Route path="chart/:id" element={<Chart crypto={cryptoPrice} />} />
         </Route>
         <Route
           path="/stocks"

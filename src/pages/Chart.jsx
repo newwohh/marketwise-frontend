@@ -1,6 +1,12 @@
 import React, { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import NavBar from "../components/Home/Header/NavBar/NavBar";
+import { Divider, Typography } from "@mui/material";
 let tvScriptLoadingPromise;
-export default function Chart() {
+function Chart(props) {
+  const pricesOf = props.crypto;
+  const { id } = useParams();
+  console.log(id);
   const onLoadScriptRef = useRef();
   useEffect(() => {
     onLoadScriptRef.current = createWidget;
@@ -25,7 +31,7 @@ export default function Chart() {
       ) {
         new window.TradingView.widget({
           autosize: true,
-          symbol: "ETH",
+          symbol: id,
           interval: "D",
           timezone: "Etc/UTC",
           theme: "light",
@@ -39,18 +45,45 @@ export default function Chart() {
       }
     }
   }, []);
+
+  console.log(pricesOf);
+
+  let map = pricesOf.filter((el) => el.symbol === id);
+  map = map[0];
+
   return (
-    <div className="tradingview-widget-container">
-      <div id="tradingview_4d272" style={{ height: "700px" }} />
-      <div className="tradingview-widget-copyright">
-        <a
-          href="https://www.tradingview.com/"
-          rel="noopener nofollow"
-          target="_blank"
-        >
-          <span className="blue-text">Track all markets on TradingView</span>
-        </a>
+    <React.Fragment>
+      <NavBar />
+
+      <div
+        style={{
+          display: "flex",
+          marginTop: "10px",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <div style={{ marginLeft: "50px" }}>
+          <div style={{ marginTop: "80px" }}>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              {map.name}
+            </Typography>
+            <Divider />
+          </div>
+          <div className="tradingview-widget-container">
+            <div
+              id="tradingview_4d272"
+              style={{ height: "800px", width: "1500px" }}
+            />
+          </div>
+        </div>
+        <div style={{ marginTop: "100px", width: "500px", marginLeft: "20px" }}>
+          <Typography align="center">About</Typography>
+          <Divider />
+          <Typography variant="p">{`${map.name} is a crpyto currency coin or called as ${map.symbol} for this currency the total volume for last 24hr is ${map.volume_24h_usd}`}</Typography>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
+
+export default Chart;

@@ -26,7 +26,7 @@ export const getStockNews = createAsyncThunk("store/getStockNews", async () => {
   try {
     const response = await fetch(url);
     const result = await response.json();
-    // console.log(result);
+    console.log(result);
     return result.results;
   } catch (error) {
     console.error(error);
@@ -40,7 +40,7 @@ export const getCryptoPrice = createAsyncThunk(
       const client = new CoinpaprikaAPI();
       let AllPrices = await client.getTicker();
       let AllPricesSliced = await AllPrices.slice(0, 17);
-      // console.log(AllPricesSliced);
+      console.log(AllPricesSliced);
       return AllPricesSliced;
     } catch (error) {
       console.log(error);
@@ -65,7 +65,7 @@ export const getStockPrice = createAsyncThunk(
           return stockPriceResult;
         })
       );
-      // console.log(results);
+      console.log(results);
       return results;
     } catch (error) {
       console.log(error);
@@ -81,7 +81,7 @@ export const getForexData = createAsyncThunk("store/getForexData", async () => {
     const forexResponse = await fetch(url);
     const forexData = await forexResponse.json();
 
-    console.log(forexData.data.slice(0, 30));
+    // console.log(forexData.data.slice(0, 30));
     return forexData.data.slice(0, 30);
   } catch (error) {
     console.log(error);
@@ -97,13 +97,8 @@ const newsSlice = createSlice({
     stockprice: [],
     forexdata: [],
     loading: "idle",
-    cryptosymbol: "",
   },
-  reducers: {
-    setCryptoSymbol: (state, action) => {
-      state.cryptosymbol = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCryptoNews.fulfilled, (state, action) => {
       state.news = action.payload;

@@ -16,49 +16,25 @@ import {
   getStockPrice,
 } from "./store/store-actions";
 import { useDispatch, useSelector } from "react-redux";
+import Heatmap from "./pages/Heatmap";
 
 function App() {
+  const [data, setData] = useState("");
   const ScrollToTop = () => {
     const { pathname } = useLocation();
     useEffect(() => {
       window.scrollTo(0, 0);
     }, [pathname]);
   };
-  const [dataApi, setDataApi] = useState("");
   const dispatch = useDispatch();
-  const { prices, stockprice, news, stocknews } = useSelector(
+  const { prices, news, stocknews, stockprice } = useSelector(
     (state) => state.news
   );
-  const getProducts = useCallback(() => {
-    dispatch(getCryptoPrice());
-  }, [dataApi]);
-  const cryptoNewsOverview = useCallback(() => {
-    dispatch(getCryptoNews());
-  }, [dataApi]);
-  const stockPriceOverview = useCallback(() => {
-    dispatch(getStockPrice());
-  }, [dataApi]);
-  const stockNewsOverview = useCallback(() => {
-    dispatch(getStockNews());
-  }, [dataApi]);
-
-  useEffect(() => {
-    getProducts();
-  }, [dataApi]);
-  useEffect(() => {
-    stockPriceOverview();
-  }, [dataApi]);
-  useEffect(() => {
-    cryptoNewsOverview();
-  }, [dataApi]);
-  useEffect(() => {
-    stockNewsOverview();
-  }, [dataApi]);
   const cryptoPrice = prices;
   const cryptoNews = news;
-  console.log(news, prices);
   const stockPrice = stockprice;
   const stockNews = stocknews;
+  console.log(news, prices, stockPrice, stockNews);
   return (
     <React.Fragment>
       <ScrollToTop />
@@ -79,6 +55,10 @@ function App() {
         <Route
           path="/stocks"
           element={<Overview stocks={stockPrice} stocknews={stockNews} />}
+        />
+        <Route
+          path="/heatmap/cryptocurrency"
+          element={<Heatmap cryptomap={cryptoPrice} />}
         />
       </Routes>
     </React.Fragment>

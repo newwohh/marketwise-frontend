@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCryptoPrice } from "../../../../../../store/store-actions";
 import {
   Button,
   Container,
@@ -20,21 +19,22 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useTheme } from "@mui/material/styles";
+import { getCryptoPrice } from "../../../../../../store/store-actions";
 
 function CryptoMarket() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
-  const [dataApi, setDataApi] = useState("");
-  const dispatch = useDispatch();
   const { prices } = useSelector((state) => state.news);
   const CryptoMarketClass = useCryptoMarket();
-  const getProducts = useCallback(() => {
+  const dispatch = useDispatch();
+  const dispatchCryptoPrice = React.useCallback(() => {
     dispatch(getCryptoPrice());
-  }, [dataApi]);
+  }, []);
   useEffect(() => {
-    getProducts();
-  }, [dataApi]);
+    dispatchCryptoPrice();
+  }, []);
   const rows = prices;
+
   return (
     <div className={CryptoMarketClass.cryptomarketcontainer}>
       {isMatch ? (

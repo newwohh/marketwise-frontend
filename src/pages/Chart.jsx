@@ -2,8 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
 import { Divider, Typography } from "@mui/material";
+import useChartStyles from "../styles/Chart.js/Chart";
 let tvScriptLoadingPromise;
 function Chart(props) {
+  const ChartClasses = useChartStyles();
   const pricesOf = props.crypto;
   const { id } = useParams();
   console.log(id);
@@ -46,40 +48,41 @@ function Chart(props) {
     }
   }, []);
 
-  console.log(pricesOf);
+  // console.log(pricesOf);
 
-  let map = pricesOf.filter((el) => el.symbol === id);
-  map = map[0];
+  // let map = pricesOf.filter((el) => el.symbol === id);
+  // map = map[0];
 
   return (
     <React.Fragment>
       <NavBar />
 
-      <div
-        style={{
-          display: "flex",
-          marginTop: "10px",
-          justifyContent: "space-evenly",
-        }}
-      >
+      <div className={ChartClasses.containerchart}>
         <div style={{ marginLeft: "50px" }}>
           <div style={{ marginTop: "80px" }}>
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              {map.name}
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 700,
+                textDecoration: "underline",
+                color: "#002244",
+              }}
+            >
+              {/* {map.name} */}
             </Typography>
             <Divider />
           </div>
           <div className="tradingview-widget-container">
-            <div
-              id="tradingview_4d272"
-              style={{ height: "800px", width: "1500px" }}
-            />
+            <div id="tradingview_4d272" className={ChartClasses.chartclass} />
           </div>
         </div>
         <div style={{ marginTop: "100px", width: "500px", marginLeft: "20px" }}>
           <Typography align="center">About</Typography>
           <Divider />
-          <Typography variant="p">{`${map.name} is a crpyto currency coin or called as ${map.symbol} for this currency the total volume for last 24hr is ${map.volume_24h_usd}`}</Typography>
+          {/* <Typography
+            variant="p"
+            sx={{ fontSize: "20px", color: "grey" }}
+          >{`${map.name} is a crpyto currency coin or called as ${map.symbol} for this currency the total volume for last 24hr is $${map.volume_24h_usd} with a market cap of $${map.market_cap_usd}.Which has a total supply of #${map.total_suply}`}</Typography> */}
         </div>
       </div>
     </React.Fragment>

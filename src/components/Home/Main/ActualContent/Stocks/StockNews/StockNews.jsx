@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockNews } from "../../../../../../store/store-actions";
 import { Button, ThemeProvider, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -14,6 +13,7 @@ import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Carousel from "better-react-carousel";
 import { Fade } from "react-reveal";
+import { getStockNews } from "../../../../../../store/store-actions";
 
 const style = {
   display: "flex",
@@ -52,21 +52,19 @@ function StockNews() {
     });
     setOpen(true);
   };
+  const [data, setData] = useState("");
   const handleClose = () => setOpen(false);
   const StockNewsClasses = useStockNews();
-  const dispatch = useDispatch();
-  const [dataApi, setDataApi] = useState("");
   const { stocknews } = useSelector((state) => state.news);
-  const getProducts = useCallback(() => {
-    setDataApi(stockNews);
+  const dispatch = useDispatch();
+  const dispatchStockNews = useCallback(() => {
     dispatch(getStockNews());
-    console.log(stocknews);
-  }, [dataApi]);
+  }, [data]);
   useEffect(() => {
-    getProducts();
-  }, [dataApi]);
-  let stockNews = stocknews;
-
+    dispatchStockNews();
+  }, [data]);
+  let stockNews = stocknews === undefined ? [] : stocknews;
+  console.log(stockNews);
   return (
     <div className={StockNewsClasses.containerdiv}>
       <Fade bottom>

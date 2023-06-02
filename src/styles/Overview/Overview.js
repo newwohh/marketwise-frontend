@@ -6,14 +6,23 @@ const useOverviewStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    "@media (max-width:1000px)": {
+      flexDirection: "column",
+    },
   },
   contentdiv: {
     marginTop: "150px",
     width: "1500px",
+    "@media (max-width:1000px)": {
+      width: "350px",
+    },
   },
   introoverview: {
     display: "flex",
     justifyContent: "space-between",
+    "@media (max-width:1000px)": {
+      flexDirection: "column",
+    },
   },
   overviewcardlink: {
     color: "#002244",

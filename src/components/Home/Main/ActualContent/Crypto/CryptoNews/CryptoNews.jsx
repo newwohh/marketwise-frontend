@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -8,10 +8,10 @@ import Typography from "@mui/material/Typography";
 import useCryptoNewsStyles from "../../../../../../styles/Home/CryptoNewsStyles";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
-import { getCryptoNews } from "../../../../../../store/store-actions";
 import { Button, ThemeProvider } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import Carousel from "better-react-carousel";
+import { getCryptoNews } from "../../../../../../store/store-actions";
 
 const style = {
   overflow: "scroll",
@@ -139,18 +139,16 @@ function CryptoNews() {
     );
   };
 
-  const [dataApi, setDataApi] = useState("");
   let card;
   const CryptoNewsClasses = useCryptoNewsStyles();
-  const dispatch = useDispatch();
   const { news } = useSelector((state) => state.news);
-  const getProducts = useCallback(() => {
+  const dispatch = useDispatch();
+  const dispatchCrpytoNews = React.useCallback(() => {
     dispatch(getCryptoNews());
-    console.log(news);
-  }, [dataApi]);
+  }, []);
   useEffect(() => {
-    getProducts();
-  }, [dataApi]);
+    dispatchCrpytoNews();
+  }, []);
   card = news.results?.map((el, i) => newsCard(el, i));
   return (
     <div className={CryptoNewsClasses.csection}>

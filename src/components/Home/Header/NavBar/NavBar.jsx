@@ -250,7 +250,10 @@ function NavBar() {
                     }}
                   >
                     <ListItem alignItems="center" className={classes.listitem}>
-                      <Link className={classes.listitemlink}>
+                      <Link
+                        to="/heatmap/cryptocurrency"
+                        className={classes.listitemlink}
+                      >
                         <LocalFireDepartmentIcon
                           className={classes.productlisticon}
                         />

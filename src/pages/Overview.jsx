@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -20,7 +20,6 @@ import Paper from "@mui/material/Paper";
 import { Button, Divider, Grid, ThemeProvider } from "@mui/material";
 import theme from "../styles/Theme";
 import { Link, Outlet } from "react-router-dom";
-import { SymbolContext } from "../Context/Context";
 import { useDispatch, useSelector } from "react-redux";
 import { setCryptoSymbol } from "../store/store-actions";
 
@@ -84,13 +83,11 @@ function Overview(props) {
   useCallback(() => {
     console.log(prices, news);
   }, []);
-  const cryptoSymbolFn = (e) => {
-    console.log(e);
-    return dispatch(setCryptoSymbol(e.target.innerHTML));
-  };
-  // useCallback(() => {}, []);
-  // console.log(prices, news);
-  console.log(cryptosymbol);
+
+  useCallback(() => {}, []);
+  console.log(prices, news);
+  // console.log(cryptosymbol);
+  console.log(prices);
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
@@ -112,6 +109,9 @@ function Overview(props) {
                     width: "1200px",
                     marginTop: "50px",
                     backgroundColor: "#F0F8FF",
+                    "@media (max-width:1000px)": {
+                      width: "300px",
+                    },
                   }}
                 >
                   <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -128,8 +128,8 @@ function Overview(props) {
                   <TabPanel value={value} index={0}>
                     <Grid
                       container
-                      spacing={{ xs: 2, md: 3 }}
-                      columns={{ xs: 4, sm: 8, md: 12 }}
+                      spacing={{ xs: 2, md: 3, sm: 1 }}
+                      columns={{ xs: 4, sm: 1, md: 12 }}
                     >
                       {news.map((el, i) => {
                         return (
@@ -184,9 +184,21 @@ function Overview(props) {
                   <TabPanel value={value} index={1}>
                     <TableContainer
                       component={Paper}
-                      sx={{ backgroundColor: "#F0F8FF" }}
+                      sx={{
+                        backgroundColor: "#F0F8FF",
+                        "@media (max-width:1000px)": {
+                          width: "300px",
+                        },
+                      }}
                     >
-                      <Table sx={{ minWidth: 650, backgroundColor: "#F0F8FF" }}>
+                      <Table
+                        sx={{
+                          backgroundColor: "#F0F8FF",
+                          "@media (max-width:1000px)": {
+                            width: "300px",
+                          },
+                        }}
+                      >
                         <TableHead>
                           <TableRow>
                             <TableCell>Name</TableCell>

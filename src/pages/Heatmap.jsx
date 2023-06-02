@@ -1,24 +1,10 @@
 import React from "react";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
 import useHeatmap from "../styles/Heatmap/Heatmap";
-import {
-  AppBar,
-  Typography,
-  Box,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-} from "@mui/material";
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+import { AppBar, Typography, Box, Card, CardContent } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 function Heatmap(props) {
   console.log(props.cryptomap);
@@ -27,6 +13,17 @@ function Heatmap(props) {
   const a = parseFloat(props.cryptomap[0].percent_change_24h);
   const b = parseFloat(props.cryptomap[0].percent_change_1h);
   console.log(a, b);
+  const setColor = (lastDay, themeOne, themeTwo, themeThree, themeFour) => {
+    if (lastDay > 1) {
+      return themeOne;
+    } else if (lastDay < 0) {
+      return themeTwo;
+    } else if (lastDay > 0 && lastDay < 1) {
+      return themeThree;
+    } else {
+      return themeFour;
+    }
+  };
   return (
     <React.Fragment>
       <NavBar />
@@ -55,41 +52,46 @@ function Heatmap(props) {
           <div>
             <div>
               <Box>
-                {maps.map((el, i) => {
-                  return (
-                    <Card variant="outlined" sx={{ width: "400px" }}>
-                      <CardContent
-                        className={
-                          el.percent_change_1h > 0
-                            ? HeatmapClass.cardStyle
-                            : HeatmapClass.cardStyletwo
-                        }
-                      >
-                        <Typography
-                          sx={{ fontSize: 14 }}
-                          color="text.secondary"
-                          gutterBottom
+                <Grid
+                  container
+                  rowSpacing={1}
+                  columnSpacing={{ xs: 1, sm: 2, md: 5 }}
+                >
+                  {maps.map((el, i) => {
+                    return (
+                      <Grid item xs={3}>
+                        <Card
+                          variant="outlined"
+                          sx={{ width: "400px", marginTop: "10px" }}
                         >
-                          Word of the Day
-                        </Typography>
-                        <Typography variant="h5" component="div">
-                          be{bull}nev{bull}o{bull}lent
-                        </Typography>
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                          adjective
-                        </Typography>
-                        <Typography variant="body2">
-                          well meaning and kindly.
-                          <br />
-                          {'"a benevolent smile"'}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small">Learn More</Button>
-                      </CardActions>
-                    </Card>
-                  );
-                })}
+                          <CardContent
+                            className={setColor(
+                              el.percent_change_24h,
+                              HeatmapClass.cardStyle,
+                              HeatmapClass.cardStyletwo,
+                              HeatmapClass.cardStylethree,
+                              HeatmapClass.cardStylefour
+                            )}
+                          >
+                            <Typography
+                              sx={{ fontSize: 14 }}
+                              color="text.secondary"
+                              gutterBottom
+                            >
+                              {el.symbol}
+                            </Typography>
+                            <Typography variant="h5" component="div">
+                              {el.name.toUpperCase()}
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                              ${parseFloat(el.price_usd).toFixed(2)}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
               </Box>
             </div>
           </div>

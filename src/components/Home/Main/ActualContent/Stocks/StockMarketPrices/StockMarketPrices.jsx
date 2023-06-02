@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getStockPrice } from "../../../../../../store/store-actions";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
@@ -19,7 +20,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import useStockMarketPrices from "../../../../../../styles/Home/StockMarketPricesStyles";
 import { Link } from "react-router-dom";
-import { getStockPrice } from "../../../../../../store/store-actions";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,8 +47,9 @@ TabPanel.propTypes = {
 };
 
 function StockMarketPrices() {
+  const [dataApi, setDataApi] = useState("");
   const [value, setValue] = React.useState(0);
-  const [data, setData] = React.useState("");
+  const dispatch = useDispatch();
   const stockprice = useSelector((state) => state.news.stockprice);
   const themes = useTheme();
   const StockPriceClasses = useStockMarketPrices();
@@ -58,15 +59,14 @@ function StockMarketPrices() {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
-  const dispatch = useDispatch();
-  const fn = useCallback(() => {
+  const getProducts = useCallback(() => {
     dispatch(getStockPrice());
-  }, [data]);
+  }, [dataApi]);
+
   useEffect(() => {
-    fn();
-    // dispatch(getStockPrice());
-    // dispatchStockPrice();
-  }, [data]);
+    getProducts();
+    // console.log(stockprice);
+  }, [setDataApi]);
   const tickers =
     stockprice[0] === undefined ? [] : stockprice[0].results.slice(0, 20);
   const exchanges = stockprice[1] === undefined ? [] : stockprice[1].results;

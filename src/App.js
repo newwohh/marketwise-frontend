@@ -30,6 +30,30 @@ function App() {
   const { prices, news, stocknews, stockprice } = useSelector(
     (state) => state.news
   );
+  // const dispatchCryptoPrice = useCallback(() => {
+  //   dispatch(getCryptoPrice());
+  // }, []);
+  // const dispatchCrpytoNews = useCallback(() => {
+  //   dispatch(getCryptoNews());
+  // }, []);
+  // const dispatchStockPrice = useCallback(() => {
+  //   dispatch(getStockPrice());
+  // }, []);
+  // const dispatchStockNews = useCallback(() => {
+  //   dispatch(getStockNews());
+  // }, []);
+  // useEffect(() => {
+  //   dispatchCryptoPrice();
+  // }, [data]);
+  // useEffect(() => {
+  //   dispatchCrpytoNews();
+  // }, [data]);
+  // useEffect(() => {
+  //   dispatchStockNews();
+  // }, [data]);
+  // useEffect(() => {
+  //   dispatchStockPrice();
+  // }, [data]);
   const cryptoPrice = prices;
   const cryptoNews = news;
   const stockPrice = stockprice;

@@ -80,14 +80,7 @@ function Overview(props) {
   } else if (props.forex) {
     prices = props.forex;
   }
-  useCallback(() => {
-    console.log(prices, news);
-  }, []);
-
-  useCallback(() => {}, []);
   console.log(prices, news);
-  // console.log(cryptosymbol);
-  console.log(prices);
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>

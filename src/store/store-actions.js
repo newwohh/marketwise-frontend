@@ -21,13 +21,13 @@ export const getCryptoNews = createAsyncThunk(
 );
 export const getStockNews = createAsyncThunk("store/getStockNews", async () => {
   const url =
-    "https://api.polygon.io/v2/reference/news?apiKey=MW6LX8YCxkAxVFbIKZR7yq3OMCEZZAw6";
+    "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=47a6468fccbd44a38e4be4faf555fa1a";
 
   try {
     const response = await fetch(url);
     const result = await response.json();
     console.log(result);
-    return result.results;
+    return result.articles;
   } catch (error) {
     console.error(error);
   }

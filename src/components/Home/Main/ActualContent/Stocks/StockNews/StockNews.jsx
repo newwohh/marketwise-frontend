@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getStockNews } from "../../../../../../store/store-actions";
 import { Button, ThemeProvider, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -13,7 +14,6 @@ import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Carousel from "better-react-carousel";
 import { Fade } from "react-reveal";
-import { getStockNews } from "../../../../../../store/store-actions";
 
 const style = {
   display: "flex",
@@ -52,18 +52,19 @@ function StockNews() {
     });
     setOpen(true);
   };
-  const [data, setData] = useState("");
   const handleClose = () => setOpen(false);
   const StockNewsClasses = useStockNews();
-  const { stocknews } = useSelector((state) => state.news);
   const dispatch = useDispatch();
-  const dispatchStockNews = useCallback(() => {
+  const { stocknews } = useSelector((state) => state.news);
+  const getProducts = React.useCallback(() => {
     dispatch(getStockNews());
-  }, [data]);
+  }, []);
+
   useEffect(() => {
-    dispatchStockNews();
-  }, [data]);
-  let stockNews = stocknews === undefined ? [] : stocknews;
+    getProducts();
+  }, []);
+
+  let stockNews = stocknews;
   console.log(stockNews);
   return (
     <div className={StockNewsClasses.containerdiv}>
@@ -163,7 +164,7 @@ function StockNews() {
                         <CardMedia
                           component="img"
                           height="250px"
-                          image={el.image_url}
+                          image={el.urlToImage}
                           alt="image not found"
                           sx={{
                             "@media (max-width: 1000px)": {
@@ -214,7 +215,7 @@ function StockNews() {
                           <CardMedia
                             component="img"
                             height="250px"
-                            image={newsModal.image_url}
+                            image={newsModal.urlToImage}
                             alt="image not found"
                             sx={{
                               height: "350px",
@@ -245,7 +246,7 @@ function StockNews() {
                           >
                             Description: {newsModal.description}
                           </Typography>
-                          <Button href={newsModal.link}>
+                          <Button href={newsModal.url}>
                             Click to Visit Website
                           </Button>
                         </Box>

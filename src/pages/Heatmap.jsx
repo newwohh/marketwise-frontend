@@ -23,12 +23,8 @@ const bull = (
 function Heatmap(props) {
   console.log(props.cryptomap);
   const HeatmapClass = useHeatmap();
-  console.log(
-    parseFloat(
-      props.cryptomap[0].percent_change_1h,
-      parseFloat(props.cryptomap[0].percent_change_24h)
-    )
-  );
+  const a = parseFloat(props.cryptomap[0].percent_change_24h);
+  const b = parseFloat(props.cryptomap[0].percent_change_1h);
   return (
     <React.Fragment>
       <NavBar />
@@ -57,16 +53,12 @@ function Heatmap(props) {
           <div>
             <div>
               <Box>
-                <Card
-                  variant="outlined"
-                  className={
-                    parseFloat(props.cryptomap[0].percent_change_24h) <
-                    parseFloat(props.cryptomap[0].percent_change_1h)
-                      ? HeatmapClass.cardStyle
-                      : HeatmapClass.cardStyletwo
-                  }
-                >
-                  <CardContent>
+                <Card variant="outlined">
+                  <CardContent
+                    className={
+                      a > b ? HeatmapClass.cardStyle : HeatmapClass.cardStyletwo
+                    }
+                  >
                     <Typography
                       sx={{ fontSize: 14 }}
                       color="text.secondary"

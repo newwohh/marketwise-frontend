@@ -267,7 +267,10 @@ function NavBar() {
                       </Link>
                     </ListItem>
                     <ListItem alignItems="center" className={classes.listitem}>
-                      <Link className={classes.listitemlink}>
+                      <Link
+                        to="/heatmap/stocks"
+                        className={classes.listitemlink}
+                      >
                         {" "}
                         <BookIcon className={classes.productlisticon} />
                         Blogs

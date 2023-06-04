@@ -1,27 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useHeatmap from "../styles/Heatmap/Heatmap";
 import { AppBar, Typography, Box, Card, CardContent } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/SecurityInfoNavbar";
-import { useSelector } from "react-redux";
-
-const get = async () => {
-  const url =
-    "https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=07721059f040ffb9f024f729669f5f5e";
-  const data = await fetch(url);
-  const res = data.json();
-  return console.log(res);
-};
+import { useDispatch, useSelector } from "react-redux";
+import { getStockPricesforHeatMap } from "../store/store-actions";
 
 function Heatmap(props) {
-  console.log(props.cryptomap);
-  let maps = props.cryptomap;
+  const { stockpriceforheatmap } = useSelector((state) => state.news);
+  const dispatch = useDispatch();
+  var maps = [];
+  let isProps = Boolean;
+  useEffect(() => {
+    dispatch(getStockPricesforHeatMap());
+  }, []);
+  if (props.cryptomap) {
+    maps = props.cryptomap;
+    isProps = true;
+  } else if (props.stocks) {
+    isProps = false;
+    maps = stockpriceforheatmap;
+  }
   const HeatmapClass = useHeatmap();
-  const a = parseFloat(props.cryptomap[0].percent_change_24h);
-  const b = parseFloat(props.cryptomap[0].percent_change_1h);
-  console.log(a, b);
   const setColor = (lastDay, themeOne, themeTwo, themeThree, themeFour) => {
     if (lastDay > 1) {
       return themeOne;
@@ -33,22 +35,28 @@ function Heatmap(props) {
       return themeFour;
     }
   };
-  const { stockprice } = useSelector((state) => state.news);
-  console.log(stockprice);
-  get();
   return (
     <React.Fragment>
       <SecurityInfoNavbar />
       <div className={HeatmapClass.containermap}>
         <div>
           <Typography variant="h2">Heatmap</Typography>
-          <Typography variant="h4">Cryptocurrency</Typography>
+          <Typography variant="h4">
+            {isProps ? "Cryptocurrency" : "Stocks"}
+          </Typography>
+          <Typography variant="p" gutterBottom sx={{ fontFamily: "Arial" }}>
+            The Heatmap is a way to determine where liquidity is in the market
+            and how liquidity-providers are behaving. In other words, it helps
+            traders to determine where the actual orders in the market are being
+            made.
+          </Typography>
         </div>
         <div>
           <div>
             <AppBar
               position="relative"
               sx={{
+                marginTop: "30px",
                 padding: "10px",
                 backgroundColor: "#5D76A9",
                 width: "100%",
@@ -104,13 +112,23 @@ function Heatmap(props) {
                           }}
                         >
                           <CardContent
-                            className={setColor(
-                              el.percent_change_24h,
-                              HeatmapClass.cardStyle,
-                              HeatmapClass.cardStyletwo,
-                              HeatmapClass.cardStylethree,
-                              HeatmapClass.cardStylefour
-                            )}
+                            className={
+                              isProps
+                                ? setColor(
+                                    el.percent_change_24h,
+                                    HeatmapClass.cardStyle,
+                                    HeatmapClass.cardStyletwo,
+                                    HeatmapClass.cardStylethree,
+                                    HeatmapClass.cardStylefour
+                                  )
+                                : setColor(
+                                    el.price,
+                                    HeatmapClass.cardStyle,
+                                    HeatmapClass.cardStyletwo,
+                                    HeatmapClass.cardStylethree,
+                                    HeatmapClass.cardStylefour
+                                  )
+                            }
                           >
                             <Typography
                               sx={{ fontSize: 14, color: "white" }}
@@ -126,7 +144,10 @@ function Heatmap(props) {
                               {el.name.toUpperCase()}
                             </Typography>
                             <Typography sx={{ mb: 1.5, color: "white" }}>
-                              ${parseFloat(el.price_usd).toFixed(2)}
+                              $
+                              {isProps
+                                ? parseFloat(el.price_usd).toFixed(2)
+                                : el.price}
                             </Typography>
                           </CardContent>
                         </Card>

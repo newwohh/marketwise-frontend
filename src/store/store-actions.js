@@ -1,6 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const CoinpaprikaAPI = require("@coinpaprika/api-nodejs-client");
 
+export const getStockPricesforHeatMap = createAsyncThunk(
+  "store/getStockPricesforHeatMap",
+  async () => {
+    try {
+      const url =
+        "https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=07721059f040ffb9f024f729669f5f5e";
+      const data = await fetch(url);
+      const res = await data.json();
+      console.log(res);
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const getCryptoNews = createAsyncThunk(
   "store/getCryptoNews",
   async () => {
@@ -94,6 +110,7 @@ const newsSlice = createSlice({
     stocknews: [],
     stockprice: [],
     forexdata: [],
+    stockpriceforheatmap: [],
     loading: "idle",
   },
   reducers: {},
@@ -112,6 +129,9 @@ const newsSlice = createSlice({
     });
     builder.addCase(getForexData.fulfilled, (state, action) => {
       state.forexdata = action.payload;
+    });
+    builder.addCase(getStockPricesforHeatMap.fulfilled, (state, action) => {
+      state.stockpriceforheatmap = action.payload;
     });
   },
 });

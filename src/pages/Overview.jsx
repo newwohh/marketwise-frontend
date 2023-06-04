@@ -20,8 +20,6 @@ import Paper from "@mui/material/Paper";
 import { Button, Divider, Grid, ThemeProvider } from "@mui/material";
 import theme from "../styles/Theme";
 import { Link, Outlet } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setCryptoSymbol } from "../store/store-actions";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,8 +51,6 @@ function a11yProps(index) {
   };
 }
 function Overview(props) {
-  const { cryptosymbol } = useSelector((state) => state.news);
-  const dispatch = useDispatch();
   const OverviewClasses = useOverviewStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {

@@ -84,6 +84,7 @@ function App() {
           path="/heatmap/cryptocurrency"
           element={<Heatmap cryptomap={cryptoPrice} />}
         />
+        <Route path="/heatmap/stocks" element={<Heatmap stocks={"name"} />} />
       </Routes>
     </React.Fragment>
   );

@@ -8,7 +8,6 @@ import store from "./store/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.Fragment>
-    {" "}
     <BrowserRouter>
       <Provider store={store}>
         <App />

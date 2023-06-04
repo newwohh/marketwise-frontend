@@ -1,10 +1,19 @@
 import React from "react";
-import NavBar from "../components/Home/Header/NavBar/NavBar";
 import useHeatmap from "../styles/Heatmap/Heatmap";
 import { AppBar, Typography, Box, Card, CardContent } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/SecurityInfoNavbar";
+import { useSelector } from "react-redux";
+
+const get = async () => {
+  const url =
+    "https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=07721059f040ffb9f024f729669f5f5e";
+  const data = await fetch(url);
+  const res = data.json();
+  return console.log(res);
+};
 
 function Heatmap(props) {
   console.log(props.cryptomap);
@@ -24,9 +33,12 @@ function Heatmap(props) {
       return themeFour;
     }
   };
+  const { stockprice } = useSelector((state) => state.news);
+  console.log(stockprice);
+  get();
   return (
     <React.Fragment>
-      <NavBar />
+      <SecurityInfoNavbar />
       <div className={HeatmapClass.containermap}>
         <div>
           <Typography variant="h2">Heatmap</Typography>
@@ -38,7 +50,7 @@ function Heatmap(props) {
               position="relative"
               sx={{
                 padding: "10px",
-                backgroundColor: "#002244",
+                backgroundColor: "#5D76A9",
                 width: "100%",
                 height: "50px",
                 display: "flex",
@@ -48,13 +60,22 @@ function Heatmap(props) {
             >
               <Stack spacing={1} alignItems="right">
                 <Stack direction="row" spacing={1}>
-                  <Chip label="primary" color="primary" />
                   <Chip
-                    label="success"
-                    sx={{ backgroundColor: "red", color: "white" }}
+                    label="Loss"
+                    sx={{ backgroundColor: "#DE3163", color: "white" }}
                   />
-                  <Chip label="success" color="success" />
-                  <Chip label="success" color="success" />
+                  <Chip
+                    label="Danger"
+                    sx={{ backgroundColor: "#E52B50", color: "white" }}
+                  />
+                  <Chip
+                    label="Safe"
+                    sx={{ backgroundColor: "#008B8B", color: "white" }}
+                  />
+                  <Chip
+                    label="Profitable"
+                    sx={{ backgroundColor: "#03C03C", color: "white" }}
+                  />
                 </Stack>
               </Stack>
             </AppBar>
@@ -92,8 +113,7 @@ function Heatmap(props) {
                             )}
                           >
                             <Typography
-                              sx={{ fontSize: 14 }}
-                              color="text.secondary"
+                              sx={{ fontSize: 14, color: "white" }}
                               gutterBottom
                             >
                               {el.symbol}
@@ -105,7 +125,7 @@ function Heatmap(props) {
                             >
                               {el.name.toUpperCase()}
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                            <Typography sx={{ mb: 1.5, color: "white" }}>
                               ${parseFloat(el.price_usd).toFixed(2)}
                             </Typography>
                           </CardContent>

@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const CoinpaprikaAPI = require("@coinpaprika/api-nodejs-client");
 
-export const fetchCartData = async () => {};
-
 export const getCryptoNews = createAsyncThunk(
   "store/getCryptoNews",
   async () => {

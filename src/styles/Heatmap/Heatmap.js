@@ -2,12 +2,13 @@ import { makeStyles } from "@mui/styles";
 
 const useHeatmap = makeStyles({
   containermap: {
-    marginTop: "100px",
-    margin: "50px",
+    marginTop: "50px",
+    padding: "50px",
+    backgroundColor: "#F0F8FF",
   },
   cardStyle: {
     color: "white",
-    backgroundColor: "red",
+    backgroundColor: "#008B8B",
   },
   cardStyletwo: {
     color: "white",
@@ -17,7 +18,7 @@ const useHeatmap = makeStyles({
   cardStylethree: {
     color: "white",
     fontWeight: 700,
-    backgroundColor: "#008B8B",
+    backgroundColor: "#03C03C",
   },
   cardStylefour: {
     color: "white",

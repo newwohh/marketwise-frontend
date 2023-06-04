@@ -6,16 +6,23 @@ const useHeatmap = makeStyles({
     margin: "50px",
   },
   cardStyle: {
+    color: "white",
     backgroundColor: "red",
   },
   cardStyletwo: {
-    backgroundColor: "blue",
+    color: "white",
+    fontWeight: 700,
+    backgroundColor: "#E52B50",
   },
   cardStylethree: {
-    backgroundColor: "grey",
+    color: "white",
+    fontWeight: 700,
+    backgroundColor: "#008B8B",
   },
   cardStylefour: {
-    backgroundColor: "green",
+    color: "white",
+    fontWeight: 700,
+    backgroundColor: "#03C03C",
   },
 });
 

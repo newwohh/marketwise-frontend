@@ -48,11 +48,6 @@ function Chart(props) {
     }
   }, []);
 
-  // console.log(pricesOf);
-
-  // let map = pricesOf.filter((el) => el.symbol === id);
-  // map = map[0];
-
   return (
     <React.Fragment>
       <NavBar />

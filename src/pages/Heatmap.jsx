@@ -2,9 +2,9 @@ import React from "react";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
 import useHeatmap from "../styles/Heatmap/Heatmap";
 import { AppBar, Typography, Box, Card, CardContent } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
 
 function Heatmap(props) {
   console.log(props.cryptomap);
@@ -42,11 +42,21 @@ function Heatmap(props) {
                 width: "100%",
                 height: "50px",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "start",
+                justifyContent: "space-between",
+                alignItems: "end",
               }}
             >
-              <Typography>Stocks</Typography>
+              <Stack spacing={1} alignItems="right">
+                <Stack direction="row" spacing={1}>
+                  <Chip label="primary" color="primary" />
+                  <Chip
+                    label="success"
+                    sx={{ backgroundColor: "red", color: "white" }}
+                  />
+                  <Chip label="success" color="success" />
+                  <Chip label="success" color="success" />
+                </Stack>
+              </Stack>
             </AppBar>
           </div>
           <div>
@@ -62,7 +72,15 @@ function Heatmap(props) {
                       <Grid item xs={3}>
                         <Card
                           variant="outlined"
-                          sx={{ width: "400px", marginTop: "10px" }}
+                          sx={{
+                            width: "400px",
+                            marginTop: "10px",
+                            border: "2px solid white",
+                            borderRadius: "20px",
+                            "&:hover": {
+                              border: "2px solid #5072A7",
+                            },
+                          }}
                         >
                           <CardContent
                             className={setColor(
@@ -80,7 +98,11 @@ function Heatmap(props) {
                             >
                               {el.symbol}
                             </Typography>
-                            <Typography variant="h5" component="div">
+                            <Typography
+                              variant="h5"
+                              component="div"
+                              sx={{ fontWeight: 700 }}
+                            >
                               {el.name.toUpperCase()}
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} color="text.secondary">

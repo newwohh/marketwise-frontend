@@ -253,12 +253,8 @@ function Overview(props) {
                               <TableCell align="right">
                                 <Button
                                   href={`cryptocurrency/chart/${row.symbol}`}
+                                  target="_blank"
                                   variant="outlined"
-                                  onClick={(e) => {
-                                    dispatch(
-                                      setCryptoSymbol(e.target.textContent)
-                                    );
-                                  }}
                                   sx={{
                                     borderColor: "#002244",
                                     borderRadius: "15px",

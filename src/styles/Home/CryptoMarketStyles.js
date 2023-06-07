@@ -8,7 +8,6 @@ const useCryptoMarket = makeStyles((theme) => ({
     textAlign: "center",
   },
   cryptomarketcontainer: {
-    // width: "1000px",
     backgroundColor: "#F0F8FF",
     display: "flex",
     flexDirection: "column",
@@ -16,7 +15,6 @@ const useCryptoMarket = makeStyles((theme) => ({
     textAlign: "center",
   },
   cryptopricediv: {
-    // marginTop: "50px",
     display: "flex",
     justifyContent: "space-evenly",
     textAlign: "center",

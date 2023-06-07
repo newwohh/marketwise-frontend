@@ -17,43 +17,20 @@ import {
 } from "./store/store-actions";
 import { useDispatch, useSelector } from "react-redux";
 import Heatmap from "./pages/Heatmap";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 function App() {
-  const [data, setData] = useState("");
   const ScrollToTop = () => {
     const { pathname } = useLocation();
     useEffect(() => {
       window.scrollTo(0, 0);
     }, [pathname]);
   };
-  const dispatch = useDispatch();
   const { prices, news, stocknews, stockprice } = useSelector(
     (state) => state.news
   );
-  // const dispatchCryptoPrice = useCallback(() => {
-  //   dispatch(getCryptoPrice());
-  // }, []);
-  // const dispatchCrpytoNews = useCallback(() => {
-  //   dispatch(getCryptoNews());
-  // }, []);
-  // const dispatchStockPrice = useCallback(() => {
-  //   dispatch(getStockPrice());
-  // }, []);
-  // const dispatchStockNews = useCallback(() => {
-  //   dispatch(getStockNews());
-  // }, []);
-  // useEffect(() => {
-  //   dispatchCryptoPrice();
-  // }, [data]);
-  // useEffect(() => {
-  //   dispatchCrpytoNews();
-  // }, [data]);
-  // useEffect(() => {
-  //   dispatchStockNews();
-  // }, [data]);
-  // useEffect(() => {
-  //   dispatchStockPrice();
-  // }, [data]);
+
   const cryptoPrice = prices;
   const cryptoNews = news;
   const stockPrice = stockprice;
@@ -64,6 +41,8 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="login" element={<SignIn />} />
         <Route path="/education" element={<Learn />} />
         <Route path="/grow" element={<Grow />} />
         <Route path="/explore" element={<Explore />} />

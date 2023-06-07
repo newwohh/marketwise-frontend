@@ -370,6 +370,7 @@ function NavBar() {
             <div className={classes.navdivthree}>
               <Person2Icon />
               <Button
+                href="/login"
                 sx={{
                   width: "170px",
                   height: "40px",

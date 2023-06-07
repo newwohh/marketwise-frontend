@@ -47,6 +47,7 @@ function SignInContent() {
               }}
             >
               <Link
+                to="/sign-up"
                 style={{
                   textDecoration: "none",
                   color: "#002244",

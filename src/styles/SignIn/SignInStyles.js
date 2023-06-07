@@ -9,7 +9,6 @@ const useSignIn = makeStyles({
   form: {
     borderRadius: "25px",
     padding: "50px",
-    border: "5px solid rgba(48, 46, 163, .2)",
     height: "400px",
     width: "650px",
     display: "flex",

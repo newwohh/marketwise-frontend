@@ -8,10 +8,9 @@ const useSignUp = makeStyles({
   },
   form: {
     borderRadius: "25px",
-    padding: "50px",
-    border: "5px solid rgba(48, 46, 163, .2)",
+    padding: "5px",
     height: "400px",
-    width: "650px",
+    width: "450px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

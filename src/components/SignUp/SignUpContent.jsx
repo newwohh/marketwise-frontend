@@ -1,4 +1,10 @@
-import { Button, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import useSignUp from "../../styles/SignUp/SignUp";
@@ -10,15 +16,50 @@ function SignUpContent() {
       <section className={signUpClass.mainsection}>
         <div style={{ marginTop: "200px" }}>
           <form className={signUpClass.form}>
-            <Typography variant="h4">Sign-In</Typography>
-            <div style={{ marginTop: "20px" }}>
-              <TextField type="text" sx={{ width: "450px" }} label="username" />
+            <Typography variant="h5">
+              Sign Up to create,discover and connect with the global community.
+            </Typography>
+            <div style={{ marginTop: "20px", display: "flex" }}>
+              <TextField
+                type="text"
+                sx={{ width: "220px", marginRight: "10px" }}
+                label="First Name"
+              />
+              <TextField
+                type="text"
+                sx={{ width: "220px" }}
+                label="Last Name"
+              />
             </div>
-            <div style={{ marginTop: "20px" }}>
+            <div>
+              <TextField
+                type="email"
+                sx={{ width: "450px", marginTop: "20px" }}
+                label="E-Mail"
+              />
+            </div>
+            <div>
               <TextField
                 type="password"
-                sx={{ width: "450px" }}
-                label="password"
+                sx={{ width: "450px", marginTop: "20px" }}
+                label="Password"
+              />
+              <TextField
+                type="password"
+                sx={{ width: "450px", marginTop: "20px" }}
+                label="Confirm Password"
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                marginTop: "50px",
+              }}
+            >
+              <FormControlLabel
+                required
+                control={<Checkbox />}
+                label="I accept the Terms of Use & Privacy Policy"
               />
             </div>
             <div>
@@ -36,33 +77,8 @@ function SignUpContent() {
                   },
                 }}
               >
-                Login
+                Sign Up
               </Button>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#002244",
-                }}
-              >
-                <Typography>Not Registered ? </Typography>
-              </Link>
-              <Link
-                style={{
-                  marginLeft: "30px",
-                  textDecoration: "none",
-                  color: "#002244",
-                }}
-              >
-                <Typography>Forgot Password ?</Typography>
-              </Link>
             </div>
           </form>
         </div>

@@ -267,10 +267,7 @@ function NavBar() {
                       </Link>
                     </ListItem>
                     <ListItem alignItems="center" className={classes.listitem}>
-                      <Link
-                        to="/heatmap/stocks"
-                        className={classes.listitemlink}
-                      >
+                      <Link to="/blogs" className={classes.listitemlink}>
                         {" "}
                         <BookIcon className={classes.productlisticon} />
                         Blogs
@@ -308,13 +305,19 @@ function NavBar() {
                     >
                       <List>
                         <ListItem className={classes.listitemoverview}>
-                          <Link className={classes.listitemlinkoverview}>
+                          <Link
+                            to="stocks"
+                            className={classes.listitemlinkoverview}
+                          >
                             <ShowChartIcon className={classes.overviewicon} />
                             Share Market
                           </Link>
                         </ListItem>
                         <ListItem className={classes.listitemoverview}>
-                          <Link className={classes.listitemlinkoverview}>
+                          <Link
+                            to="cryptocurrency"
+                            className={classes.listitemlinkoverview}
+                          >
                             <CurrencyBitcoinIcon
                               className={classes.overviewicon}
                             />

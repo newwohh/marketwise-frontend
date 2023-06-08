@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Heatmap from "./pages/Heatmap";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Blogs from "./pages/Blogs";
 
 function App() {
   const ScrollToTop = () => {
@@ -64,6 +65,7 @@ function App() {
           element={<Heatmap cryptomap={cryptoPrice} />}
         />
         <Route path="/heatmap/stocks" element={<Heatmap stocks={"name"} />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
     </React.Fragment>
   );

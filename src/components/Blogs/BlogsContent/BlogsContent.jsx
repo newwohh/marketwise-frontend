@@ -2,7 +2,7 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { ThemeProvider } from "@mui/material";
+import { Button, CardActions, ThemeProvider } from "@mui/material";
 import theme from "../../../styles/Theme";
 
 function BlogsContent() {
@@ -17,7 +17,7 @@ function BlogsContent() {
               </Typography>
             </div>
             <div style={{ marginTop: "50px" }}>
-              <Card sx={{ width: 275 }}>
+              <Card sx={{ width: 350, height: "400px" }}>
                 <CardContent>
                   <Typography
                     sx={{ fontSize: 14 }}
@@ -34,6 +34,9 @@ function BlogsContent() {
                   </Typography>
                   <Typography variant="body2">Description</Typography>
                 </CardContent>
+                <CardActions>
+                  <Button>View full article</Button>
+                </CardActions>
               </Card>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Learn from "./pages/Learn";
@@ -9,17 +9,12 @@ import SecurityInfo from "./pages/SecurityInfo";
 import About from "./pages/About";
 import { useLocation } from "react-router-dom";
 import Overview from "./pages/Overview";
-import {
-  getCryptoNews,
-  getCryptoPrice,
-  getStockNews,
-  getStockPrice,
-} from "./store/store-actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Heatmap from "./pages/Heatmap";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Blogs from "./pages/Blogs";
+import Profile from "./pages/Profile";
 
 function App() {
   const ScrollToTop = () => {
@@ -31,7 +26,6 @@ function App() {
   const { prices, news, stocknews, stockprice } = useSelector(
     (state) => state.news
   );
-
   const cryptoPrice = prices;
   const cryptoNews = news;
   const stockPrice = stockprice;
@@ -42,6 +36,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="login" element={<SignIn />} />
         <Route path="/education" element={<Learn />} />

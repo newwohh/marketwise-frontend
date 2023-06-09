@@ -371,7 +371,7 @@ function NavBar() {
               </Button>
             </div>
             <div className={classes.navdivthree}>
-              <Link style={{ color: "white" }}>
+              <Link to="/profile" style={{ color: "white" }}>
                 <Person2Icon />
               </Link>
               <Button

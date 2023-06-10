@@ -70,7 +70,7 @@ function ProfileUI() {
       >
         <List sx={{ width: "800px" }}>
           <ListItem>
-            <ListItemText>Name</ListItemText>
+            <ListItemText sx={{ width: "100px" }}>Name:</ListItemText>
             <ListItemText>
               <TextField
                 id="outlined-read-only-input"
@@ -78,11 +78,12 @@ function ProfileUI() {
                 InputProps={{
                   readOnly: true,
                 }}
+                sx={{ width: "300px" }}
               />
             </ListItemText>
           </ListItem>
           <ListItem>
-            <ListItemText>E-Mail</ListItemText>
+            <ListItemText sx={{ width: "100px" }}>E-Mail:</ListItemText>
             <ListItemText>
               <TextField
                 id="outlined-read-only-input"
@@ -90,11 +91,12 @@ function ProfileUI() {
                 InputProps={{
                   readOnly: true,
                 }}
+                sx={{ width: "300px" }}
               />
             </ListItemText>
           </ListItem>
           <ListItem>
-            <ListItemText sx={{ width: "100px" }}>Password</ListItemText>
+            <ListItemText sx={{ width: "100px" }}>Password:</ListItemText>
             <ListItemText>
               <TextField
                 id="outlined-read-only-input"

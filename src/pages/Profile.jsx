@@ -7,6 +7,7 @@ import Tab from "@mui/material/Tab";
 import SignInNavbar from "../components/SignIn/SignInNavBar/SignInNavbar";
 import ProfileUI from "../components/Profile/ProfileContent/ProfileUI/ProfileUI";
 import Subscriptions from "../components/Profile/ProfileContent/Subscriptions/Subscriptions";
+import WriteBlogs from "../components/Profile/ProfileContent/WriteBlogs/WriteBlogs";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,7 +75,7 @@ export default function Profile() {
                   <Subscriptions />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                  Item Three
+                  <WriteBlogs />
                 </TabPanel>
               </Box>
             </Box>

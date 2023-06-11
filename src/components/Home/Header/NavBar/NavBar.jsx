@@ -107,7 +107,7 @@ function NavBar() {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap component="div">
-                Trade View
+                MarketWise
               </Typography>
             </Toolbar>
           </AppBar>
@@ -274,12 +274,15 @@ function NavBar() {
                       </Link>
                     </ListItem>
                     <ListItem alignItems="center" className={classes.listitem}>
-                      <Link className={classes.listitemlink}>
+                      <Link
+                        to="/investsimulator"
+                        className={classes.listitemlink}
+                      >
                         {" "}
                         <FeaturedPlayListIcon
                           className={classes.productlisticon}
                         />
-                        Features
+                        Invest Simulator
                       </Link>
                     </ListItem>
                     <ListItem alignItems="center" className={classes.listitem}>
@@ -355,7 +358,6 @@ function NavBar() {
               </Button>
               <Button
                 color="inherit"
-                // variant="outlined"
                 sx={{
                   marginLeft: "15px",
                   fontWeight: 300,

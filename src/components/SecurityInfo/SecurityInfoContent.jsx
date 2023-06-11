@@ -24,7 +24,7 @@ function SecurityInfoContent() {
           </div>
           <div>
             <Typography variant="p">
-              TradeView, which is a crypto, forex, and stock market tracker:
+              MarketWise, which is a crypto, forex, and stock market tracker:
               Security and User Protection at TradingView TradingView is
               committed to providing a secure and user-friendly platform for its
               users. We use a variety of security measures to protect your
@@ -342,7 +342,7 @@ function SecurityInfoContent() {
             variant="h3"
             sx={{ fontWeight: 1000, margin: "100px", color: "#002244" }}
           >
-            Contact Trade View
+            Contact MarketWise
           </Typography>
         </div>
         <div className={SecurityInfoContentClass.lastdivsecurityinfo}>

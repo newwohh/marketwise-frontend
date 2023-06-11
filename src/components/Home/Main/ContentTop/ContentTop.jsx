@@ -51,7 +51,7 @@ function ContentTop() {
                 },
               }}
             >
-              Explore endless possiblities with Trade View
+              Explore endless possiblities with MarketWise
             </Typography>
             <Container
               sx={{
@@ -95,10 +95,10 @@ function ContentTop() {
                 {/* <CardMedia component="img" height="300" image={cardimgone} /> */}
                 <CardContent>
                   <ThemeProvider theme={theme}>
-                    <Typography variant="h5">Learn with Trade View</Typography>
+                    <Typography variant="h5">Learn with MarketWise</Typography>
                   </ThemeProvider>
                   <Typography variant="body2">
-                    TradeView is the ultimate platform for anyone looking to
+                    MarketWise is the ultimate platform for anyone looking to
                     learn about trading. With its comprehensive resources,
                     including up-to-date news, analysis, and expert insights on
                     forex, cryptocurrency, and the stock market, you'll have
@@ -143,12 +143,12 @@ function ContentTop() {
                 <CardHeader />
                 <CardContent>
                   <ThemeProvider theme={theme}>
-                    <Typography variant="h5">Grow with Trade View</Typography>
+                    <Typography variant="h5">Grow with MarketWise</Typography>
                   </ThemeProvider>
                   <Typography variant="body2">
                     Our platform provides traders and investors with advanced
                     tools to track, analyze and monitor their investments. With
-                    TradeView, you can stay up-to-date with the latest market
+                    MarketWise, you can stay up-to-date with the latest market
                     trends, analyze historical data, and make informed
                     investment decisions.
                   </Typography>
@@ -219,7 +219,7 @@ function ContentTop() {
                     </Typography>
                   </ThemeProvider>
                   <Typography variant="body2">
-                    With TradeView, you can dive into the world of trading and
+                    With MarketWise, you can dive into the world of trading and
                     unlock your potential for financial growth.
                   </Typography>
                 </CardContent>
@@ -360,7 +360,7 @@ function ContentTop() {
                           We value your Privacy
                         </Typography>
                         <Typography variant="body2">
-                          TradeView takes your privacy seriously. We use
+                          MarketWise takes your privacy seriously. We use
                           industry-standard security measures to protect your
                           personal information and ensure that it is not shared
                           with any third parties.
@@ -410,7 +410,7 @@ function ContentTop() {
                           Data Encryption
                         </Typography>
                         <Typography variant="body2">
-                          TradeView prioritizes the protection of our users'
+                          MarketWise prioritizes the protection of our users'
                           data and implements strong encryption methods to
                           ensure the confidentiality and integrity of all
                           information shared on our platform.

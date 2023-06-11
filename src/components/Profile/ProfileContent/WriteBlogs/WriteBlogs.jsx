@@ -15,15 +15,17 @@ function WriteBlogs() {
         <TextField
           id="outlined-required"
           label="Title"
-          defaultValue="Hello World"
+          sx={{ marginBottom: "20px", width: "500px" }}
         />{" "}
         <TextField
           label="Write about it"
           multiline
           maxRows={20}
-          sx={{ height: "100px", width: "800px" }}
+          sx={{ height: "600px", width: "800px" }}
         />
-        <Button>Publish</Button>
+        <Button variant="outlined" sx={{ width: "250px", height: "50px" }}>
+          Publish
+        </Button>
       </div>
     </div>
   );

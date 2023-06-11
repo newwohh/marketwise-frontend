@@ -119,7 +119,7 @@ function SecurityInfoNavbar() {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap component="div">
-                Trade View
+                MarketWise
               </Typography>
             </Toolbar>
           </AppBar>

@@ -19,7 +19,7 @@ function ContentExplore() {
                 color: "white",
               }}
             >
-              Trade View
+              MarketWise
             </Typography>
             <Typography
               variant="h1"

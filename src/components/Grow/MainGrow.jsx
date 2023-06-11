@@ -23,10 +23,10 @@ function MainGrow() {
             variant="h1"
             sx={{ marginTop: "50px", color: "#002244" }}
           >
-            Grow with Trade View
+            Grow with MarketWise
           </Typography>
           <Typography sx={{ color: "#002244", margin: 5 }}>
-            Trade View is a comprehensive market tracking platform that provides
+            MarketWise is a comprehensive market tracking platform that provides
             you with the tools you need to make informed investment decisions.
           </Typography>
           <Button
@@ -60,7 +60,7 @@ function MainGrow() {
               <div>
                 <Typography variant="h4">Real-time data</Typography>
                 <Typography variant="p">
-                  Trade View provides real-time data for all major markets, so
+                  MarketWise provides real-time data for all major markets, so
                   you can stay up-to-date on the latest price movements.
                 </Typography>
               </div>
@@ -72,7 +72,7 @@ function MainGrow() {
               <div>
                 <Typography variant="h4">Advanced charting</Typography>
                 <Typography variant="p">
-                  Trade View's advanced charting tools allow you to analyze
+                  MarketWise's advanced charting tools allow you to analyze
                   market data and identify trends.
                 </Typography>
               </div>
@@ -98,7 +98,7 @@ function MainGrow() {
               <div>
                 <Typography variant="h4">Research and analysis</Typography>
                 <Typography variant="p">
-                  Trade View provides access to a wealth of research and
+                  MarketWise provides access to a wealth of research and
                   analysis from leading financial experts.
                 </Typography>
               </div>
@@ -110,7 +110,7 @@ function MainGrow() {
               <div>
                 <Typography variant="h4">Educational resources</Typography>
                 <Typography variant="p">
-                  Trade View offers a variety of educational resources to help
+                  MarketWise offers a variety of educational resources to help
                   you learn more about investing.
                 </Typography>
               </div>
@@ -157,9 +157,9 @@ function MainGrow() {
                   </Link>
                 </Typography>
                 <Typography variant="p">
-                  Trade View is committed to security and uses the latest
+                  MarketWise is committed to security and uses the latest
                   security measures to protect your data. You can be confident
-                  that your data is safe with Trade View.
+                  that your data is safe with MarketWise.
                 </Typography>
               </div>
               <div className={MainGrowClasses.infosubcontentdivgrow}>
@@ -185,7 +185,7 @@ function MainGrow() {
                   </Link>
                 </Typography>
                 <Typography variant="p">
-                  Trade View offers a variety of pricing plans to fit your
+                  MarketWise offers a variety of pricing plans to fit your
                   needs. You can choose a plan that meets your budget and your
                   trading needs.
                 </Typography>
@@ -214,7 +214,7 @@ function MainGrow() {
                 </Typography>
                 <Typography variant="p">
                   f you are ready to start growing your wealth, sign up for
-                  Trade View today. You won't be disappointed.
+                  MarketWise today. You won't be disappointed.
                 </Typography>
               </div>
             </div>

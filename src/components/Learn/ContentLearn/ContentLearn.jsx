@@ -55,10 +55,10 @@ function ContentLearn() {
               sx={{ fontFamily: "Helvetica" }}
               align="left"
             >
-              Trade View: The Ultimate Guide to Trading
+              MarketWise: The Ultimate Guide to Trading
             </Typography>
             <Typography align="left">
-              Welcome to the Trade View, your one-stop shop for learning about
+              Welcome to the MarketWise, your one-stop shop for learning about
               cryptocurrency, forex, and stock exchange trading. Whether you're
               a beginner or a seasoned investor, we have the resources you need
               to succeed.

@@ -30,7 +30,7 @@ function HeroSection() {
               fontWeight: 1000,
             }}
           >
-            TradeView Let's You
+            MarketWise Let's You
           </Typography>
           <Typography
             align="center"

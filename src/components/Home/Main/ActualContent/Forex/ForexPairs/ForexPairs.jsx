@@ -172,7 +172,9 @@ function ForexPairs() {
               <Typography variant="p">
                 Stay up to date with the latest stories and commentary.
               </Typography>
-              <Link className={forexDataClass.lastdivlink}>Learn More</Link>
+              <Link to="/blogs" className={forexDataClass.lastdivlink}>
+                Learn More
+              </Link>
             </div>
           </div>
           <div style={{ display: "flex" }} className={forexDataClass.carddiv}>

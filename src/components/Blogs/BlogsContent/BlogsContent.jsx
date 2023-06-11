@@ -13,7 +13,7 @@ function BlogsContent() {
           <div style={{ padding: "150px" }}>
             <div>
               <Typography variant="h3" sx={{ textDecoration: "underline" }}>
-                TradeView Blogs
+                MarketWise Blogs
               </Typography>
             </div>
             <div style={{ marginTop: "50px" }}>

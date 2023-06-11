@@ -73,7 +73,7 @@ function FooterLearn() {
                         color: "#002244",
                       }}
                     >
-                      Trade View
+                      MarketWise
                     </Typography>
                     <Typography sx={{ color: "#002244" }} variant="p">
                       Break the limits
@@ -226,7 +226,7 @@ function FooterLearn() {
                   color: "white",
                 }}
               >
-                Trade View
+                MarketWise
               </Typography>
               <Typography sx={{ color: "white" }} variant="p">
                 Break the limits

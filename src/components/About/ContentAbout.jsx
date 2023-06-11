@@ -19,15 +19,15 @@ function ContentAbout() {
           }}
           variant="h2"
         >
-          About TradeView
+          About MarketWise
         </Typography>
         <Typography variant="p">
-          Hi, I'm Nevin Raju, a software developer who created TradeView, a
+          Hi, I'm Nevin Raju, a software developer who created MarketWise, a
           platform for tracking stock market, cryptocurrency, and forex. I'm
           passionate about helping people make informed financial decisions, and
-          I believe that TradeView can be a valuable tool for anyone who wants
+          I believe that MarketWise can be a valuable tool for anyone who wants
           to stay ahead of the markets.I'm always looking for ways to improve
-          TradeView, so if you have any feedback, please don't hesitate to
+          MarketWise, so if you have any feedback, please don't hesitate to
           contact me. I'm also interested in hearing about your own experiences
           with financial trading, so please feel free to share them with me.
         </Typography>
@@ -43,23 +43,23 @@ function ContentAbout() {
             },
           }}
         >
-          Here are some additional details about TradeView:
+          Here are some additional details about MarketWise:
         </Typography>
         <ul>
           <li>
-            TradeView is a web-based platform, so you can access it from
+            MarketWise is a web-based platform, so you can access it from
             anywhere.
           </li>
           <li>
-            TradeView is free to use, but there are premium features available
+            MarketWise is free to use, but there are premium features available
             for a monthly subscription.
           </li>
           <li>
-            TradeView offers a variety of features to help you track your
+            MarketWise offers a variety of features to help you track your
             investments, including real-time data, charts, and analysis tools.
           </li>
           <li>
-            TradeView is a secure platform, and your data is protected with
+            MarketWise is a secure platform, and your data is protected with
             industry-standard encryption.
           </li>
         </ul>
@@ -68,7 +68,7 @@ function ContentAbout() {
         variant="p"
         sx={{ marginTop: "100px", marginBottom: "200px" }}
       >
-        Thank you for visiting TradeView!
+        Thank you for visiting MarketWise!
       </Typography>
     </div>
   );

@@ -92,7 +92,7 @@ function HeaderLearn(props) {
                 </div>
                 <div className={HeaderLearnClasses.learnnavcenterdiv}>
                   <Typography variant="h4" sx={{ fontFamily: "Mangal" }}>
-                    Trade View
+                    MarketWise
                   </Typography>
                 </div>
                 <div>
@@ -100,7 +100,7 @@ function HeaderLearn(props) {
                     className={HeaderLearnClasses.learnnavlink}
                     to="trade"
                   >
-                    About Tradeview
+                    About MarketWise
                   </NavLink>
                   <NavLink className={HeaderLearnClasses.learnnavlink}>
                     Log-in
@@ -139,7 +139,7 @@ function HeaderLearn(props) {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap component="div">
-                Trade View
+                MarketWise
               </Typography>
             </Toolbar>
           </AppBar>

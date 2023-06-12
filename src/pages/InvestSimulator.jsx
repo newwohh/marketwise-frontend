@@ -1,13 +1,53 @@
 import React from "react";
 import SigninNavbar from "../components/SignIn/SignInNavBar/SignInNavbar";
-import { Autocomplete, Typography, TextField, Button } from "@mui/material";
+import {
+  Autocomplete,
+  Typography,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+} from "@mui/material";
 import { useSelector } from "react-redux";
+import useInvestSimulatorStyles from "../styles/InvestSimulator/InvestSimulator";
 
 function InvestSimulator() {
+  const InvestSimulatorClass = useInvestSimulatorStyles();
+  const [change, setChange] = React.useState(0);
+  const [year, setYears] = React.useState("");
   const [data, setData] = React.useState("");
-  const dataRef = React.useRef();
+  const [quantity, setQuantity] = React.useState(0);
   const { prices } = useSelector((state) => state.news);
-  console.log(prices);
+  const getData = (name) => {
+    const dataOfSelectedTicker = prices.find((ticker) => {
+      if (ticker.name === name) return ticker;
+    });
+    let updatedData = {
+      price: dataOfSelectedTicker.price_usd,
+      name: dataOfSelectedTicker.name,
+      symbol: dataOfSelectedTicker.symbol,
+      change: dataOfSelectedTicker.percent_change_7d,
+    };
+    console.log(dataOfSelectedTicker);
+    return setData((data) => ({ ...data, ...updatedData }));
+  };
+
+  const calculateAmountForSimulation = (price, change, durationInYear) => {
+    let priceOfTickerParsed = parseFloat(price);
+    let changeOfTickerParsed = parseFloat(change);
+    let percentageOfChange = (priceOfTickerParsed * changeOfTickerParsed) / 100;
+    if (priceOfTickerParsed > 0) {
+      return setChange(
+        (priceOfTickerParsed + percentageOfChange) * durationInYear
+      );
+    }
+    if (priceOfTickerParsed < 0) {
+      return setChange(priceOfTickerParsed - percentageOfChange);
+    }
+  };
+
   return (
     <React.Fragment>
       <SigninNavbar />
@@ -15,7 +55,13 @@ function InvestSimulator() {
         <section style={{ marginTop: "150px", marginLeft: "150px" }}>
           <div>
             <Typography variant="h2">Invest Simulator</Typography>
-            <Typography variant="h6">Description</Typography>
+            <Typography variant="h6">
+              An investment simulator is a software program that allows users to
+              practice investing without risking any real money. It does this by
+              giving users a virtual balance of money to invest, which they can
+              then use to buy and sell stocks, bonds, and other financial
+              instruments.
+            </Typography>
           </div>
         </section>
         <section style={{ marginLeft: "150px", marginTop: "50px" }}>
@@ -25,36 +71,83 @@ function InvestSimulator() {
             getOptionLabel={(option) => option.name}
             sx={{ width: 300 }}
             renderInput={(params) => (
-              <TextField {...params} label="Choose a Ticker" />
+              <TextField
+                {...params}
+                onClick={(e) => getData(e.target.value)}
+                label="Choose a Ticker"
+              />
             )}
           />
-          <div style={{ height: "400px", width: "800px" }}></div>
-          <div
-            style={{
-              display: " flex",
-              flexDirection: "column",
-              width: "600px",
-            }}
-          >
-            <div style={{ display: "flex" }}>
-              <TextField
-                ref={dataRef}
-                value={data}
-                onChange={(event) => {
-                  setData(event.target.value);
-                }}
-                sx={{ width: "300px", marginRight: "30px" }}
-              />
-              <TextField
-                ref={dataRef}
-                value={data}
-                onChange={(event) => {
-                  setData(event.target.value);
-                }}
-                sx={{ width: "300px" }}
-              />
+          <div style={{ display: "flex" }}>
+            <div>
+              <div className={InvestSimulatorClass.detailsdiv}>
+                <Typography variant="h2" sx={{ marginBottom: "50px" }}>
+                  {data.symbol}
+                </Typography>
+                <Typography variant="h3">{data.name}</Typography>
+                <Typography variant="h4">${data.price}</Typography>
+              </div>
+              <div className={InvestSimulatorClass.calcdiv}>
+                <div>
+                  <div style={{ display: "flex" }}>
+                    <TextField
+                      label="Quantity"
+                      value={quantity}
+                      onChange={(e) => setQuantity(e.target.value)}
+                      sx={{ width: "300px", marginRight: "30px" }}
+                    />
+                    <FormControl fullWidth>
+                      <InputLabel htmlFor="outlined-adornment-amount">
+                        Amount
+                      </InputLabel>
+                      <OutlinedInput
+                        disabled
+                        value={data.price}
+                        id="outlined-adornment-amount"
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                  </div>
+                  <TextField
+                    label="Years"
+                    onChange={(e) => setYears(e.target.value)}
+                    sx={{
+                      width: "600px",
+                      marginTop: "20px",
+                      marginBottom: "30px",
+                    }}
+                  />
+                </div>
+                <Button
+                  onClick={() =>
+                    calculateAmountForSimulation(
+                      data.price,
+                      data.change,
+                      quantity
+                    )
+                  }
+                  sx={{
+                    width: "600px",
+                    height: "60px",
+                    backgroundColor: "#002244",
+                    color: "white",
+                    "&:hover": {
+                      backgroundColor: "#002233",
+                    },
+                  }}
+                >
+                  Check
+                </Button>
+              </div>
             </div>
-            <Button onClick={() => console.log(data)}>Click</Button>
+            <div>
+              <div className={InvestSimulatorClass.detailsdivtwo}>
+                <Typography variant="h1">${change}</Typography>
+              </div>
+            </div>
           </div>
         </section>
       </main>

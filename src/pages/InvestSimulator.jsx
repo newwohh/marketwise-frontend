@@ -17,21 +17,25 @@ function InvestSimulator() {
   const InvestSimulatorClass = useInvestSimulatorStyles();
   const [change, setChange] = React.useState(0);
   const [year, setYears] = React.useState("");
+  const [quantity, setQuantity] = React.useState();
   const [data, setData] = React.useState("");
-  const [quantity, setQuantity] = React.useState(0);
   const { prices } = useSelector((state) => state.news);
   const getData = (name) => {
-    const dataOfSelectedTicker = prices.find((ticker) => {
-      if (ticker.name === name) return ticker;
-    });
-    let updatedData = {
-      price: dataOfSelectedTicker.price_usd,
-      name: dataOfSelectedTicker.name,
-      symbol: dataOfSelectedTicker.symbol,
-      change: dataOfSelectedTicker.percent_change_7d,
-    };
-    console.log(dataOfSelectedTicker);
-    return setData((data) => ({ ...data, ...updatedData }));
+    if (name === "" || !name) {
+      return;
+    } else {
+      const dataOfSelectedTicker = prices.find((ticker) => {
+        if (ticker.name === name) return ticker;
+      });
+      let updatedData = {
+        price: dataOfSelectedTicker.price_usd,
+        name: dataOfSelectedTicker.name,
+        symbol: dataOfSelectedTicker.symbol,
+        change: dataOfSelectedTicker.percent_change_7d,
+      };
+      console.log(dataOfSelectedTicker);
+      return setData((data) => ({ ...data, ...updatedData }));
+    }
   };
 
   const calculateAmountForSimulation = (price, change, durationInYear) => {
@@ -47,14 +51,15 @@ function InvestSimulator() {
       return setChange(priceOfTickerParsed - percentageOfChange);
     }
   };
-
   return (
     <React.Fragment>
       <SigninNavbar />
-      <main>
-        <section style={{ marginTop: "150px", marginLeft: "150px" }}>
+      <main style={{ backgroundColor: "#F0F8FF" }}>
+        <section style={{ marginTop: "90px", marginLeft: "150px" }}>
           <div>
-            <Typography variant="h2">Invest Simulator</Typography>
+            <Typography variant="h2" sx={{ fontFamily: "Sans" }}>
+              Invest Simulator
+            </Typography>
             <Typography variant="h6">
               An investment simulator is a software program that allows users to
               practice investing without risking any real money. It does this by
@@ -68,14 +73,13 @@ function InvestSimulator() {
           <Autocomplete
             disablePortal
             options={prices}
+            onInputChange={(e, newValue) => {
+              getData(newValue);
+            }}
             getOptionLabel={(option) => option.name}
             sx={{ width: 300 }}
             renderInput={(params) => (
-              <TextField
-                {...params}
-                onClick={(e) => getData(e.target.value)}
-                label="Choose a Ticker"
-              />
+              <TextField {...params} label="Choose a Ticker" />
             )}
           />
           <div style={{ display: "flex" }}>
@@ -113,6 +117,7 @@ function InvestSimulator() {
                   </div>
                   <TextField
                     label="Years"
+                    value={year}
                     onChange={(e) => setYears(e.target.value)}
                     sx={{
                       width: "600px",

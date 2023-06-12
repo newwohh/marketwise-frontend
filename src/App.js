@@ -16,6 +16,7 @@ import SignUp from "./pages/SignUp";
 import Blogs from "./pages/Blogs";
 import Profile from "./pages/Profile";
 import InvestSimulator from "./pages/InvestSimulator";
+import ChoosePlan from "./pages/ChoosePlan";
 
 function App() {
   const ScrollToTop = () => {
@@ -40,6 +41,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="login" element={<SignIn />} />
+        <Route path="/subscription" element={<ChoosePlan />} />
         <Route path="/education" element={<Learn />} />
         <Route path="/grow" element={<Grow />} />
         <Route path="/explore" element={<Explore />} />

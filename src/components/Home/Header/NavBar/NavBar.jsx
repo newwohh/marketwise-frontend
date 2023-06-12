@@ -261,9 +261,9 @@ function NavBar() {
                       </Link>
                     </ListItem>
                     <ListItem alignItems="center" className={classes.listitem}>
-                      <Link className={classes.listitemlink}>
+                      <Link to="subscription" className={classes.listitemlink}>
                         <BarChartIcon className={classes.productlisticon} />
-                        Charts
+                        Subscription
                       </Link>
                     </ListItem>
                     <ListItem alignItems="center" className={classes.listitem}>

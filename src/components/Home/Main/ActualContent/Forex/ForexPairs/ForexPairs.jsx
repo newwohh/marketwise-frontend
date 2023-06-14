@@ -186,7 +186,9 @@ function ForexPairs() {
               <Typography variant="p">
                 View FAQs for detailed instructions on specific features.
               </Typography>
-              <Link className={forexDataClass.lastdivlink}>Learn more</Link>
+              <Link to="/faq" className={forexDataClass.lastdivlink}>
+                Learn more
+              </Link>
             </div>
           </div>
           <div style={{ display: "flex" }} className={forexDataClass.carddiv}>

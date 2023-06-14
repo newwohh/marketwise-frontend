@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Collapse from "@mui/material/Collapse";
 import Typography from "@mui/material/Typography";
@@ -92,7 +91,6 @@ function ContentTop() {
                 onMouseLeave={handleExpandClick1}
               >
                 <CardHeader />
-                {/* <CardMedia component="img" height="300" image={cardimgone} /> */}
                 <CardContent>
                   <ThemeProvider theme={theme}>
                     <Typography variant="h5">Learn with MarketWise</Typography>
@@ -163,18 +161,6 @@ function ContentTop() {
                     </Link>
                   </CardContent>
                 </Collapse>
-                {/* <CardMedia
-                  component="img"
-                  height="300"
-                  image={cardimgtwo}
-                  width="50"
-                  sx={{
-                    "@media (max-width: 1000px)": {
-                      width: "300px",
-                      height: "250px",
-                    },
-                  }}
-                /> */}
               </Card>
               <Card
                 sx={{
@@ -201,17 +187,6 @@ function ContentTop() {
                 onMouseLeave={handleExpandClick2}
               >
                 <CardHeader />
-                {/* <CardMedia
-                  component="img"
-                  height="300"
-                  image={cardimgthree}
-                  sx={{
-                    "@media (max-width: 1000px)": {
-                      width: "300px",
-                      height: "300px",
-                    },
-                  }}
-                /> */}
                 <CardContent sx={{ color: "#002244" }}>
                   <ThemeProvider theme={theme}>
                     <Typography variant="h5">
@@ -262,13 +237,6 @@ function ContentTop() {
                 </Link>
               </div>
               <div className={contentTopClasses.securecontentdiv}>
-                {/* <div className={contentTopClasses.secondivimg}>
-                  <img
-                    alt="secure"
-                    src={securedata}
-                    className={contentTopClasses.secureimg}
-                  />
-                </div> */}
                 <div>
                   <div className={contentTopClasses.secondivsecurity}>
                     <Card
@@ -289,17 +257,6 @@ function ContentTop() {
                         },
                       }}
                     >
-                      {/* <CardMedia
-                        component="img"
-                        height="140"
-                        image={securedpayment}
-                        alt="payment"
-                        sx={{
-                          "@media (max-width: 1000px)": {
-                            width: "200px",
-                          },
-                        }}
-                      /> */}
                       <CardContent
                         sx={{
                           "@media (max-width: 1000px)": {
@@ -338,17 +295,6 @@ function ContentTop() {
                         },
                       }}
                     >
-                      {/* <CardMedia
-                        component="img"
-                        height="140"
-                        image={privacy}
-                        alt="green iguana"
-                        sx={{
-                          "@media (max-width: 1000px)": {
-                            width: "200px",
-                          },
-                        }}
-                      /> */}
                       <CardContent
                         sx={{
                           "@media (max-width: 1000px)": {
@@ -388,17 +334,6 @@ function ContentTop() {
                         },
                       }}
                     >
-                      {/* <CardMedia
-                        component="img"
-                        height="140"
-                        image={encrypttion}
-                        alt="green iguana"
-                        sx={{
-                          "@media (max-width: 1000px)": {
-                            width: "200px",
-                          },
-                        }}
-                      /> */}
                       <CardContent
                         sx={{
                           "@media (max-width: 1000px)": {

@@ -17,6 +17,7 @@ import Blogs from "./pages/Blogs";
 import Profile from "./pages/Profile";
 import InvestSimulator from "./pages/InvestSimulator";
 import ChoosePlan from "./pages/ChoosePlan";
+import Faq from "./pages/Faq";
 
 function App() {
   const ScrollToTop = () => {
@@ -65,6 +66,7 @@ function App() {
         <Route path="/heatmap/stocks" element={<Heatmap stocks={"name"} />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/investsimulator" element={<InvestSimulator />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
     </React.Fragment>
   );

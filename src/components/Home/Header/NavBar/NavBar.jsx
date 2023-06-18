@@ -37,6 +37,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { styled, useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
+import { backendBaseUrl } from "../../../../constants/constants";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -47,6 +48,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+const checkIfLoggedIn = async () => {
+  const response = await fetch(backendBaseUrl);
+  const jsn = await response.json();
+  return console.log(jsn);
+};
 function NavBar() {
   const [collapse, setCollapse] = useState(false);
   const [expandIcon, setExpandIcon] = useState(false);
@@ -373,7 +379,11 @@ function NavBar() {
               </Button>
             </div>
             <div className={classes.navdivthree}>
-              <Link to="/profile" style={{ color: "white" }}>
+              <Link
+                to="/profile"
+                style={{ color: "white" }}
+                onClick={() => checkIfLoggedIn()}
+              >
                 <Person2Icon />
               </Link>
               <Button

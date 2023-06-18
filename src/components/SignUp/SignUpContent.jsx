@@ -5,11 +5,44 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import useSignUp from "../../styles/SignUp/SignUp";
+import { backendBaseUrl } from "../../constants/constants";
 
 function SignUpContent() {
   const signUpClass = useSignUp();
+
+  const [userDetails, setUserDetails] = React.useState({
+    first: "",
+    last: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
+
+  const postNewUser = async () => {
+    try {
+      const request = await fetch(backendBaseUrl + "signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: userDetails.first + userDetails.last,
+          email: userDetails.email,
+          password: userDetails.password,
+          passwordConfirm: userDetails.passwordConfirm,
+        }),
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(userDetails);
+
   return (
     <main style={{ backgroundColor: "#F0F8FF", height: "1000px" }}>
       <section className={signUpClass.mainsection}>
@@ -23,11 +56,13 @@ function SignUpContent() {
                 type="text"
                 sx={{ width: "220px", marginRight: "10px" }}
                 label="First Name"
+                onChange={(e) => (userDetails.first = e.target.value)}
               />
               <TextField
                 type="text"
                 sx={{ width: "220px" }}
                 label="Last Name"
+                onChange={(e) => (userDetails.last = e.target.value)}
               />
             </div>
             <div>
@@ -35,6 +70,7 @@ function SignUpContent() {
                 type="email"
                 sx={{ width: "450px", marginTop: "20px" }}
                 label="E-Mail"
+                onChange={(e) => (userDetails.email = e.target.value)}
               />
             </div>
             <div>
@@ -42,11 +78,13 @@ function SignUpContent() {
                 type="password"
                 sx={{ width: "450px", marginTop: "20px" }}
                 label="Password"
+                onChange={(e) => (userDetails.password = e.target.value)}
               />
               <TextField
                 type="password"
                 sx={{ width: "450px", marginTop: "20px" }}
                 label="Confirm Password"
+                onChange={(e) => (userDetails.passwordConfirm = e.target.value)}
               />
             </div>
             <div
@@ -75,6 +113,7 @@ function SignUpContent() {
                     color: "#002244",
                   },
                 }}
+                onClick={() => postNewUser()}
               >
                 Sign Up
               </Button>

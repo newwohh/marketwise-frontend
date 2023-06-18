@@ -2,9 +2,33 @@ import { Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import useSignIn from "../../../../styles/SignIn/SignInStyles";
+import { backendBaseUrl } from "../../../../constants/constants";
 
 function SignInContent() {
   const signInClass = useSignIn();
+
+  const signInAUser = async () => {
+    try {
+      const request = await fetch(backendBaseUrl + "api/v1/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "emails",
+          password: "password1",
+        }),
+        credentials: "include",
+      });
+
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(document.cookie);
+
   return (
     <main style={{ backgroundColor: "#F0F8FF", height: "1000px" }}>
       <section className={signInClass.mainsection}>
@@ -35,6 +59,7 @@ function SignInContent() {
                     color: "#002244",
                   },
                 }}
+                onClick={() => signInAUser()}
               >
                 Login
               </Button>

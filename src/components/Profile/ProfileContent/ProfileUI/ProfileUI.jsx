@@ -1,5 +1,5 @@
-import React from "react";
-import user from "../../../../assets/MyApril6.jpg";
+import React, { useContext } from "react";
+import userImg from "../../../../assets/MyApril6.jpg";
 import {
   Button,
   Divider,
@@ -9,8 +9,15 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
+import { MyContext } from "../../../../context/Context";
 
 function ProfileUI() {
+  const { user } = useContext(MyContext);
+  let currUserName, currUserEmail;
+  user.user ? (currUserName = user.user.name) : (currUserName = "please wait");
+  user.user
+    ? (currUserEmail = user.user.email)
+    : (currUserEmail = "please wait");
   return (
     <div>
       <div
@@ -22,7 +29,7 @@ function ProfileUI() {
         }}
       >
         <img
-          src={user}
+          src={userImg}
           alt=""
           style={{ width: "200px", height: "200px", borderRadius: "50%" }}
         />
@@ -74,7 +81,7 @@ function ProfileUI() {
             <ListItemText>
               <TextField
                 id="outlined-read-only-input"
-                defaultValue={"Name"}
+                value={currUserName}
                 InputProps={{
                   readOnly: true,
                 }}
@@ -87,7 +94,7 @@ function ProfileUI() {
             <ListItemText>
               <TextField
                 id="outlined-read-only-input"
-                defaultValue="E-Mail"
+                value={currUserEmail}
                 InputProps={{
                   readOnly: true,
                 }}

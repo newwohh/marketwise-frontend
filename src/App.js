@@ -18,8 +18,10 @@ import Profile from "./pages/Profile";
 import InvestSimulator from "./pages/InvestSimulator";
 import ChoosePlan from "./pages/ChoosePlan";
 import Faq from "./pages/Faq";
+import { MyContext } from "./context/Context";
 
 function App() {
+  const [user, setUser] = React.useState("");
   const ScrollToTop = () => {
     const { pathname } = useLocation();
     useEffect(() => {
@@ -33,41 +35,50 @@ function App() {
   const cryptoNews = news;
   const stockPrice = stockprice;
   const stockNews = stocknews;
-  console.log(news, prices, stockPrice, stockNews);
+  // console.log(news, prices, stockPrice, stockNews);
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
+
   return (
     <React.Fragment>
       <ScrollToTop />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="login" element={<SignIn />} />
-        <Route path="/subscription" element={<ChoosePlan />} />
-        <Route path="/education" element={<Learn />} />
-        <Route path="/grow" element={<Grow />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/user_protection" element={<SecurityInfo />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/cryptocurrency">
+      <MyContext.Provider value={{ user }}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="login" element={<SignIn />} />
+          <Route path="/subscription" element={<ChoosePlan />} />
+          <Route path="/education" element={<Learn />} />
+          <Route path="/grow" element={<Grow />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/user_protection" element={<SecurityInfo />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cryptocurrency">
+            <Route
+              index
+              element={
+                <Overview crypto={cryptoPrice} cryptonews={cryptoNews} />
+              }
+            />
+            <Route path="chart/:id" element={<Chart crypto={cryptoPrice} />} />
+          </Route>
           <Route
-            index
-            element={<Overview crypto={cryptoPrice} cryptonews={cryptoNews} />}
+            path="/stocks"
+            element={<Overview stocks={stockPrice} stocknews={stockNews} />}
           />
-          <Route path="chart/:id" element={<Chart crypto={cryptoPrice} />} />
-        </Route>
-        <Route
-          path="/stocks"
-          element={<Overview stocks={stockPrice} stocknews={stockNews} />}
-        />
-        <Route
-          path="/heatmap/cryptocurrency"
-          element={<Heatmap cryptomap={cryptoPrice} />}
-        />
-        <Route path="/heatmap/stocks" element={<Heatmap stocks={"name"} />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/investsimulator" element={<InvestSimulator />} />
-        <Route path="/faq" element={<Faq />} />
-      </Routes>
+          <Route
+            path="/heatmap/cryptocurrency"
+            element={<Heatmap cryptomap={cryptoPrice} />}
+          />
+          <Route path="/heatmap/stocks" element={<Heatmap stocks={"name"} />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/investsimulator" element={<InvestSimulator />} />
+          <Route path="/faq" element={<Faq />} />
+        </Routes>
+      </MyContext.Provider>
     </React.Fragment>
   );
 }

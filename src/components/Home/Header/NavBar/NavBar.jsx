@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 import useStyles from "../../../../styles/Home/NavBarStyles";
 import {
   AppBar,
@@ -12,8 +13,9 @@ import {
   ListItem,
   useMediaQuery,
   Box,
+  CircularProgress,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Person2Icon from "@mui/icons-material/Person2";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import BarChartIcon from "@mui/icons-material/BarChart";
@@ -38,22 +40,19 @@ import MailIcon from "@mui/icons-material/Mail";
 import { styled, useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import { backendBaseUrl } from "../../../../constants/constants";
+import { MyContext } from "../../../../context/Context";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
 
-const checkIfLoggedIn = async () => {
-  const response = await fetch(backendBaseUrl);
-  const jsn = await response.json();
-  return console.log(jsn);
-};
 function NavBar() {
+  let name;
+  const { user } = useContext(MyContext);
   const [collapse, setCollapse] = useState(false);
   const [expandIcon, setExpandIcon] = useState(false);
   const [navbar, setNavbar] = useState(false);
@@ -62,6 +61,7 @@ function NavBar() {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const drawerWidth = 240;
   const [open, setOpen] = React.useState(false);
+  const navigation = useNavigate();
   const changeBackground = () => {
     if (window.scrollY >= 1000) {
       setNavbar(false);
@@ -71,7 +71,7 @@ function NavBar() {
   };
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-  });
+  }, []);
   const openCollapse = () => {
     setCollapse(!collapse);
   };
@@ -84,7 +84,19 @@ function NavBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const directHeatmap = async () => {
+    const request = await fetch(backendBaseUrl + "api/v1/users/heatmap", {
+      credentials: "include",
+    });
+    const response = await request.json();
+    if (response.status === "success") {
+      navigation("/heatmap/stocks");
+    } else {
+      navigation("/login");
+    }
+  };
 
+  user.user ? (name = user.user.name) : (name = "please wait");
   return (
     <nav style={{ backgroundColor: "hsla(0, 0%, 0%, 0)" }}>
       {isMatch ? (
@@ -257,8 +269,8 @@ function NavBar() {
                   >
                     <ListItem alignItems="center" className={classes.listitem}>
                       <Link
-                        to="/heatmap/cryptocurrency"
                         className={classes.listitemlink}
+                        onClick={() => directHeatmap()}
                       >
                         <LocalFireDepartmentIcon
                           className={classes.productlisticon}
@@ -381,10 +393,24 @@ function NavBar() {
             <div className={classes.navdivthree}>
               <Link
                 to="/profile"
-                style={{ color: "white" }}
-                onClick={() => checkIfLoggedIn()}
+                style={{
+                  color: "white",
+                  display: "flex",
+                  textDecoration: "none",
+                  "&:hover": {
+                    textDecoration: "underline",
+                  },
+                }}
               >
                 <Person2Icon />
+                <Typography
+                  sx={{
+                    color: "white",
+                    marginLeft: "5px",
+                  }}
+                >
+                  {user.user ? name : <CircularProgress />}
+                </Typography>
               </Link>
               <Button
                 href="/login"

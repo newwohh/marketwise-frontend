@@ -6,7 +6,6 @@ import { backendBaseUrl } from "../../../../constants/constants";
 
 function SignInContent() {
   const signInClass = useSignIn();
-
   const signInAUser = async () => {
     try {
       const request = await fetch(backendBaseUrl + "api/v1/users/login", {
@@ -22,12 +21,14 @@ function SignInContent() {
       });
 
       const response = await request.json();
-      console.log(response);
+
+      return localStorage.setItem("user", JSON.stringify({ ...response.data }));
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(document.cookie);
+
+  const getUser = () => {};
 
   return (
     <main style={{ backgroundColor: "#F0F8FF", height: "1000px" }}>
@@ -86,6 +87,7 @@ function SignInContent() {
                   textDecoration: "none",
                   color: "#002244",
                 }}
+                onClick={() => getUser()}
               >
                 <Typography>Forgot Password ?</Typography>
               </Link>

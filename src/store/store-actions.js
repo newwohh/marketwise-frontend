@@ -9,7 +9,6 @@ export const getStockPricesforHeatMap = createAsyncThunk(
         "https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=07721059f040ffb9f024f729669f5f5e";
       const data = await fetch(url);
       const res = await data.json();
-      console.log(res);
       return res;
     } catch (error) {
       console.log(error);
@@ -26,7 +25,6 @@ export const getCryptoNews = createAsyncThunk(
     try {
       const response = await fetch(url);
       const result = await response.json();
-      console.log(result.results);
       return result;
     } catch (error) {
       console.error(error);
@@ -40,7 +38,6 @@ export const getStockNews = createAsyncThunk("store/getStockNews", async () => {
   try {
     const response = await fetch(url);
     const result = await response.json();
-    console.log(result);
     return result.articles;
   } catch (error) {
     console.error(error);
@@ -54,7 +51,6 @@ export const getCryptoPrice = createAsyncThunk(
       const client = new CoinpaprikaAPI();
       let AllPrices = await client.getTicker();
       let AllPricesSliced = await AllPrices.slice(0, 17);
-      console.log(AllPricesSliced);
       return AllPricesSliced;
     } catch (error) {
       console.log(error);
@@ -79,7 +75,6 @@ export const getStockPrice = createAsyncThunk(
           return stockPriceResult;
         })
       );
-      console.log(results);
       return results;
     } catch (error) {
       console.log(error);

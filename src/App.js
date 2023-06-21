@@ -18,7 +18,9 @@ import Profile from "./pages/Profile";
 import InvestSimulator from "./pages/InvestSimulator";
 import ChoosePlan from "./pages/ChoosePlan";
 import Faq from "./pages/Faq";
+import secureLocalStorage from "react-secure-storage";
 import { MyContext } from "./context/Context";
+import ProfileUI from "./components/Profile/ProfileContent/ProfileUI/ProfileUI";
 
 function App() {
   const [user, setUser] = React.useState("");
@@ -38,7 +40,7 @@ function App() {
   // console.log(news, prices, stockPrice, stockNews);
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("user")));
+    setUser(JSON.parse(secureLocalStorage.getItem("user")));
   }, []);
 
   return (

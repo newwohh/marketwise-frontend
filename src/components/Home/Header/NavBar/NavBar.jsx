@@ -14,13 +14,22 @@ import {
   useMediaQuery,
   Box,
   CircularProgress,
+  Avatar,
+  MenuItem,
+  Menu,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Person2Icon from "@mui/icons-material/Person2";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ViewCompactIcon from "@mui/icons-material/ViewCompact";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import {
+  ExpandLess,
+  ExpandMore,
+  Logout,
+  PersonAdd,
+  Settings,
+} from "@mui/icons-material";
 import BookIcon from "@mui/icons-material/Book";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
@@ -55,6 +64,8 @@ function NavBar() {
   const { user } = useContext(MyContext);
   const [collapse, setCollapse] = useState(false);
   const [expandIcon, setExpandIcon] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openFor = Boolean(anchorEl);
   const [navbar, setNavbar] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
@@ -69,6 +80,15 @@ function NavBar() {
       setNavbar(true);
     }
   };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
@@ -96,7 +116,7 @@ function NavBar() {
     }
   };
 
-  user.user ? (name = user.user.name) : (name = "please wait");
+  !user ? (name = "please wait") : (name = user.user.name);
   return (
     <nav style={{ backgroundColor: "hsla(0, 0%, 0%, 0)" }}>
       {isMatch ? (
@@ -392,7 +412,6 @@ function NavBar() {
             </div>
             <div className={classes.navdivthree}>
               <Link
-                to="/profile"
                 style={{
                   color: "white",
                   display: "flex",
@@ -402,16 +421,96 @@ function NavBar() {
                   },
                 }}
               >
-                <Person2Icon />
-                <Typography
-                  sx={{
-                    color: "white",
-                    marginLeft: "5px",
-                  }}
-                >
-                  {user.user ? name : <CircularProgress />}
-                </Typography>
+                {user ? (
+                  <IconButton onClick={handleClick} size="small">
+                    <Avatar
+                      sx={{
+                        color: "white",
+                        marginLeft: "5px",
+                      }}
+                    >
+                      {!user || user === null ? (
+                        <CircularProgress />
+                      ) : (
+                        name[0].toUpperCase()
+                      )}
+                    </Avatar>
+                  </IconButton>
+                ) : (
+                  <Person2Icon />
+                )}
               </Link>
+              <Menu
+                anchorEl={anchorEl}
+                id="account-menu"
+                open={openFor}
+                onClose={handleClose}
+                onClick={handleClose}
+                PaperProps={{
+                  elevation: 0,
+                  sx: {
+                    overflow: "visible",
+                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                    mt: 1.5,
+                    "& .MuiAvatar-root": {
+                      width: 32,
+                      height: 32,
+                      ml: -0.5,
+                      mr: 1,
+                    },
+                    "&:before": {
+                      content: '""',
+                      display: "block",
+                      position: "absolute",
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: "background.paper",
+                      transform: "translateY(-50%) rotate(45deg)",
+                      zIndex: 0,
+                    },
+                  },
+                }}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              >
+                <Link
+                  to={"/profile"}
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  <MenuItem>
+                    <Avatar /> Profile
+                  </MenuItem>
+                </Link>
+                <Link
+                  to={"/profile/writeblogs"}
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  <MenuItem>
+                    <Avatar /> Write Blog
+                  </MenuItem>
+                </Link>
+                <Divider />
+                <MenuItem onClick={handleClose}>
+                  <ListItemIcon>
+                    <PersonAdd fontSize="small" />
+                  </ListItemIcon>
+                  Add another account
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <ListItemIcon>
+                    <Settings fontSize="small" />
+                  </ListItemIcon>
+                  Settings
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <ListItemIcon>
+                    <Logout fontSize="small" />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Menu>
               <Button
                 href="/login"
                 sx={{

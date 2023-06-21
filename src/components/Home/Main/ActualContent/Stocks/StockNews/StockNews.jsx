@@ -65,7 +65,6 @@ function StockNews() {
   }, []);
 
   let stockNews = stocknews;
-  console.log(stockNews);
   return (
     <div className={StockNewsClasses.containerdiv}>
       <Fade bottom>

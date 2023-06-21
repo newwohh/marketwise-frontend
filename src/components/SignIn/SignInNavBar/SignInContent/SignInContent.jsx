@@ -3,9 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useSignIn from "../../../../styles/SignIn/SignInStyles";
 import { backendBaseUrl } from "../../../../constants/constants";
+import secureLocalStorage from "react-secure-storage";
 
 function SignInContent() {
   const signInClass = useSignIn();
+  let userDetails = { email: "", password: "" };
   const signInAUser = async () => {
     try {
       const request = await fetch(backendBaseUrl + "api/v1/users/login", {
@@ -14,15 +16,17 @@ function SignInContent() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "emails",
-          password: "password1",
+          email: userDetails.email,
+          password: userDetails.password,
         }),
         credentials: "include",
       });
 
       const response = await request.json();
-
-      return localStorage.setItem("user", JSON.stringify({ ...response.data }));
+      return secureLocalStorage.setItem(
+        "user",
+        JSON.stringify({ ...response.data })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -37,13 +41,19 @@ function SignInContent() {
           <form className={signInClass.form}>
             <Typography variant="h4">Sign-In</Typography>
             <div style={{ marginTop: "20px" }}>
-              <TextField type="text" sx={{ width: "450px" }} label="username" />
+              <TextField
+                type="text"
+                sx={{ width: "450px" }}
+                label="username"
+                onChange={(e) => (userDetails.email = e.target.value)}
+              />
             </div>
             <div style={{ marginTop: "20px" }}>
               <TextField
                 type="password"
                 sx={{ width: "450px" }}
                 label="password"
+                onChange={(e) => (userDetails.password = e.target.value)}
               />
             </div>
             <div>

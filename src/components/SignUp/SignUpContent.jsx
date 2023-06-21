@@ -5,7 +5,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import useSignUp from "../../styles/SignUp/SignUp";
 import { backendBaseUrl } from "../../constants/constants";
 
@@ -22,7 +22,7 @@ function SignUpContent() {
 
   const postNewUser = async () => {
     try {
-      const request = await fetch(backendBaseUrl + "signup", {
+      const request = await fetch(backendBaseUrl + "api/v1/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,6 +33,7 @@ function SignUpContent() {
           password: userDetails.password,
           passwordConfirm: userDetails.passwordConfirm,
         }),
+        credentials: "include",
       });
       const response = await request.json();
       console.log(response);

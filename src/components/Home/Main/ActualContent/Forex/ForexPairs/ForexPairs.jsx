@@ -83,9 +83,7 @@ function ForexPairs() {
     getProducts();
   }, [apiData]);
   const forexDataClass = useForexDataStyles();
-  console.log(forexdata);
   const forexCardData = forexdata;
-  // console.log(forexCardData);
   return (
     <div className={forexDataClass.containerdiv}>
       <div className={forexDataClass.titlediv}>

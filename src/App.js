@@ -20,7 +20,6 @@ import ChoosePlan from "./pages/ChoosePlan";
 import Faq from "./pages/Faq";
 import secureLocalStorage from "react-secure-storage";
 import { MyContext } from "./context/Context";
-import ProfileUI from "./components/Profile/ProfileContent/ProfileUI/ProfileUI";
 
 function App() {
   const [user, setUser] = React.useState("");
@@ -37,11 +36,12 @@ function App() {
   const cryptoNews = news;
   const stockPrice = stockprice;
   const stockNews = stocknews;
-  // console.log(news, prices, stockPrice, stockNews);
 
   useEffect(() => {
     setUser(JSON.parse(secureLocalStorage.getItem("user")));
   }, []);
+
+  console.log(user);
 
   return (
     <React.Fragment>

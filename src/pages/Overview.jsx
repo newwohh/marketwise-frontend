@@ -218,9 +218,6 @@ function Overview(props) {
                                 <Button
                                   // href="/cryptocurrency/chart"
                                   variant="outlined"
-                                  // onClick={(e) =>
-                                  //   console.log()
-                                  // }
                                   sx={{
                                     borderColor: "#002244",
                                     borderRadius: "15px",
@@ -250,7 +247,17 @@ function Overview(props) {
                                 <Button
                                   href={`cryptocurrency/chart/${row.symbol}`}
                                   target="_blank"
-                                  variant="outlined"
+                                  sx={{
+                                    borderColor: "#002244",
+                                    width: "150px",
+                                    color: "#002244",
+                                  }}
+                                >
+                                  {row.type ? row.type : row.symbol}
+                                </Button>
+                              </TableCell>
+                              <TableCell align="right">
+                                <Button
                                   sx={{
                                     borderColor: "#002244",
                                     borderRadius: "15px",
@@ -263,11 +270,8 @@ function Overview(props) {
                                     },
                                   }}
                                 >
-                                  {row.type ? row.type : row.symbol}
+                                  Subscribe
                                 </Button>
-                              </TableCell>
-                              <TableCell align="right">
-                                {row.currency_name}
                               </TableCell>
                             </TableRow>
                           ))}

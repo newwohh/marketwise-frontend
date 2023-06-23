@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { backendBaseUrl } from "../constants/constants";
 const CoinpaprikaAPI = require("@coinpaprika/api-nodejs-client");
 
 export const getStockPricesforHeatMap = createAsyncThunk(
@@ -97,6 +98,18 @@ export const getForexData = createAsyncThunk("store/getForexData", async () => {
   }
 });
 
+export const getAllBlogs = createAsyncThunk("store/getAllBlogs", async () => {
+  try {
+    const request = await fetch(backendBaseUrl + "api/v1/blogs", {
+      credentials: "include",
+    });
+    const response = await request.json();
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 const newsSlice = createSlice({
   name: "news",
   initialState: {
@@ -106,6 +119,7 @@ const newsSlice = createSlice({
     stockprice: [],
     forexdata: [],
     stockpriceforheatmap: [],
+    allblogs: [],
     loading: "idle",
   },
   reducers: {},
@@ -127,6 +141,9 @@ const newsSlice = createSlice({
     });
     builder.addCase(getStockPricesforHeatMap.fulfilled, (state, action) => {
       state.stockpriceforheatmap = action.payload;
+    });
+    builder.addCase(getAllBlogs.fulfilled, (state, action) => {
+      state.allblogs = action.payload;
     });
   },
 });

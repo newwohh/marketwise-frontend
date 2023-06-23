@@ -50,6 +50,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import { backendBaseUrl } from "../../../../constants/constants";
 import { MyContext } from "../../../../context/Context";
+import secureLocalStorage from "react-secure-storage";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -114,6 +115,15 @@ function NavBar() {
     } else {
       navigation("/login");
     }
+  };
+
+  const userLogout = async () => {
+    const req = await fetch(backendBaseUrl + "api/v1/users/logout", {
+      credentials: "include",
+    });
+    const res = await req.json();
+    secureLocalStorage.removeItem("user");
+    if (res.status === "success") window.location.reload(true);
   };
 
   !user ? (name = "please wait") : (name = user.user.name);
@@ -483,10 +493,7 @@ function NavBar() {
                     <Avatar /> Profile
                   </MenuItem>
                 </Link>
-                <Link
-                  to={"/profile/writeblogs"}
-                  style={{ color: "black", textDecoration: "none" }}
-                >
+                <Link style={{ color: "black", textDecoration: "none" }}>
                   <MenuItem>
                     <Avatar /> Write Blog
                   </MenuItem>
@@ -504,12 +511,17 @@ function NavBar() {
                   </ListItemIcon>
                   Settings
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <ListItemIcon>
-                    <Logout fontSize="small" />
-                  </ListItemIcon>
-                  Logout
-                </MenuItem>
+                <Link
+                  onClick={() => userLogout()}
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <ListItemIcon>
+                      <Logout fontSize="small" />
+                    </ListItemIcon>
+                    Logout
+                  </MenuItem>
+                </Link>
               </Menu>
               <Button
                 href="/login"

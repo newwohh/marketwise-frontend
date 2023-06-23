@@ -104,6 +104,7 @@ export const getAllBlogs = createAsyncThunk("store/getAllBlogs", async () => {
       credentials: "include",
     });
     const response = await request.json();
+    console.log(response);
     return response;
   } catch (error) {
     console.log(error);

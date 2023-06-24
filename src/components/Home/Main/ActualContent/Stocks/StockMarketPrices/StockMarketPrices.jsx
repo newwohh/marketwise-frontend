@@ -9,7 +9,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Button, ThemeProvider } from "@mui/material";
+import { Button, Skeleton, ThemeProvider, Tooltip } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -53,6 +53,7 @@ function StockMarketPrices() {
   const stockprice = useSelector((state) => state.news.stockprice);
   const themes = useTheme();
   const StockPriceClasses = useStockMarketPrices();
+  const loaderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -68,9 +69,17 @@ function StockMarketPrices() {
     // console.log(stockprice);
   }, [setDataApi]);
   const tickers =
-    stockprice[0] === undefined ? [] : stockprice[0].results.slice(0, 20);
-  const exchanges = stockprice[1] === undefined ? [] : stockprice[1].results;
-  const dividents = stockprice[2] === undefined ? [] : stockprice[2].results;
+    stockprice[0] === undefined
+      ? [{ name: "sorry" }]
+      : stockprice[0]?.results?.slice(0, 20);
+  const exchanges =
+    stockprice === undefined || stockprice === [] || stockprice[1] === undefined
+      ? [{ name: "sorry" }]
+      : stockprice[1].results;
+  const dividents =
+    stockprice === undefined || stockprice === [] || stockprice[2] === undefined
+      ? [{ name: "sorry" }]
+      : stockprice[2].results;
 
   return (
     <div className={StockPriceClasses.containerstockprice}>
@@ -214,49 +223,67 @@ function StockMarketPrices() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {exchanges.map((row, i) => (
-                    <TableRow
-                      key={i}
-                      sx={{
-                        color: "#002244",
-                        "&:hover": {
-                          backgroundColor: "#E1EBEE",
-                        },
-                      }}
-                    >
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        sx={{ color: "#002244" }}
-                      >
-                        <Link
-                          className={StockPriceClasses.exchangesLink}
-                          to={row.url || ""}
-                          style={{ color: "#002244" }}
+                  {exchanges === undefined || stockprice === []
+                    ? loaderArray.map((el, i) => {
+                        return (
+                          <Box sx={{ pt: 0.5 }}>
+                            <Skeleton
+                              variant="rectangular"
+                              width={450}
+                              height={30}
+                            />
+                            <Skeleton variant="circular" />
+                            <Skeleton variant="rectangular" width={100} />
+                          </Box>
+                        );
+                      })
+                    : exchanges.map((row, i) => (
+                        <TableRow
+                          key={i}
+                          sx={{
+                            color: "#002244",
+                            "&:hover": {
+                              backgroundColor: "#E1EBEE",
+                            },
+                          }}
                         >
-                          {row.name ? row.name : "Data not found!"}
-                        </Link>
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        <Typography variant="p" sx={{ fontWeight: 600 }}>
-                          {row.asset_class.toUpperCase()
-                            ? row.asset_class.toUpperCase()
-                            : "Data not found!"}
-                        </Typography>
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        {row.locale.toUpperCase()
-                          ? row.locale.toUpperCase()
-                          : "Data not found!"}
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        {row.operating_mic}
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        {row.currency_name}
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            sx={{ color: "#002244" }}
+                          >
+                            <Tooltip
+                              title={row.name ? row.name : "Data not found!"}
+                            >
+                              <Link
+                                className={StockPriceClasses.exchangesLink}
+                                to={row.url || ""}
+                                style={{ color: "#002244" }}
+                              >
+                                {row.name ? row.name : "Data not found!"}
+                              </Link>
+                            </Tooltip>
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            <Typography variant="p" sx={{ fontWeight: 600 }}>
+                              {row.asset_class === undefined
+                                ? "Data not found!"
+                                : row.asset_class.toUpperCase()}
+                            </Typography>
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            {row.locale === undefined
+                              ? "Data not found!"
+                              : row.locale.toUpperCase()}
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            {row.operating_mic}
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            {row.currency_name}
+                          </TableCell>
+                        </TableRow>
+                      ))}
                 </TableBody>
               </Table>
             </TableContainer>
@@ -295,51 +322,65 @@ function StockMarketPrices() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {dividents.map((row, i) => (
-                    <TableRow
-                      key={i}
-                      sx={{
-                        color: "#002244",
-                        "&:hover": {
-                          backgroundColor: "#E1EBEE",
-                        },
-                      }}
-                    >
-                      <TableCell component="th" scope="row">
-                        <Link
-                          to={row.url || "#"}
-                          className={StockPriceClasses.exchangesLink}
-                          style={{ color: "#002244" }}
-                        >
-                          {row.ticker ? row.ticker : "Data not found!"}
-                        </Link>
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        {row.cash_amount}
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        <Button
-                          variant="outlined"
+                  {dividents === undefined || stockprice === []
+                    ? loaderArray.map((el, i) => {
+                        return (
+                          <Box sx={{ pt: 0.5 }}>
+                            <Skeleton
+                              variant="rectangular"
+                              width={450}
+                              height={30}
+                            />
+                            <Skeleton variant="circular" />
+                            <Skeleton variant="rectangular" width={100} />
+                          </Box>
+                        );
+                      })
+                    : dividents.map((row, i) => (
+                        <TableRow
+                          key={i}
                           sx={{
                             color: "#002244",
-                            width: "50px",
-                            borderRadius: 3,
                             "&:hover": {
-                              backgroundColor: "#002244",
-                              color: "#002244",
+                              backgroundColor: "#E1EBEE",
                             },
                           }}
                         >
-                          {row.currency ? row.currency : "Data not found!"}
-                        </Button>
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        {row.dividend_type
-                          ? row.dividend_type
-                          : "Data not found!"}
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                          <TableCell component="th" scope="row">
+                            <Link
+                              to={row.url || "#"}
+                              className={StockPriceClasses.exchangesLink}
+                              style={{ color: "#002244" }}
+                            >
+                              {row.ticker ? row.ticker : "Data not found!"}
+                            </Link>
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            {row.cash_amount}
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            <Button
+                              variant="outlined"
+                              sx={{
+                                color: "#002244",
+                                width: "50px",
+                                borderRadius: 3,
+                                "&:hover": {
+                                  backgroundColor: "#002244",
+                                  color: "#002244",
+                                },
+                              }}
+                            >
+                              {row.currency ? row.currency : "Data not found!"}
+                            </Button>
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            {row.dividend_type
+                              ? row.dividend_type
+                              : "Data not found!"}
+                          </TableCell>
+                        </TableRow>
+                      ))}
                 </TableBody>
               </Table>
             </TableContainer>
@@ -381,74 +422,88 @@ function StockMarketPrices() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {tickers.map((row, i) => (
-                    <TableRow
-                      key={i}
-                      sx={{
-                        "&:hover": {
-                          backgroundColor: "#E1EBEE",
-                        },
-                      }}
-                    >
-                      <TableCell component="th" scope="row">
-                        <Link
-                          className={StockPriceClasses.exchangesLink}
-                          style={{ color: "#002244" }}
-                        >
-                          {row.name ? row.name : "Data not found!"}
-                        </Link>
-                      </TableCell>
-                      <TableCell align="right">
-                        <Button
-                          variant="outlined"
+                  {tickers === undefined || stockprice === []
+                    ? loaderArray.map((el, i) => {
+                        return (
+                          <Box sx={{ pt: 0.5 }}>
+                            <Skeleton
+                              variant="rectangular"
+                              width={450}
+                              height={30}
+                            />
+                            <Skeleton variant="circular" />
+                            <Skeleton variant="rectangular" width={100} />
+                          </Box>
+                        );
+                      })
+                    : tickers.map((row, i) => (
+                        <TableRow
+                          key={i}
                           sx={{
-                            color: "#002244",
-                            width: "50px",
-                            borderRadius: 3,
                             "&:hover": {
-                              backgroundColor: "#002244",
-                              color: "white",
+                              backgroundColor: "#E1EBEE",
                             },
                           }}
                         >
-                          {row.currency_name.toUpperCase()
-                            ? row.currency_name.toUpperCase()
-                            : "Data not found!"}
-                        </Button>
-                      </TableCell>
-                      <TableCell align="right">
-                        {row.primary_exchange ? (
-                          <Button
-                            variant="outlined"
-                            sx={{
-                              color: "#002244",
-                              width: "50px",
-                              borderRadius: 3,
-                              borderColor: "#FA8072",
-                              "&:hover": {
-                                backgroundColor: "#65000B",
-                                color: "white",
-                              },
-                            }}
-                          >
-                            {row.primary_exchange
-                              ? row.primary_exchange
+                          <TableCell component="th" scope="row">
+                            <Link
+                              className={StockPriceClasses.exchangesLink}
+                              style={{ color: "#002244" }}
+                            >
+                              {row.name ? row.name : "Data not found!"}
+                            </Link>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Button
+                              variant="outlined"
+                              sx={{
+                                color: "#002244",
+                                width: "50px",
+                                borderRadius: 3,
+                                "&:hover": {
+                                  backgroundColor: "#002244",
+                                  color: "white",
+                                },
+                              }}
+                            >
+                              {row.currency_name === undefined
+                                ? "Data not found!"
+                                : row.currency_name.toUpperCase()}
+                            </Button>
+                          </TableCell>
+                          <TableCell align="right">
+                            {row.primary_exchange ? (
+                              <Button
+                                variant="outlined"
+                                sx={{
+                                  color: "#002244",
+                                  width: "50px",
+                                  borderRadius: 3,
+                                  borderColor: "#FA8072",
+                                  "&:hover": {
+                                    backgroundColor: "#65000B",
+                                    color: "white",
+                                  },
+                                }}
+                              >
+                                {row.primary_exchange
+                                  ? row.primary_exchange
+                                  : "Data not found!"}
+                              </Button>
+                            ) : (
+                              ""
+                            )}
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            {row.locale === undefined
+                              ? row.locale
                               : "Data not found!"}
-                          </Button>
-                        ) : (
-                          ""
-                        )}
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        {row.locale.toUpperCase()
-                          ? row.locale
-                          : "Data not found!"}
-                      </TableCell>
-                      <TableCell align="right" sx={{ color: "#002244" }}>
-                        {row.ticker ? row.ticker : "Data not found!"}
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                          </TableCell>
+                          <TableCell align="right" sx={{ color: "#002244" }}>
+                            {row.ticker ? row.ticker : "Data not found!"}
+                          </TableCell>
+                        </TableRow>
+                      ))}
                 </TableBody>
               </Table>
             </TableContainer>

@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
 import { Divider, Typography } from "@mui/material";
 import useChartStyles from "../styles/Chart.js/Chart";
 let tvScriptLoadingPromise;
-function Chart(props) {
+function Chart() {
   const ChartClasses = useChartStyles();
-  const pricesOf = props.crypto;
   const { id } = useParams();
   console.log(id);
   const onLoadScriptRef = useRef();
@@ -48,8 +47,16 @@ function Chart(props) {
     }
   }, []);
 
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  };
+
   return (
     <React.Fragment>
+      <ScrollToTop />
       <NavBar />
 
       <div className={ChartClasses.containerchart}>

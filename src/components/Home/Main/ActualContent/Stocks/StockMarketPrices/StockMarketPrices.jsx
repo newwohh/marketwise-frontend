@@ -31,11 +31,7 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -496,8 +492,8 @@ function StockMarketPrices() {
                           </TableCell>
                           <TableCell align="right" sx={{ color: "#002244" }}>
                             {row.locale === undefined
-                              ? row.locale
-                              : "Data not found!"}
+                              ? "Data not found!"
+                              : row.locale.toUpperCase()}
                           </TableCell>
                           <TableCell align="right" sx={{ color: "#002244" }}>
                             {row.ticker ? row.ticker : "Data not found!"}

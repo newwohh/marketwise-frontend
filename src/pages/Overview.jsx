@@ -19,7 +19,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Divider, Grid, ThemeProvider } from "@mui/material";
 import theme from "../styles/Theme";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -76,10 +76,17 @@ function Overview(props) {
   } else if (props.forex) {
     prices = props.forex;
   }
-  console.log(prices, news);
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  };
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
+        <ScrollToTop />
         <NavBar />
         <main className={OverviewClasses.overviewmain}>
           <div className={OverviewClasses.contentdiv}>

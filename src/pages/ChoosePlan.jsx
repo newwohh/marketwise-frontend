@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { List, ListItem } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 let plansInformation = [
   {
@@ -49,8 +50,16 @@ let plansInformation = [
 ];
 
 function ChoosePlan() {
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  };
+
   return (
     <React.Fragment>
+      <ScrollToTop />
       <SignInNavbar />
       <main
         style={{

@@ -23,12 +23,6 @@ import { MyContext } from "./context/Context";
 
 function App() {
   const [user, setUser] = React.useState("");
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
   const { prices, news, stocknews, stockprice } = useSelector(
     (state) => state.news
   );
@@ -45,7 +39,6 @@ function App() {
 
   return (
     <React.Fragment>
-      <ScrollToTop />
       <MyContext.Provider value={{ user }}>
         <Routes>
           <Route exact path="/" element={<Home />} />

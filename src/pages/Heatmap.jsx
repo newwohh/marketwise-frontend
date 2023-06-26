@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/SecurityInfoNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockPricesforHeatMap } from "../store/store-actions";
+import { useLocation } from "react-router-dom";
 
 function Heatmap(props) {
   const { stockpriceforheatmap } = useSelector((state) => state.news);
@@ -35,8 +36,16 @@ function Heatmap(props) {
       return themeFour;
     }
   };
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  };
+
   return (
     <React.Fragment>
+      <ScrollToTop />
       <SecurityInfoNavbar />
       <div className={HeatmapClass.containermap}>
         <div>

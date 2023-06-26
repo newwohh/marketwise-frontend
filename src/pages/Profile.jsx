@@ -8,6 +8,7 @@ import SignInNavbar from "../components/SignIn/SignInNavBar/SignInNavbar";
 import ProfileUI from "../components/Profile/ProfileContent/ProfileUI/ProfileUI";
 import Subscriptions from "../components/Profile/ProfileContent/Subscriptions/Subscriptions";
 import WriteBlogs from "../components/Profile/ProfileContent/WriteBlogs/WriteBlogs";
+import { useLocation } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,8 +45,16 @@ export default function Profile() {
     setValue(newValue);
   };
 
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  };
+
   return (
     <React.Fragment>
+      <ScrollToTop />
       <SignInNavbar />
       <main style={{ height: "1000px", backgroundColor: "#F0F8FF" }}>
         <section>

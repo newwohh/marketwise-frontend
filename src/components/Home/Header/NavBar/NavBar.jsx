@@ -68,7 +68,7 @@ function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openFor = Boolean(anchorEl);
   const [navbar, setNavbar] = useState(false);
-  const classes = useStyles();
+  const classes = useStyles;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const drawerWidth = 240;
@@ -219,12 +219,12 @@ function NavBar() {
           }}
         >
           <CssBaseline />
-          <Toolbar className={navbar ? classes.toolbar : classes.shownav}>
-            <div className={classes.navdivone}>
-              <img src={logo} alt="logo" className={classes.logoimg} />
-              <Typography variant="h5" className={classes.logo}></Typography>
+          <Toolbar style={navbar ? classes.toolbar : classes.shownav}>
+            <div style={classes.navdivone}>
+              <img src={logo} alt="logo" style={classes.logoimg} />
+              <Typography variant="h5" style={classes.logo}></Typography>
             </div>
-            <div className={classes.navdivtwo}>
+            <div style={classes.navdivtwo}>
               <Button
                 href="/"
                 // color="inherit"
@@ -279,11 +279,11 @@ function NavBar() {
                 in={collapse}
                 timeout="auto"
                 unmountOnExit
-                className={classes.collapse}
+                style={classes.collapse}
                 sx={{ width: 300, position: "absolute" }}
               >
                 <Container
-                  className={classes.expanded}
+                  style={classes.expanded}
                   sx={{
                     width: 300,
                     position: "absolute",
@@ -297,45 +297,40 @@ function NavBar() {
                       maxWidth: 360,
                     }}
                   >
-                    <ListItem alignItems="center" className={classes.listitem}>
+                    <ListItem alignItems="center" style={classes.listitem}>
                       <Link
-                        className={classes.listitemlink}
+                        style={classes.listitemlink}
                         onClick={() => directHeatmap()}
                       >
                         <LocalFireDepartmentIcon
-                          className={classes.productlisticon}
+                          style={classes.productlisticon}
                         />
                         <Typography variant="">Heat Map</Typography>
                       </Link>
                     </ListItem>
-                    <ListItem alignItems="center" className={classes.listitem}>
-                      <Link to="subscription" className={classes.listitemlink}>
-                        <BarChartIcon className={classes.productlisticon} />
+                    <ListItem alignItems="center" style={classes.listitem}>
+                      <Link to="subscription" style={classes.listitemlink}>
+                        <BarChartIcon style={classes.productlisticon} />
                         Subscription
                       </Link>
                     </ListItem>
-                    <ListItem alignItems="center" className={classes.listitem}>
-                      <Link to="/blogs" className={classes.listitemlink}>
+                    <ListItem alignItems="center" style={classes.listitem}>
+                      <Link to="/blogs" style={classes.listitemlink}>
                         {" "}
-                        <BookIcon className={classes.productlisticon} />
+                        <BookIcon style={classes.productlisticon} />
                         Blogs
                       </Link>
                     </ListItem>
-                    <ListItem alignItems="center" className={classes.listitem}>
-                      <Link
-                        to="/investsimulator"
-                        className={classes.listitemlink}
-                      >
+                    <ListItem alignItems="center" style={classes.listitem}>
+                      <Link to="/investsimulator" style={classes.listitemlink}>
                         {" "}
-                        <FeaturedPlayListIcon
-                          className={classes.productlisticon}
-                        />
+                        <FeaturedPlayListIcon style={classes.productlisticon} />
                         Invest Simulator
                       </Link>
                     </ListItem>
-                    <ListItem alignItems="center" className={classes.listitem}>
-                      <Link className={classes.listitemlink} onClick={expand}>
-                        <ViewCompactIcon className={classes.productlisticon} />
+                    <ListItem alignItems="center" style={classes.listitem}>
+                      <Link style={classes.listitemlink} onClick={expand}>
+                        <ViewCompactIcon style={classes.productlisticon} />
                         Overview of Markets
                       </Link>
                       {expandIcon ? (
@@ -352,33 +347,31 @@ function NavBar() {
                       in={expandIcon}
                       timeout="auto"
                       unmountOnExit
-                      className={classes.collapse}
+                      style={classes.collapse}
                     >
                       <List>
-                        <ListItem className={classes.listitemoverview}>
+                        <ListItem style={classes.listitemoverview}>
                           <Link
                             to="stocks"
-                            className={classes.listitemlinkoverview}
+                            style={classes.listitemlinkoverview}
                           >
-                            <ShowChartIcon className={classes.overviewicon} />
+                            <ShowChartIcon style={classes.overviewicon} />
                             Share Market
                           </Link>
                         </ListItem>
-                        <ListItem className={classes.listitemoverview}>
+                        <ListItem style={classes.listitemoverview}>
                           <Link
                             to="cryptocurrency"
-                            className={classes.listitemlinkoverview}
+                            style={classes.listitemlinkoverview}
                           >
-                            <CurrencyBitcoinIcon
-                              className={classes.overviewicon}
-                            />
+                            <CurrencyBitcoinIcon style={classes.overviewicon} />
                             CryptoCurrency
                           </Link>
                         </ListItem>
-                        <ListItem className={classes.listitemoverview}>
-                          <Link className={classes.listitemlinkoverview}>
+                        <ListItem style={classes.listitemoverview}>
+                          <Link style={classes.listitemlinkoverview}>
                             <CurrencyExchangeIcon
-                              className={classes.overviewicon}
+                              style={classes.overviewicon}
                             />
                             Foreign Exchange
                           </Link>
@@ -420,7 +413,7 @@ function NavBar() {
                 Community
               </Button>
             </div>
-            <div className={classes.navdivthree}>
+            <div style={classes.navdivthree}>
               <Link
                 style={{
                   color: "white",

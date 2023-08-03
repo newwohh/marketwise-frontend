@@ -6,15 +6,10 @@ import TextAnimation from "react-text-animations";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 function HeroSection() {
-  const headerClasses = useHeaderStyles();
+  const headerClasses = useHeaderStyles;
   return (
-    <section
-      className={headerClasses.section}
-      style={{
-        background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",
-      }}
-    >
-      <div className={headerClasses.headerintrodiv}>
+    <section style={headerClasses.section}>
+      <div style={headerClasses.headerintrodiv}>
         <ThemeProvider theme={theme}>
           <Typography
             variant="h6"
@@ -36,7 +31,7 @@ function HeroSection() {
             align="center"
             variant="h1"
             noWrap
-            className={headerClasses.headerintrotext}
+            style={headerClasses.headerintrotext}
             sx={{
               marginTop: "370px",
               color: "white",

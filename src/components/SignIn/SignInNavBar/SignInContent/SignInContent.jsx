@@ -6,7 +6,7 @@ import { backendBaseUrl } from "../../../../constants/constants";
 import secureLocalStorage from "react-secure-storage";
 
 function SignInContent() {
-  const signInClass = useSignIn();
+  const signInClass = useSignIn;
   const navigation = useNavigate();
   let userDetails = { email: "", password: "" };
   const signInAUser = async () => {
@@ -24,7 +24,7 @@ function SignInContent() {
       });
 
       const response = await request.json();
-      if (response.status === "success") navigation("/profile");
+      if (response.status === "success") navigation("/");
       return secureLocalStorage.setItem(
         "user",
         JSON.stringify({ ...response.data })
@@ -38,9 +38,9 @@ function SignInContent() {
 
   return (
     <main style={{ backgroundColor: "#F0F8FF", height: "1000px" }}>
-      <section className={signInClass.mainsection}>
+      <section style={signInClass.mainsection}>
         <div style={{ marginTop: "200px" }}>
-          <form className={signInClass.form}>
+          <form style={signInClass.form}>
             <Typography variant="h4">Sign-In</Typography>
             <div style={{ marginTop: "20px" }}>
               <TextField

@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useSignIn = makeStyles({
+const useSignIn = {
   signinNav: {
     display: "flex",
     justifyContent: "space-between",
@@ -21,6 +21,6 @@ const useSignIn = makeStyles({
     justifyContent: "center",
     textAlign: "center",
   },
-});
+};
 
 export default useSignIn;

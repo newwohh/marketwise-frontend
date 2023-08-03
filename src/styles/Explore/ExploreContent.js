@@ -1,6 +1,6 @@
-import { makeStyles } from "@material-ui/core/styles";
+import {} from "@material-ui/core/styles";
 
-const useExploreContent = makeStyles((theme) => ({
+const useExploreContent = (theme) => ({
   sectionexplore: {
     background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",
     height: "1000px",
@@ -19,6 +19,6 @@ const useExploreContent = makeStyles((theme) => ({
     width: "100%",
     // backgroundColor: "#F0F8FF",
   },
-}));
+});
 
 export default useExploreContent;

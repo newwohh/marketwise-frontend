@@ -37,7 +37,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 function HeaderGrow() {
-  const HeaderGrowClass = useHeaderGrowStyles();
+  const HeaderGrowClass = useHeaderGrowStyles;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
   const drawerWidth = 240;
@@ -66,15 +66,15 @@ function HeaderGrow() {
               boxShadow: "none",
             }}
           >
-            <div className={HeaderGrowClass.navbargrow}>
-              <div className={HeaderGrowClass.headersubdiv}>
+            <div style={HeaderGrowClass.navbargrow}>
+              <div style={HeaderGrowClass.headersubdiv}>
                 <img
                   src={logo}
                   alt="logoingrow"
-                  className={HeaderGrowClass.logogrow}
+                  style={HeaderGrowClass.logogrow}
                 />
               </div>
-              <div className={HeaderGrowClass.headersubdiv}>
+              <div style={HeaderGrowClass.headersubdiv}>
                 <Button href="/login" sx={{ color: "white" }}>
                   Log in
                 </Button>
@@ -82,7 +82,7 @@ function HeaderGrow() {
                   Products
                 </Button>
               </div>
-              <div className={HeaderGrowClass.headersubdiv}>
+              <div style={HeaderGrowClass.headersubdiv}>
                 <Button
                   sx={{
                     color: "white",

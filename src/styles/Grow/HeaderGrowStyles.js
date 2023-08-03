@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useHeaderGrowStyles = makeStyles({
+const useHeaderGrowStyles = {
   navbargrow: {
     display: "flex",
     flexDirection: "row",
@@ -15,6 +15,6 @@ const useHeaderGrowStyles = makeStyles({
     display: "flex",
     marginLeft: "30px",
   },
-});
+};
 
 export default useHeaderGrowStyles;

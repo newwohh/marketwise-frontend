@@ -25,7 +25,7 @@ function CryptoMarket() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
   const { prices } = useSelector((state) => state.news);
-  const CryptoMarketClass = useCryptoMarket();
+  const CryptoMarketClass = useCryptoMarket;
   const dispatch = useDispatch();
   const dispatchCryptoPrice = React.useCallback(() => {
     dispatch(getCryptoPrice());
@@ -36,10 +36,10 @@ function CryptoMarket() {
   const rows = prices;
 
   return (
-    <div className={CryptoMarketClass.cryptomarketcontainer}>
+    <div style={CryptoMarketClass.cryptomarketcontainer}>
       {isMatch ? (
         <div>
-          <div className={CryptoMarketClass.cryptomarkettopdiv}>
+          <div style={CryptoMarketClass.cryptomarkettopdiv}>
             <ThemeProvider theme={theme}>
               <Typography
                 variant="h2"
@@ -71,7 +71,7 @@ function CryptoMarket() {
               </Typography>
             </ThemeProvider>
           </div>
-          <div className={CryptoMarketClass.cryptopricediv}>
+          <div style={CryptoMarketClass.cryptopricediv}>
             <div
               style={{
                 marginBottom: "50px",
@@ -332,7 +332,7 @@ function CryptoMarket() {
         </div>
       ) : (
         <div>
-          <div className={CryptoMarketClass.cryptomarkettopdiv}>
+          <div style={CryptoMarketClass.cryptomarkettopdiv}>
             <ThemeProvider theme={theme}>
               <Typography
                 variant="h2"
@@ -363,7 +363,7 @@ function CryptoMarket() {
               </Typography>
             </ThemeProvider>
           </div>
-          <div className={CryptoMarketClass.mobclass}>
+          <div style={CryptoMarketClass.mobclass}>
             <Container
               sx={{
                 display: "flex",

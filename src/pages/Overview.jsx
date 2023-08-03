@@ -51,7 +51,7 @@ function a11yProps(index) {
   };
 }
 function Overview(props) {
-  const OverviewClasses = useOverviewStyles();
+  const OverviewClasses = useOverviewStyles;
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -88,8 +88,8 @@ function Overview(props) {
       <ThemeProvider theme={theme}>
         <ScrollToTop />
         <NavBar />
-        <main className={OverviewClasses.overviewmain}>
-          <div className={OverviewClasses.contentdiv}>
+        <main style={OverviewClasses.overviewmain}>
+          <div style={OverviewClasses.contentdiv}>
             <div>
               <Typography variant="p" sx={{ color: "grey" }}>
                 Markets
@@ -98,7 +98,7 @@ function Overview(props) {
                 {props.crypto ? "Cryptocurrency" : "Stock Market"}
               </Typography>
             </div>
-            <div className={OverviewClasses.introoverview}>
+            <div style={OverviewClasses.introoverview}>
               <div>
                 <Box
                   sx={{
@@ -151,7 +151,7 @@ function Overview(props) {
                                   variant="h5"
                                   component="div"
                                 >
-                                  <Link className={OverviewClasses.cardlink}>
+                                  <Link style={OverviewClasses.cardlink}>
                                     {el.title}
                                   </Link>
                                 </Typography>
@@ -166,7 +166,7 @@ function Overview(props) {
                               <CardActions>
                                 <Link
                                   to={el.article_url}
-                                  className={OverviewClasses.overviewcardlink}
+                                  style={OverviewClasses.overviewcardlink}
                                 >
                                   Click to see the full article
                                 </Link>
@@ -291,7 +291,7 @@ function Overview(props) {
                   </TabPanel>
                 </Box>
               </div>
-              <div className={OverviewClasses.overviewrightsection}>
+              <div style={OverviewClasses.overviewrightsection}>
                 <Typography sx={{ color: "#002244" }}>About</Typography>
                 <Divider />
                 <Typography variant="p" sx={{ color: "grey" }}>

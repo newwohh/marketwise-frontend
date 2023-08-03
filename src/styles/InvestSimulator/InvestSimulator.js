@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useInvestSimulatorStyles = makeStyles(() => ({
+const useInvestSimulatorStyles = {
   detailsdiv: {
     padding: "40px",
     height: "200px",
@@ -29,6 +29,6 @@ const useInvestSimulatorStyles = makeStyles(() => ({
     marginBottom: "40px",
     borderRadius: "10px",
   },
-}));
+};
 
 export default useInvestSimulatorStyles;

@@ -1,5 +1,5 @@
-import { makeStyles } from "@material-ui/core/styles";
+import {} from "@material-ui/core/styles";
 
-const useBlogs = makeStyles({});
+const useBlogs = {};
 
 export default useBlogs;

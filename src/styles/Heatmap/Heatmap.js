@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useHeatmap = makeStyles({
+const useHeatmap = {
   containermap: {
     marginTop: "50px",
     padding: "50px",
@@ -25,6 +25,6 @@ const useHeatmap = makeStyles({
     fontWeight: 700,
     backgroundColor: "#03C03C",
   },
-});
+};
 
 export default useHeatmap;

@@ -10,7 +10,7 @@ import useSignUp from "../../styles/SignUp/SignUp";
 import { backendBaseUrl } from "../../constants/constants";
 
 function SignUpContent() {
-  const signUpClass = useSignUp();
+  const signUpClass = useSignUp;
 
   const [userDetails, setUserDetails] = React.useState({
     first: "",
@@ -42,13 +42,11 @@ function SignUpContent() {
     }
   };
 
-  console.log(userDetails);
-
   return (
     <main style={{ backgroundColor: "#F0F8FF", height: "1000px" }}>
-      <section className={signUpClass.mainsection}>
+      <section style={signUpClass.mainsection}>
         <div style={{ marginTop: "200px" }}>
-          <form className={signUpClass.form}>
+          <form style={signUpClass.form}>
             <Typography variant="h5">
               Sign Up to create,discover and connect with the global community.
             </Typography>

@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useStockNews = makeStyles(() => ({
+const useStockNews = {
   newsdiv: {
     display: "flex",
     justifyContent: "center",
@@ -26,10 +26,12 @@ const useStockNews = makeStyles(() => ({
     },
   },
   cardTitle: {
+    color: "#1F305E",
+    textDecoration: "none",
     "@media (max-width: 1000px)": {
       fontSize: "15px",
     },
   },
-}));
+};
 
 export default useStockNews;

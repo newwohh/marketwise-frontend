@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const HeaderLearnStyles = makeStyles(() => ({
+const HeaderLearnStyles = {
   learnnavfirstdiv: {
     display: "flex",
     alignItems: "center",
@@ -25,6 +25,6 @@ const HeaderLearnStyles = makeStyles(() => ({
       textDecoration: "underline",
     },
   },
-}));
+};
 
 export default HeaderLearnStyles;

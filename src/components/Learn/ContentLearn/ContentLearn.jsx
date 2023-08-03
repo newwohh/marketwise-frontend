@@ -36,7 +36,7 @@ function ContentLearn() {
   const learnread = useRef(null);
   const practicetrading = useRef(null);
   const learnanalyse = useRef(null);
-  const LearnContentClasses = useLearnContentStyles();
+  const LearnContentClasses = useLearnContentStyles;
   const { speak, cancel } = useSpeechSynthesis();
 
   const textToSpeech = (text) => {
@@ -46,10 +46,10 @@ function ContentLearn() {
   };
 
   return (
-    <section className={LearnContentClasses.mains}>
-      <div className={LearnContentClasses.section}>
-        <div className={LearnContentClasses.titledivlearn}>
-          <div className={LearnContentClasses.introdiv}>
+    <section style={LearnContentClasses.mains}>
+      <div style={LearnContentClasses.section}>
+        <div style={LearnContentClasses.titledivlearn}>
+          <div style={LearnContentClasses.introdiv}>
             <Typography
               variant="h2"
               sx={{ fontFamily: "Helvetica" }}
@@ -169,7 +169,7 @@ function ContentLearn() {
           </div>
         </div>
       </div>
-      <div className={LearnContentClasses.navtolearn}>
+      <div style={LearnContentClasses.navtolearn}>
         <Box
           sx={{
             marginTop: "100px",
@@ -279,9 +279,9 @@ function ContentLearn() {
           </Stack>
         </Box>
       </div>
-      <div className={LearnContentClasses.learncontentdiv}>
+      <div style={LearnContentClasses.learncontentdiv}>
         <div ref={whatistrading}>
-          <div className={LearnContentClasses.whatistrading}>
+          <div style={LearnContentClasses.whatistrading}>
             <div id="whatistrading">
               <Typography
                 variant="h5"
@@ -452,7 +452,7 @@ function ContentLearn() {
           </div>
         </div>
         <div>
-          <div ref={tradingacc} className={LearnContentClasses.tradingacc}>
+          <div ref={tradingacc} style={LearnContentClasses.tradingacc}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Open a Trading Account
             </Typography>
@@ -643,7 +643,7 @@ function ContentLearn() {
           </div>
         </div>
         <div>
-          <div ref={learnread} className={LearnContentClasses.learnread}>
+          <div ref={learnread} style={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Learn to Read: A Market Crash Course
             </Typography>
@@ -754,7 +754,7 @@ function ContentLearn() {
           </div>
         </div>
         <div>
-          <div ref={learnanalyse} className={LearnContentClasses.learnread}>
+          <div ref={learnanalyse} style={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Learn to Analyze{" "}
             </Typography>
@@ -870,7 +870,7 @@ function ContentLearn() {
           </div>
         </div>
         <div>
-          <div ref={practicetrading} className={LearnContentClasses.learnread}>
+          <div ref={practicetrading} style={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Practice Trading
             </Typography>
@@ -983,7 +983,7 @@ function ContentLearn() {
           </div>
         </div>
         <div>
-          <div ref={managerisk} className={LearnContentClasses.learnread}>
+          <div ref={managerisk} style={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               How to Manage Risk
             </Typography>
@@ -1092,7 +1092,7 @@ function ContentLearn() {
           </div>
         </div>
         <div>
-          <div className={LearnContentClasses.learnread}>
+          <div style={LearnContentClasses.learnread}>
             <Typography variant="h6" sx={{ fontWeight: "bolder" }}>
               What Are the Main Differences Between Trading and Investing?
             </Typography>

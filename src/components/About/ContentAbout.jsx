@@ -3,10 +3,10 @@ import useAbout from "../../styles/About/About";
 import { Typography } from "@mui/material";
 
 function ContentAbout() {
-  const ContentAboutClass = useAbout();
+  const ContentAboutClass = useAbout;
   return (
-    <div className={ContentAboutClass.mainabout}>
-      <div className={ContentAboutClass.contentdiv}>
+    <div style={ContentAboutClass.mainabout}>
+      <div style={ContentAboutClass.contentdiv}>
         <Typography
           sx={{
             fontWeight: 600,
@@ -32,7 +32,7 @@ function ContentAbout() {
           with financial trading, so please feel free to share them with me.
         </Typography>
       </div>
-      <div className={ContentAboutClass.contentdivtwo}>
+      <div style={ContentAboutClass.contentdivtwo}>
         <Typography
           variant="h4"
           sx={{

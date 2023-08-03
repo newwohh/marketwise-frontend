@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useAbout = makeStyles({
+const useAbout = {
   mainabout: {
     backgroundColor: "#F0F8FF",
     textAlign: "center",
@@ -32,6 +32,6 @@ const useAbout = makeStyles({
       marginTop: 0,
     },
   },
-});
+};
 
 export default useAbout;

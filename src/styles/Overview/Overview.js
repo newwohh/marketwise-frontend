@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useOverviewStyles = makeStyles({
+const useOverviewStyles = {
   overviewmain: {
     backgroundColor: "#F0F8FF",
     display: "flex",
@@ -41,6 +41,6 @@ const useOverviewStyles = makeStyles({
   },
 
   overviewrightsection: { marginLeft: "20px" },
-});
+};
 
 export default useOverviewStyles;

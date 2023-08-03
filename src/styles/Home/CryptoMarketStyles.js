@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useCryptoMarket = makeStyles((theme) => ({
+const useCryptoMarket = {
   cryptomarkettopdiv: {
     display: "flex",
     flexDirection: "column",
@@ -22,6 +22,6 @@ const useCryptoMarket = makeStyles((theme) => ({
       flexDirection: "column",
     },
   },
-}));
+};
 
 export default useCryptoMarket;

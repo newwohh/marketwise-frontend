@@ -1,8 +1,9 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useFooterLearnStyles = makeStyles(() => ({
+const useFooterLearnStyles = {
   footer: {
     marginTop: 200,
+    backgroundColor: "#F0F8FF",
   },
   footercontainter: {
     marginTop: "100px",
@@ -20,6 +21,6 @@ const useFooterLearnStyles = makeStyles(() => ({
     height: "50px",
     color: "white",
   },
-}));
+};
 
 export default useFooterLearnStyles;

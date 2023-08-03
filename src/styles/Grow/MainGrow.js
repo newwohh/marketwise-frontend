@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useMainGrowStyles = makeStyles({
+const useMainGrowStyles = {
   firstsection: {
     background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",
     display: "flex",
@@ -84,6 +84,6 @@ const useMainGrowStyles = makeStyles({
       marginTop: "50px",
     },
   },
-});
+};
 
 export default useMainGrowStyles;

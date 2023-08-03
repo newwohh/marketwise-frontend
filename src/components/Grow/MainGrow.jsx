@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 
 function MainGrow() {
   const refgrow = useRef(null);
-  const MainGrowClasses = useMainGrowStyles();
+  const MainGrowClasses = useMainGrowStyles;
   return (
     <main style={{ backgroundColor: "#F0F8FF" }}>
       <ThemeProvider theme={theme}>
-        <section className={MainGrowClasses.firstsection}>
+        <section style={MainGrowClasses.firstsection}>
           <Typography
             align="center"
             variant="h1"
@@ -47,13 +47,13 @@ function MainGrow() {
             <ArrowDownwardIcon sx={{ marginLeft: "10px" }} />
           </Button>
         </section>
-        <section ref={refgrow} className={MainGrowClasses.secondsectiongrow}>
+        <section ref={refgrow} style={MainGrowClasses.secondsectiongrow}>
           <Zoom>
-            <div className={MainGrowClasses.contentdiv}>
+            <div style={MainGrowClasses.contentdiv}>
               <div>
                 <img
                   src={dataReal}
-                  className={MainGrowClasses.growimg}
+                  style={MainGrowClasses.growimg}
                   alt="datareal"
                 />
               </div>
@@ -68,7 +68,7 @@ function MainGrow() {
             </div>
           </Zoom>
           <Zoom>
-            <div className={MainGrowClasses.contentdiv}>
+            <div style={MainGrowClasses.contentdiv}>
               <div>
                 <Typography variant="h4">Advanced charting</Typography>
                 <Typography variant="p">
@@ -79,7 +79,7 @@ function MainGrow() {
               <div>
                 <img
                   src={bgrowth}
-                  className={MainGrowClasses.growimg}
+                  style={MainGrowClasses.growimg}
                   alt="datareal"
                 />
               </div>
@@ -87,11 +87,11 @@ function MainGrow() {
             </div>
           </Zoom>
           <Zoom>
-            <div className={MainGrowClasses.contentdiv}>
+            <div style={MainGrowClasses.contentdiv}>
               <div>
                 <img
                   src={research}
-                  className={MainGrowClasses.growimg}
+                  style={MainGrowClasses.growimg}
                   alt="datareal"
                 />
               </div>
@@ -106,7 +106,7 @@ function MainGrow() {
             </div>
           </Zoom>
           <Zoom>
-            <div className={MainGrowClasses.contentdiv}>
+            <div style={MainGrowClasses.contentdiv}>
               <div>
                 <Typography variant="h4">Educational resources</Typography>
                 <Typography variant="p">
@@ -117,7 +117,7 @@ function MainGrow() {
               <div>
                 <img
                   src={education}
-                  className={MainGrowClasses.growimg}
+                  style={MainGrowClasses.growimg}
                   alt="datareal"
                 />
               </div>
@@ -125,15 +125,15 @@ function MainGrow() {
             </div>
           </Zoom>
         </section>
-        <section className={MainGrowClasses.infosection}>
-          <div className={MainGrowClasses.infodivgrow}>
+        <section style={MainGrowClasses.infosection}>
+          <div style={MainGrowClasses.infodivgrow}>
             <div>
               <Typography variant="h3">
                 We help you to Become an Expert
               </Typography>
             </div>
-            <div className={MainGrowClasses.infosubdivgrow}>
-              <div className={MainGrowClasses.infosubcontentdivgrow}>
+            <div style={MainGrowClasses.infosubdivgrow}>
+              <div style={MainGrowClasses.infosubcontentdivgrow}>
                 <Typography
                   variant="h6"
                   sx={{
@@ -162,7 +162,7 @@ function MainGrow() {
                   that your data is safe with MarketWise.
                 </Typography>
               </div>
-              <div className={MainGrowClasses.infosubcontentdivgrow}>
+              <div style={MainGrowClasses.infosubcontentdivgrow}>
                 <Typography
                   variant="h6"
                   sx={{
@@ -190,7 +190,7 @@ function MainGrow() {
                   trading needs.
                 </Typography>
               </div>
-              <div className={MainGrowClasses.infosubcontentdivgrow}>
+              <div style={MainGrowClasses.infosubcontentdivgrow}>
                 <Typography
                   variant="h6"
                   sx={{

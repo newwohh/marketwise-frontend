@@ -47,7 +47,7 @@ function Heatmap(props) {
     <React.Fragment>
       <ScrollToTop />
       <SecurityInfoNavbar />
-      <div className={HeatmapClass.containermap}>
+      <div style={HeatmapClass.containermap}>
         <div>
           <Typography variant="h2">Heatmap</Typography>
           <Typography variant="h4">
@@ -121,7 +121,7 @@ function Heatmap(props) {
                           }}
                         >
                           <CardContent
-                            className={
+                            style={
                               isProps
                                 ? setColor(
                                     el.percent_change_24h,

@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = {
   toolbar: {
     display: "flex",
     backgroundColor: "hsla(0, 0%, 0%, 0)",
@@ -79,6 +79,6 @@ const useStyles = makeStyles(() => ({
   shownav: {
     backgroundColor: "#002244",
   },
-}));
+};
 
 export default useStyles;

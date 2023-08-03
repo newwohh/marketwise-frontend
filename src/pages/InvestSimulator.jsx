@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import useInvestSimulatorStyles from "../styles/InvestSimulator/InvestSimulator";
 
 function InvestSimulator() {
-  const InvestSimulatorClass = useInvestSimulatorStyles();
+  const InvestSimulatorClass = useInvestSimulatorStyles;
   const [change, setChange] = React.useState(0);
   const [year, setYears] = React.useState("");
   const [quantity, setQuantity] = React.useState();
@@ -84,14 +84,14 @@ function InvestSimulator() {
           />
           <div style={{ display: "flex" }}>
             <div>
-              <div className={InvestSimulatorClass.detailsdiv}>
+              <div style={InvestSimulatorClass.detailsdiv}>
                 <Typography variant="h2" sx={{ marginBottom: "50px" }}>
                   {data.symbol}
                 </Typography>
                 <Typography variant="h3">{data.name}</Typography>
                 <Typography variant="h4">${data.price}</Typography>
               </div>
-              <div className={InvestSimulatorClass.calcdiv}>
+              <div style={InvestSimulatorClass.calcdiv}>
                 <div>
                   <div style={{ display: "flex" }}>
                     <TextField
@@ -149,7 +149,7 @@ function InvestSimulator() {
               </div>
             </div>
             <div>
-              <div className={InvestSimulatorClass.detailsdivtwo}>
+              <div style={InvestSimulatorClass.detailsdivtwo}>
                 <Typography variant="h1">${change}</Typography>
               </div>
             </div>

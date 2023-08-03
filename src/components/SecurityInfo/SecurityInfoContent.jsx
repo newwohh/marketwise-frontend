@@ -15,8 +15,8 @@ function SecurityInfoContent() {
 
   return (
     <main style={{ backgroundColor: "#F0F8FF" }}>
-      <section className={SecurityInfoContentClass.securityinfofirstdiv}>
-        <div className={SecurityInfoContentClass.securityinfofirstsubdiv}>
+      <section style={SecurityInfoContentClass.securityinfofirstdiv}>
+        <div style={SecurityInfoContentClass.securityinfofirstsubdiv}>
           <div>
             <Typography variant="h2">
               Our Commitment to User Protection
@@ -36,12 +36,12 @@ function SecurityInfoContent() {
           <img
             src={securityinfo}
             alt="securityinfo"
-            className={SecurityInfoContentClass.securityinfoimg}
+            style={SecurityInfoContentClass.securityinfoimg}
           />
         </div>
       </section>
-      <section className={SecurityInfoContentClass.securityinfoseconddiv}>
-        <div className={SecurityInfoContentClass.securityinfosecondsubdiv}>
+      <section style={SecurityInfoContentClass.securityinfoseconddiv}>
+        <div style={SecurityInfoContentClass.securityinfosecondsubdiv}>
           <div
             style={{
               margin: "100px",
@@ -66,8 +66,8 @@ function SecurityInfoContent() {
               </Typography>
             </div>
           </div>
-          <div className={SecurityInfoContentClass.firstcontentsecurityinfo}>
-            <div className={SecurityInfoContentClass.securityinfocontentmain}>
+          <div style={SecurityInfoContentClass.firstcontentsecurityinfo}>
+            <div style={SecurityInfoContentClass.securityinfocontentmain}>
               <Typography
                 variant="h5"
                 sx={{
@@ -82,14 +82,12 @@ function SecurityInfoContent() {
                 Platform Security
               </Typography>
               <div>
-                <div
-                  className={SecurityInfoContentClass.contentfirstsecurityinfo}
-                >
-                  <div className="">
+                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
+                  <div style="">
                     <img
                       src={securestorage}
                       alt="securestore"
-                      className={
+                      style={
                         SecurityInfoContentClass.contentfirstsecuritinfoimg
                       }
                     />
@@ -110,14 +108,12 @@ function SecurityInfoContent() {
                     </Typography>
                   </div>
                 </div>
-                <div
-                  className={SecurityInfoContentClass.contentfirstsecurityinfo}
-                >
+                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
                   <div>
                     <img
                       src={monitor}
                       alt="securestore"
-                      className={
+                      style={
                         SecurityInfoContentClass.contentfirstsecuritinfoimg
                       }
                     />
@@ -140,14 +136,12 @@ function SecurityInfoContent() {
                     </Typography>
                   </div>
                 </div>
-                <div
-                  className={SecurityInfoContentClass.contentfirstsecurityinfo}
-                >
+                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
                   <div>
                     <img
                       src={orgsec}
                       alt="securestore"
-                      className={
+                      style={
                         SecurityInfoContentClass.contentfirstsecuritinfoimg
                       }
                     />
@@ -170,14 +164,12 @@ function SecurityInfoContent() {
                     </Typography>
                   </div>
                 </div>
-                <div
-                  className={SecurityInfoContentClass.contentfirstsecurityinfo}
-                >
+                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
                   <div>
                     <img
                       src={advdata}
                       alt="securestore"
-                      className={
+                      style={
                         SecurityInfoContentClass.contentfirstsecuritinfoimg
                       }
                     />
@@ -217,16 +209,12 @@ function SecurityInfoContent() {
               >
                 User-Level Security
               </Typography>
-              <div
-                className={SecurityInfoContentClass.contentfirstsecurityinfo}
-              >
+              <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
                 <div>
                   <img
                     src={safesign}
                     alt="securestore"
-                    className={
-                      SecurityInfoContentClass.contentfirstsecuritinfoimg
-                    }
+                    style={SecurityInfoContentClass.contentfirstsecuritinfoimg}
                   />
                 </div>
                 <div>
@@ -246,16 +234,12 @@ function SecurityInfoContent() {
                   </Typography>
                 </div>
               </div>
-              <div
-                className={SecurityInfoContentClass.contentfirstsecurityinfo}
-              >
+              <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
                 <div>
                   <img
                     src={control}
                     alt="securestore"
-                    className={
-                      SecurityInfoContentClass.contentfirstsecuritinfoimg
-                    }
+                    style={SecurityInfoContentClass.contentfirstsecuritinfoimg}
                   />
                 </div>
                 <div>
@@ -275,16 +259,12 @@ function SecurityInfoContent() {
                   </Typography>
                 </div>
               </div>
-              <div
-                className={SecurityInfoContentClass.contentfirstsecurityinfo}
-              >
+              <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
                 <div>
                   <img
                     src={secnot}
                     alt="securestore"
-                    className={
-                      SecurityInfoContentClass.contentfirstsecuritinfoimg
-                    }
+                    style={SecurityInfoContentClass.contentfirstsecuritinfoimg}
                   />
                 </div>
                 <div>
@@ -309,7 +289,7 @@ function SecurityInfoContent() {
           </div>
         </div>
       </section>
-      <section className={SecurityInfoContentClass.middledivsecurityinfo}>
+      <section style={SecurityInfoContentClass.middledivsecurityinfo}>
         <Box
           sx={{
             backgroundColor: "#5D76A9",
@@ -318,7 +298,7 @@ function SecurityInfoContent() {
             color: "white",
           }}
         >
-          <div className={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
+          <div style={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
             <Typography variant="h4" sx={{ fontWeight: 600, color: "#002244" }}>
               Working Together To Establish Global Crypto Compliance
             </Typography>
@@ -345,7 +325,7 @@ function SecurityInfoContent() {
             Contact MarketWise
           </Typography>
         </div>
-        <div className={SecurityInfoContentClass.lastdivsecurityinfo}>
+        <div style={SecurityInfoContentClass.lastdivsecurityinfo}>
           <div>
             <div style={{ marginBottom: "50px" }}>
               <Typography variant="h6">Phone Number :</Typography>

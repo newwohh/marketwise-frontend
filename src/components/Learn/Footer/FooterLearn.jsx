@@ -18,7 +18,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
 function FooterLearn() {
-  const FooterLearnClasses = useFooterLearnStyles();
+  const FooterLearnClasses = useFooterLearnStyles;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -34,11 +34,8 @@ function FooterLearn() {
     return { products, company, community, faq, img };
   }
   return (
-    <footer
-      className={FooterLearnClasses.footer}
-      style={{ backgroundColor: "#F0F8FF" }}
-    >
-      <div className={FooterLearnClasses.footercontainter}>
+    <footer style={FooterLearnClasses.footer}>
+      <div style={FooterLearnClasses.footercontainter}>
         {isMatch ? (
           <TableContainer
             component={Paper}
@@ -148,7 +145,7 @@ function FooterLearn() {
                       }}
                     >
                       {i === 0 ? (
-                        <Link className={FooterLearnClasses.footerlinks}>
+                        <Link style={FooterLearnClasses.footerlinks}>
                           <InstagramIcon sx={{ marginRight: 1 }} />
                           <TwitterIcon sx={{ marginRight: 1 }} />
                           <GitHubIcon />
@@ -169,7 +166,7 @@ function FooterLearn() {
                         },
                       }}
                     >
-                      <Link className={FooterLearnClasses.footerlinks}>
+                      <Link style={FooterLearnClasses.footerlinks}>
                         {row.products}
                       </Link>
                     </TableCell>
@@ -183,17 +180,17 @@ function FooterLearn() {
                         },
                       }}
                     >
-                      <Link className={FooterLearnClasses.footerlinks}>
+                      <Link style={FooterLearnClasses.footerlinks}>
                         {row.company}
                       </Link>
                     </TableCell>
                     <TableCell align="left" sx={{ border: "none" }}>
-                      <Link className={FooterLearnClasses.footerlinks}>
+                      <Link style={FooterLearnClasses.footerlinks}>
                         {row.community}
                       </Link>
                     </TableCell>
                     <TableCell align="left" sx={{ border: "none" }}>
-                      <Link className={FooterLearnClasses.footerlinks}>
+                      <Link style={FooterLearnClasses.footerlinks}>
                         {row.faq}
                       </Link>
                     </TableCell>

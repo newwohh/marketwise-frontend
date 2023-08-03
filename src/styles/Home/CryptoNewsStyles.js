@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/styles";
-
-const useCryptoNewsStyles = makeStyles(() => ({
+const useCryptoNewsStyles = {
   csection: {
     width: "100%",
     // marginTop: "150px",
@@ -30,6 +28,7 @@ const useCryptoNewsStyles = makeStyles(() => ({
     },
   },
   cardiv: {
+    margin: "100px",
     "@media (max-width: 1000px)": {
       width: "200px",
     },
@@ -37,6 +36,6 @@ const useCryptoNewsStyles = makeStyles(() => ({
   modalStyle: {
     // opacity: 0.5,
   },
-}));
+};
 
 export default useCryptoNewsStyles;

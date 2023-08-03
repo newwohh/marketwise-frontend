@@ -1,11 +1,11 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useFooterStyles = makeStyles(() => ({
+const useFooterStyles = {
   footer: {
     // marginTop: 200,
   },
   footercontainter: {
-    backgroundColor: "blue",
+    backgroundColor: "#F0F8FF",
   },
   footerlinks: {
     color: "#002244",
@@ -19,6 +19,6 @@ const useFooterStyles = makeStyles(() => ({
     height: "50px",
     color: "white",
   },
-}));
+};
 
 export default useFooterStyles;

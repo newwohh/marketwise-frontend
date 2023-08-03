@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useLearnContentStyles = makeStyles({
+const useLearnContentStyles = {
   mains: {
     color: "black",
     width: "100%",
@@ -59,6 +59,6 @@ const useLearnContentStyles = makeStyles({
       width: "300px",
     },
   },
-});
+};
 
 export default useLearnContentStyles;

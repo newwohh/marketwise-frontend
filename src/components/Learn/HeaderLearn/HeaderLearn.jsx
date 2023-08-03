@@ -50,7 +50,7 @@ function HeaderLearn(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const HeaderLearnClasses = HeaderLearnStyles();
+  const HeaderLearnClasses = HeaderLearnStyles;
   return (
     <div>
       {isMatch ? (
@@ -69,9 +69,9 @@ function HeaderLearn(props) {
                   justifyContent: "space-between",
                 }}
               >
-                <div className={HeaderLearnClasses.learnnavfirstdiv}>
+                <div style={HeaderLearnClasses.learnnavfirstdiv}>
                   <img
-                    className={HeaderLearnClasses.logoimg}
+                    style={HeaderLearnClasses.logoimg}
                     src={logo}
                     alt="logo"
                   ></img>
@@ -90,22 +90,19 @@ function HeaderLearn(props) {
                     Start here
                   </Button>
                 </div>
-                <div className={HeaderLearnClasses.learnnavcenterdiv}>
+                <div style={HeaderLearnClasses.learnnavcenterdiv}>
                   <Typography variant="h4" sx={{ fontFamily: "Mangal" }}>
                     MarketWise
                   </Typography>
                 </div>
                 <div>
-                  <NavLink
-                    className={HeaderLearnClasses.learnnavlink}
-                    to="trade"
-                  >
+                  <NavLink style={HeaderLearnClasses.learnnavlink} to="trade">
                     About MarketWise
                   </NavLink>
-                  <NavLink className={HeaderLearnClasses.learnnavlink}>
+                  <NavLink style={HeaderLearnClasses.learnnavlink}>
                     Log-in
                   </NavLink>
-                  <NavLink className={HeaderLearnClasses.learnnavlink}>
+                  <NavLink style={HeaderLearnClasses.learnnavlink}>
                     Sign-up
                   </NavLink>
                 </div>

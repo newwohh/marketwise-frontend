@@ -5,13 +5,13 @@ import { ThemeProvider } from "@mui/material";
 import theme from "../../../styles/Theme";
 
 function ContentExplore() {
-  const ExploreContentClasses = useExploreContent();
+  const ExploreContentClasses = useExploreContent;
 
   return (
     <main>
       <ThemeProvider theme={theme}>
-        <section className={ExploreContentClasses.sectionexplore}>
-          <div className={ExploreContentClasses.titledivexplore}>
+        <section style={ExploreContentClasses.sectionexplore}>
+          <div style={ExploreContentClasses.titledivexplore}>
             <Typography
               variant="h1"
               sx={{
@@ -35,7 +35,7 @@ function ContentExplore() {
             </Typography>
           </div>
         </section>
-        <section className={ExploreContentClasses.secondsection}></section>
+        <section style={ExploreContentClasses.secondsection}></section>
       </ThemeProvider>
     </main>
   );

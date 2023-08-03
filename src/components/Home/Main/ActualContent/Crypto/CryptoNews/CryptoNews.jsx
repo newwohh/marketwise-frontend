@@ -117,7 +117,7 @@ function CryptoNews() {
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
-            className={CryptoNewsClasses.modalStyle}
+            style={CryptoNewsClasses.modalStyle}
           >
             <Box sx={style}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -140,7 +140,7 @@ function CryptoNews() {
   };
 
   let card;
-  const CryptoNewsClasses = useCryptoNewsStyles();
+  const CryptoNewsClasses = useCryptoNewsStyles;
   const { news } = useSelector((state) => state.news);
   const dispatch = useDispatch();
   const dispatchCrpytoNews = React.useCallback(() => {
@@ -151,14 +151,14 @@ function CryptoNews() {
   }, []);
   card = news.results?.map((el, i) => newsCard(el, i));
   return (
-    <div className={CryptoNewsClasses.csection}>
-      <div className={CryptoNewsClasses.cndivtop}>
+    <div style={CryptoNewsClasses.csection}>
+      <div style={CryptoNewsClasses.cndivtop}>
         <div>
           <Typography
             variant="h3"
             sx={{ fontFamily: "monospace", fontWeight: 800 }}
           >
-            <Link to="/cryptocurrency" className={CryptoNewsClasses.titlelink}>
+            <Link to="/cryptocurrency" style={CryptoNewsClasses.titlelink}>
               <ThemeProvider theme={theme}>
                 <Typography
                   variant="h2"
@@ -196,17 +196,9 @@ function CryptoNews() {
             What's Happening in Crypto
           </Typography>
         </div>
-        <div className={CryptoNewsClasses.cnewscarddiv}>
+        <div style={CryptoNewsClasses.cnewscarddiv}>
           <div>
-            <div
-              style={{
-                margin: "100px",
-                // "@media (max-width: 1000px)": {
-                //   width: 100,
-                // },
-              }}
-              className={CryptoNewsClasses.cardiv}
-            >
+            <div style={CryptoNewsClasses.cardiv}>
               <Carousel
                 cols={2}
                 rows={3}

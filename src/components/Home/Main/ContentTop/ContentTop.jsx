@@ -30,13 +30,13 @@ function ContentTop() {
   const handleExpandClick2 = () => {
     setExpanded2(!expanded2);
   };
-  const contentTopClasses = useContentTopStyles();
+  const contentTopClasses = useContentTopStyles;
   const theme = useTheme();
   return (
     <React.Fragment>
-      <section className={contentTopClasses.section}>
+      <section style={contentTopClasses.section}>
         <Fade bottom>
-          <div className={contentTopClasses.firstdiv}>
+          <div style={contentTopClasses.firstdiv}>
             <Typography
               variant="h3"
               align="center"
@@ -107,7 +107,7 @@ function ContentTop() {
                   <CardContent>
                     <Link
                       to="/education"
-                      className={contentTopClasses.firstcardlinks}
+                      style={contentTopClasses.firstcardlinks}
                     >
                       Learn More
                     </Link>
@@ -153,10 +153,7 @@ function ContentTop() {
                 </CardContent>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <Link
-                      to="/grow"
-                      className={contentTopClasses.firstcardlinks}
-                    >
+                    <Link to="/grow" style={contentTopClasses.firstcardlinks}>
                       Learn More
                     </Link>
                   </CardContent>
@@ -202,7 +199,7 @@ function ContentTop() {
                   <CardContent>
                     <Link
                       to="/explore"
-                      className={contentTopClasses.firstcardlinks}
+                      style={contentTopClasses.firstcardlinks}
                     >
                       Learn More
                     </Link>
@@ -213,8 +210,8 @@ function ContentTop() {
           </div>
         </Fade>
         <Fade bottom>
-          <div className={contentTopClasses.seconddivmain}>
-            <div className={contentTopClasses.secondivtitle}>
+          <div style={contentTopClasses.seconddivmain}>
+            <div style={contentTopClasses.secondivtitle}>
               <div>
                 <Typography
                   variant="h3"
@@ -231,14 +228,14 @@ function ContentTop() {
                 </Typography>
                 <Link
                   to="/user_protection"
-                  className={contentTopClasses.secondivlink}
+                  style={contentTopClasses.secondivlink}
                 >
                   Learn More
                 </Link>
               </div>
-              <div className={contentTopClasses.securecontentdiv}>
+              <div style={contentTopClasses.securecontentdiv}>
                 <div>
-                  <div className={contentTopClasses.secondivsecurity}>
+                  <div style={contentTopClasses.secondivsecurity}>
                     <Card
                       sx={{
                         width: 800,
@@ -275,7 +272,7 @@ function ContentTop() {
                       </CardContent>
                     </Card>
                   </div>
-                  <div className={contentTopClasses.secondivsecurity}>
+                  <div style={contentTopClasses.secondivsecurity}>
                     <Card
                       sx={{
                         width: 800,
@@ -314,7 +311,7 @@ function ContentTop() {
                       </CardContent>
                     </Card>
                   </div>
-                  <div className={contentTopClasses.secondivsecurity}>
+                  <div style={contentTopClasses.secondivsecurity}>
                     <Card
                       sx={{
                         width: 800,

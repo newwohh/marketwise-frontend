@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useChartStyles = makeStyles({
+const useChartStyles = {
   containerchart: {
     display: "flex",
     marginTop: "10px",
@@ -16,6 +16,6 @@ const useChartStyles = makeStyles({
       width: "300px",
     },
   },
-});
+};
 
 export default useChartStyles;

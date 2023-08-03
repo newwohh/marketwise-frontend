@@ -4,7 +4,7 @@ import logo from "../../../assets/profit(1).png";
 import useSignIn from "../../../styles/SignIn/SignInStyles";
 
 function SignInNavbar() {
-  const signInClass = useSignIn();
+  const signInClass = useSignIn;
   return (
     <header>
       <nav>
@@ -15,7 +15,7 @@ function SignInNavbar() {
             padding: "20px",
           }}
         >
-          <div className={signInClass.signinNav}>
+          <div style={signInClass.signinNav}>
             <div>
               <img
                 src={logo}

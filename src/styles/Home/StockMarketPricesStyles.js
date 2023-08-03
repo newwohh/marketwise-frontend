@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/styles";
-
-const useStockMarketPrices = makeStyles(() => ({
+const useStockMarketPrices = {
   containerstockprice: {
     backgroundColor: "#F0F8FF",
   },
@@ -24,6 +22,6 @@ const useStockMarketPrices = makeStyles(() => ({
       textDecoration: "underline",
     },
   },
-}));
+};
 
 export default useStockMarketPrices;

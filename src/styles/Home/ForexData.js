@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/styles";
-
-const useForexDataStyles = makeStyles(() => ({
+const useForexDataStyles = {
   containerdiv: {
     // margin: "100px",
     backgroundColor: "#F0F8FF",
@@ -55,6 +53,7 @@ const useForexDataStyles = makeStyles(() => ({
     },
   },
   carddiv: {
+    display: "flex",
     "@media (max-width : 1000px)": {
       marginTop: "50px",
     },
@@ -76,6 +75,6 @@ const useForexDataStyles = makeStyles(() => ({
       width: 200,
     },
   },
-}));
+};
 
 export default useForexDataStyles;

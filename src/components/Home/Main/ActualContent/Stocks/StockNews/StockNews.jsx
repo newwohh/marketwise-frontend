@@ -58,7 +58,7 @@ function StockNews() {
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
-  const StockNewsClasses = useStockNews();
+  const StockNewsClasses = useStockNews;
   const dispatch = useDispatch();
   const { stocknews } = useSelector((state) => state.news);
   const getProducts = React.useCallback(() => {
@@ -71,9 +71,9 @@ function StockNews() {
 
   let stockNews = stocknews;
   return (
-    <div className={StockNewsClasses.containerdiv}>
+    <div style={StockNewsClasses.containerdiv}>
       <Fade bottom>
-        <div className={StockNewsClasses.newsdiv}>
+        <div style={StockNewsClasses.newsdiv}>
           <div>
             <ThemeProvider theme={theme}>
               <Typography
@@ -87,7 +87,7 @@ function StockNews() {
                   },
                 }}
               >
-                <Link to="/stocks" className={StockNewsClasses.titlelink}>
+                <Link to="/stocks" style={StockNewsClasses.titlelink}>
                   Stocks
                   <ArrowForwardIosIcon
                     sx={{
@@ -106,7 +106,7 @@ function StockNews() {
             </ThemeProvider>
           </div>
         </div>
-        <div className={StockNewsClasses.newscontent}>
+        <div style={StockNewsClasses.newscontent}>
           <Carousel
             cols={3}
             rows={1}
@@ -195,11 +195,7 @@ function StockNews() {
                           >
                             <Link
                               onClick={() => handleOpen(el)}
-                              className={StockNewsClasses.cardTitle}
-                              style={{
-                                color: "#1F305E",
-                                textDecoration: "none",
-                              }}
+                              style={StockNewsClasses.cardTitle}
                             >
                               {el.title}
                             </Link>

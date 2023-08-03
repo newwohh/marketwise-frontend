@@ -1,6 +1,6 @@
-import { makeStyles } from "@mui/styles";
+import {} from "@mui/styles";
 
-const useSecurityInfoContentStyles = makeStyles({
+const useSecurityInfoContentStyles = {
   securityinfofirstdiv: {
     marginTop: "60px",
     backgroundColor: "#000519",
@@ -93,6 +93,6 @@ const useSecurityInfoContentStyles = makeStyles({
       margin: 0,
     },
   },
-});
+};
 
 export default useSecurityInfoContentStyles;

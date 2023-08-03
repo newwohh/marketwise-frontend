@@ -5,7 +5,7 @@ import { Divider, Typography } from "@mui/material";
 import useChartStyles from "../styles/Chart.js/Chart";
 let tvScriptLoadingPromise;
 function Chart() {
-  const ChartClasses = useChartStyles();
+  const ChartClasses = useChartStyles;
   const { id } = useParams();
   console.log(id);
   const onLoadScriptRef = useRef();
@@ -59,7 +59,7 @@ function Chart() {
       <ScrollToTop />
       <NavBar />
 
-      <div className={ChartClasses.containerchart}>
+      <div style={ChartClasses.containerchart}>
         <div style={{ marginLeft: "50px" }}>
           <div style={{ marginTop: "80px" }}>
             <Typography
@@ -74,8 +74,8 @@ function Chart() {
             </Typography>
             <Divider />
           </div>
-          <div className="tradingview-widget-container">
-            <div id="tradingview_4d272" className={ChartClasses.chartclass} />
+          <div style="tradingview-widget-container">
+            <div id="tradingview_4d272" style={ChartClasses.chartclass} />
           </div>
         </div>
         <div style={{ marginTop: "100px", width: "500px", marginLeft: "20px" }}>

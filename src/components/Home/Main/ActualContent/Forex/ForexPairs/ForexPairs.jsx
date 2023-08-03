@@ -82,11 +82,11 @@ function ForexPairs() {
   useEffect(() => {
     getProducts();
   }, [apiData]);
-  const forexDataClass = useForexDataStyles();
+  const forexDataClass = useForexDataStyles;
   const forexCardData = forexdata;
   return (
-    <div className={forexDataClass.containerdiv}>
-      <div className={forexDataClass.titlediv}>
+    <div style={forexDataClass.containerdiv}>
+      <div style={forexDataClass.titlediv}>
         <ThemeProvider theme={theme}>
           <Typography
             variant="h2"
@@ -98,10 +98,7 @@ function ForexPairs() {
               },
             }}
           >
-            <Link
-              className={forexDataClass.titlelink}
-              style={{ color: "#002244" }}
-            >
+            <Link style={forexDataClass.titlelink}>
               Forex{" "}
               <ArrowForwardIosIcon
                 sx={{
@@ -149,7 +146,7 @@ function ForexPairs() {
           ))}
         </Carousel>
       </div>
-      <div className={forexDataClass.lastcontainer}>
+      <div style={forexDataClass.lastcontainer}>
         <div>
           <div>
             <Typography
@@ -160,36 +157,36 @@ function ForexPairs() {
             </Typography>
           </div>
         </div>
-        <div className={forexDataClass.seconddiv}>
-          <div style={{ display: "flex" }} className={forexDataClass.carddiv}>
+        <div style={forexDataClass.seconddiv}>
+          <div style={forexDataClass.carddiv}>
             <div>
               <img src={blog} alt="blog" style={{ width: 100, height: 100 }} />
             </div>
-            <div className={forexDataClass.seconddatasubdiv}>
+            <div style={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">Blog</Typography>
               <Typography variant="p">
                 Stay up to date with the latest stories and commentary.
               </Typography>
-              <Link to="/blogs" className={forexDataClass.lastdivlink}>
+              <Link to="/blogs" style={forexDataClass.lastdivlink}>
                 Learn More
               </Link>
             </div>
           </div>
-          <div style={{ display: "flex" }} className={forexDataClass.carddiv}>
+          <div style={forexDataClass.carddiv}>
             <div>
               <img src={faq} alt="faq" style={{ width: 100, height: 100 }} />
             </div>
-            <div className={forexDataClass.seconddatasubdiv}>
+            <div style={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">FAQs</Typography>
               <Typography variant="p">
                 View FAQs for detailed instructions on specific features.
               </Typography>
-              <Link to="/faq" className={forexDataClass.lastdivlink}>
+              <Link to="/faq" style={forexDataClass.lastdivlink}>
                 Learn more
               </Link>
             </div>
           </div>
-          <div style={{ display: "flex" }} className={forexDataClass.carddiv}>
+          <div style={forexDataClass.carddiv}>
             <div>
               <img
                 src={chatsupport}
@@ -197,13 +194,13 @@ function ForexPairs() {
                 style={{ width: 100, height: 100 }}
               />
             </div>
-            <div className={forexDataClass.seconddatasubdiv}>
+            <div style={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">24/7 Chat Support</Typography>
               <Typography variant="p">
                 Get 24/7 chat support with our friendly customer service agents
                 at your service.
               </Typography>
-              <Link className={forexDataClass.lastdivlink}>Chat now</Link>
+              <Link style={forexDataClass.lastdivlink}>Chat now</Link>
             </div>
           </div>
         </div>

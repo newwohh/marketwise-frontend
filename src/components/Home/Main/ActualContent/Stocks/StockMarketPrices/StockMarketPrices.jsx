@@ -48,7 +48,7 @@ function StockMarketPrices() {
   const dispatch = useDispatch();
   const stockprice = useSelector((state) => state.news.stockprice);
   const themes = useTheme();
-  const StockPriceClasses = useStockMarketPrices();
+  const StockPriceClasses = useStockMarketPrices;
   const loaderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -78,8 +78,8 @@ function StockMarketPrices() {
       : stockprice[2].results;
 
   return (
-    <div className={StockPriceClasses.containerstockprice}>
-      <div className={StockPriceClasses.firstdiv}>
+    <div style={StockPriceClasses.containerstockprice}>
+      <div style={StockPriceClasses.firstdiv}>
         <div>
           <ThemeProvider theme={theme}>
             <Typography
@@ -109,7 +109,7 @@ function StockMarketPrices() {
           </ThemeProvider>
         </div>
       </div>
-      <div className={StockPriceClasses.firstdiv}>
+      <div style={StockPriceClasses.firstdiv}>
         <Box
           sx={{
             marginTop: "100px",
@@ -252,9 +252,8 @@ function StockMarketPrices() {
                               title={row.name ? row.name : "Data not found!"}
                             >
                               <Link
-                                className={StockPriceClasses.exchangesLink}
+                                style={StockPriceClasses.exchangesLink}
                                 to={row.url || ""}
-                                style={{ color: "#002244" }}
                               >
                                 {row.name ? row.name : "Data not found!"}
                               </Link>
@@ -345,8 +344,7 @@ function StockMarketPrices() {
                           <TableCell component="th" scope="row">
                             <Link
                               to={row.url || "#"}
-                              className={StockPriceClasses.exchangesLink}
-                              style={{ color: "#002244" }}
+                              style={StockPriceClasses.exchangesLink}
                             >
                               {row.ticker ? row.ticker : "Data not found!"}
                             </Link>
@@ -442,10 +440,7 @@ function StockMarketPrices() {
                           }}
                         >
                           <TableCell component="th" scope="row">
-                            <Link
-                              className={StockPriceClasses.exchangesLink}
-                              style={{ color: "#002244" }}
-                            >
+                            <Link style={StockPriceClasses.exchangesLink}>
                               {row.name ? row.name : "Data not found!"}
                             </Link>
                           </TableCell>

@@ -12,15 +12,15 @@ You may also see any lint errors in the console.
 ### Features
 
 Real-time data and charts for cryptocurrencies, forex, and stocks
-Historical data, news, and analysis for each asset
-Customizable charts
-Alerts for price changes
-Heatmap
-Blogs
-Invest Simulator
-Ticker Subscription
-Premium
-Short Guide
+Historical data, news, and analysis for each asset,
+Customizable charts,
+Alerts for price changes,
+Heatmap,
+Blogs,
+Invest Simulator,
+Ticker Subscription,
+Premium,
+Short Guide,
 Chat Support
 
 Getting Started

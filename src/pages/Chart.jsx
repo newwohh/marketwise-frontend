@@ -74,7 +74,7 @@ function Chart() {
             </Typography>
             <Divider />
           </div>
-          <div style="tradingview-widget-container">
+          <div className="tradingview-widget-container">
             <div id="tradingview_4d272" style={ChartClasses.chartclass} />
           </div>
         </div>

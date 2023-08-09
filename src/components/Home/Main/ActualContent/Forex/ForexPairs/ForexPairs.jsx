@@ -123,7 +123,7 @@ function ForexPairs() {
           </Typography>
         </ThemeProvider>
       </div>
-      <div>
+      <Box sx={{ margin: 10 }}>
         <Carousel
           cols={5}
           rows={1}
@@ -144,7 +144,7 @@ function ForexPairs() {
             <Carousel.Item key={i}>{forexCard(el, i)}</Carousel.Item>
           ))}
         </Carousel>
-      </div>
+      </Box>
       <Box sx={forexDataClass.lastcontainer}>
         <Box>
           <div>

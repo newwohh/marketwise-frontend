@@ -13,6 +13,7 @@ const useCryptoNewsStyles = {
   },
   titlelink: {
     textDecoration: "none",
+    width: "100px",
     "&:hover": {
       textDecoration: "underline",
       color: "#002244",

@@ -24,7 +24,7 @@ function Heatmap(props) {
     isProps = false;
     maps = stockpriceforheatmap;
   }
-  const HeatmapClass = useHeatmap();
+  const HeatmapClass = useHeatmap;
   const setColor = (lastDay, themeOne, themeTwo, themeThree, themeFour) => {
     if (lastDay > 1) {
       return themeOne;
@@ -47,7 +47,7 @@ function Heatmap(props) {
     <React.Fragment>
       <ScrollToTop />
       <SecurityInfoNavbar />
-      <div style={HeatmapClass.containermap}>
+      <Box sx={HeatmapClass.containermap}>
         <div>
           <Typography variant="h2">Heatmap</Typography>
           <Typography variant="h4">
@@ -104,10 +104,25 @@ function Heatmap(props) {
                   container
                   rowSpacing={1}
                   columnSpacing={{ xs: 1, sm: 2, md: 5 }}
+                  sx={{
+                    "@media (max-width:1000px)": {
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "100px",
+                    },
+                  }}
                 >
                   {maps.map((el, i) => {
                     return (
-                      <Grid item xs={3}>
+                      <Grid
+                        item
+                        xs={3}
+                        sx={{
+                          "@media (max-width:1000px)": {
+                            // width: "10px",
+                          },
+                        }}
+                      >
                         <Card
                           variant="outlined"
                           sx={{
@@ -168,7 +183,7 @@ function Heatmap(props) {
             </div>
           </div>
         </div>
-      </div>
+      </Box>
     </React.Fragment>
   );
 }

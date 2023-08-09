@@ -7,10 +7,10 @@ import Typography from "@mui/material/Typography";
 import useCryptoNewsStyles from "../../../../../../styles/Home/CryptoNewsStyles";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Link, ThemeProvider } from "@mui/material";
-import theme from "../../../../../../styles/Theme";
+import { Button, ThemeProvider } from "@mui/material";
 import Carousel from "better-react-carousel";
 import { getCryptoNews } from "../../../../../../store/store-actions";
+import { Link } from "react-router-dom";
 
 const style = {
   overflow: "scroll",
@@ -157,29 +157,29 @@ function CryptoNews() {
             variant="h3"
             sx={{ fontFamily: "monospace", fontWeight: 800 }}
           >
-            <Link href="/cryptocurrency" sx={CryptoNewsClasses.titlelink}>
-              <ThemeProvider theme={theme}>
-                <Typography
-                  variant="h2"
+            <Link to="/cryptocurrency" sx={CryptoNewsClasses.titlelink}>
+              {/* <ThemeProvider theme={theme}> */}
+              <Typography
+                variant="h2"
+                sx={{
+                  marginTop: "400px",
+                  color: "#002244",
+                  "@media (max-width: 1000px)": {
+                    fontSize: "25px",
+                  },
+                }}
+              >
+                Crypto Currency{" "}
+                <ArrowForwardIosIcon
                   sx={{
-                    marginTop: "400px",
-                    color: "#002244",
+                    ml: "-10px",
                     "@media (max-width: 1000px)": {
-                      fontSize: "25px",
+                      height: "9px",
                     },
                   }}
-                >
-                  Crypto Currency{" "}
-                  <ArrowForwardIosIcon
-                    sx={{
-                      ml: "-10px",
-                      "@media (max-width: 1000px)": {
-                        height: "9px",
-                      },
-                    }}
-                  />
-                </Typography>
-              </ThemeProvider>
+                />
+              </Typography>
+              {/* </ThemeProvider> */}
             </Link>
           </Typography>
           <Typography
@@ -195,9 +195,9 @@ function CryptoNews() {
             What's Happening in Crypto
           </Typography>
         </div>
-        <div style={CryptoNewsClasses.cnewscarddiv}>
+        <Box sx={CryptoNewsClasses.cnewscarddiv}>
           <div>
-            <div style={CryptoNewsClasses.cardiv}>
+            <Box sx={CryptoNewsClasses.cardiv}>
               <Carousel
                 cols={2}
                 rows={3}
@@ -216,9 +216,9 @@ function CryptoNews() {
               >
                 {card}
               </Carousel>
-            </div>
+            </Box>
           </div>
-        </div>
+        </Box>
       </div>
     </div>
   );

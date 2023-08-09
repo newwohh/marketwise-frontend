@@ -34,8 +34,6 @@ function App() {
     setUser(JSON.parse(secureLocalStorage.getItem("user")));
   }, []);
 
-  console.log(user);
-
   return (
     <React.Fragment>
       <MyContext.Provider value={{ user }}>

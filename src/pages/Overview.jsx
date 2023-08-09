@@ -86,7 +86,7 @@ function Overview(props) {
       window.scrollTo(0, 0);
     }, [pathname]);
   };
-
+  console.log(prices, news);
   const subscribeNew = async (name) => {
     try {
       const request = await fetch(
@@ -117,16 +117,31 @@ function Overview(props) {
         <ScrollToTop />
         <NavBar />
         <main style={OverviewClasses.overviewmain}>
-          <div style={OverviewClasses.contentdiv}>
-            <div>
+          <Box sx={OverviewClasses.contentdiv}>
+            <Box
+              sx={{
+                "@media (max-width:1000px)": {
+                  fontSize: 20,
+                  marginLeft: 2,
+                  marginBottom: 5,
+                },
+              }}
+            >
               <Typography variant="p" sx={{ color: "grey" }}>
                 Markets
               </Typography>
-              <Typography variant="h3">
+              <Typography
+                variant="h3"
+                sx={{
+                  "@media (max-width:1000px)": {
+                    fontSize: 20,
+                  },
+                }}
+              >
                 {props.crypto ? "Cryptocurrency" : "Stock Market"}
               </Typography>
-            </div>
-            <div style={OverviewClasses.introoverview}>
+            </Box>
+            <Box sx={OverviewClasses.introoverview}>
               <div>
                 <Box
                   sx={{
@@ -153,7 +168,7 @@ function Overview(props) {
                     <Grid
                       container
                       spacing={{ xs: 2, md: 3, sm: 1 }}
-                      columns={{ xs: 4, sm: 1, md: 12 }}
+                      columns={{ xs: 1, sm: 1, md: 12 }}
                     >
                       {news.map((el, i) => {
                         return (
@@ -252,7 +267,7 @@ function Overview(props) {
                               <TableCell>
                                 <Button
                                   ref={nameref}
-                                  // href="/cryptocurrency/chart"
+                                  href={`cryptocurrency/chart/${row.symbol}`}
                                   variant="outlined"
                                   sx={{
                                     borderColor: "#002244",
@@ -263,6 +278,11 @@ function Overview(props) {
                                       backgroundColor: "#002244",
                                       color: "white",
                                       borderColor: "#002244",
+                                    },
+                                    "@media (max-width:1000px)": {
+                                      height: "50px",
+                                      fontSize: 10,
+                                      overflow: "auto",
                                     },
                                   }}
                                 >
@@ -328,8 +348,8 @@ function Overview(props) {
                   {about}
                 </Typography>
               </div>
-            </div>
-          </div>
+            </Box>
+          </Box>
           <Outlet />
         </main>
       </ThemeProvider>

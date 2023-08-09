@@ -1,7 +1,7 @@
 const useHeatmap = {
   containermap: {
     marginTop: "50px",
-    padding: "50px",
+    // padding: "50px",
     backgroundColor: "#F0F8FF",
   },
   cardStyle: {

@@ -1,6 +1,6 @@
 import React from "react";
 import SignInNavbar from "../components/SignIn/SignInNavBar/SignInNavbar";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -25,14 +25,25 @@ function Faq() {
       <ScrollToTop />
       <SignInNavbar />
       <main>
-        <section style={{ padding: "150px", textAlign: "center" }}>
+        <Box
+          sx={{
+            padding: { xl: "150px", xs: 0 },
+            marginTop: { xs: 10 },
+            textAlign: "center",
+          }}
+        >
           <div>
-            <Typography variant="h1">FAQ's</Typography>
+            <Typography variant="h1" sx={{ fontSize: { xs: 30 } }}>
+              FAQ's
+            </Typography>
             <div style={{ marginTop: "150px" }}>
               <Accordion
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
-                sx={{ height: "", marginBottom: "20px" }}
+                sx={{
+                  height: "",
+                  marginBottom: "20px",
+                }}
               >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -206,7 +217,7 @@ function Faq() {
               </Accordion>
             </div>
           </div>
-        </section>
+        </Box>
       </main>
     </React.Fragment>
   );

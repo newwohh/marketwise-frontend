@@ -64,7 +64,7 @@ function ChoosePlan() {
       <main
         style={{
           backgroundColor: "#F0F8FF",
-          height: "950px",
+          height: "260vh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -87,11 +87,17 @@ function ChoosePlan() {
                 justifyContent: "center",
                 alignItems: "center",
                 textAlign: "center",
+                "@media (max-width: 1000px)": {
+                  marginTop: 0,
+                },
               }}
             >
               {plansInformation.map((el, i) => {
                 return (
-                  <Grid item>
+                  <Grid
+                    item
+                    sx={{ "@media (max-width: 1000px)": { margin: 2 } }}
+                  >
                     <Card sx={{ minWidth: 275, padding: "50px" }}>
                       <CardContent>
                         <Typography

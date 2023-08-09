@@ -1,12 +1,12 @@
 import React from "react";
 import useAbout from "../../styles/About/About";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 function ContentAbout() {
   const ContentAboutClass = useAbout;
   return (
-    <div style={ContentAboutClass.mainabout}>
-      <div style={ContentAboutClass.contentdiv}>
+    <Box sx={ContentAboutClass.mainabout}>
+      <Box sx={ContentAboutClass.contentdiv}>
         <Typography
           sx={{
             fontWeight: 600,
@@ -31,8 +31,8 @@ function ContentAbout() {
           contact me. I'm also interested in hearing about your own experiences
           with financial trading, so please feel free to share them with me.
         </Typography>
-      </div>
-      <div style={ContentAboutClass.contentdivtwo}>
+      </Box>
+      <Box sx={ContentAboutClass.contentdivtwo}>
         <Typography
           variant="h4"
           sx={{
@@ -63,14 +63,14 @@ function ContentAbout() {
             industry-standard encryption.
           </li>
         </ul>
-      </div>
+      </Box>
       <Typography
         variant="p"
         sx={{ marginTop: "100px", marginBottom: "200px" }}
       >
         Thank you for visiting MarketWise!
       </Typography>
-    </div>
+    </Box>
   );
 }
 

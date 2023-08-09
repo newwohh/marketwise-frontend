@@ -19,7 +19,7 @@ const useOverviewStyles = {
     display: "flex",
     justifyContent: "space-between",
     "@media (max-width:1000px)": {
-      flexDirection: "column",
+      flexDirection: "column-reverse",
     },
   },
   overviewcardlink: {

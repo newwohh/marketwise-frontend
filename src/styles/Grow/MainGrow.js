@@ -47,6 +47,7 @@ const useMainGrowStyles = {
     "@media (max-width:1000px)": {
       flexDirection: "column",
       width: "300px",
+      overflow: "hidden",
     },
   },
   infosection: {

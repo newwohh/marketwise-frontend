@@ -39,9 +39,17 @@ function BlogsContent() {
     <main style={{ backgroundColor: "#F0F8FF" }}>
       <ThemeProvider theme={theme}>
         <section>
-          <div style={{ padding: "150px" }}>
+          <Box
+            sx={{
+              padding: { xl: "150px", xs: "50px" },
+              paddingTop: { xs: 20 },
+            }}
+          >
             <div>
-              <Typography variant="h3" sx={{ textDecoration: "underline" }}>
+              <Typography
+                variant="h3"
+                sx={{ textDecoration: "underline", fontSize: { xs: "25px" } }}
+              >
                 MarketWise Blogs
               </Typography>
             </div>
@@ -70,7 +78,19 @@ function BlogsContent() {
                   : blogs?.map((el, i) => {
                       return (
                         <Grid item xs={3} sm={4} md={4} key={i}>
-                          <Card sx={{ width: 450, height: "400px" }} key={i}>
+                          <Card
+                            sx={{
+                              width: { xs: 200, xl: 450 },
+                              height: {
+                                xs: "200",
+                                xl: "400px",
+                              },
+                              textAlign: {
+                                xs: "center",
+                              },
+                            }}
+                            key={i}
+                          >
                             <CardContent>
                               <Typography
                                 sx={{ fontSize: 14 }}
@@ -101,7 +121,7 @@ function BlogsContent() {
                     })}
               </Grid>
             </div>
-          </div>
+          </Box>
         </section>
       </ThemeProvider>
     </main>

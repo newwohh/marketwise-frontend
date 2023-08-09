@@ -68,6 +68,7 @@ function ContentTop() {
             >
               <Card
                 sx={{
+                  height: 350,
                   width: "300vh",
                   marginRight: 5,
                   backgroundColor: "#F0F8FF",

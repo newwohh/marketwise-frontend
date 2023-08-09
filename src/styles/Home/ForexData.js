@@ -24,9 +24,9 @@ const useForexDataStyles = {
   },
   lastcontainer: {
     // margin: "100px",
-    padding: 30,
-    height: "300px",
-    marginTop: 250,
+    padding: 10,
+    height: "450px",
+    marginTop: 20,
     backgroundColor: "white",
     borderRadius: "100px",
     textAlign: "center",
@@ -50,7 +50,7 @@ const useForexDataStyles = {
   },
   seconddiv: {
     display: "flex",
-    marginTop: 50,
+    marginTop: 10,
     "@media (max-width : 1000px)": {
       margin: 0,
       width: "400px",
@@ -72,7 +72,7 @@ const useForexDataStyles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
-    marginRight: 50,
+    // marginRight: 50,
     "@media (max-width : 1000px)": {
       justifyContent: "center",
       alignItems: "center",

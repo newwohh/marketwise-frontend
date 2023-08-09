@@ -35,6 +35,7 @@ function HeroSection() {
             sx={{
               fontSize: {
                 xs: "30px",
+                xl: "100px",
               },
               marginTop: "370px",
               color: "white",

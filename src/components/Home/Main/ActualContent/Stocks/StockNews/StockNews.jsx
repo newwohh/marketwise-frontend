@@ -4,7 +4,6 @@ import { getStockNews } from "../../../../../../store/store-actions";
 import {
   Button,
   CircularProgress,
-  Link,
   ThemeProvider,
   Typography,
 } from "@mui/material";
@@ -19,6 +18,7 @@ import useStockNews from "../../../../../../styles/Home/StockNewsStyle";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Carousel from "better-react-carousel";
 import { Fade } from "react-reveal";
+import { Link } from "react-router-dom";
 
 const style = {
   display: "flex",
@@ -87,7 +87,7 @@ function StockNews() {
                   },
                 }}
               >
-                <Link href="/stocks" sx={StockNewsClasses.titlelink}>
+                <Link to="/stocks" style={StockNewsClasses.titlelink}>
                   Stocks
                   <ArrowForwardIosIcon
                     sx={{

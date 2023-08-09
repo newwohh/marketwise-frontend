@@ -1,4 +1,11 @@
-import { Button, Divider, ThemeProvider, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Divider,
+  Paper,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import React, { useRef } from "react";
 import theme from "../../styles/Theme";
 import useMainGrowStyles from "../../styles/Grow/MainGrow";
@@ -17,11 +24,15 @@ function MainGrow() {
   return (
     <main style={{ backgroundColor: "#F0F8FF" }}>
       <ThemeProvider theme={theme}>
-        <section style={MainGrowClasses.firstsection}>
+        <Box sx={MainGrowClasses.firstsection}>
           <Typography
             align="center"
             variant="h1"
-            sx={{ marginTop: "50px", color: "#002244" }}
+            sx={{
+              marginTop: "50px",
+              color: "#002244",
+              fontSize: { xs: 30, xl: 50 },
+            }}
           >
             Grow with MarketWise
           </Typography>
@@ -46,17 +57,17 @@ function MainGrow() {
             Click to See
             <ArrowDownwardIcon sx={{ marginLeft: "10px" }} />
           </Button>
-        </section>
-        <section ref={refgrow} style={MainGrowClasses.secondsectiongrow}>
+        </Box>
+        <Box ref={refgrow} sx={MainGrowClasses.secondsectiongrow}>
           <Zoom>
-            <div style={MainGrowClasses.contentdiv}>
-              <div>
+            <Box sx={MainGrowClasses.contentdiv}>
+              <Paper>
                 <img
                   src={dataReal}
-                  style={MainGrowClasses.growimg}
                   alt="datareal"
+                  style={MainGrowClasses.growimg}
                 />
-              </div>
+              </Paper>
               <div>
                 <Typography variant="h4">Real-time data</Typography>
                 <Typography variant="p">
@@ -65,10 +76,10 @@ function MainGrow() {
                 </Typography>
               </div>
               <Divider />
-            </div>
+            </Box>
           </Zoom>
           <Zoom>
-            <div style={MainGrowClasses.contentdiv}>
+            <Box sx={MainGrowClasses.contentdiv}>
               <div>
                 <Typography variant="h4">Advanced charting</Typography>
                 <Typography variant="p">
@@ -84,10 +95,10 @@ function MainGrow() {
                 />
               </div>
               <Divider />
-            </div>
+            </Box>
           </Zoom>
           <Zoom>
-            <div style={MainGrowClasses.contentdiv}>
+            <Box sx={MainGrowClasses.contentdiv}>
               <div>
                 <img
                   src={research}
@@ -103,10 +114,10 @@ function MainGrow() {
                 </Typography>
               </div>
               <Divider />
-            </div>
+            </Box>
           </Zoom>
           <Zoom>
-            <div style={MainGrowClasses.contentdiv}>
+            <Box sx={MainGrowClasses.contentdiv}>
               <div>
                 <Typography variant="h4">Educational resources</Typography>
                 <Typography variant="p">
@@ -122,10 +133,10 @@ function MainGrow() {
                 />
               </div>
               <Divider />
-            </div>
+            </Box>
           </Zoom>
-        </section>
-        <section style={MainGrowClasses.infosection}>
+        </Box>
+        <Box sx={MainGrowClasses.infosection}>
           <div style={MainGrowClasses.infodivgrow}>
             <div>
               <Typography variant="h3">
@@ -219,7 +230,7 @@ function MainGrow() {
               </div>
             </div>
           </div>
-        </section>
+        </Box>
       </ThemeProvider>
     </main>
   );

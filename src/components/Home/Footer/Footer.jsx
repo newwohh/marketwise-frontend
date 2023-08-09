@@ -136,9 +136,8 @@ function Footer() {
                       scope="row"
                       sx={{
                         border: "none",
-                        "@media (max-width : 1000px)": {
-                          width: "10px",
-                          marginBottom: "-20px",
+                        fontSize: {
+                          xs: "100px",
                         },
                       }}
                     >
@@ -216,7 +215,9 @@ function Footer() {
                 sx={{
                   fontWeight: 600,
                   fontFamily: "Arial",
-                  color: "white",
+                  color: {
+                    xs: "white",
+                  },
                 }}
               >
                 MarketWise

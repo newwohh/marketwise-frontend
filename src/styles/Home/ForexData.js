@@ -36,9 +36,13 @@ const useForexDataStyles = {
     borderImage:
       "repeating-linear-gradient(45deg, transparent, transparent 5px, $accentColor 6px, $accentColor 15px, transparent 16px, transparent 20px) 20/1rem",
     "@media (max-width : 1000px)": {
-      margin: 0,
-      marginTop: "100px",
-      width: "400px",
+      padding: 10,
+      marginLeft: 0,
+      marginRight: 0,
+      marginBottom: "10px",
+      marginTop: "600px",
+      width: "360px",
+      height: "1000px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -48,6 +52,7 @@ const useForexDataStyles = {
     display: "flex",
     marginTop: 50,
     "@media (max-width : 1000px)": {
+      margin: 0,
       width: "400px",
       flexDirection: "column",
     },
@@ -55,7 +60,12 @@ const useForexDataStyles = {
   carddiv: {
     display: "flex",
     "@media (max-width : 1000px)": {
+      height: "200px",
+      fontSize: 15,
+      width: "150px",
       marginTop: "50px",
+      flexDirection: "column",
+      justifyContent: "center",
     },
   },
   seconddatasubdiv: {
@@ -63,6 +73,11 @@ const useForexDataStyles = {
     flexDirection: "column",
     justifyContent: "space-evenly",
     marginRight: 50,
+    "@media (max-width : 1000px)": {
+      justifyContent: "center",
+      alignItems: "center",
+      marginRight: 0,
+    },
   },
 
   lastdivlink: {

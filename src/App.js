@@ -7,7 +7,6 @@ import Explore from "./pages/Explore";
 import Chart from "./pages/Chart";
 import SecurityInfo from "./pages/SecurityInfo";
 import About from "./pages/About";
-import { useLocation } from "react-router-dom";
 import Overview from "./pages/Overview";
 import { useSelector } from "react-redux";
 import Heatmap from "./pages/Heatmap";

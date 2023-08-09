@@ -4,8 +4,8 @@ import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Collapse from "@mui/material/Collapse";
 import Typography from "@mui/material/Typography";
-import { Container, ThemeProvider, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Container, Link, ThemeProvider, useTheme } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import { Fade } from "react-reveal";
 
 import useContentTopStyles from "../../../../styles/Home/ContentTop";
@@ -70,7 +70,6 @@ function ContentTop() {
                 sx={{
                   width: "300vh",
                   marginRight: 5,
-                  height: 350,
                   backgroundColor: "#F0F8FF",
                   color: "#002244",
                   transition: "transform 0.3s",
@@ -83,7 +82,7 @@ function ContentTop() {
                     display: "flex",
                     flexDirection: "column",
                     width: "300px",
-                    height: "600px",
+                    height: "350px",
                     alignItems: "center",
                   },
                 }}
@@ -106,8 +105,8 @@ function ContentTop() {
                 <Collapse in={expanded1} timeout="auto" unmountOnExit>
                   <CardContent>
                     <Link
-                      to="/education"
-                      style={contentTopClasses.firstcardlinks}
+                      href="/education"
+                      sx={contentTopClasses.firstcardlinks}
                     >
                       Learn More
                     </Link>
@@ -131,7 +130,7 @@ function ContentTop() {
                     display: "flex",
                     flexDirection: "column",
                     width: "300px",
-                    height: "600px",
+                    height: "350px",
                     alignItems: "center",
                   },
                 }}
@@ -153,7 +152,7 @@ function ContentTop() {
                 </CardContent>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <Link to="/grow" style={contentTopClasses.firstcardlinks}>
+                    <Link href="/grow" sx={contentTopClasses.firstcardlinks}>
                       Learn More
                     </Link>
                   </CardContent>
@@ -176,7 +175,7 @@ function ContentTop() {
                     display: "flex",
                     flexDirection: "column",
                     width: "300px",
-                    height: "600px",
+                    height: "350px",
                     alignItems: "center",
                   },
                 }}
@@ -197,10 +196,7 @@ function ContentTop() {
                 </CardContent>
                 <Collapse in={expanded2} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <Link
-                      to="/explore"
-                      style={contentTopClasses.firstcardlinks}
-                    >
+                    <Link href="/explore" sx={contentTopClasses.firstcardlinks}>
                       Learn More
                     </Link>
                   </CardContent>
@@ -234,7 +230,16 @@ function ContentTop() {
                 </Link>
               </div>
               <div style={contentTopClasses.securecontentdiv}>
-                <div>
+                <Box
+                  sx={{
+                    "@media (max-width: 1000px)": {
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    },
+                  }}
+                >
                   <div style={contentTopClasses.secondivsecurity}>
                     <Card
                       sx={{
@@ -350,7 +355,7 @@ function ContentTop() {
                       </CardContent>
                     </Card>
                   </div>
-                </div>
+                </Box>
               </div>
             </div>
           </div>

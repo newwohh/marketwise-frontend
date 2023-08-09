@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useLearnContentStyles = {
   mains: {
     color: "black",

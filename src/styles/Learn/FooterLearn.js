@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useFooterLearnStyles = {
   footer: {
     marginTop: 200,

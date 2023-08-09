@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockNews } from "../../../../../../store/store-actions";
 import {
   Button,
   CircularProgress,
+  Link,
   ThemeProvider,
   Typography,
 } from "@mui/material";
@@ -15,7 +16,6 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import useStockNews from "../../../../../../styles/Home/StockNewsStyle";
-import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Carousel from "better-react-carousel";
 import { Fade } from "react-reveal";
@@ -87,7 +87,7 @@ function StockNews() {
                   },
                 }}
               >
-                <Link to="/stocks" style={StockNewsClasses.titlelink}>
+                <Link href="/stocks" sx={StockNewsClasses.titlelink}>
                   Stocks
                   <ArrowForwardIosIcon
                     sx={{
@@ -195,7 +195,7 @@ function StockNews() {
                           >
                             <Link
                               onClick={() => handleOpen(el)}
-                              style={StockNewsClasses.cardTitle}
+                              sx={StockNewsClasses.cardTitle}
                             >
                               {el.title}
                             </Link>

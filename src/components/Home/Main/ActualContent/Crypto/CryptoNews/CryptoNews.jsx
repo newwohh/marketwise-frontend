@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -8,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import useCryptoNewsStyles from "../../../../../../styles/Home/CryptoNewsStyles";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, ThemeProvider } from "@mui/material";
+import { Button, Link, ThemeProvider } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import Carousel from "better-react-carousel";
 import { getCryptoNews } from "../../../../../../store/store-actions";
@@ -88,7 +87,7 @@ function CryptoNews() {
             >
               <Link
                 onClick={() => handleOpen(news)}
-                style={{
+                sx={{
                   "&:hover": { textDecoration: "underline" },
                   color: "#002244",
                   textDecoration: "none",
@@ -158,7 +157,7 @@ function CryptoNews() {
             variant="h3"
             sx={{ fontFamily: "monospace", fontWeight: 800 }}
           >
-            <Link to="/cryptocurrency" style={CryptoNewsClasses.titlelink}>
+            <Link href="/cryptocurrency" sx={CryptoNewsClasses.titlelink}>
               <ThemeProvider theme={theme}>
                 <Typography
                   variant="h2"

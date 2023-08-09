@@ -7,8 +7,7 @@ import Typography from "@mui/material/Typography";
 import useForexDataStyles from "../../../../../../styles/Home/ForexData";
 import Carousel from "better-react-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Link } from "react-router-dom";
-import { Button, ThemeProvider } from "@mui/material";
+import { Box, Button, Link, ThemeProvider } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import chatsupport from "../../../../../../assets/5114855.jpg";
 import faq from "../../../../../../assets/5066368.jpg";
@@ -98,7 +97,7 @@ function ForexPairs() {
               },
             }}
           >
-            <Link style={forexDataClass.titlelink}>
+            <Link sx={forexDataClass.titlelink}>
               Forex{" "}
               <ArrowForwardIosIcon
                 sx={{
@@ -114,7 +113,7 @@ function ForexPairs() {
           <Typography
             variant="p"
             sx={{
-              color: "white",
+              color: "#002244",
               "@media (max-width : 1000px)": {
                 fontSize: "10px",
               },
@@ -146,8 +145,8 @@ function ForexPairs() {
           ))}
         </Carousel>
       </div>
-      <div style={forexDataClass.lastcontainer}>
-        <div>
+      <Box sx={forexDataClass.lastcontainer}>
+        <Box>
           <div>
             <Typography
               variant="h4"
@@ -156,37 +155,37 @@ function ForexPairs() {
               Need help?
             </Typography>
           </div>
-        </div>
-        <div style={forexDataClass.seconddiv}>
-          <div style={forexDataClass.carddiv}>
+        </Box>
+        <Box sx={forexDataClass.seconddiv}>
+          <Box sx={forexDataClass.carddiv}>
             <div>
               <img src={blog} alt="blog" style={{ width: 100, height: 100 }} />
             </div>
-            <div style={forexDataClass.seconddatasubdiv}>
+            <Box sx={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">Blog</Typography>
               <Typography variant="p">
                 Stay up to date with the latest stories and commentary.
               </Typography>
-              <Link to="/blogs" style={forexDataClass.lastdivlink}>
+              <Link href="/blogs" sx={forexDataClass.lastdivlink}>
                 Learn More
               </Link>
-            </div>
-          </div>
-          <div style={forexDataClass.carddiv}>
+            </Box>
+          </Box>
+          <Box sx={forexDataClass.carddiv}>
             <div>
               <img src={faq} alt="faq" style={{ width: 100, height: 100 }} />
             </div>
-            <div style={forexDataClass.seconddatasubdiv}>
+            <Box sx={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">FAQs</Typography>
               <Typography variant="p">
                 View FAQs for detailed instructions on specific features.
               </Typography>
-              <Link to="/faq" style={forexDataClass.lastdivlink}>
+              <Link href="/faq" sx={forexDataClass.lastdivlink}>
                 Learn more
               </Link>
-            </div>
-          </div>
-          <div style={forexDataClass.carddiv}>
+            </Box>
+          </Box>
+          <Box sx={forexDataClass.carddiv}>
             <div>
               <img
                 src={chatsupport}
@@ -194,17 +193,17 @@ function ForexPairs() {
                 style={{ width: 100, height: 100 }}
               />
             </div>
-            <div style={forexDataClass.seconddatasubdiv}>
+            <Box sx={forexDataClass.seconddatasubdiv}>
               <Typography variant="h6">24/7 Chat Support</Typography>
               <Typography variant="p">
                 Get 24/7 chat support with our friendly customer service agents
                 at your service.
               </Typography>
-              <Link style={forexDataClass.lastdivlink}>Chat now</Link>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Link sx={forexDataClass.lastdivlink}>Chat now</Link>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </div>
   );
 }

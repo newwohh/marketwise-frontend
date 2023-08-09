@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useInvestSimulatorStyles = {
   detailsdiv: {
     padding: "40px",

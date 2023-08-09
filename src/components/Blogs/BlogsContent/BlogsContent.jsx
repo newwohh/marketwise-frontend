@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   CardActions,
-  CircularProgress,
   Grid,
   Skeleton,
   ThemeProvider,

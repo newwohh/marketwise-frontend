@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -20,6 +20,8 @@ import Paper from "@mui/material/Paper";
 import { Button, Divider, Grid, ThemeProvider } from "@mui/material";
 import theme from "../styles/Theme";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { backendBaseUrl } from "../constants/constants";
+import { MyContext } from "../context/Context";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,6 +53,8 @@ function a11yProps(index) {
   };
 }
 function Overview(props) {
+  const nameref = useRef(0);
+  const { user } = useContext(MyContext);
   const OverviewClasses = useOverviewStyles;
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -81,6 +85,30 @@ function Overview(props) {
     React.useEffect(() => {
       window.scrollTo(0, 0);
     }, [pathname]);
+  };
+
+  const subscribeNew = async (name) => {
+    try {
+      const request = await fetch(
+        backendBaseUrl + "api/v1/subscrptions/newsubscription",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            market: "name",
+            name: name,
+            user: user.user._id,
+          }),
+          credentials: "include",
+        }
+      );
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -223,6 +251,7 @@ function Overview(props) {
                             >
                               <TableCell>
                                 <Button
+                                  ref={nameref}
                                   // href="/cryptocurrency/chart"
                                   variant="outlined"
                                   sx={{
@@ -276,6 +305,7 @@ function Overview(props) {
                                       borderColor: "#002244",
                                     },
                                   }}
+                                  onClick={() => subscribeNew(row.name)}
                                 >
                                   Subscribe
                                 </Button>

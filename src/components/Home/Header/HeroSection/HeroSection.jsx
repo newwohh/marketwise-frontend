@@ -33,10 +33,14 @@ function HeroSection() {
             noWrap
             style={headerClasses.headerintrotext}
             sx={{
+              fontSize: {
+                xs: "30px",
+              },
               marginTop: "370px",
               color: "white",
               zIndex: 1,
               position: "absolute",
+
               left: 0,
               right: 0,
               textAlign: "center",

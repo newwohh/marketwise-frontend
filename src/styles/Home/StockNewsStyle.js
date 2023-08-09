@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useStockNews = {
   newsdiv: {
     display: "flex",

@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useHeatmap = {
   containermap: {
     marginTop: "50px",

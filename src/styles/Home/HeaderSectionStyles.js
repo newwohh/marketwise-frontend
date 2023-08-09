@@ -3,7 +3,7 @@ const useHeaderStyles = {
     background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",
   },
   headerintrotext: {
-    "font-family": "Sofia,cursive",
+    // "font-family": "Sofia,cursive",
   },
   headerintrodiv: {
     display: "flex",

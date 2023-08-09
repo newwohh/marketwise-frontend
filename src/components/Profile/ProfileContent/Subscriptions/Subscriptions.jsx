@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Divider, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,8 +8,38 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { backendBaseUrl } from "../../../../constants/constants";
+import { MyContext } from "../../../../context/Context";
 
 function Subscriptions() {
+  const stocks = useSelector((state) => state.news.stockprice);
+  console.log(stocks);
+  const [allSubs, setAllSubs] = React.useState([]);
+  const { user } = useContext(MyContext);
+  const allSubscrptions = async () => {
+    try {
+      const request = await fetch(
+        backendBaseUrl + "api/v1/subscrptions/getsubscription/" + user.user._id,
+        {
+          credentials: "include",
+        }
+      );
+      const response = await request.json();
+      console.log(response);
+
+      if (response.status === "success") setAllSubs(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    allSubscrptions();
+  }, []);
+  console.log(allSubs);
+  // let subbedStocks = stocks.filterAll((el)=>{
+
+  // })
   return (
     <div>
       <div>
@@ -37,12 +68,10 @@ function Subscriptions() {
                 <TableCell component="th" scope="row">
                   No Subscription
                 </TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
+                {allSubs.map((el, i) => {
+                  return <TableCell align="right">{el.name}</TableCell>;
+                })}
               </TableRow>
-              {/* ))} */}
             </TableBody>
           </Table>
         </TableContainer>

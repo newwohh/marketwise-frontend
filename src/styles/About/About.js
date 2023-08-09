@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useAbout = {
   mainabout: {
     backgroundColor: "#F0F8FF",

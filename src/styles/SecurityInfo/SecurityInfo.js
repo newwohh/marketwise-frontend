@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useSecurityInfoContentStyles = {
   securityinfofirstdiv: {
     marginTop: "60px",

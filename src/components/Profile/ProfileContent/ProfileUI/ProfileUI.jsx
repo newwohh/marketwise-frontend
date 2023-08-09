@@ -18,6 +18,7 @@ function ProfileUI() {
   user.user
     ? (currUserEmail = user.user.email)
     : (currUserEmail = "please wait");
+
   return (
     <div>
       <div

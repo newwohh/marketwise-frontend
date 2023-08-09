@@ -116,6 +116,7 @@ function StockMarketPrices() {
             width: 1500,
             height: "250px",
             "@media (max-width: 1000px)": {
+              height: "200px",
               width: 300,
               display: "flex",
               flexDirection: "column",
@@ -141,6 +142,12 @@ function StockMarketPrices() {
               aria-label="full width tabs example"
               textColor="inherit"
               indicatorColor="secondary"
+              sx={{
+                "@media (max-width: 1000px)": {
+                  width: 300,
+                  textAlign: "center",
+                },
+              }}
             >
               <Tab
                 label="Exchanges"
@@ -189,6 +196,7 @@ function StockMarketPrices() {
                 backgroundColor: "#F0F8FF",
                 "@media (max-width: 1000px)": {
                   width: "300px",
+                  height: "500px",
                 },
               }}
               value={value}
@@ -201,6 +209,7 @@ function StockMarketPrices() {
                   color: "white",
                   "@media (max-width: 1000px)": {
                     width: "300px",
+                    height: "500px",
                   },
                 }}
               >
@@ -218,7 +227,13 @@ function StockMarketPrices() {
                     </TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody
+                  sx={{
+                    "@media (max-width: 1000px)": {
+                      height: "400px",
+                    },
+                  }}
+                >
                   {exchanges === undefined || stockprice === []
                     ? loaderArray.map((el, i) => {
                         return (

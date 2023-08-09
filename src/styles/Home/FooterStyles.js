@@ -1,5 +1,3 @@
-import {} from "@mui/styles";
-
 const useFooterStyles = {
   footer: {
     // marginTop: 200,

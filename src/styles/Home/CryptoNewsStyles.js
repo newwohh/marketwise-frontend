@@ -15,6 +15,7 @@ const useCryptoNewsStyles = {
     textDecoration: "none",
     "&:hover": {
       textDecoration: "underline",
+      color: "#002244",
     },
   },
   cnewscarddiv: {

@@ -46,10 +46,10 @@ function ContentLearn() {
   };
 
   return (
-    <section style={LearnContentClasses.mains}>
-      <div style={LearnContentClasses.section}>
-        <div style={LearnContentClasses.titledivlearn}>
-          <div style={LearnContentClasses.introdiv}>
+    <Box sx={LearnContentClasses.mains}>
+      <Box sx={LearnContentClasses.section}>
+        <Box sx={LearnContentClasses.titledivlearn}>
+          <Box sx={LearnContentClasses.introdiv}>
             <Typography
               variant="h2"
               sx={{ fontFamily: "Helvetica" }}
@@ -166,10 +166,10 @@ function ContentLearn() {
                 </ListItemText>
               </ListItem>
             </List>
-          </div>
-        </div>
-      </div>
-      <div style={LearnContentClasses.navtolearn}>
+          </Box>
+        </Box>
+      </Box>
+      <Box sx={LearnContentClasses.navtolearn}>
         <Box
           sx={{
             marginTop: "100px",
@@ -278,10 +278,10 @@ function ContentLearn() {
             />
           </Stack>
         </Box>
-      </div>
-      <div style={LearnContentClasses.learncontentdiv}>
+      </Box>
+      <Box sx={LearnContentClasses.learncontentdiv}>
         <div ref={whatistrading}>
-          <div style={LearnContentClasses.whatistrading}>
+          <Box sx={LearnContentClasses.whatistrading}>
             <div id="whatistrading">
               <Typography
                 variant="h5"
@@ -449,10 +449,10 @@ function ContentLearn() {
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </Box>
         </div>
         <div>
-          <div ref={tradingacc} style={LearnContentClasses.tradingacc}>
+          <Box ref={tradingacc} sx={LearnContentClasses.tradingacc}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Open a Trading Account
             </Typography>
@@ -640,10 +640,10 @@ function ContentLearn() {
                 </ul>
               </CardContent>
             </Card>
-          </div>
+          </Box>
         </div>
         <div>
-          <div ref={learnread} style={LearnContentClasses.learnread}>
+          <Box ref={learnread} sx={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Learn to Read: A Market Crash Course
             </Typography>
@@ -751,10 +751,10 @@ function ContentLearn() {
                 <StopIcon /> Stop
               </Button>
             )}
-          </div>
+          </Box>
         </div>
         <div>
-          <div ref={learnanalyse} style={LearnContentClasses.learnread}>
+          <Box ref={learnanalyse} sx={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Learn to Analyze{" "}
             </Typography>
@@ -867,10 +867,10 @@ function ContentLearn() {
                 <StopIcon /> Stop
               </Button>
             )}
-          </div>
+          </Box>
         </div>
         <div>
-          <div ref={practicetrading} style={LearnContentClasses.learnread}>
+          <Box ref={practicetrading} sx={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               Practice Trading
             </Typography>
@@ -980,10 +980,10 @@ function ContentLearn() {
                 <StopIcon /> Stop
               </Button>
             )}
-          </div>
+          </Box>
         </div>
         <div>
-          <div ref={managerisk} style={LearnContentClasses.learnread}>
+          <Box ref={managerisk} sx={LearnContentClasses.learnread}>
             <Typography variant="h5" sx={{ fontWeight: "bolder" }}>
               How to Manage Risk
             </Typography>
@@ -1089,10 +1089,10 @@ function ContentLearn() {
                 <StopIcon /> Stop
               </Button>
             )}
-          </div>
+          </Box>
         </div>
         <div>
-          <div style={LearnContentClasses.learnread}>
+          <Box sx={LearnContentClasses.learnread}>
             <Typography variant="h6" sx={{ fontWeight: "bolder" }}>
               What Are the Main Differences Between Trading and Investing?
             </Typography>
@@ -1181,10 +1181,10 @@ function ContentLearn() {
               monetary risk that forces you to address trade management and
               market psychology issues.
             </Typography>
-          </div>
+          </Box>
         </div>
-      </div>
-    </section>
+      </Box>
+    </Box>
   );
 }
 

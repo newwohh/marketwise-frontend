@@ -9,6 +9,7 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
+  Box,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import useInvestSimulatorStyles from "../styles/InvestSimulator/InvestSimulator";
@@ -55,9 +56,33 @@ function InvestSimulator() {
     <React.Fragment>
       <SigninNavbar />
       <main style={{ backgroundColor: "#F0F8FF" }}>
-        <section style={{ marginTop: "90px", marginLeft: "150px" }}>
-          <div>
-            <Typography variant="h2" sx={{ fontFamily: "Sans" }}>
+        <Box
+          sx={{
+            marginTop: "90px",
+            marginLeft: "150px",
+            "@media (max-width:1000px)": {
+              marginLeft: "10px",
+              marginTop: "0px",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              "@media (max-width:1000px)": {
+                paddingTop: "80px",
+              },
+            }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                fontFamily: "Sans",
+                "@media (max-width:1000px)": {
+                  fontSize: "30px",
+                  paddingBottom: 2,
+                },
+              }}
+            >
               Invest Simulator
             </Typography>
             <Typography variant="h6">
@@ -67,9 +92,17 @@ function InvestSimulator() {
               then use to buy and sell stocks, bonds, and other financial
               instruments.
             </Typography>
-          </div>
-        </section>
-        <section style={{ marginLeft: "150px", marginTop: "50px" }}>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            marginLeft: "150px",
+            marginTop: "50px",
+            "@media (max-width:1000px)": {
+              marginLeft: 0,
+            },
+          }}
+        >
           <Autocomplete
             disablePortal
             options={prices}
@@ -82,15 +115,22 @@ function InvestSimulator() {
               <TextField {...params} label="Choose a Ticker" />
             )}
           />
-          <div style={{ display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              "@media (max-width:1000px)": {
+                flexDirection: "column",
+              },
+            }}
+          >
             <div>
-              <div style={InvestSimulatorClass.detailsdiv}>
+              <Box sx={InvestSimulatorClass.detailsdiv}>
                 <Typography variant="h2" sx={{ marginBottom: "50px" }}>
                   {data.symbol}
                 </Typography>
                 <Typography variant="h3">{data.name}</Typography>
                 <Typography variant="h4">${data.price}</Typography>
-              </div>
+              </Box>
               <div style={InvestSimulatorClass.calcdiv}>
                 <div>
                   <div style={{ display: "flex" }}>
@@ -98,9 +138,22 @@ function InvestSimulator() {
                       label="Quantity"
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
-                      sx={{ width: "300px", marginRight: "30px" }}
+                      sx={{
+                        width: "300px",
+                        marginRight: "30px",
+                        "@media (max-width:1000px)": {
+                          width: "150px",
+                        },
+                      }}
                     />
-                    <FormControl fullWidth>
+                    <FormControl
+                      fullWidth
+                      sx={{
+                        "@media (max-width:1000px)": {
+                          width: "150px",
+                        },
+                      }}
+                    >
                       <InputLabel htmlFor="outlined-adornment-amount">
                         Amount
                       </InputLabel>
@@ -123,6 +176,9 @@ function InvestSimulator() {
                       width: "600px",
                       marginTop: "20px",
                       marginBottom: "30px",
+                      "@media (max-width:1000px)": {
+                        width: "350px",
+                      },
                     }}
                   />
                 </div>
@@ -139,6 +195,9 @@ function InvestSimulator() {
                     height: "60px",
                     backgroundColor: "#002244",
                     color: "white",
+                    "@media (max-width:1000px)": {
+                      width: "350px",
+                    },
                     "&:hover": {
                       backgroundColor: "#002233",
                     },
@@ -149,12 +208,12 @@ function InvestSimulator() {
               </div>
             </div>
             <div>
-              <div style={InvestSimulatorClass.detailsdivtwo}>
+              <Box sx={InvestSimulatorClass.detailsdivtwo}>
                 <Typography variant="h1">${change}</Typography>
-              </div>
+              </Box>
             </div>
-          </div>
-        </section>
+          </Box>
+        </Box>
       </main>
     </React.Fragment>
   );

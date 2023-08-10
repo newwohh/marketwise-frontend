@@ -11,6 +11,11 @@ const useInvestSimulatorStyles = {
     justifyContent: "center",
     marginBottom: "40px",
     borderRadius: "10px",
+    "@media (max-width:1000px)": {
+      padding: 2,
+      height: "100px",
+      width: "350px",
+    },
   },
   calcdiv: { display: " flex", flexDirection: "column", width: "600px" },
   detailsdivtwo: {
@@ -26,6 +31,9 @@ const useInvestSimulatorStyles = {
     justifyContent: "center",
     marginBottom: "40px",
     borderRadius: "10px",
+    "@media (max-width:1000px)": {
+      width: "300px",
+    },
   },
 };
 

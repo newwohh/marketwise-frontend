@@ -8,10 +8,14 @@ import {
   ListItemText,
   Typography,
   TextField,
+  useMediaQuery,
 } from "@mui/material";
 import { MyContext } from "../../../../context/Context";
-
+import { useTheme } from "@mui/material/styles";
+import {} from "@mui/material";
 function ProfileUI() {
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.up("md"));
   const { user } = useContext(MyContext);
   let currUserName, currUserEmail;
   user.user ? (currUserName = user.user.name) : (currUserName = "please wait");
@@ -27,6 +31,7 @@ function ProfileUI() {
           justifyContent: "center",
           textAlign: "center",
           marginBottom: "30px",
+          marginLeft: "0",
         }}
       >
         <img
@@ -41,7 +46,7 @@ function ProfileUI() {
           display: "flex",
           justifyContent: "center",
           textAlign: "center",
-          marginTop: "20px",
+          marginTop: isMatch ? "20px" : "0px",
           marginBottom: "30px",
         }}
       >
@@ -76,7 +81,7 @@ function ProfileUI() {
           alignItems: "center",
         }}
       >
-        <List sx={{ width: "800px" }}>
+        <List sx={{ width: isMatch ? "800px" : "300px" }}>
           <ListItem>
             <ListItemText sx={{ width: "100px" }}>Name:</ListItemText>
             <ListItemText>
@@ -86,7 +91,7 @@ function ProfileUI() {
                 InputProps={{
                   readOnly: true,
                 }}
-                sx={{ width: "300px" }}
+                sx={{ width: isMatch ? "300px" : "200px" }}
               />
             </ListItemText>
           </ListItem>
@@ -99,12 +104,14 @@ function ProfileUI() {
                 InputProps={{
                   readOnly: true,
                 }}
-                sx={{ width: "300px" }}
+                sx={{ width: isMatch ? "300px" : "200px" }}
               />
             </ListItemText>
           </ListItem>
           <ListItem>
-            <ListItemText sx={{ width: "100px" }}>Password:</ListItemText>
+            <ListItemText sx={{ width: "100px", color: "black" }}>
+              Password:
+            </ListItemText>
             <ListItemText>
               <TextField
                 id="outlined-read-only-input"
@@ -112,7 +119,7 @@ function ProfileUI() {
                 InputProps={{
                   readOnly: true,
                 }}
-                sx={{ width: "300px" }}
+                sx={{ width: isMatch ? "300px" : "200px" }}
               />
             </ListItemText>
           </ListItem>

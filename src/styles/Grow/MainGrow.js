@@ -31,25 +31,7 @@ const useMainGrowStyles = {
       width: "250px",
     },
   },
-  contentdiv: {
-    left: 0,
-    right: 0,
-    width: "1200px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    marginBottom: "100px",
-    borderRadius: "25px",
-    backgroundColor: "white",
-    border: "1rem solid #aaaaff",
-    borderImage:
-      "repeating-linear-gradient(45deg, transparent, transparent 5px, $accentColor 6px, $accentColor 15px, transparent 16px, transparent 20px) 20/1rem",
-    "@media (max-width:1000px)": {
-      flexDirection: "column",
-      width: "300px",
-      overflow: "hidden",
-    },
-  },
+  contentdiv: {},
   infosection: {
     textAlign: "center",
     display: "flex",

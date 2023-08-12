@@ -71,11 +71,14 @@ const useSecurityInfoContentStyles = {
     textAlign: "center",
     backgroundColor: "#F0F8FF",
     "@media (max-width:1000px)": {
-      margin: 100,
+      margin: 10,
     },
   },
   middledivsecurityinfosubdiv: {
     width: "800px",
+    "@media (max-width:1000px)": {
+      width: "100px",
+    },
   },
   lastdivsecurityinfo: {
     backgroundColor: "#F0F8FF",

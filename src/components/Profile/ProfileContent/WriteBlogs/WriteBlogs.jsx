@@ -1,8 +1,12 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, useMediaQuery } from "@mui/material";
 import React from "react";
 import { backendBaseUrl } from "../../../../constants/constants";
+import { useTheme } from "@mui/material/styles";
 
 function WriteBlogs() {
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.up("md"));
+
   const writeANewBlog = async () => {
     try {
       const request = await fetch(backendBaseUrl + "api/v1/blogs/newblog", {
@@ -38,13 +42,16 @@ function WriteBlogs() {
         <TextField
           id="outlined-required"
           label="Title"
-          sx={{ marginBottom: "20px", width: "500px" }}
+          sx={{ marginBottom: "20px", width: isMatch ? "500px" : "270px" }}
         />{" "}
         <TextField
           label="Write about it"
           multiline
-          maxRows={20}
-          sx={{ height: "600px", width: "800px" }}
+          maxRows={isMatch ? 20 : 5}
+          sx={{
+            height: isMatch ? "600px" : "100px",
+            width: isMatch ? "800px" : "300px",
+          }}
         />
         <Button
           variant="outlined"

@@ -1,53 +1,9 @@
 import React from "react";
-import Chatbot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import ChatIcon from "@mui/icons-material/Chat";
-import { Box, ClickAwayListener, Fab } from "@mui/material";
-
-const steps = [
-  {
-    id: "Greet",
-    message: "Hello! welcome to MarketWise ",
-    trigger: "Ask Name",
-  },
-  { id: "Ask Name", message: "Please enter your name", trigger: "waiting1" },
-  { id: "waiting1", user: true, trigger: "Name" },
-  {
-    id: "Name",
-    message:
-      "Hi {previousValue}, Please select which feature you want to know about",
-    trigger: "Features",
-  },
-  {
-    id: "Features",
-    options: [
-      { value: "Heatmap", label: "Heatmap", trigger: "Heatmap" },
-      {
-        value: "Invest Simulator",
-        label: "Invest Simulator",
-        trigger: "Invest Simulator",
-      },
-      { value: "Charts", label: "Charts", trigger: "Charts" },
-    ],
-  },
-  {
-    id: "Heatmap",
-    message:
-      "Thanks for showing interest in one of our feature  The Heatmap is a way to determine where liquidity is in the market and how liquidity-providers are behaving. In other words, it helps traders to determine where the actual orders in the market are being made",
-    end: true,
-  },
-  {
-    id: "Invest Simulator",
-    message:
-      "An investment simulator is a software program that allows users to     practice investing without risking any real money. It does this by     giving users a virtual balance of money to invest, which they can   then use to buy and sell stocks, bonds, and other financial    instruments.",
-    end: true,
-  },
-  {
-    id: "Charts",
-    message: "User can view the selected ticker in chart format",
-    end: true,
-  },
-];
+import { Box, Button, ClickAwayListener, Fab, TextField } from "@mui/material";
+import ChatMessage from "./ChatMessage";
+import { analyze } from "./chatutils";
 
 const theme = {
   background: "#F0F8FF",
@@ -63,6 +19,8 @@ const theme = {
 
 function ChatbotSupport() {
   const [open, setOpen] = React.useState(false);
+  const [messages, setMessages] = React.useState([{ message: " hi" }]);
+  const [text, setText] = React.useState("");
 
   const handleClick = () => {
     setOpen(!open);
@@ -70,6 +28,27 @@ function ChatbotSupport() {
 
   const handleClickAway = () => {
     setOpen(false);
+  };
+
+  const onSend = () => {
+    let list = [...messages, { message: text, user: true }];
+    console.log(list);
+    if (list.length > 2) {
+      const reply = analyze(text);
+      list = [...messages, { message: reply }];
+    } else {
+      list = [
+        ...list,
+        {
+          message: " Hi! What can i help you ?",
+        },
+        {
+          message: "What do you want to know about?",
+        },
+      ];
+    }
+    setMessages(list);
+    setText("");
   };
 
   return (
@@ -84,7 +63,51 @@ function ChatbotSupport() {
         <Box>
           {open ? (
             <ThemeProvider theme={theme}>
-              <Chatbot steps={steps} />
+              <Box
+                sx={{
+                  border: "3px solid #002244",
+                  borderRadius: "20px",
+                  borderTop: "30px solid #002244",
+                  height: "450px",
+                  width: "450px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "end",
+                  padding: "10px",
+                  overflow: "scroll",
+                  backgroundColor: "white",
+                }}
+              >
+                {messages.map((data) => (
+                  <ChatMessage {...data} />
+                ))}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignContent: "center",
+                    border: "3px solid #002244",
+                    borderRadius: "20px",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <TextField
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    sx={{ borderColor: "#002244", width: "350px" }}
+                  ></TextField>
+                  <Button
+                    sx={{
+                      backgroundColor: "#002244",
+                      width: "98px",
+                      color: "white",
+                      borderRadius: "16px",
+                    }}
+                    onClick={onSend}
+                  >
+                    send
+                  </Button>
+                </Box>
+              </Box>
             </ThemeProvider>
           ) : (
             <Fab onClick={handleClick}>

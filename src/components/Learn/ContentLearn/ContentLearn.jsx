@@ -23,12 +23,12 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import StopIcon from "@mui/icons-material/Stop";
-import { useSpeechSynthesis } from "react-speech-kit";
+import Speech from "react-text-to-speech";
 
 function ContentLearn() {
-  const [texts, setText] = useState(
-    "please wait until the text is loading or you can try again!"
-  );
+  // const [texts, setText] = useState(
+  //   "please wait until the text is loading or you can try again!"
+  // );
   const [play, setPLay] = useState(false);
   const managerisk = useRef(null);
   const whatistrading = useRef(null);
@@ -37,13 +37,12 @@ function ContentLearn() {
   const practicetrading = useRef(null);
   const learnanalyse = useRef(null);
   const LearnContentClasses = useLearnContentStyles;
-  const { speak, cancel } = useSpeechSynthesis();
 
-  const textToSpeech = (text) => {
-    setText(text.current.outerText);
-    setPLay(!play);
-    return speak({ text: texts });
-  };
+  // const textToSpeech = (text) => {
+  //   setText(text.current.outerText);
+  //   setPLay(!play);
+  //   console.log(text);
+  // };
 
   return (
     <Box sx={LearnContentClasses.mains}>
@@ -371,48 +370,51 @@ function ContentLearn() {
                     </ListItemText>
                   </ListItem>
                 </List>
-                {!play ? (
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      color: "white",
-                      width: "250px",
-                      height: "45px",
-                      margin: "50px",
-                      borderRadius: "15px",
-                      background:
-                        "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                      "@media (max-width:1000px)": {
-                        width: "200px",
-                      },
-                    }}
-                    onClick={() => textToSpeech(whatistrading)}
-                  >
-                    <PlayArrowIcon /> Click to Hear
-                  </Button>
-                ) : (
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      color: "white",
-                      width: "250px",
-                      height: "45px",
-                      margin: "50px",
-                      borderRadius: "15px",
-                      background:
-                        "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                      "@media (max-width:1000px)": {
-                        width: "200px",
-                      },
-                    }}
-                    onClick={() => {
-                      setPLay(!play);
-                      return cancel();
-                    }}
-                  >
-                    <StopIcon /> Stop
-                  </Button>
-                )}
+                <Speech
+                  text={whatistrading.current.outerText}
+                  startBtn={
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        color: "white",
+                        width: "250px",
+                        height: "45px",
+                        margin: "50px",
+                        borderRadius: "15px",
+                        background:
+                          "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                        "@media (max-width:1000px)": {
+                          width: "200px",
+                        },
+                      }}
+                    >
+                      <PlayArrowIcon /> Click to Hear
+                    </Button>
+                  }
+                  stopBtn={
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        color: "white",
+                        width: "250px",
+                        height: "45px",
+                        margin: "50px",
+                        borderRadius: "15px",
+                        background:
+                          "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                        "@media (max-width:1000px)": {
+                          width: "200px",
+                        },
+                      }}
+                      onClick={() => {
+                        setPLay(!play);
+                        // return cancel();
+                      }}
+                    >
+                      <StopIcon /> Stop
+                    </Button>
+                  }
+                />
               </Typography>
 
               <Card
@@ -557,48 +559,47 @@ function ContentLearn() {
                 </ListItemText>
               </ListItem>
             </List>
-            {!play ? (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => textToSpeech(tradingacc)}
-              >
-                <PlayArrowIcon /> Click to Hear
-              </Button>
-            ) : (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => {
-                  setPLay(!play);
-                  return cancel();
-                }}
-              >
-                <StopIcon /> Stop
-              </Button>
-            )}
+            <Speech
+              text={tradingacc.current.outerText}
+              startBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <PlayArrowIcon /> Click to Hear
+                </Button>
+              }
+              stopBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <StopIcon /> Stop
+                </Button>
+              }
+            />
             <Card
               sx={{
                 background:
@@ -709,48 +710,47 @@ function ContentLearn() {
                 </ListItemText>
               </ListItem>
             </List>
-            {!play ? (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => textToSpeech(learnread)}
-              >
-                <PlayArrowIcon /> Click to Hear
-              </Button>
-            ) : (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => {
-                  setPLay(!play);
-                  return cancel();
-                }}
-              >
-                <StopIcon /> Stop
-              </Button>
-            )}
+            <Speech
+              text={learnread.current.outerText}
+              startBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <PlayArrowIcon /> Click to Hear
+                </Button>
+              }
+              stopBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <StopIcon /> Stop
+                </Button>
+              }
+            />
           </Box>
         </div>
         <div>
@@ -825,48 +825,47 @@ function ContentLearn() {
                 </ListItemText>
               </ListItem>
             </List>
-            {!play ? (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => textToSpeech(learnanalyse)}
-              >
-                <PlayArrowIcon /> Click to Hear
-              </Button>
-            ) : (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => {
-                  setPLay(!play);
-                  return cancel();
-                }}
-              >
-                <StopIcon /> Stop
-              </Button>
-            )}
+            <Speech
+              text={learnanalyse.current.outerText}
+              startBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <PlayArrowIcon /> Click to Hear
+                </Button>
+              }
+              stopBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <StopIcon /> Stop
+                </Button>
+              }
+            />
           </Box>
         </div>
         <div>
@@ -938,48 +937,47 @@ function ContentLearn() {
                 </ListItemText>
               </ListItem>
             </List>
-            {!play ? (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => textToSpeech(practicetrading)}
-              >
-                <PlayArrowIcon /> Click to Hear
-              </Button>
-            ) : (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => {
-                  setPLay(!play);
-                  return cancel();
-                }}
-              >
-                <StopIcon /> Stop
-              </Button>
-            )}
+            <Speech
+              text={practicetrading.current.outerText}
+              startBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <PlayArrowIcon /> Click to Hear
+                </Button>
+              }
+              stopBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <StopIcon /> Stop
+                </Button>
+              }
+            />
           </Box>
         </div>
         <div>
@@ -1047,48 +1045,47 @@ function ContentLearn() {
                 </ListItemText>
               </ListItem>
             </List>
-            {!play ? (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => textToSpeech(managerisk)}
-              >
-                <PlayArrowIcon /> Click to Hear
-              </Button>
-            ) : (
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  width: "250px",
-                  height: "45px",
-                  margin: "50px",
-                  borderRadius: "15px",
-                  background:
-                    "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
-                  "@media (max-width:1000px)": {
-                    width: "200px",
-                  },
-                }}
-                onClick={() => {
-                  setPLay(!play);
-                  return cancel();
-                }}
-              >
-                <StopIcon /> Stop
-              </Button>
-            )}
+            <Speech
+              text={managerisk.current.outerText}
+              startBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <PlayArrowIcon /> Click to Hear
+                </Button>
+              }
+              stopBtn={
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "white",
+                    width: "250px",
+                    height: "45px",
+                    margin: "50px",
+                    borderRadius: "15px",
+                    background:
+                      "linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%)",
+                    "@media (max-width:1000px)": {
+                      width: "200px",
+                    },
+                  }}
+                >
+                  <StopIcon /> Stop
+                </Button>
+              }
+            />
           </Box>
         </div>
         <div>

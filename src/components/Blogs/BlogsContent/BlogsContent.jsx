@@ -1,39 +1,29 @@
 import React, { useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import {
-  Box,
-  Button,
-  CardActions,
-  Grid,
-  Skeleton,
-  ThemeProvider,
-} from "@mui/material";
+import { Box, Grid, ThemeProvider } from "@mui/material";
 import theme from "../../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs } from "../../../store/store-actions";
+import BlogCard from "./BlogCard";
+import BlogLoader from "./BlogLoader";
 
 function BlogsContent() {
-  const [dataApi, setDataApi] = React.useState("");
-
-  let dispatch, blogs, loading;
+  let dispatch, blogs;
   dispatch = useDispatch();
   const { allblogs } = useSelector((state) => state.news);
 
-  const getProducts = React.useCallback(() => {
-    dispatch(getAllBlogs());
-  }, [dataApi]);
+  const getProducts = React.useCallback(
+    () => dispatch(getAllBlogs()),
+    [dispatch]
+  );
 
-  useEffect(() => {
-    getProducts();
-  }, [dataApi]);
+  useEffect(() => getProducts(), [getProducts]);
 
   allblogs === undefined || allblogs.data === undefined
     ? (blogs = [{ title: "loading" }])
     : (blogs = allblogs.data);
 
-  console.log(allblogs);
+  // console.log(allblogs);
 
   return (
     <main style={{ backgroundColor: "#F0F8FF" }}>
@@ -61,62 +51,16 @@ function BlogsContent() {
               >
                 {allblogs === undefined || allblogs.data === undefined
                   ? [1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 10].map((el, i) => {
-                      return (
-                        <Grid item xs={3} sm={4} md={4} key={i}>
-                          <Box sx={{ pt: 0.5 }}>
-                            <Skeleton
-                              variant="rectangular"
-                              width={450}
-                              height={300}
-                            />
-                            <Skeleton width={450} />
-                            <Skeleton width={450} />
-                          </Box>
-                        </Grid>
-                      );
+                      return <BlogLoader i={i} />;
                     })
                   : blogs?.map((el, i) => {
                       return (
-                        <Grid item xs={3} sm={4} md={4} key={i}>
-                          <Card
-                            sx={{
-                              width: { xs: 200, xl: 450 },
-                              height: {
-                                xs: "200",
-                                xl: "400px",
-                              },
-                              textAlign: {
-                                xs: "center",
-                              },
-                            }}
-                            key={i}
-                          >
-                            <CardContent>
-                              <Typography
-                                sx={{ fontSize: 14 }}
-                                color="text.secondary"
-                                gutterBottom
-                              >
-                                Article
-                              </Typography>
-                              <Typography variant="h5" component="div">
-                                {el.title}
-                              </Typography>
-                              <Typography
-                                sx={{ mb: 1.5 }}
-                                color="text.secondary"
-                              >
-                                Author
-                              </Typography>
-                              <Typography variant="body2">
-                                {el.description}
-                              </Typography>
-                            </CardContent>
-                            <CardActions>
-                              <Button>View full article</Button>
-                            </CardActions>
-                          </Card>
-                        </Grid>
+                        <BlogCard
+                          i={i}
+                          title={el.title}
+                          description={el.description}
+                          key={i}
+                        />
                       );
                     })}
               </Grid>

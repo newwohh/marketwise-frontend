@@ -1,6 +1,7 @@
 import React from "react";
 import useAbout from "../../styles/About/About";
 import { Typography, Box } from "@mui/material";
+import { aboutData } from "../../dev-data/data";
 
 function ContentAbout() {
   const ContentAboutClass = useAbout;
@@ -46,22 +47,9 @@ function ContentAbout() {
           Here are some additional details about MarketWise:
         </Typography>
         <ul>
-          <li>
-            MarketWise is a web-based platform, so you can access it from
-            anywhere.
-          </li>
-          <li>
-            MarketWise is free to use, but there are premium features available
-            for a monthly subscription.
-          </li>
-          <li>
-            MarketWise offers a variety of features to help you track your
-            investments, including real-time data, charts, and analysis tools.
-          </li>
-          <li>
-            MarketWise is a secure platform, and your data is protected with
-            industry-standard encryption.
-          </li>
+          {aboutData.map((el, i) => {
+            return <li>{el.text}</li>;
+          })}
         </ul>
       </Box>
       <Typography

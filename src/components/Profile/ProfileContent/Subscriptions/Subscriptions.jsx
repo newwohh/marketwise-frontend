@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Divider, Typography } from "@mui/material";
+import { Divider, Typography, useMediaQuery } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,8 +10,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { backendBaseUrl } from "../../../../constants/constants";
 import { MyContext } from "../../../../context/Context";
+import { useTheme } from "@mui/material/styles";
 
 function Subscriptions() {
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.up("md"));
   const stocks = useSelector((state) => state.news.stockprice);
   console.log(stocks);
   const [allSubs, setAllSubs] = React.useState([]);
@@ -49,7 +52,11 @@ function Subscriptions() {
       <div>
         <TableContainer
           component={Paper}
-          sx={{ width: "1500px", marginTop: "50px" }}
+          sx={{
+            width: isMatch ? "1500px" : "300px",
+            height: "500px",
+            marginTop: isMatch ? "50px" : "10px",
+          }}
         >
           <Table sx={{ width: "1500px" }} aria-label="simple table">
             <TableHead>

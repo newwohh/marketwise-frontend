@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useHeaderStyles from "../../../../styles/Home/HeaderSectionStyles";
 import { ThemeProvider, Typography, Button } from "@mui/material";
 import theme from "../../../../styles/Theme";
-import TextAnimation from "react-text-animations";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import ReactTextTransition, { presets } from "react-text-transition";
+
+const texts = ["Explore", "Trade", "Think", "Grow"];
+
+function getRandomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function HeroSection() {
+  const [textIndex, setTextIndex] = useState(0);
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setTextIndex(getRandomNumber(0, texts.length - 1));
+    }, 4000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   const headerClasses = useHeaderStyles;
   return (
     <section style={headerClasses.section}>
@@ -31,38 +51,16 @@ function HeroSection() {
             align="center"
             variant="h1"
             noWrap
-            style={headerClasses.headerintrotext}
-            sx={{
-              fontSize: {
-                xs: "30px",
-                xl: "100px",
-              },
-              marginTop: "370px",
-              color: "white",
-              zIndex: 1,
-              position: "absolute",
-
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              fontWeight: 1000,
-              background:
-                "radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%)",
-              backgroundClip: "text",
-              WebkitTextFillColor: "black",
-            }}
+            sx={headerClasses.headerintrotext}
           >
-            <TextAnimation.Slide
-              target="Trade"
-              text={["Learn", "Grow", "Explore"]}
-              animation={{
-                duration: 1000,
-                delay: 2000,
-                timingFunction: "ease-out",
-              }}
+            <ReactTextTransition
+              springConfig={presets.gentle}
+              className="big"
+              delay={300}
+              inline
             >
-              Trade Beyond Limits
-            </TextAnimation.Slide>
+              {`${texts[textIndex]} Beyond Limits`}
+            </ReactTextTransition>
           </Typography>
           <Typography
             variant="p"
@@ -82,23 +80,7 @@ function HeroSection() {
           <Button
             href="/explore"
             variant="outlined"
-            sx={{
-              width: "200px",
-              borderRadius: "40px",
-              height: "55px",
-              border: "3px solid #002244",
-              marginTop: "600px",
-              color: "#002244",
-              position: "absolute",
-              zIndex: 1,
-              marginLeft: "50%",
-              marginRight: "50%",
-              "&:hover": {
-                backgroundColor: "#F5F5F5",
-                border: "1px solid #F5F5F5",
-                color: "black",
-              },
-            }}
+            sx={headerClasses.explorebtn}
           >
             Explore Now <ArrowRightAltIcon sx={{ marginLeft: "10px" }} />
           </Button>

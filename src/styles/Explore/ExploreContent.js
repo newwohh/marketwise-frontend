@@ -1,5 +1,3 @@
-import {} from "@material-ui/core/styles";
-
 const useExploreContent = (theme) => ({
   sectionexplore: {
     background: "linear-gradient(to top, #F0F8FF 0%, #537895 100%)",

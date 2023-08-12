@@ -3,77 +3,40 @@ import { useContext } from "react";
 import useStyles from "../../../../styles/Home/NavBarStyles";
 import {
   AppBar,
-  Collapse,
   CssBaseline,
   Toolbar,
   Typography,
   Button,
-  Container,
-  List,
-  ListItem,
   useMediaQuery,
-  Box,
   CircularProgress,
   Avatar,
   MenuItem,
   Menu,
 } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Person2Icon from "@mui/icons-material/Person2";
-import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import ViewCompactIcon from "@mui/icons-material/ViewCompact";
-import {
-  ExpandLess,
-  ExpandMore,
-  Logout,
-  PersonAdd,
-  Settings,
-} from "@mui/icons-material";
-import BookIcon from "@mui/icons-material/Book";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
-import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
-import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
+import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 import logo from "./../../../../assets/profit(1).png";
-import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { styled, useTheme } from "@mui/material/styles";
-import MenuIcon from "@mui/icons-material/Menu";
+import { useTheme } from "@mui/material/styles";
 import { backendBaseUrl } from "../../../../constants/constants";
 import { MyContext } from "../../../../context/Context";
 import secureLocalStorage from "react-secure-storage";
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
+import NavbarMobile from "./NavbarMobile";
+import MarketCollapse from "./MarketCollapse";
 
 function NavBar() {
   let name;
   const { user } = useContext(MyContext);
   const [collapse, setCollapse] = useState(false);
-  const [expandIcon, setExpandIcon] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openFor = Boolean(anchorEl);
   const [navbar, setNavbar] = useState(false);
   const classes = useStyles;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  const drawerWidth = 240;
-  const [open, setOpen] = React.useState(false);
-  const navigation = useNavigate();
   const changeBackground = () => {
     if (window.scrollY >= 1000) {
       setNavbar(false);
@@ -96,26 +59,6 @@ function NavBar() {
   const openCollapse = () => {
     setCollapse(!collapse);
   };
-  const expand = () => {
-    setExpandIcon(!expandIcon);
-  };
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-  const directHeatmap = async () => {
-    const request = await fetch(backendBaseUrl + "api/v1/users/heatmap", {
-      credentials: "include",
-    });
-    const response = await request.json();
-    if (response.status === "success") {
-      navigation("/heatmap/stocks");
-    } else {
-      navigation("/login");
-    }
-  };
 
   const userLogout = async () => {
     const req = await fetch(backendBaseUrl + "api/v1/users/logout", {
@@ -130,86 +73,7 @@ function NavBar() {
   return (
     <nav style={{ backgroundColor: "hsla(0, 0%, 0%, 0)" }}>
       {isMatch ? (
-        <Box>
-          <CssBaseline />
-          <AppBar
-            position="fixed"
-            open={open}
-            sx={{
-              backgroundColor: "hsla(0, 0%, 0%, 0)",
-              boxShadow: "none",
-              border: "none",
-            }}
-          >
-            <Toolbar sx={{ backgroundColor: "hsla(0, 0%, 0%, 0)" }}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                sx={{
-                  mr: 2,
-                  ...(open && { display: "none" }),
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6" noWrap component="div">
-                MarketWise
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            sx={{
-              width: drawerWidth,
-              flexShrink: 0,
-              backgroundColor: "#002244",
-              "& .MuiDrawer-paper": {
-                width: drawerWidth,
-                boxSizing: "border-box",
-              },
-            }}
-            variant="persistent"
-            anchor="left"
-            open={open}
-          >
-            <DrawerHeader>
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === "ltr" ? (
-                  <ChevronLeftIcon />
-                ) : (
-                  <ChevronRightIcon />
-                )}
-              </IconButton>
-            </DrawerHeader>
-            <Divider />
-            <List>
-              {["Products", "Community", "About"].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-            <Divider />
-            <List>
-              {["Log-in"].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      {index % 2 !== 0 ? "error getting icon" : <Person2Icon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </Drawer>
-        </Box>
+        <NavbarMobile />
       ) : (
         <AppBar
           sx={{
@@ -275,112 +139,7 @@ function NavBar() {
               >
                 Products
               </Button>
-              <Collapse
-                in={collapse}
-                timeout="auto"
-                unmountOnExit
-                style={classes.collapse}
-                sx={{ width: 300, position: "absolute" }}
-              >
-                <Container
-                  style={classes.expanded}
-                  sx={{
-                    width: 300,
-                    position: "absolute",
-                    marginLeft: "170px",
-                  }}
-                  onMouseLeave={openCollapse}
-                >
-                  <List
-                    sx={{
-                      width: "100%",
-                      maxWidth: 360,
-                    }}
-                  >
-                    <ListItem alignItems="center" style={classes.listitem}>
-                      <Link
-                        style={classes.listitemlink}
-                        onClick={() => directHeatmap()}
-                      >
-                        <LocalFireDepartmentIcon
-                          style={classes.productlisticon}
-                        />
-                        <Typography variant="">Heat Map</Typography>
-                      </Link>
-                    </ListItem>
-                    <ListItem alignItems="center" style={classes.listitem}>
-                      <Link to="subscription" style={classes.listitemlink}>
-                        <BarChartIcon style={classes.productlisticon} />
-                        Subscription
-                      </Link>
-                    </ListItem>
-                    <ListItem alignItems="center" style={classes.listitem}>
-                      <Link to="/blogs" style={classes.listitemlink}>
-                        {" "}
-                        <BookIcon style={classes.productlisticon} />
-                        Blogs
-                      </Link>
-                    </ListItem>
-                    <ListItem alignItems="center" style={classes.listitem}>
-                      <Link to="/investsimulator" style={classes.listitemlink}>
-                        {" "}
-                        <FeaturedPlayListIcon style={classes.productlisticon} />
-                        Invest Simulator
-                      </Link>
-                    </ListItem>
-                    <ListItem alignItems="center" style={classes.listitem}>
-                      <Link style={classes.listitemlink} onClick={expand}>
-                        <ViewCompactIcon style={classes.productlisticon} />
-                        Overview of Markets
-                      </Link>
-                      {expandIcon ? (
-                        <ExpandLess
-                          sx={{ marginLeft: "7px", color: "black" }}
-                        />
-                      ) : (
-                        <ExpandMore
-                          sx={{ marginLeft: "7px", color: "black" }}
-                        />
-                      )}
-                    </ListItem>
-                    <Collapse
-                      in={expandIcon}
-                      timeout="auto"
-                      unmountOnExit
-                      style={classes.collapse}
-                    >
-                      <List>
-                        <ListItem style={classes.listitemoverview}>
-                          <Link
-                            to="stocks"
-                            style={classes.listitemlinkoverview}
-                          >
-                            <ShowChartIcon style={classes.overviewicon} />
-                            Share Market
-                          </Link>
-                        </ListItem>
-                        <ListItem style={classes.listitemoverview}>
-                          <Link
-                            to="cryptocurrency"
-                            style={classes.listitemlinkoverview}
-                          >
-                            <CurrencyBitcoinIcon style={classes.overviewicon} />
-                            CryptoCurrency
-                          </Link>
-                        </ListItem>
-                        <ListItem style={classes.listitemoverview}>
-                          <Link style={classes.listitemlinkoverview}>
-                            <CurrencyExchangeIcon
-                              style={classes.overviewicon}
-                            />
-                            Foreign Exchange
-                          </Link>
-                        </ListItem>
-                      </List>
-                    </Collapse>
-                  </List>
-                </Container>
-              </Collapse>
+              <MarketCollapse collapse={collapse} openCollapse={openCollapse} />
               <Button
                 color="inherit"
                 // variant="outlined"

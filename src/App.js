@@ -19,6 +19,7 @@ import ChoosePlan from "./pages/ChoosePlan";
 import Faq from "./pages/Faq";
 import secureLocalStorage from "react-secure-storage";
 import { MyContext } from "./context/Context";
+import ChatbotSupport from "./components/ChatSupport/Chatbot";
 
 function App() {
   const [user, setUser] = React.useState("");
@@ -69,6 +70,7 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/investsimulator" element={<InvestSimulator />} />
           <Route path="/faq" element={<Faq />} />
+          <Route path="/chat" element={<ChatbotSupport />} />
         </Routes>
       </MyContext.Provider>
     </React.Fragment>

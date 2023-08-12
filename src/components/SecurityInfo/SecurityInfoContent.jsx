@@ -11,12 +11,15 @@ import useSecurityInfoContentStyles from "../../styles/SecurityInfo/SecurityInfo
 import { Box, Typography } from "@mui/material";
 
 function SecurityInfoContent() {
-  const SecurityInfoContentClass = useSecurityInfoContentStyles();
+  const SecurityInfoContentClass = useSecurityInfoContentStyles;
 
   return (
-    <main style={{ backgroundColor: "#F0F8FF" }}>
-      <section style={SecurityInfoContentClass.securityinfofirstdiv}>
-        <div style={SecurityInfoContentClass.securityinfofirstsubdiv}>
+    <Box component="main" sx={{ backgroundColor: "#F0F8FF" }}>
+      <Box
+        component="section"
+        sx={SecurityInfoContentClass.securityinfofirstdiv}
+      >
+        <Box sx={SecurityInfoContentClass.securityinfofirstsubdiv}>
           <div>
             <Typography variant="h2">
               Our Commitment to User Protection
@@ -31,7 +34,7 @@ function SecurityInfoContent() {
               personal information
             </Typography>
           </div>
-        </div>
+        </Box>
         <div>
           <img
             src={securityinfo}
@@ -39,9 +42,9 @@ function SecurityInfoContent() {
             style={SecurityInfoContentClass.securityinfoimg}
           />
         </div>
-      </section>
-      <section style={SecurityInfoContentClass.securityinfoseconddiv}>
-        <div style={SecurityInfoContentClass.securityinfosecondsubdiv}>
+      </Box>
+      <Box sx={SecurityInfoContentClass.securityinfoseconddiv}>
+        <Box sx={SecurityInfoContentClass.securityinfosecondsubdiv}>
           <div
             style={{
               margin: "100px",
@@ -66,8 +69,8 @@ function SecurityInfoContent() {
               </Typography>
             </div>
           </div>
-          <div style={SecurityInfoContentClass.firstcontentsecurityinfo}>
-            <div style={SecurityInfoContentClass.securityinfocontentmain}>
+          <Box sx={SecurityInfoContentClass.firstcontentsecurityinfo}>
+            <Box sx={SecurityInfoContentClass.securityinfocontentmain}>
               <Typography
                 variant="h5"
                 sx={{
@@ -82,8 +85,8 @@ function SecurityInfoContent() {
                 Platform Security
               </Typography>
               <div>
-                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                  <div style="">
+                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
+                  <div>
                     <img
                       src={securestorage}
                       alt="securestore"
@@ -107,8 +110,8 @@ function SecurityInfoContent() {
                       stored in offline, cold storage facilities.
                     </Typography>
                   </div>
-                </div>
-                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
+                </Box>
+                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
                   <div>
                     <img
                       src={monitor}
@@ -135,8 +138,8 @@ function SecurityInfoContent() {
                       suspended withdrawals for a minimum of 24-48 hours.
                     </Typography>
                   </div>
-                </div>
-                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
+                </Box>
+                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
                   <div>
                     <img
                       src={orgsec}
@@ -163,8 +166,8 @@ function SecurityInfoContent() {
                       of our users’ funds.
                     </Typography>
                   </div>
-                </div>
-                <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
+                </Box>
+                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
                   <div>
                     <img
                       src={advdata}
@@ -192,9 +195,9 @@ function SecurityInfoContent() {
                       their personal information.
                     </Typography>
                   </div>
-                </div>
+                </Box>
               </div>
-            </div>
+            </Box>
             <div>
               <Typography
                 variant="h5"
@@ -209,7 +212,7 @@ function SecurityInfoContent() {
               >
                 User-Level Security
               </Typography>
-              <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
+              <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
                 <div>
                   <img
                     src={safesign}
@@ -233,7 +236,7 @@ function SecurityInfoContent() {
                     methods.
                   </Typography>
                 </div>
-              </div>
+              </Box>
               <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
                 <div>
                   <img
@@ -259,7 +262,7 @@ function SecurityInfoContent() {
                   </Typography>
                 </div>
               </div>
-              <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
+              <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
                 <div>
                   <img
                     src={secnot}
@@ -284,12 +287,15 @@ function SecurityInfoContent() {
                     parties.
                   </Typography>
                 </div>
-              </div>
+              </Box>
             </div>
-          </div>
-        </div>
-      </section>
-      <section style={SecurityInfoContentClass.middledivsecurityinfo}>
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        component="section"
+        sx={SecurityInfoContentClass.middledivsecurityinfo}
+      >
         <Box
           sx={{
             backgroundColor: "#5D76A9",
@@ -298,7 +304,7 @@ function SecurityInfoContent() {
             color: "white",
           }}
         >
-          <div style={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
+          <Box sx={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
             <Typography variant="h4" sx={{ fontWeight: 600, color: "#002244" }}>
               Working Together To Establish Global Crypto Compliance
             </Typography>
@@ -312,9 +318,9 @@ function SecurityInfoContent() {
               compliance program and partner with cutting-edge compliance
               technology providers to meet and exceed global regulations.
             </Typography>
-          </div>
+          </Box>
         </Box>
-      </section>
+      </Box>
       <section style={{ backgroundColor: "#F0F8FF" }}>
         <div>
           <Typography
@@ -325,7 +331,7 @@ function SecurityInfoContent() {
             Contact MarketWise
           </Typography>
         </div>
-        <div style={SecurityInfoContentClass.lastdivsecurityinfo}>
+        <Box sx={SecurityInfoContentClass.lastdivsecurityinfo}>
           <div>
             <div style={{ marginBottom: "50px" }}>
               <Typography variant="h6">Phone Number :</Typography>
@@ -354,9 +360,9 @@ function SecurityInfoContent() {
               <Typography variant="h6">complaints@example.com</Typography>
             </div>
           </div>
-        </div>
+        </Box>
       </section>
-    </main>
+    </Box>
   );
 }
 

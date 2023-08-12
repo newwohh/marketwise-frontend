@@ -9,6 +9,8 @@ import ProfileUI from "../components/Profile/ProfileContent/ProfileUI/ProfileUI"
 import Subscriptions from "../components/Profile/ProfileContent/Subscriptions/Subscriptions";
 import WriteBlogs from "../components/Profile/ProfileContent/WriteBlogs/WriteBlogs";
 import { useLocation } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -32,14 +34,10 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 export default function Profile() {
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.up("md"));
+
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -59,20 +57,30 @@ export default function Profile() {
       <main style={{ height: "1000px", backgroundColor: "#F0F8FF" }}>
         <section>
           <div style={{}}>
-            <Box sx={{ display: "flex" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: isMatch ? "row" : "column",
+              }}
+            >
               <List>
                 <Tabs
                   textColor="secondary"
                   indicatorColor="secondary"
-                  orientation="vertical"
+                  orientation={isMatch ? "vertical" : "horizontal"}
                   value={value}
                   onChange={handleChange}
-                  aria-label="vertical tabs example"
-                  sx={{ marginTop: "150px", marginLeft: "150px" }}
+                  sx={{
+                    marginTop: "150px",
+                    marginLeft: "150px",
+                    "@media (max-width:1000px)": {
+                      marginLeft: "0px",
+                    },
+                  }}
                 >
-                  <Tab label="About" {...a11yProps(0)} />
-                  <Tab label="Subscriptons" {...a11yProps(1)} />
-                  <Tab label="Write Blog" {...a11yProps(2)} />
+                  <Tab label="About" />
+                  <Tab label="Subscriptons" />
+                  <Tab label="Write Blog" />
                 </Tabs>
               </List>
               <Box component="main" sx={{ flexGrow: 1, marginTop: "150px" }}>

@@ -1,86 +1,26 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getForexData } from "../../../../../../store/store-actions";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import useForexDataStyles from "../../../../../../styles/Home/ForexData";
 import Carousel from "better-react-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Box, Button, Link, ThemeProvider } from "@mui/material";
+import { Box, Link, ThemeProvider } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import chatsupport from "../../../../../../assets/5114855.jpg";
 import faq from "../../../../../../assets/5066368.jpg";
 import blog from "../../../../../../assets/5396346.jpg";
-
-const forexCard = (data, i) => {
-  return (
-    <Card
-      key={i}
-      sx={{
-        margin: "25px",
-        backgroundColor: "#F0F8FF",
-        color: "#002244",
-        display: "flex",
-        justifyContent: "flex",
-        alignItems: "center",
-        width: "250px",
-        height: 200,
-        padding: 1,
-        transition: "transform 0.3s",
-        boxShadow: "0px 0px 0px 5px rgba(0, 0, 0, 0.05)",
-        cursor: "pointer",
-        "&:hover": {
-          color: "#002244",
-          backgroundColor: "#E1EBEE",
-          boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
-        },
-      }}
-    >
-      <CardContent sx={{ textAlign: "center" }}>
-        <Typography
-          variant="h3"
-          sx={{ fontWeight: 700, fontFamily: "Malgun Gothic" }}
-        >
-          {data ? data.symbol : "Currency Symbol"}
-        </Typography>
-
-        <Button
-          variant="outlined"
-          sx={{
-            marginTop: "10px",
-            marginBottom: "10px",
-            width: "150px",
-            height: 30,
-            fontSize: "10px",
-            borderRadius: 13,
-            color: "grey",
-            "&:hover": { backgroundColor: "#002244", color: "white" },
-          }}
-        >
-          {data ? data.currency_group : "Sorry couldnt fetch data"}
-        </Button>
-        <Typography varian="p">
-          {data ? data.currency_base : "Currency Base"}
-        </Typography>
-        <Typography varian="h5">
-          {data ? data.currency_quote : "Currency Quote"}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
+import ForexCard from "./ForexCard";
 
 function ForexPairs() {
-  const [apiData, setApiData] = useState("");
   const dispatch = useDispatch();
   const { forexdata } = useSelector((state) => state.news);
   const getProducts = useCallback(() => {
     dispatch(getForexData());
-  }, [apiData]);
+  }, [dispatch]);
   useEffect(() => {
     getProducts();
-  }, [apiData]);
+  }, [getProducts]);
   const forexDataClass = useForexDataStyles;
   const forexCardData = forexdata;
   return (
@@ -141,7 +81,9 @@ function ForexPairs() {
           ]}
         >
           {forexCardData.map((el, i) => (
-            <Carousel.Item key={i}>{forexCard(el, i)}</Carousel.Item>
+            <Carousel.Item key={i}>
+              {<ForexCard data={el} i={i} />}
+            </Carousel.Item>
           ))}
         </Carousel>
       </Box>

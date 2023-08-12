@@ -8,18 +8,13 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import useCryptoMarket from "../../../../../../styles/Home/CryptoMarketStyles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { useTheme } from "@mui/material/styles";
 import { getCryptoPrice } from "../../../../../../store/store-actions";
+import CryptoTable from "./CryptoTable";
 
 function CryptoMarket() {
   const theme = useTheme();
@@ -29,10 +24,10 @@ function CryptoMarket() {
   const dispatch = useDispatch();
   const dispatchCryptoPrice = React.useCallback(() => {
     dispatch(getCryptoPrice());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     dispatchCryptoPrice();
-  }, []);
+  }, [dispatchCryptoPrice]);
   const rows = prices;
 
   return (
@@ -72,262 +67,17 @@ function CryptoMarket() {
             </ThemeProvider>
           </div>
           <div style={CryptoMarketClass.cryptopricediv}>
-            <div
-              style={{
-                marginBottom: "50px",
-              }}
-            >
-              <TableContainer
-                component={Paper}
-                sx={{
-                  backgroundColor: "#F0F8FF",
-                  "@media (max-width : 1000px)": {
-                    width: "350px",
-                  },
-                }}
-              >
-                <Table
-                  sx={{
-                    width: 650,
-                    "@media (max-width : 1000px)": {
-                      width: "300px",
-                    },
+            {[1, 2].map((el, i) => {
+              return (
+                <div
+                  style={{
+                    marginBottom: "50px",
                   }}
-                  aria-label="simple table"
                 >
-                  <TableHead>
-                    <TableRow
-                      sx={{
-                        "@media (max-width : 1000px)": {
-                          width: "100px",
-                        },
-                      }}
-                    >
-                      <TableCell
-                        style={{ color: "grey" }}
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Rank
-                      </TableCell>
-                      <TableCell
-                        style={{ color: "grey" }}
-                        align="right"
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Symbol
-                      </TableCell>
-                      <TableCell
-                        style={{ color: "grey" }}
-                        align="right"
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Name
-                      </TableCell>
-                      <TableCell
-                        style={{ color: "grey" }}
-                        align="right"
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Price $
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.slice(0, 5).map((row, i) => (
-                      <TableRow
-                        key={i}
-                        sx={{
-                          cursor: "pointer",
-                          "&:hover": {
-                            // backgroundColor: "azure",
-                          },
-                          "@media (max-width : 1000px)": {
-                            width: "10px",
-                          },
-                        }}
-                      >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          sx={{ color: "#002244" }}
-                        >
-                          {row.rank}
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{ color: "#002244", fontWeight: 1000 }}
-                        >
-                          {row.symbol}
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{ color: "#002244", fontWeight: 1000 }}
-                        >
-                          <Button
-                            variant="outlined"
-                            sx={{
-                              borderRadius: "15px",
-                              fontWeight: 600,
-                              color: "#002244",
-                              "&:hover": {
-                                backgroundColor: "#002244",
-                                color: "white",
-                              },
-                            }}
-                          >
-                            {row.name}
-                          </Button>
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{ color: "#002244", fontWeight: 600 }}
-                        >
-                          {row.price_usd}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </div>
-            <div>
-              <TableContainer
-                component={Paper}
-                sx={{
-                  backgroundColor: "#F0F8FF",
-                  "@media (max-width : 1000px)": {
-                    width: "350px",
-                  },
-                }}
-              >
-                <Table
-                  sx={{
-                    width: 650,
-                    "@media (max-width : 1000px)": {
-                      width: "300px",
-                    },
-                  }}
-                  aria-label="simple table"
-                >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell
-                        style={{ color: "grey" }}
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Rank
-                      </TableCell>
-                      <TableCell
-                        style={{ color: "grey" }}
-                        align="right"
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Symbol
-                      </TableCell>
-                      <TableCell
-                        style={{ color: "grey" }}
-                        align="right"
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Name
-                      </TableCell>
-                      <TableCell
-                        style={{ color: "grey" }}
-                        align="right"
-                        sx={{
-                          "@media (max-width : 1000px)": {
-                            fontSize: "10px",
-                          },
-                        }}
-                      >
-                        Price $
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.slice(5, 10).map((row, i) => (
-                      <TableRow
-                        key={i}
-                        sx={{
-                          border: "none",
-                          cursor: "pointer",
-                          "&:hover": {
-                            // backgroundColor: "azure",
-                          },
-                        }}
-                      >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          sx={{ color: "#002244" }}
-                        >
-                          {row.rank}
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{ color: "#002244", fontWeight: 1000 }}
-                        >
-                          {row.symbol}
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{ color: "#002244", fontWeight: 1000 }}
-                        >
-                          <Button
-                            variant="outlined"
-                            sx={{
-                              borderRadius: "15px",
-                              fontWeight: 600,
-                              color: "#002244",
-                              "&:hover": {
-                                backgroundColor: "#002244",
-                                color: "white",
-                              },
-                            }}
-                          >
-                            {row.name}
-                          </Button>
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{ color: "#002244", fontWeight: 600 }}
-                        >
-                          {row.price_usd}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </div>
+                  <CryptoTable rows={rows} />
+                </div>
+              );
+            })}
           </div>
         </div>
       ) : (

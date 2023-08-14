@@ -8,13 +8,8 @@ import { Link } from "react-router-dom";
 import { Box, Container, ThemeProvider, useTheme } from "@mui/material";
 
 import useContentTopStyles from "../../../../styles/Home/ContentTop";
-import cardimgone from "../../../../assets/4300_7_03.jpg";
-import cardimgtwo from "../../../../assets/3569284.jpg";
-import cardimgthree from "../../../../assets/5751386.jpg";
-import securedata from "../../../../assets/Data_security_28.jpg";
-import securedpayment from "../../../../assets/online-payment-security-concept-3d-phone-bill.jpg";
-import privacy from "../../../../assets/6101100.jpg";
-import encrypttion from "../../../../assets/5051408.jpg";
+import { contenTopData } from "../../../../dev-data/data";
+import ContentTopCard from "./ContentTopCard";
 
 function ContentTop() {
   const [expanded, setExpanded] = React.useState(false);
@@ -234,121 +229,15 @@ function ContentTop() {
                   },
                 }}
               >
-                <div style={contentTopClasses.secondivsecurity}>
-                  <Card
-                    sx={{
-                      width: 800,
-                      height: "150px",
-                      display: "flex",
-                      alignItems: "center",
-                      backgroundColor: "#F0F8FF",
-                      color: "#002244",
-                      transition: "transform 0.3s",
-                      "&:hover": {
-                        boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
-                      },
-                      "@media (max-width: 1000px)": {
-                        flexDirection: "column",
-                        height: "400px",
-                      },
-                    }}
-                  >
-                    <CardContent
-                      sx={{
-                        "@media (max-width: 1000px)": {
-                          width: "390px",
-                        },
-                      }}
-                    >
-                      <Typography gutterBottom variant="h5" component="div">
-                        Secured Payment
-                      </Typography>
-                      <Typography variant="body2">
-                        Our website ensures secure payment methods to protect
-                        your financial information and give you peace of mind
-                        while making transactions.
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </div>
-                <div style={contentTopClasses.secondivsecurity}>
-                  <Card
-                    sx={{
-                      width: 800,
-                      height: "150px",
-                      display: "flex",
-                      alignItems: "center",
-                      backgroundColor: "#F0F8FF",
-                      transition: "transform 0.3s",
-
-                      color: "#002244",
-                      "&:hover": {
-                        boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
-                      },
-                      "@media (max-width: 1000px)": {
-                        flexDirection: "column",
-                        height: "300px",
-                      },
-                    }}
-                  >
-                    <CardContent
-                      sx={{
-                        "@media (max-width: 1000px)": {
-                          width: "390px",
-                        },
-                      }}
-                    >
-                      <Typography gutterBottom variant="h5" component="div">
-                        We value your Privacy
-                      </Typography>
-                      <Typography variant="body2">
-                        MarketWise takes your privacy seriously. We use
-                        industry-standard security measures to protect your
-                        personal information and ensure that it is not shared
-                        with any third parties.
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </div>
-                <div style={contentTopClasses.secondivsecurity}>
-                  <Card
-                    sx={{
-                      width: 800,
-                      height: "150px",
-                      display: "flex",
-                      alignItems: "center",
-                      backgroundColor: "#F0F8FF",
-                      transition: "transform 0.3s",
-                      color: "#002244",
-                      "&:hover": {
-                        boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
-                      },
-                      "@media (max-width: 1000px)": {
-                        flexDirection: "column",
-                        height: "450px",
-                        width: "600px",
-                      },
-                    }}
-                  >
-                    <CardContent
-                      sx={{
-                        "@media (max-width: 1000px)": {
-                          width: "390px",
-                        },
-                      }}
-                    >
-                      <Typography gutterBottom variant="h5" component="div">
-                        Data Encryption
-                      </Typography>
-                      <Typography variant="body2">
-                        MarketWise prioritizes the protection of our users' data
-                        and implements strong encryption methods to ensure the
-                        confidentiality and integrity of all information shared
-                        on our platform.
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </div>
+                {contenTopData.map((el, i) => {
+                  return (
+                    <ContentTopCard
+                      title={el.title}
+                      description={el.description}
+                      i={i}
+                    />
+                  );
+                })}
               </Box>
             </div>
           </div>

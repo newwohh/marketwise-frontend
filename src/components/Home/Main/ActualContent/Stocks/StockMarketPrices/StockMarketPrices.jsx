@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import StockMarketTable from "./StockMarketTable";
 
 function StockMarketPrices() {
   const [dataApi, setDataApi] = useState("");
@@ -151,219 +152,21 @@ function StockMarketPrices() {
                 />
               </TabList>
             </Box>
-            <TabPanel value="1">
-              <TableContainer
-                component={Paper}
-                sx={{
-                  height: 500,
-                  width: 1500,
-                  color: "white",
-                  backgroundColor: "#F0F8FF",
-                  "@media (max-width: 1000px)": {
-                    width: "300px",
-                    height: "500px",
-                  },
-                }}
+            {/* <TabPanel value="1">
+              <StockMarketTable
+                price={exchanges}
                 value={value}
-                index={0}
-                dir={themes.direction}
-              >
-                <Table
-                  sx={{
-                    width: 1500,
-                    color: "white",
-                    "@media (max-width: 1000px)": {
-                      width: "300px",
-                      height: "500px",
-                    },
-                  }}
-                >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell sx={{ color: "grey" }}>Name</TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Asset
-                      </TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Locale
-                      </TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        MIC
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody
-                    sx={{
-                      "@media (max-width: 1000px)": {
-                        height: "400px",
-                      },
-                    }}
-                  >
-                    {exchanges === undefined || stockprice === []
-                      ? loaderArray.map((el, i) => {
-                          return (
-                            <Box sx={{ pt: 0.5 }}>
-                              <Skeleton
-                                variant="rectangular"
-                                width={450}
-                                height={30}
-                              />
-                              <Skeleton variant="circular" />
-                              <Skeleton variant="rectangular" width={100} />
-                            </Box>
-                          );
-                        })
-                      : exchanges.map((row, i) => (
-                          <TableRow
-                            key={i}
-                            sx={{
-                              color: "#002244",
-                              "&:hover": {
-                                backgroundColor: "#E1EBEE",
-                              },
-                            }}
-                          >
-                            <TableCell
-                              component="th"
-                              scope="row"
-                              sx={{ color: "#002244" }}
-                            >
-                              <Tooltip
-                                title={row.name ? row.name : "Data not found!"}
-                              >
-                                <Link
-                                  style={StockPriceClasses.exchangesLink}
-                                  to={row.url || ""}
-                                >
-                                  {row.name ? row.name : "Data not found!"}
-                                </Link>
-                              </Tooltip>
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              <Typography variant="p" sx={{ fontWeight: 600 }}>
-                                {row.asset_class === undefined
-                                  ? "Data not found!"
-                                  : row.asset_class.toUpperCase()}
-                              </Typography>
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              {row.locale === undefined
-                                ? "Data not found!"
-                                : row.locale.toUpperCase()}
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              {row.operating_mic}
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              {row.currency_name}
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                tab={"stocks"}
+              />
             </TabPanel>
 
             <TabPanel value="2">
-              <TableContainer
-                component={Paper}
-                sx={{
-                  height: 500,
-                  width: 1500,
-                  backgroundColor: "#F0F8FF",
-                }}
+              <StockMarketTable
+                price={dividents}
                 value={value}
-                index={1}
-                dir={themes.direction}
-              >
-                <Table
-                  sx={{
-                    width: 1500,
-                    height: 800,
-                    "@media (max-width: 1000px)": {
-                      width: "300px",
-                    },
-                  }}
-                >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell sx={{ color: "grey" }}>Ticker</TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Amount
-                      </TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Currency
-                      </TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Type
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {dividents === undefined || stockprice === []
-                      ? loaderArray.map((el, i) => {
-                          return (
-                            <Box sx={{ pt: 0.5 }}>
-                              <Skeleton
-                                variant="rectangular"
-                                width={450}
-                                height={30}
-                              />
-                              <Skeleton variant="circular" />
-                              <Skeleton variant="rectangular" width={100} />
-                            </Box>
-                          );
-                        })
-                      : dividents.map((row, i) => (
-                          <TableRow
-                            key={i}
-                            sx={{
-                              color: "#002244",
-                              "&:hover": {
-                                backgroundColor: "#E1EBEE",
-                              },
-                            }}
-                          >
-                            <TableCell component="th" scope="row">
-                              <Link
-                                to={row.url || "#"}
-                                style={StockPriceClasses.exchangesLink}
-                              >
-                                {row.ticker ? row.ticker : "Data not found!"}
-                              </Link>
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              {row.cash_amount}
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              <Button
-                                variant="outlined"
-                                sx={{
-                                  color: "#002244",
-                                  width: "50px",
-                                  borderRadius: 3,
-                                  "&:hover": {
-                                    backgroundColor: "#002244",
-                                    color: "#002244",
-                                  },
-                                }}
-                              >
-                                {row.currency
-                                  ? row.currency
-                                  : "Data not found!"}
-                              </Button>
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              {row.dividend_type
-                                ? row.dividend_type
-                                : "Data not found!"}
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </TabPanel>
+                tab={"dividents"}
+              />
+            </TabPanel> */}
             <TabPanel value="3">
               <TableContainer
                 component={Paper}

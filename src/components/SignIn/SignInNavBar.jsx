@@ -16,14 +16,14 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import logo from "../../../assets/profit(1).png";
+import logo from "../../assets/profit(1).png";
 // import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
-import useSignIn from "../../../styles/SignIn/SignInStyles";
+import useSignIn from "../../styles/SignIn/SignInStyles";
 import { styled, useTheme } from "@mui/material/styles";
 import Person2Icon from "@mui/icons-material/Person2";
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import useHeatmap from "../styles/Heatmap/Heatmap";
-import { AppBar, Typography, Box, Card, CardContent } from "@mui/material";
+import HeatmapCard from "../components/Heatmap/HeatmapCard";
+import { AppBar, Typography, Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
@@ -16,7 +17,7 @@ function Heatmap(props) {
   let isProps = Boolean;
   useEffect(() => {
     dispatch(getStockPricesforHeatMap());
-  }, []);
+  }, [dispatch]);
   if (props.cryptomap) {
     maps = props.cryptomap;
     isProps = true;
@@ -25,17 +26,6 @@ function Heatmap(props) {
     maps = stockpriceforheatmap;
   }
   const HeatmapClass = useHeatmap;
-  const setColor = (lastDay, themeOne, themeTwo, themeThree, themeFour) => {
-    if (lastDay > 1) {
-      return themeOne;
-    } else if (lastDay < 0) {
-      return themeTwo;
-    } else if (lastDay > 0 && lastDay < 1) {
-      return themeThree;
-    } else {
-      return themeFour;
-    }
-  };
   const ScrollToTop = () => {
     const { pathname } = useLocation();
     React.useEffect(() => {
@@ -115,6 +105,7 @@ function Heatmap(props) {
                   {maps.map((el, i) => {
                     return (
                       <Grid
+                        key={i}
                         item
                         xs={3}
                         sx={{
@@ -123,58 +114,7 @@ function Heatmap(props) {
                           },
                         }}
                       >
-                        <Card
-                          variant="outlined"
-                          sx={{
-                            width: "400px",
-                            marginTop: "10px",
-                            border: "2px solid white",
-                            borderRadius: "20px",
-                            "&:hover": {
-                              border: "2px solid #5072A7",
-                            },
-                          }}
-                        >
-                          <CardContent
-                            style={
-                              isProps
-                                ? setColor(
-                                    el.percent_change_24h,
-                                    HeatmapClass.cardStyle,
-                                    HeatmapClass.cardStyletwo,
-                                    HeatmapClass.cardStylethree,
-                                    HeatmapClass.cardStylefour
-                                  )
-                                : setColor(
-                                    el.price,
-                                    HeatmapClass.cardStyle,
-                                    HeatmapClass.cardStyletwo,
-                                    HeatmapClass.cardStylethree,
-                                    HeatmapClass.cardStylefour
-                                  )
-                            }
-                          >
-                            <Typography
-                              sx={{ fontSize: 14, color: "white" }}
-                              gutterBottom
-                            >
-                              {el.symbol}
-                            </Typography>
-                            <Typography
-                              variant="h5"
-                              component="div"
-                              sx={{ fontWeight: 700 }}
-                            >
-                              {el.name.toUpperCase()}
-                            </Typography>
-                            <Typography sx={{ mb: 1.5, color: "white" }}>
-                              $
-                              {isProps
-                                ? parseFloat(el.price_usd).toFixed(2)
-                                : el.price}
-                            </Typography>
-                          </CardContent>
-                        </Card>
+                        <HeatmapCard el={el} key={i} isProps={isProps} />
                       </Grid>
                     );
                   })}

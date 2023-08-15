@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import userImg from "../../../../assets/MyApril6.jpg";
+import userImg from "../../../assets/MyApril6.jpg";
 import {
   Button,
   Divider,
@@ -10,7 +10,7 @@ import {
   TextField,
   useMediaQuery,
 } from "@mui/material";
-import { MyContext } from "../../../../context/Context";
+import { MyContext } from "../../../context/Context";
 import { useTheme } from "@mui/material/styles";
 import {} from "@mui/material";
 function ProfileUI() {

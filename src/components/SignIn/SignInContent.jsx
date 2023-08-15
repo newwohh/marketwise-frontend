@@ -1,8 +1,8 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useSignIn from "../../../../styles/SignIn/SignInStyles";
-import { backendBaseUrl } from "../../../../constants/constants";
+import useSignIn from "../../styles/SignIn/SignInStyles";
+import { backendBaseUrl } from "../../constants/constants";
 import secureLocalStorage from "react-secure-storage";
 
 function SignInContent() {

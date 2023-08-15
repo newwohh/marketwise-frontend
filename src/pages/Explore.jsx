@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
-import ContentExplore from "../components/Explore/ContentExplore/ContentExplore";
+import ContentExplore from "../components/Explore/ContentExplore";
 import FooterLearn from "../components/Learn/Footer/FooterLearn";
 import { useLocation } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import SigninNavbar from "../components/SignIn/SignInNavBar/SignInNavbar";
+import SigninNavbar from "../components/SignIn/SignInNavBar";
 import {
   Autocomplete,
   Typography,

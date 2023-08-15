@@ -28,7 +28,6 @@ function ContentSection(props) {
     return title + description + data;
   };
   let text = textHandler(props.el);
-  console.log(props.ref);
   return (
     <div ref={props.ref} key={props.i}>
       <Box ref={props.ref} sx={LearnContentClasses.learnread}>
@@ -127,7 +126,6 @@ function ContentSection(props) {
               }
             />
           </Typography>
-
           {props.el.card ? (
             <Card
               sx={{

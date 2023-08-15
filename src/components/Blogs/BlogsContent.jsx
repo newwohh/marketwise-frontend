@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import { Box, Grid, ThemeProvider } from "@mui/material";
-import theme from "../../../styles/Theme";
+import theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs } from "../../../store/store-actions";
+import { getAllBlogs } from "../../store/store-actions";
 import BlogCard from "./BlogCard";
 import BlogLoader from "./BlogLoader";
 

@@ -288,3 +288,106 @@ export const contentLearnData = [
     ],
   },
 ];
+
+export let plansInformation = [
+  {
+    title: "Starter",
+    subtitle: "Free",
+    bill: "billed yearly",
+    features: [
+      "Can track only one market",
+      "Access Charts",
+      "Access Heatmap",
+      "Cannot Access Invest Simulator",
+      "No Subscription",
+    ],
+  },
+  {
+    title: "Basic",
+    subtitle: "$9.99",
+    bill: "billed yearly",
+    features: [
+      "Can track two market",
+      "Access Charts",
+      "Access Heatmap",
+      "Cannot Access Invest Simulator",
+      "Unlimited Subscription",
+    ],
+  },
+  {
+    title: "Premium",
+    subtitle: "$14.99",
+    bill: "billed yearly",
+    features: [
+      "Can track all Three market",
+      "Access Charts",
+      "Access Heatmap",
+      "Access Invest Simulator",
+      "Unlimited Subscription",
+      "Access to Free Course",
+    ],
+  },
+];
+
+export const faqAccordionData = [
+  {
+    primary: "About",
+    secondary: "What is Marketwise?",
+    description:
+      "MarketWise is a good option for investors who want to track their investments and make informed trading decisions. It is easy to use and offers a variety of features that can help investors improve their trading performance.",
+    panel: "panel1",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Heatmap?",
+    description:
+      "MarketWise is a good option for investors who want to track their investments and make informed trading decisions. It is easy to use and offers a variety of features that can help investors improve their trading performance.",
+    panel: "panel2",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Marketwise?",
+    description:
+      "A heatmap for trading is a visual representation of the order book for a particular security. It shows the number of buy and sell orders at each price level. This information can be used to identify areas of support and resistance, as well as potential entry and exit points",
+    panel: "panel3",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Invest Simulator?",
+    description:
+      "An investment simulator is a software program that allows users to practice investing without risking any real money.It provides a virtual trading environment that mirrors the real stock market, including real-time prices and news. This allows users to test their investment strategies and learn how to trade without the risk of losing money.",
+    panel: "panel4",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Charts?",
+    description:
+      "An investment simulator is a software program that allows users to practice investing without risking any real money.It provides a virtual trading environment that mirrors the real stock market, including real-time prices and news. This allows users to test their investment strategies and learn how to trade without the risk of losing money.",
+    panel: "panel5",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Invest Simulator?",
+    description: "User can track market with Charts that provide real data.",
+    panel: "panel6",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Premium?",
+    description:
+      "Where a user can get access to all the privileges given Marketwise like unlimited tracking,unlimited subscription,unlimited blogs.",
+    panel: "panel7",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Invest Simulator?",
+    description: "User can track market with Charts that provide real data.",
+    panel: "panel8",
+  },
+  {
+    primary: "Feature",
+    secondary: "What is Blogs?",
+    description: "User can write blogs about their thoughts.",
+    panel: "panel9",
+  },
+];

@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import useExploreContent from "../../../styles/Explore/ExploreContent";
+import useExploreContent from "../../styles/Explore/ExploreContent";
 import { ThemeProvider } from "@mui/material";
-import theme from "../../../styles/Theme";
+import theme from "../../styles/Theme";
 
 function ContentExplore() {
   const ExploreContentClasses = useExploreContent;

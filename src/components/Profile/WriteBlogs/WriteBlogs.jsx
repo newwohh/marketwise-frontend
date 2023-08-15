@@ -1,6 +1,6 @@
 import { Button, TextField, useMediaQuery } from "@mui/material";
 import React from "react";
-import { backendBaseUrl } from "../../../../constants/constants";
+import { backendBaseUrl } from "../../../constants/constants";
 import { useTheme } from "@mui/material/styles";
 
 function WriteBlogs() {

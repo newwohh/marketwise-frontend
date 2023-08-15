@@ -1,6 +1,6 @@
 import React from "react";
-import SignInNavbar from "../components/SignIn/SignInNavBar/SignInNavbar";
-import SignInContent from "../components/SignIn/SignInNavBar/SignInContent/SignInContent";
+import SignInNavbar from "../components/SignIn/SignInNavBar";
+import SignInContent from "../components/SignIn/SignInContent";
 
 function SignUpSignIn() {
   return (

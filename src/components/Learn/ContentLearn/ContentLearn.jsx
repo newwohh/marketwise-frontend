@@ -29,14 +29,14 @@ function ContentLearn() {
   const learnanalyse = useRef();
   const LearnContentClasses = useLearnContentStyles;
 
-  const refs = [
-    whatistrading,
-    tradingacc,
-    learnread,
-    learnanalyse,
-    practicetrading,
-    managerisk,
-  ];
+  // const refs = [
+  //   whatistrading,
+  //   tradingacc,
+  //   learnread,
+  //   learnanalyse,
+  //   practicetrading,
+  //   managerisk,
+  // ];
 
   console.log(whatistrading);
 
@@ -276,7 +276,7 @@ function ContentLearn() {
       </Box>
       <Box sx={LearnContentClasses.learncontentdiv}>
         {contentLearnData.map((el, i) => (
-          <ContentSection el={el} i={i} ref={refs[i]} />
+          <ContentSection el={el} i={i} key={i} />
         ))}
       </Box>
     </Box>

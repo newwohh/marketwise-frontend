@@ -1,5 +1,5 @@
 import React from "react";
-import SignInNavbar from "../components/SignIn/SignInNavBar/SignInNavbar";
+import SignInNavbar from "../components/SignIn/SignInNavBar";
 import SignUpContent from "../components/SignUp/SignUpContent";
 
 function SignUp() {

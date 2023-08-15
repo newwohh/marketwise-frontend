@@ -45,7 +45,7 @@ function Chart() {
         });
       }
     }
-  }, []);
+  }, [id]);
 
   const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -58,7 +58,6 @@ function Chart() {
     <React.Fragment>
       <ScrollToTop />
       <NavBar />
-
       <div style={ChartClasses.containerchart}>
         <div style={{ marginLeft: "50px" }}>
           <div style={{ marginTop: "80px" }}>
@@ -69,9 +68,7 @@ function Chart() {
                 textDecoration: "underline",
                 color: "#002244",
               }}
-            >
-              {/* {map.name} */}
-            </Typography>
+            ></Typography>
             <Divider />
           </div>
           <div className="tradingview-widget-container">
@@ -81,10 +78,6 @@ function Chart() {
         <div style={{ marginTop: "100px", width: "500px", marginLeft: "20px" }}>
           <Typography align="center">About</Typography>
           <Divider />
-          {/* <Typography
-            variant="p"
-            sx={{ fontSize: "20px", color: "grey" }}
-          >{`${map.name} is a crpyto currency coin or called as ${map.symbol} for this currency the total volume for last 24hr is $${map.volume_24h_usd} with a market cap of $${map.market_cap_usd}.Which has a total supply of #${map.total_suply}`}</Typography> */}
         </div>
       </div>
     </React.Fragment>

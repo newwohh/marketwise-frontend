@@ -2,7 +2,7 @@ import React from "react";
 import SignInNavbar from "../components/SignIn/SignInNavBar";
 import { Box, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import FaqAccordion from "../components/Fag/FaqAccordion";
+import FaqAccordion from "../components/Faq/FaqAccordion";
 import { faqAccordionData } from "../dev-data/data";
 
 function Faq() {

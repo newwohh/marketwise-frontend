@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import useSignUp from "../../styles/SignUp/SignUp";
-import { backendBaseUrl } from "../../constants/constants";
+import { postNewUser } from "../../api";
 
 function SignUpContent() {
   const signUpClass = useSignUp;
@@ -19,28 +19,6 @@ function SignUpContent() {
     password: "",
     passwordConfirm: "",
   });
-
-  const postNewUser = async () => {
-    try {
-      const request = await fetch(backendBaseUrl + "api/v1/users/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: userDetails.first + userDetails.last,
-          email: userDetails.email,
-          password: userDetails.password,
-          passwordConfirm: userDetails.passwordConfirm,
-        }),
-        credentials: "include",
-      });
-      const response = await request.json();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <main style={{ backgroundColor: "#F0F8FF", height: "1000px" }}>
@@ -139,7 +117,7 @@ function SignUpContent() {
                   },
                   "@media (max-width:1000px)": { width: "200px" },
                 }}
-                onClick={() => postNewUser()}
+                onClick={() => postNewUser(userDetails)}
               >
                 Sign Up
               </Button>

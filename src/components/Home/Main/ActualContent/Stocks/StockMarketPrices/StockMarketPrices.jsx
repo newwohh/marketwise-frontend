@@ -29,18 +29,15 @@ function StockMarketPrices() {
   const themes = useTheme();
   const StockPriceClasses = useStockMarketPrices;
   const loaderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+  const handleChange = (event, newValue) => setValue(newValue);
   const getProducts = useCallback(() => {
     dispatch(getStockPrice());
   }, [dataApi]);
 
   useEffect(() => {
     getProducts();
-    // console.log(stockprice);
   }, [setDataApi]);
+
   const tickers =
     stockprice[0] === undefined
       ? [{ name: "sorry" }]

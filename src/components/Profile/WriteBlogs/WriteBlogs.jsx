@@ -1,33 +1,11 @@
 import { Button, TextField, useMediaQuery } from "@mui/material";
 import React from "react";
-import { backendBaseUrl } from "../../../constants/constants";
 import { useTheme } from "@mui/material/styles";
+import { writeANewBlog } from "../../../api";
 
 function WriteBlogs() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
-
-  const writeANewBlog = async () => {
-    try {
-      const request = await fetch(backendBaseUrl + "api/v1/blogs/newblog", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: "Title",
-          description: "test",
-        }),
-        credentials: "include",
-      });
-
-      const response = await request.json();
-
-      return console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div>

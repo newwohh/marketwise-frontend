@@ -38,6 +38,12 @@ function NavBar() {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackground);
+  }, []);
+  const openCollapse = () => setCollapse(!collapse);
+  !user ? (name = "please wait") : (name = user.user.name);
+
   const changeBackground = () => {
     if (window.scrollY >= 1000) {
       setNavbar(false);
@@ -45,14 +51,7 @@ function NavBar() {
       setNavbar(true);
     }
   };
-  useEffect(() => {
-    window.addEventListener("scroll", changeBackground);
-  }, []);
-  const openCollapse = () => {
-    setCollapse(!collapse);
-  };
 
-  !user ? (name = "please wait") : (name = user.user.name);
   return (
     <nav style={{ backgroundColor: "hsla(0, 0%, 0%, 0)" }}>
       {isMatch ? (

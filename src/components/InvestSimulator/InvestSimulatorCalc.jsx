@@ -10,6 +10,7 @@ import {
   Box,
 } from "@mui/material";
 import useInvestSimulatorStyles from "../../styles/InvestSimulator/InvestSimulator";
+import { investSimulatorCalcHandler } from "../../actions/actions";
 
 function InvestSimulatorCalc(props) {
   const InvestSimulatorClass = useInvestSimulatorStyles;
@@ -17,17 +18,7 @@ function InvestSimulatorCalc(props) {
   const [year, setYears] = React.useState("");
   const [quantity, setQuantity] = React.useState();
   const calculateAmountForSimulation = (price, change, durationInYear) => {
-    let priceOfTickerParsed = parseFloat(price);
-    let changeOfTickerParsed = parseFloat(change);
-    let percentageOfChange = (priceOfTickerParsed * changeOfTickerParsed) / 100;
-    if (priceOfTickerParsed > 0) {
-      return setChange(
-        (priceOfTickerParsed + percentageOfChange) * durationInYear
-      );
-    }
-    if (priceOfTickerParsed < 0) {
-      return setChange(priceOfTickerParsed - percentageOfChange);
-    }
+    return setChange(investSimulatorCalcHandler(price, change, durationInYear));
   };
 
   return (

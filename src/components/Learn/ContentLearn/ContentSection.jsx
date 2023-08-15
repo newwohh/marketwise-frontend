@@ -15,19 +15,13 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import useLearnContentStyles from "../../../styles/Learn/LearnContentStyles";
 import Speech from "react-text-to-speech";
+import { textHandler } from "../../../actions/actions";
 
 function ContentSection(props) {
   const LearnContentClasses = useLearnContentStyles;
   const [play, setPLay] = useState(false);
-
-  const textHandler = (text) => {
-    const title = text.title;
-    const description = text.description;
-    const data = text.list.map((el) => el.list_title + el.list_description);
-
-    return title + description + data;
-  };
   let text = textHandler(props.el);
+
   return (
     <div ref={props.ref} key={props.i}>
       <Box ref={props.ref} sx={LearnContentClasses.learnread}>

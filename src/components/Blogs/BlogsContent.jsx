@@ -18,7 +18,9 @@ function BlogsContent() {
     [dispatch]
   );
 
-  useEffect(() => getProducts(), [getProducts]);
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
 
   return (
     <main style={{ backgroundColor: "#F0F8FF" }}>

@@ -9,35 +9,12 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useContext, useRef } from "react";
-import { backendBaseUrl } from "../../constants/constants";
 import { MyContext } from "../../context/Context";
+import { subscribeNew } from "../../api";
 
 function OverviewPriceTable(props) {
   const { user } = useContext(MyContext);
   const nameref = useRef(0);
-  const subscribeNew = async (name) => {
-    try {
-      const request = await fetch(
-        backendBaseUrl + "api/v1/subscrptions/newsubscription",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            market: "name",
-            name: name,
-            user: user.user._id,
-          }),
-          credentials: "include",
-        }
-      );
-      const response = await request.json();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <TableContainer
@@ -138,7 +115,7 @@ function OverviewPriceTable(props) {
                       borderColor: "#002244",
                     },
                   }}
-                  onClick={() => subscribeNew(row.name)}
+                  onClick={() => subscribeNew(row.name, user)}
                 >
                   Subscribe
                 </Button>

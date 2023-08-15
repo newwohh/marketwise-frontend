@@ -20,28 +20,16 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import { homeNavbarMobile } from "../../../../dev-data/data";
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
+import { DrawerHeader } from "../../../../actions/actions";
+import { drawerWidth } from "../../../../constants/constants";
 
 function NavbarMobile() {
   const theme = useTheme();
-  const drawerWidth = 240;
   const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const handleDrawerOpen = () => setOpen(true);
+  const handleDrawerClose = () => setOpen(false);
 
   return (
     <Box>

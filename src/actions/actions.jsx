@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { analyze } from "../components/ChatSupport/chatutils";
+import { styled } from "@mui/material/styles";
 
 export const getUser = (state) => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -86,3 +87,47 @@ export function getRandomNumber(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+export const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
+
+export const investSimulatorCalcHandler = (price, change, durationInYear) => {
+  let priceOfTickerParsed = parseFloat(price);
+  let changeOfTickerParsed = parseFloat(change);
+  let percentageOfChange = (priceOfTickerParsed * changeOfTickerParsed) / 100;
+  let changed;
+  if (priceOfTickerParsed > 0) {
+    changed = (priceOfTickerParsed + percentageOfChange) * durationInYear;
+  } else if (priceOfTickerParsed < 0) {
+    changed = priceOfTickerParsed - percentageOfChange;
+  }
+
+  return changed;
+};
+
+export const textHandler = (text) => {
+  const title = text.title;
+  const description = text.description;
+  const data = text.list.map((el) => el.list_title + el.list_description);
+
+  return title + description + data;
+};
+
+export const setCurrentUser = (user) => {
+  let currUserName, currUserEmail;
+
+  user.user ? (currUserName = user.user.name) : (currUserName = "please wait");
+  user.user
+    ? (currUserEmail = user.user.email)
+    : (currUserEmail = "please wait");
+
+  return {
+    currUserName,
+    currUserEmail,
+  };
+};

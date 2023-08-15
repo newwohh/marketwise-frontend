@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import React from "react";
 import CrpytoPriceTable from "./CrpytoPriceTable";
-
 const tableHeading = ["Rank", "Symbol", "Name", "Price $"];
 
 function CryptoTable(props) {

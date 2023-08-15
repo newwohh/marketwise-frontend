@@ -24,33 +24,19 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import useSignIn from "../../styles/SignIn/SignInStyles";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import Person2Icon from "@mui/icons-material/Person2";
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
+import { DrawerHeader } from "../../actions/actions";
+import { drawerWidth } from "../../constants/constants";
 
 function SignInNavbar() {
-  const drawerWidth = 240;
   const [open, setOpen] = React.useState(false);
-
   const theme = useTheme();
-
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
+  const handleDrawerOpen = () => setOpen(true);
+  const handleDrawerClose = () => setOpen(false);
   const signInClass = useSignIn;
+
   return (
     <header>
       <nav>

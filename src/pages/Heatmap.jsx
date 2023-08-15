@@ -17,7 +17,9 @@ function Heatmap(props) {
   const dispatch = useDispatch();
   useScrollToTop();
 
-  useEffect(() => dispatch(getStockPricesforHeatMap()), [dispatch]);
+  useEffect(() => {
+    dispatch(getStockPricesforHeatMap());
+  }, [dispatch]);
 
   let data = heatmapData(props, stockpriceforheatmap);
   maps = data.maps;

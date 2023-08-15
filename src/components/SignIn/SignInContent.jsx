@@ -2,37 +2,12 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useSignIn from "../../styles/SignIn/SignInStyles";
-import { backendBaseUrl } from "../../constants/constants";
-import secureLocalStorage from "react-secure-storage";
+import { signInAUser } from "../../api";
 
 function SignInContent() {
   const signInClass = useSignIn;
   const navigation = useNavigate();
   let userDetails = { email: "", password: "" };
-  const signInAUser = async () => {
-    try {
-      const request = await fetch(backendBaseUrl + "api/v1/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: userDetails.email,
-          password: userDetails.password,
-        }),
-        credentials: "include",
-      });
-
-      const response = await request.json();
-      if (response.status === "success") navigation("/");
-      return secureLocalStorage.setItem(
-        "user",
-        JSON.stringify({ ...response.data })
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const getUser = () => {};
 
@@ -82,7 +57,7 @@ function SignInContent() {
                     height: "40px",
                   },
                 }}
-                onClick={() => signInAUser()}
+                onClick={() => signInAUser(userDetails, navigation)}
               >
                 Login
               </Button>

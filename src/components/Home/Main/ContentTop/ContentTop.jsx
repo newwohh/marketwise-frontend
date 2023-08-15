@@ -13,17 +13,11 @@ import ContentTopCard from "./ContentTopCard";
 
 function ContentTop() {
   const [expanded, setExpanded] = React.useState(false);
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const handleExpandClick = () => setExpanded(!expanded);
   const [expanded1, setExpanded1] = React.useState(false);
-  const handleExpandClick1 = () => {
-    setExpanded1(!expanded1);
-  };
+  const handleExpandClick1 = () => setExpanded1(!expanded1);
   const [expanded2, setExpanded2] = React.useState(false);
-  const handleExpandClick2 = () => {
-    setExpanded2(!expanded2);
-  };
+  const handleExpandClick2 = () => setExpanded2(!expanded2);
   const contentTopClasses = useContentTopStyles;
   const theme = useTheme();
   return (

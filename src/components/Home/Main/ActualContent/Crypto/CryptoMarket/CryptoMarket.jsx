@@ -22,9 +22,10 @@ function CryptoMarket() {
   const { prices } = useSelector((state) => state.marketwise);
   const CryptoMarketClass = useCryptoMarket;
   const dispatch = useDispatch();
-  const dispatchCryptoPrice = React.useCallback(() => {
-    dispatch(getCryptoPrice());
-  }, [dispatch]);
+  const dispatchCryptoPrice = React.useCallback(
+    () => dispatch(getCryptoPrice()),
+    [dispatch]
+  );
   useEffect(() => {
     dispatchCryptoPrice();
   }, [dispatchCryptoPrice]);

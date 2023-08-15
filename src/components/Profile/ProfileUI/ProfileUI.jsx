@@ -13,15 +13,15 @@ import {
 import { MyContext } from "../../../context/Context";
 import { useTheme } from "@mui/material/styles";
 import {} from "@mui/material";
+import { setCurrentUser } from "../../../actions/actions";
 function ProfileUI() {
+  let currUserName, currUserEmail;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
   const { user } = useContext(MyContext);
-  let currUserName, currUserEmail;
-  user.user ? (currUserName = user.user.name) : (currUserName = "please wait");
-  user.user
-    ? (currUserEmail = user.user.email)
-    : (currUserEmail = "please wait");
+  let userCredentials = setCurrentUser(user);
+  currUserName = userCredentials.currUserName;
+  currUserEmail = userCredentials.currUserEmail;
 
   return (
     <div>

@@ -15,9 +15,7 @@ import ForexCard from "./ForexCard";
 function ForexPairs() {
   const dispatch = useDispatch();
   const { forexdata } = useSelector((state) => state.marketwise);
-  const getProducts = useCallback(() => {
-    dispatch(getForexData());
-  }, [dispatch]);
+  const getProducts = useCallback(() => dispatch(getForexData()), [dispatch]);
   useEffect(() => {
     getProducts();
   }, [getProducts]);

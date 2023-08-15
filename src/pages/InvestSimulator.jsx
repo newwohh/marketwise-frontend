@@ -1,24 +1,10 @@
 import React from "react";
 import SigninNavbar from "../components/SignIn/SignInNavBar";
-import {
-  Autocomplete,
-  Typography,
-  TextField,
-  Button,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-  Box,
-} from "@mui/material";
+import { Autocomplete, Typography, TextField, Box } from "@mui/material";
 import { useSelector } from "react-redux";
-import useInvestSimulatorStyles from "../styles/InvestSimulator/InvestSimulator";
+import InvestSimulatorCalc from "../components/InvestSimulator/InvestSimulatorCalc";
 
 function InvestSimulator() {
-  const InvestSimulatorClass = useInvestSimulatorStyles;
-  const [change, setChange] = React.useState(0);
-  const [year, setYears] = React.useState("");
-  const [quantity, setQuantity] = React.useState();
   const [data, setData] = React.useState("");
   const { prices } = useSelector((state) => state.news);
   const getData = (name) => {
@@ -39,19 +25,6 @@ function InvestSimulator() {
     }
   };
 
-  const calculateAmountForSimulation = (price, change, durationInYear) => {
-    let priceOfTickerParsed = parseFloat(price);
-    let changeOfTickerParsed = parseFloat(change);
-    let percentageOfChange = (priceOfTickerParsed * changeOfTickerParsed) / 100;
-    if (priceOfTickerParsed > 0) {
-      return setChange(
-        (priceOfTickerParsed + percentageOfChange) * durationInYear
-      );
-    }
-    if (priceOfTickerParsed < 0) {
-      return setChange(priceOfTickerParsed - percentageOfChange);
-    }
-  };
   return (
     <React.Fragment>
       <SigninNavbar />
@@ -115,104 +88,7 @@ function InvestSimulator() {
               <TextField {...params} label="Choose a Ticker" />
             )}
           />
-          <Box
-            sx={{
-              display: "flex",
-              "@media (max-width:1000px)": {
-                flexDirection: "column",
-              },
-            }}
-          >
-            <div>
-              <Box sx={InvestSimulatorClass.detailsdiv}>
-                <Typography variant="h2" sx={{ marginBottom: "50px" }}>
-                  {data.symbol}
-                </Typography>
-                <Typography variant="h3">{data.name}</Typography>
-                <Typography variant="h4">${data.price}</Typography>
-              </Box>
-              <div style={InvestSimulatorClass.calcdiv}>
-                <div>
-                  <div style={{ display: "flex" }}>
-                    <TextField
-                      label="Quantity"
-                      value={quantity}
-                      onChange={(e) => setQuantity(e.target.value)}
-                      sx={{
-                        width: "300px",
-                        marginRight: "30px",
-                        "@media (max-width:1000px)": {
-                          width: "150px",
-                        },
-                      }}
-                    />
-                    <FormControl
-                      fullWidth
-                      sx={{
-                        "@media (max-width:1000px)": {
-                          width: "150px",
-                        },
-                      }}
-                    >
-                      <InputLabel htmlFor="outlined-adornment-amount">
-                        Amount
-                      </InputLabel>
-                      <OutlinedInput
-                        disabled
-                        value={data.price}
-                        id="outlined-adornment-amount"
-                        startAdornment={
-                          <InputAdornment position="start">$</InputAdornment>
-                        }
-                        label="Amount"
-                      />
-                    </FormControl>
-                  </div>
-                  <TextField
-                    label="Years"
-                    value={year}
-                    onChange={(e) => setYears(e.target.value)}
-                    sx={{
-                      width: "600px",
-                      marginTop: "20px",
-                      marginBottom: "30px",
-                      "@media (max-width:1000px)": {
-                        width: "350px",
-                      },
-                    }}
-                  />
-                </div>
-                <Button
-                  onClick={() =>
-                    calculateAmountForSimulation(
-                      data.price,
-                      data.change,
-                      quantity
-                    )
-                  }
-                  sx={{
-                    width: "600px",
-                    height: "60px",
-                    backgroundColor: "#002244",
-                    color: "white",
-                    "@media (max-width:1000px)": {
-                      width: "350px",
-                    },
-                    "&:hover": {
-                      backgroundColor: "#002233",
-                    },
-                  }}
-                >
-                  Check
-                </Button>
-              </div>
-            </div>
-            <div>
-              <Box sx={InvestSimulatorClass.detailsdivtwo}>
-                <Typography variant="h1">${change}</Typography>
-              </Box>
-            </div>
-          </Box>
+          <InvestSimulatorCalc data={data} />
         </Box>
       </main>
     </React.Fragment>

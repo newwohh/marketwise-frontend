@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -6,22 +6,11 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
 import useOverviewStyles from "../styles/Overview/Overview";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Button, Divider, Grid, ThemeProvider } from "@mui/material";
+import { Divider, Grid, ThemeProvider } from "@mui/material";
 import theme from "../styles/Theme";
-import { Link, Outlet, useLocation } from "react-router-dom";
-import { backendBaseUrl } from "../constants/constants";
-import { MyContext } from "../context/Context";
+import { Outlet, useLocation } from "react-router-dom";
+import OverviewNewsCard from "../components/Overview/OverviewNewsCard";
+import OverviewPriceTable from "../components/Overview/OverviewPriceTable";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,8 +42,6 @@ function a11yProps(index) {
   };
 }
 function Overview(props) {
-  const nameref = useRef(0);
-  const { user } = useContext(MyContext);
   const OverviewClasses = useOverviewStyles;
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -87,29 +74,6 @@ function Overview(props) {
     }, [pathname]);
   };
   console.log(prices, news);
-  const subscribeNew = async (name) => {
-    try {
-      const request = await fetch(
-        backendBaseUrl + "api/v1/subscrptions/newsubscription",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            market: "name",
-            name: name,
-            user: user.user._id,
-          }),
-          credentials: "include",
-        }
-      );
-      const response = await request.json();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <React.Fragment>
@@ -173,168 +137,14 @@ function Overview(props) {
                       {news.map((el, i) => {
                         return (
                           <Grid item xs={2} sm={4} md={4} key={i}>
-                            <Card
-                              sx={{
-                                maxWidth: 345,
-                                height: "500px",
-                                borderRadius: "25px",
-                                overflow: "auto",
-                                padding: "10px",
-                              }}
-                            >
-                              <CardMedia
-                                component="img"
-                                alt="No Image Read the Article"
-                                height="140"
-                                image={el.image_url}
-                              />
-                              <CardContent>
-                                <Typography
-                                  gutterBottom
-                                  variant="h5"
-                                  component="div"
-                                >
-                                  <Link style={OverviewClasses.cardlink}>
-                                    {el.title}
-                                  </Link>
-                                </Typography>
-                                <Typography
-                                  variant="body2"
-                                  color="text.secondary"
-                                  sx={{ height: "200px", overflow: "scroll" }}
-                                >
-                                  {el.description}
-                                </Typography>
-                              </CardContent>
-                              <CardActions>
-                                <Link
-                                  to={el.article_url}
-                                  style={OverviewClasses.overviewcardlink}
-                                >
-                                  Click to see the full article
-                                </Link>
-                              </CardActions>
-                            </Card>
+                            <OverviewNewsCard el={el} />
                           </Grid>
                         );
                       })}
                     </Grid>
                   </TabPanel>
                   <TabPanel value={value} index={1}>
-                    <TableContainer
-                      component={Paper}
-                      sx={{
-                        backgroundColor: "#F0F8FF",
-                        "@media (max-width:1000px)": {
-                          width: "300px",
-                        },
-                      }}
-                    >
-                      <Table
-                        sx={{
-                          backgroundColor: "#F0F8FF",
-                          "@media (max-width:1000px)": {
-                            width: "300px",
-                          },
-                        }}
-                      >
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell align="right">
-                              {title === "Crypto" ? "Rank" : "Asset"}
-                            </TableCell>
-                            <TableCell align="right">Price</TableCell>
-                            <TableCell align="right">
-                              {" "}
-                              {title === "Crypto" ? "Symbol" : "Type"}
-                            </TableCell>
-                            <TableCell align="right">
-                              Protein&nbsp;(g)
-                            </TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {prices.map((row) => (
-                            <TableRow
-                              key={row.name}
-                              sx={{
-                                "&:hover": {
-                                  backgroundColor: "#E1EBEE",
-                                },
-                              }}
-                            >
-                              <TableCell>
-                                <Button
-                                  ref={nameref}
-                                  href={`cryptocurrency/chart/${row.symbol}`}
-                                  variant="outlined"
-                                  sx={{
-                                    borderColor: "#002244",
-                                    borderRadius: "15px",
-                                    width: "150px",
-                                    color: "#002244",
-                                    "&:hover": {
-                                      backgroundColor: "#002244",
-                                      color: "white",
-                                      borderColor: "#002244",
-                                    },
-                                    "@media (max-width:1000px)": {
-                                      height: "50px",
-                                      fontSize: 10,
-                                      overflow: "auto",
-                                    },
-                                  }}
-                                >
-                                  {row.name}
-                                </Button>
-                              </TableCell>
-                              <TableCell
-                                component="th"
-                                scope="row"
-                                align="right"
-                              >
-                                {row.market ? row.market : row.rank}
-                              </TableCell>
-                              <TableCell align="right">
-                                {row.ticker ? row.ticker : row.price_usd}
-                              </TableCell>
-                              <TableCell align="right">
-                                <Button
-                                  href={`cryptocurrency/chart/${row.symbol}`}
-                                  target="_blank"
-                                  sx={{
-                                    borderColor: "#002244",
-                                    width: "150px",
-                                    color: "#002244",
-                                  }}
-                                >
-                                  {row.type ? row.type : row.symbol}
-                                </Button>
-                              </TableCell>
-                              <TableCell align="right">
-                                <Button
-                                  sx={{
-                                    borderColor: "#002244",
-                                    borderRadius: "15px",
-                                    width: "150px",
-                                    color: "#002244",
-                                    "&:hover": {
-                                      backgroundColor: "#002244",
-                                      color: "white",
-                                      borderColor: "#002244",
-                                    },
-                                  }}
-                                  onClick={() => subscribeNew(row.name)}
-                                >
-                                  Subscribe
-                                </Button>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
+                    <OverviewPriceTable title={title} prices={prices} />
                   </TabPanel>
                   <TabPanel value={value} index={2}>
                     Item Three

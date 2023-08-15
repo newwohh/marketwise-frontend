@@ -3,8 +3,12 @@ import SigninNavbar from "../components/SignIn/SignInNavBar";
 import { Autocomplete, Typography, TextField, Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import InvestSimulatorCalc from "../components/InvestSimulator/InvestSimulatorCalc";
+import { useScrollToTop } from "../actions/actions";
+import { titleHandler } from "../handler/titleHandler";
 
 function InvestSimulator() {
+  useScrollToTop();
+  titleHandler("Invest Simulator");
   const [data, setData] = React.useState("");
   const { prices } = useSelector((state) => state.marketwise);
   const getData = (name) => {

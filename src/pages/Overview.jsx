@@ -11,37 +11,18 @@ import theme from "../styles/Theme";
 import { Outlet, useLocation } from "react-router-dom";
 import OverviewNewsCard from "../components/Overview/OverviewNewsCard";
 import OverviewPriceTable from "../components/Overview/OverviewPriceTable";
+import { useScrollToTop, TabPanel } from "../actions/actions";
+import { titleHandler } from "../handler/titleHandler";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
+
 function Overview(props) {
+  titleHandler("Overview");
+  useScrollToTop();
   const OverviewClasses = useOverviewStyles;
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -123,9 +104,9 @@ function Overview(props) {
                       onChange={handleChange}
                       aria-label="basic tabs example"
                     >
-                      <Tab label="News" {...a11yProps(0)} />
-                      <Tab label={title} {...a11yProps(1)} />
-                      <Tab label="Item Three" {...a11yProps(2)} />
+                      <Tab label="News" />
+                      <Tab label={title} />
+                      <Tab label="Item Three" />
                     </Tabs>
                   </Box>
                   <TabPanel value={value} index={0}>

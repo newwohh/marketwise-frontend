@@ -2,19 +2,12 @@ import React from "react";
 import HeaderLearn from "../components/Learn/HeaderLearn/HeaderLearn";
 import ContentLearn from "../components/Learn/ContentLearn/ContentLearn";
 import FooterLearn from "../components/Learn/Footer/FooterLearn";
-import { useLocation } from "react-router-dom";
+import { titleHandler } from "../handler/titleHandler";
 
 function Learn() {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
-
+  titleHandler("Learn");
   return (
     <React.Fragment>
-      <ScrollToTop />
       <header>
         <HeaderLearn />
       </header>

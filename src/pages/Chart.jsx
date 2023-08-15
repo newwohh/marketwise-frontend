@@ -3,8 +3,10 @@ import { useLocation, useParams } from "react-router-dom";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
 import { Divider, Typography } from "@mui/material";
 import useChartStyles from "../styles/Chart.js/Chart";
+import { titleHandler } from "../handler/titleHandler";
 let tvScriptLoadingPromise;
 function Chart() {
+  titleHandler("Chart");
   const ChartClasses = useChartStyles;
   const { id } = useParams();
   console.log(id);

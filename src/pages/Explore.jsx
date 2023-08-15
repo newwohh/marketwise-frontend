@@ -2,19 +2,15 @@ import React from "react";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
 import ContentExplore from "../components/Explore/ContentExplore";
 import FooterLearn from "../components/Learn/Footer/FooterLearn";
-import { useLocation } from "react-router-dom";
+import { titleHandler } from "../handler/titleHandler";
+import { useScrollToTop } from "../actions/actions";
 
 function Explore() {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
+  useScrollToTop();
+  titleHandler("Explore");
 
   return (
     <React.Fragment>
-      <ScrollToTop />
       <NavBar />
       <ContentExplore />
       <FooterLearn />

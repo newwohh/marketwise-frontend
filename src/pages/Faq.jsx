@@ -1,21 +1,17 @@
 import React from "react";
 import SignInNavbar from "../components/SignIn/SignInNavBar";
 import { Box, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
 import FaqAccordion from "../components/Faq/FaqAccordion";
 import { faqAccordionData } from "../dev-data/data";
+import { useScrollToTop } from "../actions/actions";
+import { titleHandler } from "../handler/titleHandler";
 
 function Faq() {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
+  useScrollToTop();
+  titleHandler("FAQ's");
 
   return (
     <React.Fragment>
-      <ScrollToTop />
       <SignInNavbar />
       <main>
         <Box

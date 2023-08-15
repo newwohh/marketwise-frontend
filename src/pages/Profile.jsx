@@ -8,25 +8,10 @@ import SignInNavbar from "../components/SignIn/SignInNavBar";
 import ProfileUI from "../components/Profile/ProfileUI/ProfileUI";
 import Subscriptions from "../components/Profile/Subscriptions/Subscriptions";
 import WriteBlogs from "../components/Profile/WriteBlogs/WriteBlogs";
-import { useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
+import { titleHandler } from "../handler/titleHandler";
+import { TabPanel, useScrollToTop } from "../actions/actions";
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -35,24 +20,17 @@ TabPanel.propTypes = {
 };
 
 export default function Profile() {
+  titleHandler("Profile");
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
-
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
-
+  useScrollToTop();
   return (
     <React.Fragment>
-      <ScrollToTop />
       <SignInNavbar />
       <main style={{ height: "1000px", backgroundColor: "#F0F8FF" }}>
         <section>

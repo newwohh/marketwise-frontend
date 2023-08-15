@@ -2,21 +2,17 @@ import React from "react";
 import SignInNavbar from "../components/SignIn/SignInNavBar";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { useLocation } from "react-router-dom";
 import { plansInformation } from "../dev-data/data";
 import ChoosePlanCard from "../components/ChoosePlan/ChoosePlanCard";
+import { useScrollToTop } from "../actions/actions";
+import { titleHandler } from "../handler/titleHandler";
 
 function ChoosePlan() {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
+  useScrollToTop();
+  titleHandler("Choose Plan");
 
   return (
     <React.Fragment>
-      <ScrollToTop />
       <SignInNavbar />
       <main
         style={{

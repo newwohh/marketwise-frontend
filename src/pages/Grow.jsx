@@ -2,19 +2,14 @@ import React from "react";
 import HeaderGrow from "../components/Grow/HeaderGrow";
 import MainGrow from "../components/Grow/MainGrow";
 import FooterLearn from "../components/Learn/Footer/FooterLearn";
-import { useLocation } from "react-router-dom";
+import { useScrollToTop } from "../actions/actions";
+import { titleHandler } from "../handler/titleHandler";
 
 function Grow() {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
-
+  useScrollToTop();
+  titleHandler("Grow");
   return (
     <React.Fragment>
-      <ScrollToTop />
       <HeaderGrow />
       <MainGrow />
       <FooterLearn />

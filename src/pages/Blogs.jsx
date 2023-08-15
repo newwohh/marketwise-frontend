@@ -2,19 +2,15 @@ import React from "react";
 import SignInNavbar from "../components/SignIn/SignInNavBar";
 import BlogsContent from "../components/Blogs/BlogsContent";
 import FooterLearn from "../components/Learn/Footer/FooterLearn";
-import { useLocation } from "react-router-dom";
+import { useScrollToTop } from "../actions/actions";
+import { titleHandler } from "../handler/titleHandler";
 
 function Blogs() {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
+  useScrollToTop();
+  titleHandler("Blogs");
 
   return (
     <React.Fragment>
-      <ScrollToTop />
       <SignInNavbar />
       <BlogsContent />
       <FooterLearn />

@@ -9,8 +9,11 @@ import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/S
 import { useDispatch, useSelector } from "react-redux";
 import { getStockPricesforHeatMap } from "../reducers/reducers";
 import { heatmapData, useScrollToTop } from "../actions/actions";
+import { titleHandler } from "../handler/titleHandler";
 
 function Heatmap(props) {
+  useScrollToTop();
+  titleHandler("Heatmap");
   let maps = [],
     isProps = Boolean;
   const { stockpriceforheatmap } = useSelector((state) => state.marketwise);

@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getForexData } from "../../../../../../store/store-actions";
+import { getForexData } from "../../../../../../reducers/reducers";
 import Typography from "@mui/material/Typography";
 import useForexDataStyles from "../../../../../../styles/Home/ForexData";
 import Carousel from "better-react-carousel";
@@ -14,7 +14,7 @@ import ForexCard from "./ForexCard";
 
 function ForexPairs() {
   const dispatch = useDispatch();
-  const { forexdata } = useSelector((state) => state.news);
+  const { forexdata } = useSelector((state) => state.marketwise);
   const getProducts = useCallback(() => {
     dispatch(getForexData());
   }, [dispatch]);

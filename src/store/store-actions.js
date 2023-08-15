@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { backendBaseUrl } from "../constants/constants";
+import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllBlogs,
   getCryptoNews,
@@ -9,10 +8,9 @@ import {
   getStockPrice,
   getStockPricesforHeatMap,
 } from "../reducers/reducers";
-const CoinpaprikaAPI = require("@coinpaprika/api-nodejs-client");
 
-const newsSlice = createSlice({
-  name: "news",
+const MarketwiseSlice = createSlice({
+  name: "marketwise",
   initialState: {
     news: [],
     prices: [],
@@ -49,6 +47,4 @@ const newsSlice = createSlice({
   },
 });
 
-export const { setCryptoSymbol } = newsSlice.actions;
-
-export default newsSlice.reducer;
+export default MarketwiseSlice.reducer;

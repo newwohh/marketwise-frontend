@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockNews } from "../../../../../../store/store-actions";
+import { getStockNews } from "../../../../../../reducers/reducers";
 import { CircularProgress, ThemeProvider, Typography } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import useStockNews from "../../../../../../styles/Home/StockNewsStyle";
@@ -12,7 +12,7 @@ import StockNewsCard from "./StockNewsCard";
 function StockNews() {
   const StockNewsClasses = useStockNews;
   const dispatch = useDispatch();
-  const { stocknews } = useSelector((state) => state.news);
+  const { stocknews } = useSelector((state) => state.marketwise);
   const getProducts = React.useCallback(() => {
     dispatch(getStockNews());
   }, [dispatch]);

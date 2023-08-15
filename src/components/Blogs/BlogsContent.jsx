@@ -3,14 +3,14 @@ import Typography from "@mui/material/Typography";
 import { Box, Grid, ThemeProvider } from "@mui/material";
 import theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs } from "../../store/store-actions";
+import { getAllBlogs } from "../../reducers/reducers";
 import BlogCard from "./BlogCard";
 import BlogLoader from "./BlogLoader";
 
 function BlogsContent() {
   let dispatch, blogs;
   dispatch = useDispatch();
-  const { allblogs } = useSelector((state) => state.news);
+  const { allblogs } = useSelector((state) => state.marketwise);
 
   const getProducts = React.useCallback(
     () => dispatch(getAllBlogs()),

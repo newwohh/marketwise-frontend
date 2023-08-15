@@ -5,13 +5,13 @@ import useCryptoNewsStyles from "../../../../../../styles/Home/CryptoNewsStyles"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "better-react-carousel";
-import { getCryptoNews } from "../../../../../../store/store-actions";
+import { getCryptoNews } from "../../../../../../reducers/reducers";
 import { Link } from "react-router-dom";
 import CryptoNewsCard from "./CryptoNewsCard";
 
 function CryptoNews() {
   const CryptoNewsClasses = useCryptoNewsStyles;
-  const { news } = useSelector((state) => state.news);
+  const { news } = useSelector((state) => state.marketwise);
   const dispatch = useDispatch();
   const dispatchCrpytoNews = React.useCallback(() => {
     dispatch(getCryptoNews());

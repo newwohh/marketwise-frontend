@@ -7,7 +7,7 @@ function Heatmap(props) {
   var maps = [];
   let isProps = Boolean;
   const HeatmapClass = useHeatmap;
-  const { stockpriceforheatmap } = useSelector((state) => state.news);
+  const { stockpriceforheatmap } = useSelector((state) => state.marketwise);
   if (props.cryptomap) {
     maps = props.cryptomap;
     isProps = true;

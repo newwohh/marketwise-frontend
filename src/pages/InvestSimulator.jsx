@@ -6,7 +6,7 @@ import InvestSimulatorCalc from "../components/InvestSimulator/InvestSimulatorCa
 
 function InvestSimulator() {
   const [data, setData] = React.useState("");
-  const { prices } = useSelector((state) => state.news);
+  const { prices } = useSelector((state) => state.marketwise);
   const getData = (name) => {
     if (name === "" || !name) {
       return;

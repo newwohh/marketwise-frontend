@@ -24,7 +24,7 @@ import { useSelector } from "react-redux";
 function AppRoutes() {
   const [user, setUser] = React.useState("");
   const { prices, news, stocknews, stockprice } = useSelector(
-    (state) => state.news
+    (state) => state.marketwise
   );
   const cryptoPrice = prices;
   const cryptoNews = news;

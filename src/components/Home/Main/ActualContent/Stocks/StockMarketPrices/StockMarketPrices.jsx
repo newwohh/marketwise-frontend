@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockPrice } from "../../../../../../store/store-actions";
+import { getStockPrice } from "../../../../../../reducers/reducers";
 import { useTheme } from "@mui/material/styles";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -25,7 +25,7 @@ function StockMarketPrices() {
   const [dataApi, setDataApi] = useState("");
   const [value, setValue] = React.useState("1");
   const dispatch = useDispatch();
-  const stockprice = useSelector((state) => state.news.stockprice);
+  const stockprice = useSelector((state) => state.marketwise.stockprice);
   const themes = useTheme();
   const StockPriceClasses = useStockMarketPrices;
   const loaderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

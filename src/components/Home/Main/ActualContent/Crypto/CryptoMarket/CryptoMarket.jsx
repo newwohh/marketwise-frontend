@@ -13,13 +13,13 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { useTheme } from "@mui/material/styles";
-import { getCryptoPrice } from "../../../../../../store/store-actions";
+import { getCryptoPrice } from "../../../../../../reducers/reducers";
 import CryptoTable from "./CryptoTable";
 
 function CryptoMarket() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
-  const { prices } = useSelector((state) => state.news);
+  const { prices } = useSelector((state) => state.marketwise);
   const CryptoMarketClass = useCryptoMarket;
   const dispatch = useDispatch();
   const dispatchCryptoPrice = React.useCallback(() => {

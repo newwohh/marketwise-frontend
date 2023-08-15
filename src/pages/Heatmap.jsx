@@ -7,11 +7,11 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/SecurityInfoNavbar";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockPricesforHeatMap } from "../store/store-actions";
+import { getStockPricesforHeatMap } from "../reducers/reducers";
 import { useLocation } from "react-router-dom";
 
 function Heatmap(props) {
-  const { stockpriceforheatmap } = useSelector((state) => state.news);
+  const { stockpriceforheatmap } = useSelector((state) => state.marketwise);
   const dispatch = useDispatch();
   var maps = [];
   let isProps = Boolean;

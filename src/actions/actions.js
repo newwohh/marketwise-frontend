@@ -73,7 +73,6 @@ export const heatmapData = (props, stocks) => {
 
 export const useScrollToTop = () => {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -86,6 +85,7 @@ export function createData(products, company, community, faq, img) {
 export function getRandomNumber(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
+
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -121,7 +121,6 @@ export const textHandler = (text) => {
 
 export const setCurrentUser = (user) => {
   let currUserName, currUserEmail;
-
   user.user ? (currUserName = user.user.name) : (currUserName = "please wait");
   user.user
     ? (currUserEmail = user.user.email)

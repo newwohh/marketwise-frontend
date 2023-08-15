@@ -124,20 +124,12 @@ function SignInNavbar() {
               </List>
               <Divider />
               <List>
-                {["Log-in"].map((text, index) => (
-                  <ListItem key={text} disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        {index % 2 !== 0 ? (
-                          "error getting icon"
-                        ) : (
-                          <Person2Icon />
-                        )}
-                      </ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
+                <ListItem key={"Log-in"} disablePadding>
+                  <ListItemButton href="/signin">
+                    <ListItemIcon>{<Person2Icon />}</ListItemIcon>
+                    <ListItemText primary={"Log-in"} />
+                  </ListItemButton>
+                </ListItem>
               </List>
             </Drawer>
           </Box>

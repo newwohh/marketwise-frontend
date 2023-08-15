@@ -39,10 +39,6 @@ function Subscriptions() {
   useEffect(() => {
     allSubscrptions();
   }, []);
-  console.log(allSubs);
-  // let subbedStocks = stocks.filterAll((el)=>{
-
-  // })
   return (
     <div>
       <div>
@@ -68,7 +64,6 @@ function Subscriptions() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* {/* {rows.map((row) => ( */}
               <TableRow
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >

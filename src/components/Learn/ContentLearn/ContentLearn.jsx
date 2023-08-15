@@ -21,13 +21,24 @@ import { contentLearnData } from "../../../dev-data/data";
 import ContentSection from "./ContentSection";
 
 function ContentLearn() {
-  const managerisk = useRef(null);
-  const whatistrading = useRef(null);
-  const tradingacc = useRef(null);
-  const learnread = useRef(null);
-  const practicetrading = useRef(null);
-  const learnanalyse = useRef(null);
+  const managerisk = useRef();
+  const whatistrading = useRef();
+  const tradingacc = useRef();
+  const learnread = useRef();
+  const practicetrading = useRef();
+  const learnanalyse = useRef();
   const LearnContentClasses = useLearnContentStyles;
+
+  const refs = [
+    whatistrading,
+    tradingacc,
+    learnread,
+    learnanalyse,
+    practicetrading,
+    managerisk,
+  ];
+
+  console.log(whatistrading);
 
   return (
     <Box sx={LearnContentClasses.mains}>
@@ -265,7 +276,7 @@ function ContentLearn() {
       </Box>
       <Box sx={LearnContentClasses.learncontentdiv}>
         {contentLearnData.map((el, i) => (
-          <ContentSection el={el} i={i} />
+          <ContentSection el={el} i={i} ref={refs[i]} />
         ))}
       </Box>
     </Box>

@@ -24,11 +24,10 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { styled } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import StartIcon from "@mui/icons-material/Start";
-import CategoryIcon from "@mui/icons-material/Category";
+import { homeNavbarMobile } from "../../../dev-data/data";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -165,43 +164,27 @@ function HeaderLearn(props) {
             </DrawerHeader>
             <Divider />
             <List>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <StartIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Start Here" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton href="/">
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Home" />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <CategoryIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Products" />
-                </ListItemButton>
-              </ListItem>
+              {homeNavbarMobile.map((el, i) => {
+                return (
+                  <ListItem disablePadding key={i}>
+                    <ListItemButton href={el.link}>
+                      <ListItemIcon>
+                        <StartIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={el.primary} />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })}
             </List>
             <Divider />
             <List>
-              {["Log-in"].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      {index % 2 !== 0 ? "error getting icon" : <Person2Icon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
+              <ListItem key={"Log-In"} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>{<Person2Icon />}</ListItemIcon>
+                  <ListItemText primary={"Log-In"} />
+                </ListItemButton>
+              </ListItem>
             </List>
           </Drawer>
         </Box>

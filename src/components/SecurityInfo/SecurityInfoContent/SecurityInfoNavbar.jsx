@@ -30,7 +30,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
@@ -161,16 +160,12 @@ function SecurityInfoNavbar() {
             </List>
             <Divider />
             <List>
-              {["Log-in"].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
-                      {index % 2 !== 0 ? "error getting icon" : <Person2Icon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
+              <ListItem key={"Log-in"} disablePadding>
+                <ListItemButton href="/signin">
+                  <ListItemIcon>{<Person2Icon />}</ListItemIcon>
+                  <ListItemText primary={"Log-I "} />
+                </ListItemButton>
+              </ListItem>
             </List>
           </Drawer>
         </Box>

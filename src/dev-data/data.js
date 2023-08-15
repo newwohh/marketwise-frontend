@@ -180,7 +180,6 @@ export const contentLearnData = [
       {
         list_title: "Here are five must-read books for every new trader:",
         list_bullets: [
-          "Stock Market Wizards by Jack D. Schwager",
           "Trading for a Living by Dr. Alexander Elder",
           "Technical Analysis of the Financial Markets by John Murphy",
           "Stock Market Wizards by Jack D. Schwager",

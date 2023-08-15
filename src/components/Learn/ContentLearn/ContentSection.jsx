@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -18,7 +18,6 @@ import Speech from "react-text-to-speech";
 
 function ContentSection(props) {
   const LearnContentClasses = useLearnContentStyles;
-  const whatistrading = useRef(null);
   const [play, setPLay] = useState(false);
 
   const textHandler = (text) => {
@@ -29,10 +28,10 @@ function ContentSection(props) {
     return title + description + data;
   };
   let text = textHandler(props.el);
-
+  console.log(props.ref);
   return (
-    <div ref={whatistrading} key={props.i}>
-      <Box sx={LearnContentClasses.learnread}>
+    <div ref={props.ref} key={props.i}>
+      <Box ref={props.ref} sx={LearnContentClasses.learnread}>
         <div id="whatistrading">
           <Typography
             variant="h5"
@@ -54,10 +53,10 @@ function ContentSection(props) {
             align="left"
           >
             {props.el.description}
-            <List>
+            <List sx={{ display: "flex", flexDirection: "column" }}>
               {props.el.list.map((el, i) => {
                 return (
-                  <ListItem>
+                  <ListItem key={i}>
                     <ListItemIcon>
                       <StarsIcon />
                     </ListItemIcon>
@@ -69,6 +68,15 @@ function ContentSection(props) {
                         {el.list_title}
                       </Typography>
                       {el.list_description}
+                      {el.list_bullets
+                        ? el.list_bullets.map((el, i) => {
+                            return (
+                              <ul key={i}>
+                                <li>{el}</li>
+                              </ul>
+                            );
+                          })
+                        : ""}
                     </ListItemText>
                   </ListItem>
                 );
@@ -132,7 +140,7 @@ function ContentSection(props) {
                 <Typography>KEY TAKEWAYS</Typography>
                 <ul>
                   {props.el.card.map((el, i) => {
-                    return <li>{el}</li>;
+                    return <li key={i}>{el}</li>;
                   })}
                 </ul>
               </CardContent>

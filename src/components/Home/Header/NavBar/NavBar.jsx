@@ -21,11 +21,10 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { useTheme } from "@mui/material/styles";
-import { backendBaseUrl } from "../../../../constants/constants";
 import { MyContext } from "../../../../context/Context";
-import secureLocalStorage from "react-secure-storage";
 import NavbarMobile from "./NavbarMobile";
 import MarketCollapse from "./MarketCollapse";
+import { userLogout } from "../../../../api";
 
 function NavBar() {
   let name;
@@ -37,6 +36,8 @@ function NavBar() {
   const classes = useStyles;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
   const changeBackground = () => {
     if (window.scrollY >= 1000) {
       setNavbar(false);
@@ -44,29 +45,11 @@ function NavBar() {
       setNavbar(true);
     }
   };
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
   const openCollapse = () => {
     setCollapse(!collapse);
-  };
-
-  const userLogout = async () => {
-    const req = await fetch(backendBaseUrl + "api/v1/users/logout", {
-      credentials: "include",
-    });
-    const res = await req.json();
-    secureLocalStorage.removeItem("user");
-    if (res.status === "success") window.location.reload(true);
   };
 
   !user ? (name = "please wait") : (name = user.user.name);

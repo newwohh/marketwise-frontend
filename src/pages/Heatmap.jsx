@@ -8,34 +8,24 @@ import Stack from "@mui/material/Stack";
 import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/SecurityInfoNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockPricesforHeatMap } from "../reducers/reducers";
-import { useLocation } from "react-router-dom";
+import { heatmapData, useScrollToTop } from "../actions/actions";
 
 function Heatmap(props) {
+  let maps = [],
+    isProps = Boolean;
   const { stockpriceforheatmap } = useSelector((state) => state.marketwise);
   const dispatch = useDispatch();
-  var maps = [];
-  let isProps = Boolean;
-  useEffect(() => {
-    dispatch(getStockPricesforHeatMap());
-  }, [dispatch]);
-  if (props.cryptomap) {
-    maps = props.cryptomap;
-    isProps = true;
-  } else if (props.stocks) {
-    isProps = false;
-    maps = stockpriceforheatmap;
-  }
+  useScrollToTop();
+
+  useEffect(() => dispatch(getStockPricesforHeatMap()), [dispatch]);
+
+  let data = heatmapData(props, stockpriceforheatmap);
+  maps = data.maps;
+  isProps = data.isProps;
   const HeatmapClass = useHeatmap;
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
 
   return (
     <React.Fragment>
-      <ScrollToTop />
       <SecurityInfoNavbar />
       <Box sx={HeatmapClass.containermap}>
         <div>

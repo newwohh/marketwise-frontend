@@ -1,31 +1,11 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import useHeatmap from "../../styles/Heatmap/Heatmap";
-import { useSelector } from "react-redux";
+import { setColorForHeatmap } from "../../actions/actions";
 
 function Heatmap(props) {
-  var maps = [];
   let isProps = Boolean;
   const HeatmapClass = useHeatmap;
-  const { stockpriceforheatmap } = useSelector((state) => state.marketwise);
-  if (props.cryptomap) {
-    maps = props.cryptomap;
-    isProps = true;
-  } else if (props.stocks) {
-    isProps = false;
-    maps = stockpriceforheatmap;
-  }
-  const setColor = (lastDay, themeOne, themeTwo, themeThree, themeFour) => {
-    if (lastDay > 1) {
-      return themeOne;
-    } else if (lastDay < 0) {
-      return themeTwo;
-    } else if (lastDay > 0 && lastDay < 1) {
-      return themeThree;
-    } else {
-      return themeFour;
-    }
-  };
 
   return (
     <Card
@@ -42,15 +22,15 @@ function Heatmap(props) {
     >
       <CardContent
         style={
-          props.isProps
-            ? setColor(
+          isProps
+            ? setColorForHeatmap(
                 props.el.percent_change_24h,
                 HeatmapClass.cardStyle,
                 HeatmapClass.cardStyletwo,
                 HeatmapClass.cardStylethree,
                 HeatmapClass.cardStylefour
               )
-            : setColor(
+            : setColorForHeatmap(
                 props.el.price,
                 HeatmapClass.cardStyle,
                 HeatmapClass.cardStyletwo,

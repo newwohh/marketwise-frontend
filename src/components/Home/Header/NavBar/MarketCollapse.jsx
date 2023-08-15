@@ -9,30 +9,14 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ViewCompactIcon from "@mui/icons-material/ViewCompact";
 import { Collapse, Container, List, ListItem, Typography } from "@mui/material";
-import { backendBaseUrl } from "../../../../constants/constants";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useStyles from "../../../../styles/Home/NavBarStyles";
+import { directHeatmap } from "../../../../api";
 
 function MarketCollapse(props) {
   const [expandIcon, setExpandIcon] = useState(false);
-  const navigation = useNavigate();
-
-  const expand = () => {
-    setExpandIcon(!expandIcon);
-  };
-
-  const directHeatmap = async () => {
-    const request = await fetch(backendBaseUrl + "api/v1/users/heatmap", {
-      credentials: "include",
-    });
-    const response = await request.json();
-    if (response.status === "success") {
-      navigation("/heatmap/stocks");
-    } else {
-      navigation("/login");
-    }
-  };
   const classes = useStyles;
+  const expand = () => setExpandIcon(!expandIcon);
 
   return (
     <Collapse

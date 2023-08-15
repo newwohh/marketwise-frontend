@@ -4,6 +4,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import { Box, Button, ClickAwayListener, Fab, TextField } from "@mui/material";
 import ChatMessage from "./ChatMessage";
 import { analyze } from "./chatutils";
+import { chatbotMessageList } from "../../actions/actions";
 
 const theme = {
   background: "#F0F8FF",
@@ -31,22 +32,7 @@ function ChatbotSupport() {
   };
 
   const onSend = () => {
-    let list = [...messages, { message: text, user: true }];
-    console.log(list);
-    if (list.length > 2) {
-      const reply = analyze(text);
-      list = [...messages, { message: reply }];
-    } else {
-      list = [
-        ...list,
-        {
-          message: " Hi! What can i help you ?",
-        },
-        {
-          message: "What do you want to know about?",
-        },
-      ];
-    }
+    const list = chatbotMessageList(messages, text, analyze);
     setMessages(list);
     setText("");
   };
@@ -104,7 +90,7 @@ function ChatbotSupport() {
                     }}
                     onClick={onSend}
                   >
-                    send
+                    SEND
                   </Button>
                 </Box>
               </Box>

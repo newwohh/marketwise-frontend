@@ -4,14 +4,9 @@ import { ThemeProvider, Typography, Button } from "@mui/material";
 import theme from "../../../../styles/Theme";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import ReactTextTransition, { presets } from "react-text-transition";
+import { getRandomNumber } from "../../../../actions/actions";
 
 const texts = ["Explore", "Trade", "Think", "Grow"];
-
-function getRandomNumber(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 function HeroSection() {
   const [textIndex, setTextIndex] = useState(0);

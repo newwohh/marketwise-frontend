@@ -6,24 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs } from "../../reducers/reducers";
 import BlogCard from "./BlogCard";
 import BlogLoader from "./BlogLoader";
+import { checkBlogs } from "../../actions/actions";
 
 function BlogsContent() {
   let dispatch, blogs;
-  dispatch = useDispatch();
   const { allblogs } = useSelector((state) => state.marketwise);
-
+  blogs = checkBlogs(allblogs);
+  dispatch = useDispatch();
   const getProducts = React.useCallback(
     () => dispatch(getAllBlogs()),
     [dispatch]
   );
 
   useEffect(() => getProducts(), [getProducts]);
-
-  allblogs === undefined || allblogs.data === undefined
-    ? (blogs = [{ title: "loading" }])
-    : (blogs = allblogs.data);
-
-  // console.log(allblogs);
 
   return (
     <main style={{ backgroundColor: "#F0F8FF" }}>

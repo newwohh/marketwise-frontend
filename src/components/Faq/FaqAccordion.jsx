@@ -9,9 +9,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function FaqAccordion(props) {
   const [expanded, setExpanded] = React.useState(false);
-  const handleChange = (panel) => (event, isExpanded) => {
+  const handleChange = (panel) => (event, isExpanded) =>
     setExpanded(isExpanded ? panel : false);
-  };
   return (
     <Accordion
       expanded={expanded === props.el.panel}

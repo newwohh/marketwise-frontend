@@ -3,17 +3,11 @@ import HeaderLearn from "../components/Learn/HeaderLearn/HeaderLearn";
 import FooterLearn from "../components/Learn/Footer/FooterLearn";
 import ContentAbout from "../components/About/ContentAbout";
 import { useLocation } from "react-router-dom";
+import { useScrollToTop } from "../actions/actions";
 function About() {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
-
+  useScrollToTop();
   return (
     <React.Fragment>
-      <ScrollToTop />
       <header>
         <HeaderLearn />
       </header>

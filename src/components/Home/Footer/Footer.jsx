@@ -16,6 +16,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import { createData } from "../../../actions/actions";
 
 function Footer() {
   const FooterClasses = useFooterStyles;
@@ -30,9 +31,7 @@ function Footer() {
     createData("Tracker Multiple Markets", "", "", ""),
     createData("Blogs", "", "", ""),
   ];
-  function createData(products, company, community, faq, img) {
-    return { products, company, community, faq, img };
-  }
+
   return (
     <footer style={FooterClasses.footer}>
       <div style={FooterClasses.footercontainter}>

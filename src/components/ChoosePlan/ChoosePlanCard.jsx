@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { createPlan } from "../../api";
 
 function ChoosePlanCard(props) {
   return (
@@ -53,7 +54,12 @@ function ChoosePlanCard(props) {
         </List>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-        <Button size="large" variant="outlined" sx={{ color: "#002244" }}>
+        <Button
+          size="large"
+          variant="outlined"
+          sx={{ color: "#002244" }}
+          onClick={() => createPlan()}
+        >
           Learn More
         </Button>
       </CardActions>

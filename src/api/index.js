@@ -65,7 +65,7 @@ export const getAllSubscriptions = async (user) => {
   }
 };
 
-export const writeANewBlog = async () => {
+export const writeANewBlog = async (user) => {
   try {
     const request = await fetch(backendBaseUrl + "api/v1/blogs/newblog", {
       method: "POST",
@@ -74,7 +74,9 @@ export const writeANewBlog = async () => {
       },
       body: JSON.stringify({
         title: "Title",
-        description: "test",
+        description: "",
+        createdAt: Date.now(),
+        user: user,
       }),
       credentials: "include",
     });
@@ -128,6 +130,61 @@ export const postNewUser = async (userDetails) => {
       credentials: "include",
     });
     const response = await request.json();
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const initPayment = async (data) => {
+  console.log(window);
+  const options = {
+    key: "rzp_test_uMO5hIwLS8liUa",
+    amount: data.amount,
+    currency: data.currency,
+    name: data.name,
+    description: "Test Transaction",
+    image: data.img,
+    order_id: data.id,
+    handler: async (response) => {
+      try {
+        const { data } = await fetch(
+          backendBaseUrl + "api/v1/plans/verifypayment",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    theme: {
+      color: "#3399cc",
+    },
+  };
+
+  const rzpi = new window.Razorpay(options);
+  rzpi.open();
+};
+
+export const createPlan = async (data) => {
+  try {
+    const request = await fetch(backendBaseUrl + "api/v1/plans/chooseplan", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const response = await request.json();
+    if (response.data.id) {
+      initPayment(response.data);
+    }
     console.log(response);
   } catch (error) {
     console.log(error);

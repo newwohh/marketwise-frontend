@@ -1,11 +1,17 @@
 import { Button, TextField, useMediaQuery } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import { writeANewBlog } from "../../../api";
+import { MyContext } from "../../../context/Context";
 
 function WriteBlogs() {
+  const { user } = useContext(MyContext);
+
+  console.log(user);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("md"));
+
+  let userId = user.user._id;
 
   return (
     <div>
@@ -34,7 +40,7 @@ function WriteBlogs() {
         <Button
           variant="outlined"
           sx={{ width: "250px", height: "50px" }}
-          onClick={() => writeANewBlog()}
+          onClick={() => writeANewBlog(userId)}
         >
           Publish
         </Button>

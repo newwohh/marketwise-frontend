@@ -292,7 +292,7 @@ export const contentLearnData = [
 export let plansInformation = [
   {
     title: "Starter",
-    subtitle: "Free",
+    subtitle: "0.0999",
     bill: "billed yearly",
     features: [
       "Can track only one market",
@@ -304,7 +304,7 @@ export let plansInformation = [
   },
   {
     title: "Basic",
-    subtitle: "$9.99",
+    subtitle: "0.0999",
     bill: "billed yearly",
     features: [
       "Can track two market",
@@ -316,7 +316,7 @@ export let plansInformation = [
   },
   {
     title: "Premium",
-    subtitle: "$14.99",
+    subtitle: "14.99",
     bill: "billed yearly",
     features: [
       "Can track all Three market",

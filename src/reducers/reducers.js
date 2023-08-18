@@ -4,13 +4,13 @@ const CoinpaprikaAPI = require("@coinpaprika/api-nodejs-client");
 
 export const getStockPricesforHeatMap = createAsyncThunk(
   "store/getStockPricesforHeatMap",
-  async () => {
+  async (userID) => {
     try {
-      const url =
-        "https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=07721059f040ffb9f024f729669f5f5e";
-      const data = await fetch(url);
-      const res = await data.json();
-      return res;
+      const request = await fetch(backendBaseUrl + "api/v1/heatmap/" + userID, {
+        credentials: "include",
+      });
+      const res = await request.json();
+      return res.data;
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +66,7 @@ export const getStockPrice = createAsyncThunk(
       let urls = [
         "https://api.polygon.io/v3/reference/tickers?active=true&apiKey=MW6LX8YCxkAxVFbIKZR7yq3OMCEZZAw6",
         "https://api.polygon.io/v3/reference/exchanges?asset_class=stocks&apiKey=MW6LX8YCxkAxVFbIKZR7yq3OMCEZZAw6",
-        "https://api.polygon.io/v3/reference/dividends?apiKey=MW6LX8YCxkAxVFbIKZR7yq3OMCEZZAw6",
+        "https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=07721059f040ffb9f024f729669f5f5e",
       ];
 
       const results = await Promise.all(

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import useHeatmap from "../styles/Heatmap/Heatmap";
 import HeatmapCard from "../components/Heatmap/HeatmapCard";
 import { AppBar, Typography, Box } from "@mui/material";
@@ -10,8 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStockPricesforHeatMap } from "../reducers/reducers";
 import { heatmapData, useScrollToTop } from "../actions/actions";
 import { titleHandler } from "../handler/titleHandler";
+import { MyContext } from "../context/Context";
 
 function Heatmap(props) {
+  const { user } = useContext(MyContext);
+  let userID = user.user._id;
   useScrollToTop();
   titleHandler("Heatmap");
   let maps = [],
@@ -21,14 +24,13 @@ function Heatmap(props) {
   useScrollToTop();
 
   useEffect(() => {
-    dispatch(getStockPricesforHeatMap());
-  }, [dispatch]);
+    dispatch(getStockPricesforHeatMap(userID));
+  }, [dispatch, userID]);
 
   let data = heatmapData(props, stockpriceforheatmap);
   maps = data.maps;
   isProps = data.isProps;
   const HeatmapClass = useHeatmap;
-
   return (
     <React.Fragment>
       <SecurityInfoNavbar />

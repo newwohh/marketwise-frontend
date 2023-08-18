@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import BookIcon from "@mui/icons-material/Book";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
@@ -9,14 +9,18 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ViewCompactIcon from "@mui/icons-material/ViewCompact";
 import { Collapse, Container, List, ListItem, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useStyles from "../../../../styles/Home/NavBarStyles";
 import { directHeatmap } from "../../../../api";
+import { MyContext } from "../../../../context/Context";
 
 function MarketCollapse(props) {
+  const { user } = useContext(MyContext);
+  const userID = user.user._id;
   const [expandIcon, setExpandIcon] = useState(false);
   const classes = useStyles;
   const expand = () => setExpandIcon(!expandIcon);
+  const navigation = useNavigate();
 
   return (
     <Collapse
@@ -42,7 +46,10 @@ function MarketCollapse(props) {
           }}
         >
           <ListItem alignItems="center" style={classes.listitem}>
-            <Link style={classes.listitemlink} onClick={() => directHeatmap()}>
+            <Link
+              style={classes.listitemlink}
+              onClick={() => directHeatmap(navigation, userID)}
+            >
               <LocalFireDepartmentIcon style={classes.productlisticon} />
               <Typography variant="">Heat Map</Typography>
             </Link>

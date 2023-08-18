@@ -7,10 +7,17 @@ import {
   ListItem,
   Typography,
 } from "@mui/material";
-import React from "react";
-import { createPlan } from "../../api";
+import React, { useContext } from "react";
+import { MyContext } from "../../context/Context";
+import { createPayment } from "../../api";
 
 function ChoosePlanCard(props) {
+  const { user } = useContext(MyContext);
+  let userId = user.user._id;
+  let price = props.el.subtitle;
+  let parsedInt = parseFloat(price) * 100;
+  console.log(parsedInt, user);
+
   return (
     <Card sx={{ minWidth: 275, padding: "50px" }} key={props.i}>
       <CardContent>
@@ -18,7 +25,7 @@ function ChoosePlanCard(props) {
           {props.el.title}
         </Typography>
         <Typography variant="h5" component="div">
-          {props.el.subtitle}
+          ${price}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {props.el.bill}
@@ -58,7 +65,7 @@ function ChoosePlanCard(props) {
           size="large"
           variant="outlined"
           sx={{ color: "#002244" }}
-          onClick={() => createPlan()}
+          onClick={() => createPayment(parsedInt, props.el.title, userId)}
         >
           Learn More
         </Button>

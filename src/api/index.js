@@ -1,8 +1,8 @@
 import { backendBaseUrl } from "../constants/constants";
 import secureLocalStorage from "react-secure-storage";
 
-export const directHeatmap = async (navigation) => {
-  const request = await fetch(backendBaseUrl + "api/v1/users/heatmap", {
+export const directHeatmap = async (navigation, userID) => {
+  const request = await fetch(backendBaseUrl + "api/v1/heatmap/" + userID, {
     credentials: "include",
   });
   const response = await request.json();
@@ -11,6 +11,8 @@ export const directHeatmap = async (navigation) => {
   } else {
     navigation("/login");
   }
+
+  return response;
 };
 
 export const userLogout = async () => {
@@ -22,7 +24,7 @@ export const userLogout = async () => {
   if (res.status === "success") window.location.reload(true);
 };
 
-export const subscribeNew = async (name, user) => {
+export const subscribeNew = async (market, name, user, price) => {
   try {
     const request = await fetch(
       backendBaseUrl + "api/v1/subscrptions/newsubscription",
@@ -32,9 +34,10 @@ export const subscribeNew = async (name, user) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          market: "name",
+          market,
           name: name,
           user: user.user._id,
+          price,
         }),
         credentials: "include",
       }
@@ -172,13 +175,18 @@ const initPayment = async (data) => {
   rzpi.open();
 };
 
-export const createPlan = async (data) => {
+export const createPayment = async (price, name, user) => {
   try {
     const request = await fetch(backendBaseUrl + "api/v1/plans/chooseplan", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        amount: price,
+        _planname: name,
+        _user: user,
+      }),
       credentials: "include",
     });
     const response = await request.json();

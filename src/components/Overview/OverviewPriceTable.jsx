@@ -84,10 +84,10 @@ function OverviewPriceTable(props) {
                 </Button>
               </TableCell>
               <TableCell component="th" scope="row" align="right">
-                {row.market ? row.market : row.rank}
+                {row.rank ? row.rank : "Stocks"}
               </TableCell>
               <TableCell align="right">
-                {row.ticker ? row.ticker : row.price_usd}
+                {row.price ? row.price : row.price_usd}
               </TableCell>
               <TableCell align="right">
                 <Button
@@ -115,7 +115,9 @@ function OverviewPriceTable(props) {
                       borderColor: "#002244",
                     },
                   }}
-                  onClick={() => subscribeNew(row.name, user)}
+                  onClick={() =>
+                    subscribeNew("market", row.name, user, row.price)
+                  }
                 >
                   Subscribe
                 </Button>

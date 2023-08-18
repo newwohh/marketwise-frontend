@@ -40,7 +40,8 @@ function Overview(props) {
     about =
       "A cryptocurrency is a fully decentralized, secure, digital currency whose creation is controlled by cryptography – and the industry is almost as popular as a high school quarterback these days. They're not issued or regulated by a central bank, and their prices are purely based on supply and demand. Of course, Bitcoin was the OG crypto, launched in 2009, but there have been a multitude of currencies released since then and the market's overall value is now around the $1tn mark. This page will show you ideas, financials, news, and more for the cryptocurrency market. ";
   } else if (props.stocks !== props.crypto) {
-    prices = props.stocks[0] === undefined ? [] : props.stocks[0].results;
+    prices = props.stocks[0] === undefined ? [] : props.stocks[2];
+    console.log(prices);
     news = props.stocknews;
     title = "Stocks";
     about =

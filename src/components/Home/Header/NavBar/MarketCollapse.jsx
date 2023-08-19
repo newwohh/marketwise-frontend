@@ -16,7 +16,6 @@ import { MyContext } from "../../../../context/Context";
 
 function MarketCollapse(props) {
   const { user } = useContext(MyContext);
-  const userID = user.user._id;
   const [expandIcon, setExpandIcon] = useState(false);
   const classes = useStyles;
   const expand = () => setExpandIcon(!expandIcon);
@@ -48,7 +47,7 @@ function MarketCollapse(props) {
           <ListItem alignItems="center" style={classes.listitem}>
             <Link
               style={classes.listitemlink}
-              onClick={() => directHeatmap(navigation, userID)}
+              onClick={() => directHeatmap(navigation, user)}
             >
               <LocalFireDepartmentIcon style={classes.productlisticon} />
               <Typography variant="">Heat Map</Typography>

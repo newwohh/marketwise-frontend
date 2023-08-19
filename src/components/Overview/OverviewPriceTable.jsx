@@ -116,7 +116,12 @@ function OverviewPriceTable(props) {
                     },
                   }}
                   onClick={() =>
-                    subscribeNew("market", row.name, user, row.price)
+                    subscribeNew(
+                      "market",
+                      row.name,
+                      user,
+                      row.price || row.price_usd
+                    )
                   }
                 >
                   Subscribe

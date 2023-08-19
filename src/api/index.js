@@ -1,7 +1,8 @@
 import { backendBaseUrl } from "../constants/constants";
 import secureLocalStorage from "react-secure-storage";
 
-export const directHeatmap = async (navigation, userID) => {
+export const directHeatmap = async (navigation, user) => {
+  let userID = user.user._id;
   const request = await fetch(backendBaseUrl + "api/v1/heatmap/" + userID, {
     credentials: "include",
   });
@@ -176,6 +177,7 @@ const initPayment = async (data) => {
 };
 
 export const createPayment = async (price, name, user) => {
+  let userId = user === null ? "" : user.user._id;
   try {
     const request = await fetch(backendBaseUrl + "api/v1/plans/chooseplan", {
       method: "POST",
@@ -185,7 +187,7 @@ export const createPayment = async (price, name, user) => {
       body: JSON.stringify({
         amount: price,
         _planname: name,
-        _user: user,
+        _user: userId,
       }),
       credentials: "include",
     });

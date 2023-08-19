@@ -22,7 +22,7 @@ import ChatbotSupport from "../components/ChatSupport/Chatbot";
 import { useSelector } from "react-redux";
 
 function AppRoutes() {
-  const [user, setUser] = React.useState("");
+  const [user, setUser] = React.useState();
   const { prices, news, stocknews, stockprice } = useSelector(
     (state) => state.marketwise
   );

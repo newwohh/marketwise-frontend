@@ -13,10 +13,8 @@ import { createPayment } from "../../api";
 
 function ChoosePlanCard(props) {
   const { user } = useContext(MyContext);
-  let userId = user.user._id;
   let price = props.el.subtitle;
   let parsedInt = parseFloat(price) * 100;
-  console.log(parsedInt, user);
 
   return (
     <Card sx={{ minWidth: 275, padding: "50px" }} key={props.i}>
@@ -65,7 +63,7 @@ function ChoosePlanCard(props) {
           size="large"
           variant="outlined"
           sx={{ color: "#002244" }}
-          onClick={() => createPayment(parsedInt, props.el.title, userId)}
+          onClick={() => createPayment(parsedInt, props.el.title, user)}
         >
           Learn More
         </Button>

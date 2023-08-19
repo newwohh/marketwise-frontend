@@ -31,7 +31,7 @@ function WriteBlogs() {
         <TextField
           label="Write about it"
           multiline
-          maxRows={isMatch ? 20 : 5}
+          rows={isMatch ? 23 : 5}
           sx={{
             height: isMatch ? "600px" : "100px",
             width: isMatch ? "800px" : "300px",
@@ -39,7 +39,16 @@ function WriteBlogs() {
         />
         <Button
           variant="outlined"
-          sx={{ width: "250px", height: "50px" }}
+          sx={{
+            width: "250px",
+            height: "60px",
+            borderRadius: "15px",
+            backgroundColor: "#002244",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#002244",
+            },
+          }}
           onClick={() => writeANewBlog(userId)}
         >
           Publish

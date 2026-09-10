@@ -23,30 +23,41 @@ Premium,
 Short Guide,
 Chat Support
 
-Getting Started
+## Getting started
 
-To get started with MarketWise, you will need to:
+Use Node.js 20.19+ (20.x) or 22.12+; a supported LTS release is recommended.
 
-Install the dependencies:
+```sh
+npm ci
+npm start
+```
 
-Code snippet
+Open http://localhost:3000. The separate backend is expected at
+http://127.0.0.1:5050/ (`src/constants/constants.js`).
 
-    npm install
+```sh
+npm run build    # production files in build/
+npm run preview  # preview the production build
+npm test         # Node.js regression tests
+npm audit        # check all dependencies, including development tools
+```
 
-Use code with caution. Learn more
+The frontend uses Vite. Configure production hosting to serve `index.html`
+for client-side routes. API-dependent features require the backend and
+working third-party API access.
 
-Start the development server:
+## Dependency maintenance
 
-Code snippet
+The September 2026 update moves to React/React DOM 19.3, React Router 7,
+Redux Toolkit 2, and Vite 8. Swiper replaces the React 18-only carousel;
+the hero text uses a CSS animation. Unused dependencies were removed.
 
-    npm start
+The full npm audit went from 82 findings (6 critical, 36 high, 24 moderate,
+16 low) to zero, including development dependencies. Run `npm audit` again
+as new advisories are published. MUI remains on 5.18 and the speech component
+on 0.4.5 to preserve their current APIs; these are not their latest majors.
+The retained MUI/storage dependencies still emit deprecation notices.
 
-Use code with caution. Learn more
-
-Open the app in your browser:
-
-Code snippet
-
-http://localhost:3000
-
-Use code with caution. Learn more
+Build and regression tests pass. Browser checks cover FAQ interaction,
+the education page, and carousels with mocked market responses; they do not
+validate live backend services or third-party credentials.

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useHeaderStyles from "../../../../styles/Home/HeaderSectionStyles";
-import { ThemeProvider, Typography, Button } from "@mui/material";
+import { ThemeProvider, Typography, Button, Box } from "@mui/material";
 import theme from "../../../../styles/Theme";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import ReactTextTransition, { presets } from "react-text-transition";
 import { getRandomNumber } from "../../../../actions/actions";
 
 const texts = ["Explore", "Trade", "Think", "Grow"];
@@ -48,14 +47,18 @@ function HeroSection() {
             noWrap
             sx={headerClasses.headerintrotext}
           >
-            <ReactTextTransition
-              springConfig={presets.gentle}
-              className="big"
-              delay={300}
-              inline
+            <Box
+              component="span"
+              key={textIndex}
+              sx={{
+                display: "inline-block",
+                animation: "hero-enter 500ms ease-out 300ms both",
+                "@keyframes hero-enter": { from: { opacity: 0, transform: "translateY(12px)" }, to: { opacity: 1, transform: "translateY(0)" } },
+                "@media (prefers-reduced-motion: reduce)": { animation: "none" },
+              }}
             >
               {`${texts[textIndex]} Beyond Limits`}
-            </ReactTextTransition>
+            </Box>
           </Typography>
           <Typography
             variant="p"

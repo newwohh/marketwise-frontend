@@ -4,7 +4,11 @@ import Typography from "@mui/material/Typography";
 import useCryptoNewsStyles from "../../../../../../styles/Home/CryptoNewsStyles";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useDispatch, useSelector } from "react-redux";
-import Carousel from "better-react-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Navigation, Grid } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/grid";
 import { getCryptoNews } from "../../../../../../reducers/reducers";
 import { Link } from "react-router-dom";
 import CryptoNewsCard from "./CryptoNewsCard";
@@ -67,31 +71,28 @@ function CryptoNews() {
         </div>
         <Box sx={CryptoNewsClasses.cnewscarddiv}>
           <div>
-            <Box sx={CryptoNewsClasses.cardiv}>
-              <Carousel
-                cols={2}
-                rows={3}
-                gap={10}
-                loop
-                responsiveLayout={[
-                  {
-                    breakpoints: 700,
-                    rows: 1,
-                    cols: 4,
-                    loop: true,
-                    // gap: 1,
-                    // autoplay: 1000,
-                  },
-                ]}
+            <Box sx={{ ...CryptoNewsClasses.cardiv, "& .swiper": {
+              height: "650px",
+              "@media (max-width: 1000px)": { height: "1100px" },
+              "@media (max-width: 699px)": { height: "370px" },
+            } }}>
+              <Swiper
+                modules={[A11y, Navigation, Grid]}
+                navigation
+                rewind
+                slidesPerView={1}
+                spaceBetween={10}
+                breakpoints={{ 700: { slidesPerView: 2, grid: { rows: 3, fill: "row" } } }}
+                style={{ width: "min(900px, 75vw)" }}
               >
                 {news.results?.map((el, i) => {
                   return (
-                    <Carousel.Item key={i} style={{ width: 100 }}>
+                    <SwiperSlide key={i} style={{ width: 100 }}>
                       <CryptoNewsCard news={el} />
-                    </Carousel.Item>
+                    </SwiperSlide>
                   );
                 })}
-              </Carousel>
+              </Swiper>
             </Box>
           </div>
         </Box>

@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { backendBaseUrl } from "../constants/constants";
-const CoinpaprikaAPI = require("@coinpaprika/api-nodejs-client");
+import { backendBaseUrl } from "../constants/constants.js";
 
 export const getStockPricesforHeatMap = createAsyncThunk(
   "store/getStockPricesforHeatMap",
@@ -49,8 +48,9 @@ export const getCryptoPrice = createAsyncThunk(
   "store/getCryptoPrice",
   async () => {
     try {
-      const client = new CoinpaprikaAPI();
-      let AllPrices = await client.getTicker();
+      const response = await fetch("https://api.coinpaprika.com/v1/ticker");
+      if (!response.ok) throw new Error(`Crypto prices request failed: ${response.status}`);
+      const AllPrices = await response.json();
       let AllPricesSliced = await AllPrices.slice(0, 17);
       return AllPricesSliced;
     } catch (error) {

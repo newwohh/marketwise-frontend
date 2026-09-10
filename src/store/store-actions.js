@@ -7,7 +7,7 @@ import {
   getStockNews,
   getStockPrice,
   getStockPricesforHeatMap,
-} from "../reducers/reducers";
+} from "../reducers/reducers.js";
 
 const MarketwiseSlice = createSlice({
   name: "marketwise",

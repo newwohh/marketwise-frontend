@@ -5,7 +5,11 @@ import { CircularProgress, ThemeProvider, Typography } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
 import useStockNews from "../../../../../../styles/Home/StockNewsStyle";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Carousel from "better-react-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/grid";
 import { Link } from "react-router-dom";
 import StockNewsCard from "./StockNewsCard";
 
@@ -58,39 +62,28 @@ function StockNews() {
         </div>
       </div>
       <div style={StockNewsClasses.newscontent}>
-        <Carousel
-          cols={3}
-          rows={1}
-          gap={10}
-          loop
-          responsiveLayout={[
-            {
-              breakpoint: 800,
-              cols: 1,
-              rows: 1,
-              gap: 220,
-              loop: true,
-              autoplay: 7000,
-            },
-          ]}
-          containerStyle={{
-            height: "500px",
-            marginLeft: "100px",
-            marginRight: "100px",
-          }}
+        <Swiper
+          modules={[A11y, Navigation, Autoplay]}
+          navigation
+          rewind
+          slidesPerView={1}
+          spaceBetween={10}
+          autoplay={{ delay: 7000, pauseOnMouseEnter: true }}
+          breakpoints={{ 801: { slidesPerView: 3, autoplay: { enabled: false } } }}
+          style={{ height: "600px", marginInline: "min(100px, 5vw)" }}
         >
           {stocknews === undefined || stocknews === [] ? (
             <CircularProgress />
           ) : (
             stockNews.map((el, i) => {
               return (
-                <Carousel.Item key={i}>
+                <SwiperSlide key={i}>
                   <StockNewsCard el={el} i={i} />
-                </Carousel.Item>
+                </SwiperSlide>
               );
             })
           )}
-        </Carousel>
+        </Swiper>
       </div>
     </div>
   );

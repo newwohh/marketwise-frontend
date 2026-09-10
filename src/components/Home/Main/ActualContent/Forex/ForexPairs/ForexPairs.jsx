@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getForexData } from "../../../../../../reducers/reducers";
 import Typography from "@mui/material/Typography";
 import useForexDataStyles from "../../../../../../styles/Home/ForexData";
-import Carousel from "better-react-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/grid";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Box, Link, ThemeProvider } from "@mui/material";
 import theme from "../../../../../../styles/Theme";
@@ -62,28 +66,21 @@ function ForexPairs() {
         </ThemeProvider>
       </div>
       <Box sx={{ margin: 10 }}>
-        <Carousel
-          cols={5}
-          rows={1}
-          gap={15}
-          loop
-          responsiveLayout={[
-            {
-              breakpoint: 700,
-              cols: 1,
-              rows: 1,
-              gap: 0,
-              loop: true,
-              autoplay: 2000,
-            },
-          ]}
+        <Swiper
+          modules={[A11y, Navigation, Autoplay]}
+          navigation
+          rewind
+          slidesPerView={1}
+          spaceBetween={15}
+          autoplay={{ delay: 2000, pauseOnMouseEnter: true }}
+          breakpoints={{ 701: { slidesPerView: 5, autoplay: { enabled: false } } }}
         >
           {forexCardData.map((el, i) => (
-            <Carousel.Item key={i}>
+            <SwiperSlide key={i}>
               {<ForexCard data={el} i={i} />}
-            </Carousel.Item>
+            </SwiperSlide>
           ))}
-        </Carousel>
+        </Swiper>
       </Box>
       <Box sx={forexDataClass.lastcontainer}>
         <Box>

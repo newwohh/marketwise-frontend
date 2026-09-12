@@ -55,6 +55,7 @@ export const getCryptoPrice = createAsyncThunk(
       return AllPricesSliced;
     } catch (error) {
       console.log(error);
+      return [];
     }
   }
 );

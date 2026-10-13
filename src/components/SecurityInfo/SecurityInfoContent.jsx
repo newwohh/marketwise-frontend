@@ -1,367 +1,168 @@
 import React from "react";
-import securityinfo from "../../assets/3786012.jpg";
-import securestorage from "../../assets/4170004.jpg";
-import monitor from "../../assets/3198763.jpg";
-import orgsec from "../../assets/8778112.jpg";
-import advdata from "../../assets/5326273.jpg";
-import safesign from "../../assets/4957136.jpg";
-import control from "../../assets/8353343.jpg";
-import secnot from "../../assets/4966443.jpg";
-import useSecurityInfoContentStyles from "../../styles/SecurityInfo/SecurityInfo";
-import { Box, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Chip,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
+import KeyOutlinedIcon from "@mui/icons-material/KeyOutlined";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 function SecurityInfoContent() {
-  const SecurityInfoContentClass = useSecurityInfoContentStyles;
+  const securityPillars = [
+    {
+      icon: <HttpsOutlinedIcon sx={{ fontSize: 28, color: "#2563EB" }} />,
+      title: "End-to-End Encryption",
+      desc: "All network traffic is encrypted in transit using industry-standard TLS 1.3 protocols, protecting session tokens and API queries.",
+    },
+    {
+      icon: <ShieldOutlinedIcon sx={{ fontSize: 28, color: "#10B981" }} />,
+      title: "Non-Custodial Architecture",
+      desc: "MarketWise operates as a pure data aggregation and analytics platform. We never hold your private keys or custody trading funds.",
+    },
+    {
+      icon: <KeyOutlinedIcon sx={{ fontSize: 28, color: "#8B5CF6" }} />,
+      title: "Secure Credential Storage",
+      desc: "User profiles and passwords are hash-protected with cryptographic salt schemes, ensuring accounts remain tamper-resistant.",
+    },
+    {
+      icon: <LockOutlinedIcon sx={{ fontSize: 28, color: "#F59E0B" }} />,
+      title: "Audited Feed Validation",
+      desc: "Market quotes and order books undergo anomaly screening to prevent bad data injections, flash pricing errors, or spoofing artifacts.",
+    },
+  ];
+
+  const commitments = [
+    "Strict separation between user credential storage and third-party analytics telemetry.",
+    "No commercial selling or brokering of individual trader portfolio habits or search history.",
+    "Hardened session management with automated token revocation upon logout.",
+    "Continuous automated dependency scanning and rapid vulnerability patch cycles.",
+  ];
 
   return (
-    <Box component="main" sx={{ backgroundColor: "#F0F8FF" }}>
-      <Box
-        component="section"
-        sx={SecurityInfoContentClass.securityinfofirstdiv}
-      >
-        <Box sx={SecurityInfoContentClass.securityinfofirstsubdiv}>
-          <div>
-            <Typography variant="h2">
-              Our Commitment to User Protection
-            </Typography>
-          </div>
-          <div>
-            <Typography variant="p">
-              MarketWise, which is a crypto, forex, and stock market tracker:
-              Security and User Protection at TradingView TradingView is
-              committed to providing a secure and user-friendly platform for its
-              users. We use a variety of security measures to protect your
-              personal information
-            </Typography>
-          </div>
-        </Box>
-        <div>
-          <img
-            src={securityinfo}
-            alt="securityinfo"
-            style={SecurityInfoContentClass.securityinfoimg}
+    <Box component="main" sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#F8FAFC" }}>
+      <Container maxWidth="lg">
+        {/* Header */}
+        <Box sx={{ textAlign: "center", maxWidth: 720, mx: "auto", mb: { xs: 5, md: 8 } }}>
+          <Chip
+            icon={<ShieldOutlinedIcon sx={{ fontSize: "16px !important", color: "#10B981" }} />}
+            label="SECURITY & PRIVACY COMMITMENT"
+            size="small"
+            sx={{
+              fontWeight: 800,
+              fontSize: "0.72rem",
+              bgcolor: "rgba(16, 185, 129, 0.1)",
+              color: "#059669",
+              mb: 2,
+              borderRadius: "6px",
+            }}
           />
-        </div>
-      </Box>
-      <Box sx={SecurityInfoContentClass.securityinfoseconddiv}>
-        <Box sx={SecurityInfoContentClass.securityinfosecondsubdiv}>
-          <div
-            style={{
-              margin: "100px",
-              "@media (max-width:1000px)": {
-                margin: "0px",
-              },
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: "2.1rem", md: "3rem" },
+              color: "#0F172A",
+              letterSpacing: "-0.03em",
+              mb: 2,
             }}
           >
-            <div>
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: 600, color: "#002244" }}
-              >
-                Data encryption
-              </Typography>
-            </div>
-            <div>
-              <Typography variant="h6">
-                All of your personal information is encrypted when it is stored
-                on our servers. This means that your information is protected
-                from unauthorized access.
-              </Typography>
-            </div>
-          </div>
-          <Box sx={SecurityInfoContentClass.firstcontentsecurityinfo}>
-            <Box sx={SecurityInfoContentClass.securityinfocontentmain}>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 1000,
-                  margin: "50px",
-                  color: "#002244",
-                  "@media (max-width:1000px)": {
-                    margin: 5,
-                  },
-                }}
-              >
-                Platform Security
-              </Typography>
-              <div>
-                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                  <div>
-                    <img
-                      src={securestorage}
-                      alt="securestore"
-                      style={
-                        SecurityInfoContentClass.contentfirstsecuritinfoimg
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Typography variant="h5" sx={{ color: "#002244" }}>
-                      Secure Storage
-                    </Typography>
-                    <Typography
-                      variant="p"
-                      sx={{
-                        color: "grey",
-                        fontSize: "15px",
-                      }}
-                    >
-                      The vast majority of user funds and assets are safely
-                      stored in offline, cold storage facilities.
-                    </Typography>
-                  </div>
-                </Box>
-                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                  <div>
-                    <img
-                      src={monitor}
-                      alt="securestore"
-                      style={
-                        SecurityInfoContentClass.contentfirstsecuritinfoimg
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Typography variant="h5" sx={{ color: "#002244" }}>
-                      Real Time Monitoring{" "}
-                    </Typography>
-                    <Typography
-                      variant="p"
-                      sx={{
-                        color: "grey",
-                        fontSize: "15px",
-                      }}
-                    >
-                      Our risk management system analyzes every withdrawal
-                      attempt, password reset, two-factor authentication reset
-                      and email address change. Unusual activity triggers
-                      suspended withdrawals for a minimum of 24-48 hours.
-                    </Typography>
-                  </div>
-                </Box>
-                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                  <div>
-                    <img
-                      src={orgsec}
-                      alt="securestore"
-                      style={
-                        SecurityInfoContentClass.contentfirstsecuritinfoimg
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Typography variant="h5" sx={{ color: "#002244" }}>
-                      Organizational Security
-                    </Typography>
-                    <Typography
-                      variant="p"
-                      sx={{
-                        color: "grey",
-                        fontSize: "15px",
-                      }}
-                    >
-                      Our wallet and personnel infrastructure features advanced
-                      security measures, including multisignature and threshold
-                      signature schemes (TSS), ensure the safety and integrity
-                      of our users’ funds.
-                    </Typography>
-                  </div>
-                </Box>
-                <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                  <div>
-                    <img
-                      src={advdata}
-                      alt="securestore"
-                      style={
-                        SecurityInfoContentClass.contentfirstsecuritinfoimg
-                      }
-                    />
-                  </div>
-                  <div>
-                    <Typography variant="h5" sx={{ color: "#002244" }}>
-                      Advanced Data Encryption
-                    </Typography>
-                    <Typography
-                      variant="p"
-                      sx={{
-                        color: "grey",
-                        fontSize: "15px",
-                      }}
-                    >
-                      We protect user data and personal information, including
-                      Know-Your-Customer (KYC) information, by encrypting data
-                      in storage. Meanwhile, data in transit is secured via
-                      end-to-end encryption, ensuring only users have access to
-                      their personal information.
-                    </Typography>
-                  </div>
-                </Box>
-              </div>
-            </Box>
-            <div>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 1000,
-                  margin: "50px",
-                  color: "#002244",
-                  "@media (max-width:1000px)": {
-                    margin: 5,
-                  },
-                }}
-              >
-                User-Level Security
-              </Typography>
-              <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                <div>
-                  <img
-                    src={safesign}
-                    alt="securestore"
-                    style={SecurityInfoContentClass.contentfirstsecuritinfoimg}
-                  />
-                </div>
-                <div>
-                  <Typography variant="h5" sx={{ color: "#002244" }}>
-                    Safe Sign In
-                  </Typography>
-                  <Typography
-                    variant="p"
-                    sx={{
-                      color: "grey",
-                      fontSize: "15px",
-                    }}
-                  >
-                    Binance supports strict sign-in protocols using two-factor
-                    authentication, including hardware, app-based, SMS and email
-                    methods.
-                  </Typography>
-                </div>
-              </Box>
-              <div style={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                <div>
-                  <img
-                    src={control}
-                    alt="securestore"
-                    style={SecurityInfoContentClass.contentfirstsecuritinfoimg}
-                  />
-                </div>
-                <div>
-                  <Typography variant="h5" sx={{ color: "#002244" }}>
-                    Access Control
-                  </Typography>
-                  <Typography
-                    variant="p"
-                    sx={{
-                      color: "grey",
-                      fontSize: "15px",
-                    }}
-                  >
-                    Advanced access control provides users with opt-in security
-                    features such as IP and wallet address whitelisting, API
-                    access control and device management.
-                  </Typography>
-                </div>
-              </div>
-              <Box sx={SecurityInfoContentClass.contentfirstsecurityinfo}>
-                <div>
-                  <img
-                    src={secnot}
-                    alt="securestore"
-                    style={SecurityInfoContentClass.contentfirstsecuritinfoimg}
-                  />
-                </div>
-                <div>
-                  <Typography variant="h5" sx={{ color: "#002244" }}>
-                    Security Notifications
-                  </Typography>
-                  <Typography
-                    variant="p"
-                    sx={{
-                      color: "grey",
-                      fontSize: "15px",
-                    }}
-                  >
-                    Receive emails, notifications and security alerts in the
-                    event that suspicious activity is detected. Users can secure
-                    their account by restricting access to unwanted third
-                    parties.
-                  </Typography>
-                </div>
-              </Box>
-            </div>
-          </Box>
+            How MarketWise Protects You
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#64748B", lineHeight: 1.7, fontSize: "1.05rem" }}>
+            Transparency and platform safety are core to our engineering standards. Learn how we safeguard your data, enforce encryption, and protect market integrity.
+          </Typography>
         </Box>
-      </Box>
-      <Box
-        component="section"
-        sx={SecurityInfoContentClass.middledivsecurityinfo}
-      >
-        <Box
+
+        {/* 4 Pillars Grid */}
+        <Grid container spacing={3.5} sx={{ mb: 8 }}>
+          {securityPillars.map((item, idx) => (
+            <Grid item xs={12} sm={6} key={idx}>
+              <Card
+                sx={{
+                  p: 3.5,
+                  borderRadius: "20px",
+                  border: "1px solid #E2E8F0",
+                  backgroundColor: "#FFFFFF",
+                  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+                  height: "100%",
+                }}
+              >
+                <CardContent sx={{ p: "0 !important" }}>
+                  <Box
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      borderRadius: "12px",
+                      backgroundColor: "rgba(37, 99, 235, 0.08)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      mb: 2,
+                    }}
+                  >
+                    {item.icon}
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#0F172A", mb: 1 }}>
+                    {item.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#64748B", lineHeight: 1.6 }}>
+                    {item.desc}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* Commitments Card */}
+        <Card
           sx={{
-            backgroundColor: "#5D76A9",
-            padding: "100px",
-            borderRadius: "20px",
-            color: "white",
+            p: { xs: 3, md: 5 },
+            borderRadius: "24px",
+            border: "1px solid #E2E8F0",
+            backgroundColor: "#FFFFFF",
+            boxShadow: "0 4px 20px -4px rgba(0, 0, 0, 0.05)",
           }}
         >
-          <Box sx={SecurityInfoContentClass.middledivsecurityinfosubdiv}>
-            <Typography variant="h4" sx={{ fontWeight: 600, color: "#002244" }}>
-              Working Together To Establish Global Crypto Compliance
+          <CardContent sx={{ p: "0 !important" }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: "#0F172A", mb: 2 }}>
+              Platform Security Checklist
             </Typography>
-            <Typography variant="p">
-              In order to shape the future of crypto compliance across the
-              globe, Binance partners with regulators and third parties to
-              develop clear regulatory frameworks, guidelines and standards. In
-              parts of the world where regulation is still under development, we
-              strive to set proactive initiatives to protect our users according
-              to global compliance standards. We continue to invest in our
-              compliance program and partner with cutting-edge compliance
-              technology providers to meet and exceed global regulations.
+            <Typography variant="body2" sx={{ color: "#64748B", lineHeight: 1.7, mb: 3 }}>
+              Every feature deployed to MarketWise adheres to our internal data protection standard:
             </Typography>
-          </Box>
-        </Box>
-      </Box>
-      <section style={{ backgroundColor: "#F0F8FF" }}>
-        <div>
-          <Typography
-            align="center"
-            variant="h3"
-            sx={{ fontWeight: 1000, margin: "100px", color: "#002244" }}
-          >
-            Contact MarketWise
-          </Typography>
-        </div>
-        <Box sx={SecurityInfoContentClass.lastdivsecurityinfo}>
-          <div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">Phone Number :</Typography>
-            </div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">Email :</Typography>
-            </div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">Whatsapp :</Typography>
-            </div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">Complaints :</Typography>
-            </div>
-          </div>
-          <div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">99999 99999</Typography>
-            </div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">example@example.com</Typography>
-            </div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">99999 99999</Typography>
-            </div>
-            <div style={{ marginBottom: "50px" }}>
-              <Typography variant="h6">complaints@example.com</Typography>
-            </div>
-          </div>
-        </Box>
-      </section>
+
+            <List sx={{ p: 0, display: "flex", flexDirection: "column", gap: 1.5 }}>
+              {commitments.map((text, i) => (
+                <ListItem key={i} disableGutters sx={{ py: 0 }}>
+                  <ListItemIcon sx={{ minWidth: 32 }}>
+                    <CheckCircleIcon sx={{ fontSize: 20, color: "#10B981" }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={text}
+                    primaryTypographyProps={{
+                      fontSize: "0.925rem",
+                      color: "#334155",
+                      fontWeight: 500,
+                    }}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
+      </Container>
     </Box>
   );
 }

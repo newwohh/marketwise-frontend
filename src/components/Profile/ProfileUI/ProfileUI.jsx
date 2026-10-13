@@ -1,131 +1,107 @@
 import React, { useContext } from "react";
-import userImg from "../../../assets/MyApril6.jpg";
 import {
-  Button,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
+  Box,
   Typography,
+  Card,
+  CardContent,
+  Avatar,
+  Grid,
   TextField,
-  useMediaQuery,
+  Chip,
+  Divider,
 } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import EmailIcon from "@mui/icons-material/Email";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import { MyContext } from "../../../context/Context";
-import { useTheme } from "@mui/material/styles";
-import {} from "@mui/material";
-import { setCurrentUser } from "../../../actions/actions";
+
 function ProfileUI() {
-  let currUserName, currUserEmail;
-  const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.up("md"));
   const { user } = useContext(MyContext);
-  let userCredentials = setCurrentUser(user);
-  currUserName = userCredentials.currUserName;
-  currUserEmail = userCredentials.currUserEmail;
+  const userName = user?.user?.name || user?.name || "Trader";
+  const userEmail = user?.user?.email || user?.email || "trader@marketwise.com";
+  const userInitial = userName.charAt(0).toUpperCase();
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          textAlign: "center",
-          marginBottom: "30px",
-          marginLeft: "0",
-        }}
-      >
-        <img
-          src={userImg}
-          alt=""
-          style={{ width: "200px", height: "200px", borderRadius: "50%" }}
-        />
-      </div>
-      <Typography align="center">First Last</Typography>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          textAlign: "center",
-          marginTop: isMatch ? "20px" : "0px",
-          marginBottom: "30px",
-        }}
-      >
-        <Button
-          sx={{
-            width: "200px",
-            height: "50px",
-            borderRadius: "30px",
-            color: "#002244",
-          }}
-        >
-          Edit Profile
-        </Button>
-        <Button
-          sx={{
-            width: "200px",
-            height: "50px",
-            borderRadius: "30px",
-            color: "#002244",
-          }}
-        >
-          Preview
-        </Button>
-      </div>
-      <Divider />
-      <div
-        style={{
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <List sx={{ width: isMatch ? "800px" : "300px" }}>
-          <ListItem>
-            <ListItemText sx={{ width: "100px" }}>Name:</ListItemText>
-            <ListItemText>
-              <TextField
-                id="outlined-read-only-input"
-                value={currUserName}
-                InputProps={{
-                  readOnly: true,
+    <Card
+      sx={{
+        borderRadius: "20px",
+        border: "1px solid #E2E8F0",
+        backgroundColor: "#FFFFFF",
+        p: { xs: 3, md: 4 },
+        boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+      }}
+    >
+      <CardContent sx={{ p: "0 !important" }}>
+        {/* User Hero Banner inside Card */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 3, mb: 4, flexWrap: "wrap" }}>
+          <Avatar
+            sx={{
+              width: 80,
+              height: 80,
+              bgcolor: "#2563EB",
+              fontSize: "2rem",
+              fontWeight: 800,
+              boxShadow: "0 4px 14px rgba(37, 99, 235, 0.3)",
+            }}
+          >
+            {userInitial}
+          </Avatar>
+          <Box>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: "#0F172A" }}>
+                {userName}
+              </Typography>
+              <Chip
+                icon={<VerifiedUserIcon sx={{ fontSize: "14px !important", color: "#10B981" }} />}
+                label="Verified Member"
+                size="small"
+                sx={{
+                  bgcolor: "rgba(16, 185, 129, 0.1)",
+                  color: "#059669",
+                  fontWeight: 700,
+                  fontSize: "0.75rem",
+                  borderRadius: "6px",
                 }}
-                sx={{ width: isMatch ? "300px" : "200px" }}
               />
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText sx={{ width: "100px" }}>E-Mail:</ListItemText>
-            <ListItemText>
-              <TextField
-                id="outlined-read-only-input"
-                value={currUserEmail}
-                InputProps={{
-                  readOnly: true,
-                }}
-                sx={{ width: isMatch ? "300px" : "200px" }}
-              />
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText sx={{ width: "100px", color: "black" }}>
-              Password:
-            </ListItemText>
-            <ListItemText>
-              <TextField
-                id="outlined-read-only-input"
-                defaultValue="Password"
-                InputProps={{
-                  readOnly: true,
-                }}
-                sx={{ width: isMatch ? "300px" : "200px" }}
-              />
-            </ListItemText>
-          </ListItem>
-        </List>
-      </div>
-    </div>
+            </Box>
+            <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5 }}>
+              {userEmail}
+            </Typography>
+          </Box>
+        </Box>
+
+        <Divider sx={{ mb: 4 }} />
+
+        <Typography variant="subtitle1" sx={{ fontWeight: 700, color: "#0F172A", mb: 2 }}>
+          Account Credentials
+        </Typography>
+
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Display Name"
+              value={userName}
+              fullWidth
+              InputProps={{
+                readOnly: true,
+                startAdornment: <PersonIcon sx={{ color: "#94A3B8", mr: 1 }} />,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Registered Email"
+              value={userEmail}
+              fullWidth
+              InputProps={{
+                readOnly: true,
+                startAdornment: <EmailIcon sx={{ color: "#94A3B8", mr: 1 }} />,
+              }}
+            />
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
   );
 }
 

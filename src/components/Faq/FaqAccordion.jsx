@@ -4,39 +4,51 @@ import {
   AccordionDetails,
   AccordionSummary,
   Typography,
+  Box,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-function FaqAccordion(props) {
-  const [expanded, setExpanded] = React.useState(false);
-  const handleChange = (panel) => (event, isExpanded) =>
-    setExpanded(isExpanded ? panel : false);
+function FaqAccordion({ el }) {
+  if (!el) return null;
+
   return (
     <Accordion
-      expanded={expanded === props.el.panel}
-      onChange={handleChange(props.el.panel)}
+      elevation={0}
       sx={{
-        height: "",
-        marginBottom: "20px",
+        mb: 2,
+        borderRadius: "16px !important",
+        border: "1px solid #E2E8F0",
+        backgroundColor: "#FFFFFF",
+        "&:before": { display: "none" },
+        transition: "all 0.2s ease",
+        "&.Mui-expanded": {
+          boxShadow: "0 8px 20px -4px rgba(0, 0, 0, 0.05)",
+          borderColor: "#93C5FD",
+        },
       }}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1bh-content"
-        id="panel1bh-header"
+        expandIcon={<ExpandMoreIcon sx={{ color: "#2563EB" }} />}
         sx={{
-          padding: "10px",
+          py: 1.5,
+          px: 3,
         }}
       >
-        <Typography variant="h5" sx={{ width: "33%", flexShrink: 0 }}>
-          {props.el.primary}
-        </Typography>
-        <Typography sx={{ color: "text.secondary" }}>
-          {props.el.secondary}
-        </Typography>
+        <Box sx={{ textAlign: "left" }}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>
+            {el.primary}
+          </Typography>
+          {el.secondary && (
+            <Typography variant="caption" sx={{ color: "#64748B", display: "block", mt: 0.25 }}>
+              {el.secondary}
+            </Typography>
+          )}
+        </Box>
       </AccordionSummary>
-      <AccordionDetails>
-        <Typography>{props.el.description}</Typography>
+      <AccordionDetails sx={{ px: 3, pb: 3, pt: 0, textAlign: "left" }}>
+        <Typography variant="body2" sx={{ color: "#475569", lineHeight: 1.7, fontSize: "0.925rem" }}>
+          {el.description}
+        </Typography>
       </AccordionDetails>
     </Accordion>
   );

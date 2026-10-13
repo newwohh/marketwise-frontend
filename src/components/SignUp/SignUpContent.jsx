@@ -1,131 +1,189 @@
+import React, { useState } from "react";
 import {
+  Box,
   Button,
   Checkbox,
   FormControlLabel,
   TextField,
   Typography,
+  Card,
+  CardContent,
+  Container,
+  Grid,
 } from "@mui/material";
-import React from "react";
-import useSignUp from "../../styles/SignUp/SignUp";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import logo from "../../assets/profit(1).png";
 import { postNewUser } from "../../api";
 
 function SignUpContent() {
-  const signUpClass = useSignUp;
-
-  const [userDetails, setUserDetails] = React.useState({
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
     first: "",
     last: "",
     email: "",
     password: "",
     passwordConfirm: "",
   });
+  const [agreed, setAgreed] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!agreed) return;
+    setLoading(true);
+    try {
+      await postNewUser(formData);
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <main style={{ backgroundColor: "#F0F8FF", height: "1000px" }}>
-      <section style={signUpClass.mainsection}>
-        <div style={{ marginTop: "200px" }}>
-          <form style={signUpClass.form}>
-            <Typography
-              variant="h5"
-              sx={{ "@media (max-width:1000px)": { width: "320px" } }}
-            >
-              Sign Up to create,discover and connect with the global community.
-            </Typography>
-            <div style={{ marginTop: "20px", display: "flex" }}>
-              <TextField
-                type="text"
-                sx={{
-                  width: "220px",
-                  marginRight: "10px",
-                  "@media (max-width:1000px)": {
-                    width: "150px",
-                    marginRight: 0,
-                  },
-                }}
-                label="First Name"
-                onChange={(e) => (userDetails.first = e.target.value)}
+    <Box
+      component="main"
+      sx={{
+        py: { xs: 6, md: 10 },
+        backgroundColor: "#F8FAFC",
+        minHeight: "calc(100vh - 140px)",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <Container maxWidth="sm">
+        <Card
+          sx={{
+            p: { xs: 3, sm: 5 },
+            borderRadius: "24px",
+            border: "1px solid #E2E8F0",
+            backgroundColor: "#FFFFFF",
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.06)",
+          }}
+        >
+          <CardContent sx={{ p: "0 !important" }}>
+            {/* Header */}
+            <Box sx={{ textAlign: "center", mb: 4 }}>
+              <Box
+                component="img"
+                src={logo}
+                alt="MarketWise"
+                sx={{ width: 48, height: 48, borderRadius: "12px", mb: 1.5 }}
               />
+              <Typography variant="h4" sx={{ fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>
+                Create Your Account
+              </Typography>
+              <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5 }}>
+                Join thousands of active traders tracking global markets today.
+              </Typography>
+            </Box>
+
+            {/* Form */}
+            <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="First Name"
+                    required
+                    fullWidth
+                    value={formData.first}
+                    onChange={(e) => handleChange("first", e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Last Name"
+                    required
+                    fullWidth
+                    value={formData.last}
+                    onChange={(e) => handleChange("last", e.target.value)}
+                  />
+                </Grid>
+              </Grid>
+
               <TextField
-                type="text"
-                sx={{
-                  width: "220px",
-                  "@media (max-width:1000px)": { width: "150px" },
-                }}
-                label="Last Name"
-                onChange={(e) => (userDetails.last = e.target.value)}
-              />
-            </div>
-            <div>
-              <TextField
+                label="Email Address"
                 type="email"
-                sx={{
-                  width: "450px",
-                  marginTop: "20px",
-                  "@media (max-width:1000px)": { width: "320px" },
-                }}
-                label="E-Mail"
-                onChange={(e) => (userDetails.email = e.target.value)}
-              />
-            </div>
-            <div>
-              <TextField
-                type="password"
-                sx={{
-                  width: "450px",
-                  marginTop: "20px",
-                  "@media (max-width:1000px)": { width: "320px" },
-                }}
-                label="Password"
-                onChange={(e) => (userDetails.password = e.target.value)}
-              />
-              <TextField
-                type="password"
-                sx={{
-                  width: "450px",
-                  marginTop: "20px",
-                  "@media (max-width:1000px)": { width: "320px" },
-                }}
-                label="Confirm Password"
-                onChange={(e) => (userDetails.passwordConfirm = e.target.value)}
-              />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                marginTop: "50px",
-              }}
-            >
-              <FormControlLabel
-                sx={{ "@media (max-width:1000px)": { width: "320px" } }}
                 required
-                control={<Checkbox />}
-                label="I accept the Terms of Use & Privacy Policy"
+                fullWidth
+                value={formData.email}
+                onChange={(e) => handleChange("email", e.target.value)}
               />
-            </div>
-            <div>
+
+              <TextField
+                label="Password"
+                type="password"
+                required
+                fullWidth
+                value={formData.password}
+                onChange={(e) => handleChange("password", e.target.value)}
+              />
+
+              <TextField
+                label="Confirm Password"
+                type="password"
+                required
+                fullWidth
+                value={formData.passwordConfirm}
+                onChange={(e) => handleChange("passwordConfirm", e.target.value)}
+              />
+
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    color="primary"
+                    required
+                  />
+                }
+                label={
+                  <Typography variant="body2" sx={{ color: "#64748B" }}>
+                    I agree to the Terms of Service & Privacy Policy
+                  </Typography>
+                }
+              />
+
               <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                disabled={loading || !agreed}
                 sx={{
-                  width: "450px",
-                  height: "50px",
-                  margin: "20px",
-                  color: "white",
-                  backgroundColor: "#002244",
-                  "&:hover": {
-                    border: "1px solid #002244",
-                    backgroundColor: "#F0F8FF",
-                    color: "#002244",
-                  },
-                  "@media (max-width:1000px)": { width: "200px" },
+                  py: 1.4,
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  borderRadius: "12px",
+                  background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+                  boxShadow: "0 4px 12px rgba(37, 99, 235, 0.25)",
+                  mt: 1,
                 }}
-                onClick={() => postNewUser(userDetails)}
               >
-                Sign Up
+                {loading ? "Creating Account..." : "Create Free Account"}
               </Button>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
+
+              <Box sx={{ textAlign: "center", mt: 2 }}>
+                <Typography variant="body2" sx={{ color: "#64748B" }}>
+                  Already have an account?{" "}
+                  <Typography
+                    component={RouterLink}
+                    to="/login"
+                    sx={{ color: "#2563EB", fontWeight: 700, textDecoration: "none", "&:hover": { textDecoration: "underline" } }}
+                  >
+                    Sign in here
+                  </Typography>
+                </Typography>
+              </Box>
+            </Box>
+          </CardContent>
+        </Card>
+      </Container>
+    </Box>
   );
 }
 

@@ -1,17 +1,20 @@
 import React from "react";
-import SignInNavbar from "../components/SignIn/SignInNavBar";
+import Box from "@mui/material/Box";
+import NavBar from "../components/Home/Header/NavBar/NavBar";
+import Footer from "../components/Home/Footer/Footer";
 import SignInContent from "../components/SignIn/SignInContent";
 import { titleHandler } from "../handler/titleHandler";
 
-function SignUpSignIn() {
-  titleHandler("Sign-In");
+function SignIn() {
+  titleHandler("Sign In");
 
   return (
-    <React.Fragment>
-      <SignInNavbar />
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <NavBar />
       <SignInContent />
-    </React.Fragment>
+      <Footer />
+    </Box>
   );
 }
 
-export default SignUpSignIn;
+export default SignIn;

@@ -1,59 +1,105 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@mui/material";
-import useHeatmap from "../../styles/Heatmap/Heatmap";
-import { setColorForHeatmap } from "../../actions/actions";
+import { Card, CardContent, Typography, Box, Chip } from "@mui/material";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
-function Heatmap(props) {
-  let isProps = Boolean;
-  const HeatmapClass = useHeatmap;
+function HeatmapCard({ el, isProps }) {
+  if (!el) return null;
+
+  const rawChange = isProps ? parseFloat(el.percent_change_24h || 0) : parseFloat(el.change || 0);
+  const isPositive = rawChange >= 0;
+  const isStrong = Math.abs(rawChange) >= 3;
+
+  // Modern heatmap palette with dark glass tints
+  let bgColor = "rgba(16, 185, 129, 0.15)";
+  let borderColor = "rgba(16, 185, 129, 0.4)";
+  let textColor = "#059669";
+
+  if (!isPositive) {
+    if (isStrong) {
+      bgColor = "rgba(220, 38, 38, 0.2)";
+      borderColor = "rgba(220, 38, 38, 0.5)";
+      textColor = "#DC2626";
+    } else {
+      bgColor = "rgba(239, 68, 68, 0.12)";
+      borderColor = "rgba(239, 68, 68, 0.35)";
+      textColor = "#EF4444";
+    }
+  } else {
+    if (isStrong) {
+      bgColor = "rgba(16, 185, 129, 0.22)";
+      borderColor = "rgba(16, 185, 129, 0.6)";
+      textColor = "#059669";
+    }
+  }
+
+  const priceVal = isProps
+    ? parseFloat(el.price_usd || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 })
+    : Number(el.price || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   return (
     <Card
-      variant="outlined"
       sx={{
-        width: "400px",
-        marginTop: "10px",
-        border: "2px solid white",
-        borderRadius: "20px",
+        width: "100%",
+        height: "100%",
+        borderRadius: "16px",
+        border: `1.5px solid ${borderColor}`,
+        backgroundColor: bgColor,
+        transition: "all 0.2s ease",
+        cursor: "pointer",
         "&:hover": {
-          border: "2px solid #5072A7",
+          transform: "scale(1.02)",
+          boxShadow: "0 8px 20px rgba(0, 0, 0, 0.08)",
         },
       }}
     >
-      <CardContent
-        style={
-          isProps
-            ? setColorForHeatmap(
-                props.el.percent_change_24h,
-                HeatmapClass.cardStyle,
-                HeatmapClass.cardStyletwo,
-                HeatmapClass.cardStylethree,
-                HeatmapClass.cardStylefour
+      <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 1 }}>
+          <Typography variant="caption" sx={{ fontWeight: 800, color: "#0F172A", letterSpacing: "0.05em" }}>
+            {el.symbol || "TICKER"}
+          </Typography>
+          <Chip
+            icon={
+              isPositive ? (
+                <TrendingUpIcon sx={{ fontSize: "13px !important", color: `${textColor} !important` }} />
+              ) : (
+                <TrendingDownIcon sx={{ fontSize: "13px !important", color: `${textColor} !important` }} />
               )
-            : setColorForHeatmap(
-                props.el.price,
-                HeatmapClass.cardStyle,
-                HeatmapClass.cardStyletwo,
-                HeatmapClass.cardStylethree,
-                HeatmapClass.cardStylefour
-              )
-        }
-      >
-        <Typography sx={{ fontSize: 14, color: "white" }} gutterBottom>
-          {props.el.symbol}
+            }
+            label={`${isPositive ? "+" : ""}${rawChange.toFixed(2)}%`}
+            size="small"
+            sx={{
+              height: 22,
+              fontWeight: 800,
+              fontSize: "0.72rem",
+              backgroundColor: "rgba(255, 255, 255, 0.75)",
+              color: textColor,
+              borderRadius: "6px",
+            }}
+          />
+        </Box>
+
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 800,
+            fontSize: "1.05rem",
+            color: "#0F172A",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            mb: 0.5,
+          }}
+        >
+          {el.name || "Asset Name"}
         </Typography>
-        <Typography variant="h5" component="div" sx={{ fontWeight: 700 }}>
-          {props.el.name.toUpperCase()}
-        </Typography>
-        <Typography sx={{ mb: 1.5, color: "white" }}>
-          $
-          {props.isProps
-            ? parseFloat(props.el.price_usd).toFixed(2)
-            : props.el.price}
+
+        <Typography variant="body2" sx={{ fontWeight: 700, color: "#334155", fontFamily: "monospace" }}>
+          ${priceVal}
         </Typography>
       </CardContent>
     </Card>
   );
 }
 
-export default Heatmap;
+export default HeatmapCard;

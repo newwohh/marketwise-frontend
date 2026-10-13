@@ -1,127 +1,188 @@
 import React, { useContext, useEffect } from "react";
-import useHeatmap from "../styles/Heatmap/Heatmap";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Chip,
+  Button,
+  Paper,
+} from "@mui/material";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
+import NavBar from "../components/Home/Header/NavBar/NavBar";
+import Footer from "../components/Home/Footer/Footer";
 import HeatmapCard from "../components/Heatmap/HeatmapCard";
-import { AppBar, Typography, Box } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import SecurityInfoNavbar from "../components/SecurityInfo/SecurityInfoContent/SecurityInfoNavbar";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockPricesforHeatMap } from "../reducers/reducers";
-import { heatmapData, useScrollToTop } from "../actions/actions";
+import { getStockPricesforHeatMap, getCryptoPrice } from "../reducers/reducers";
+import { useScrollToTop } from "../actions/actions";
 import { titleHandler } from "../handler/titleHandler";
 import { MyContext } from "../context/Context";
 
 function Heatmap(props) {
   const { user } = useContext(MyContext);
-  let userID = user.user._id;
-  useScrollToTop();
-  titleHandler("Heatmap");
-  let maps = [],
-    isProps = Boolean;
-  const { stockpriceforheatmap } = useSelector((state) => state.marketwise);
+  const location = useLocation();
   const dispatch = useDispatch();
   useScrollToTop();
 
-  useEffect(() => {
-    dispatch(getStockPricesforHeatMap(userID));
-  }, [dispatch, userID]);
+  const isCrypto = location.pathname.includes("cryptocurrency") || Boolean(props.cryptomap);
+  titleHandler(`${isCrypto ? "Crypto" : "Stocks"} Heatmap`);
 
-  let data = heatmapData(props, stockpriceforheatmap);
-  maps = data.maps;
-  isProps = data.isProps;
-  const HeatmapClass = useHeatmap;
+  const { prices, stockpriceforheatmap } = useSelector((state) => state.marketwise);
+
+  useEffect(() => {
+    if (isCrypto && (!prices || prices.length === 0)) {
+      dispatch(getCryptoPrice());
+    } else if (!isCrypto && user?.user?._id) {
+      dispatch(getStockPricesforHeatMap(user.user._id));
+    }
+  }, [dispatch, isCrypto, prices, user]);
+
+  // Fallback items if endpoint is empty
+  const defaultCrypto = [
+    { name: "Bitcoin", symbol: "BTC", price_usd: "68420.50", percent_change_24h: "3.42" },
+    { name: "Ethereum", symbol: "ETH", price_usd: "3520.10", percent_change_24h: "-1.18" },
+    { name: "Solana", symbol: "SOL", price_usd: "182.40", percent_change_24h: "7.85" },
+    { name: "Binance Coin", symbol: "BNB", price_usd: "594.30", percent_change_24h: "0.45" },
+    { name: "Cardano", symbol: "ADA", price_usd: "0.36", percent_change_24h: "-3.12" },
+    { name: "Avalanche", symbol: "AVAX", price_usd: "28.50", percent_change_24h: "4.90" },
+    { name: "Chainlink", symbol: "LINK", price_usd: "12.30", percent_change_24h: "-0.65" },
+    { name: "Polkadot", symbol: "DOT", price_usd: "4.45", percent_change_24h: "-4.20" },
+  ];
+
+  const defaultStocks = [
+    { name: "Apple Inc.", symbol: "AAPL", price: "231.40", change: "1.45" },
+    { name: "Microsoft Corp.", symbol: "MSFT", price: "428.10", change: "0.85" },
+    { name: "NVIDIA Corp.", symbol: "NVDA", price: "135.20", change: "4.12" },
+    { name: "Alphabet Inc.", symbol: "GOOGL", price: "166.50", change: "-0.75" },
+    { name: "Amazon.com", symbol: "AMZN", price: "189.30", change: "2.10" },
+    { name: "Tesla Inc.", symbol: "TSLA", price: "218.40", change: "-3.65" },
+    { name: "Meta Platforms", symbol: "META", price: "582.00", change: "1.95" },
+    { name: "JPMorgan Chase", symbol: "JPM", price: "220.15", change: "-0.30" },
+  ];
+
+  let displayData = [];
+  if (isCrypto) {
+    displayData = prices && prices.length > 0 ? prices : defaultCrypto;
+  } else {
+    displayData =
+      stockpriceforheatmap && Array.isArray(stockpriceforheatmap) && stockpriceforheatmap.length > 0
+        ? stockpriceforheatmap
+        : defaultStocks;
+  }
+
   return (
-    <React.Fragment>
-      <SecurityInfoNavbar />
-      <Box sx={HeatmapClass.containermap}>
-        <div>
-          <Typography variant="h2">Heatmap</Typography>
-          <Typography variant="h4">
-            {isProps ? "Cryptocurrency" : "Stocks"}
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#F8FAFC" }}>
+      <NavBar />
+
+      <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 }, flexGrow: 1 }}>
+        {/* Header */}
+        <Box sx={{ mb: 4 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+            <LocalFireDepartmentIcon sx={{ color: "#EF4444", fontSize: 24 }} />
+            <Typography variant="caption" sx={{ fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#EF4444" }}>
+              Liquidity & Momentum Distribution
+            </Typography>
+          </Box>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: "2rem", md: "2.75rem" },
+              color: "#0F172A",
+              letterSpacing: "-0.03em",
+              mb: 1,
+            }}
+          >
+            {isCrypto ? "Cryptocurrency" : "Stock Market"} Heatmap
           </Typography>
-          <Typography variant="p" gutterBottom sx={{ fontFamily: "Arial" }}>
-            The Heatmap is a way to determine where liquidity is in the market
-            and how liquidity-providers are behaving. In other words, it helps
-            traders to determine where the actual orders in the market are being
-            made.
+          <Typography variant="body1" sx={{ color: "#64748B", maxWidth: 750 }}>
+            Visual order flow distribution and 24-hour momentum clustering across top active assets.
           </Typography>
-        </div>
-        <div>
-          <div>
-            <AppBar
-              position="relative"
-              sx={{
-                marginTop: "30px",
-                padding: "10px",
-                backgroundColor: "#5D76A9",
-                width: "100%",
-                height: "50px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "end",
-              }}
+        </Box>
+
+        {/* Controls & Legend Bar */}
+        <Paper
+          elevation={0}
+          sx={{
+            p: 2,
+            mb: 4,
+            borderRadius: "16px",
+            border: "1px solid #E2E8F0",
+            backgroundColor: "#FFFFFF",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 2,
+          }}
+        >
+          {/* Market Switcher */}
+          <Box sx={{ display: "flex", gap: 1 }}>
+            <Button
+              component={RouterLink}
+              to="/heatmap/cryptocurrency"
+              variant={isCrypto ? "contained" : "outlined"}
+              size="small"
+              startIcon={<CurrencyBitcoinIcon />}
+              sx={{ borderRadius: "10px", fontWeight: 700 }}
             >
-              <Stack spacing={1} alignItems="right">
-                <Stack direction="row" spacing={1}>
-                  <Chip
-                    label="Loss"
-                    sx={{ backgroundColor: "#DE3163", color: "white" }}
-                  />
-                  <Chip
-                    label="Danger"
-                    sx={{ backgroundColor: "#E52B50", color: "white" }}
-                  />
-                  <Chip
-                    label="Safe"
-                    sx={{ backgroundColor: "#008B8B", color: "white" }}
-                  />
-                  <Chip
-                    label="Profitable"
-                    sx={{ backgroundColor: "#03C03C", color: "white" }}
-                  />
-                </Stack>
-              </Stack>
-            </AppBar>
-          </div>
-          <div>
-            <div>
-              <Box>
-                <Grid
-                  container
-                  rowSpacing={1}
-                  columnSpacing={{ xs: 1, sm: 2, md: 5 }}
-                  sx={{
-                    "@media (max-width:1000px)": {
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "100px",
-                    },
-                  }}
-                >
-                  {maps.map((el, i) => {
-                    return (
-                      <Grid
-                        key={i}
-                        item
-                        xs={3}
-                        sx={{
-                          "@media (max-width:1000px)": {
-                            // width: "10px",
-                          },
-                        }}
-                      >
-                        <HeatmapCard el={el} key={i} isProps={isProps} />
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-              </Box>
-            </div>
-          </div>
-        </div>
-      </Box>
-    </React.Fragment>
+              Crypto
+            </Button>
+            <Button
+              component={RouterLink}
+              to="/heatmap/stocks"
+              variant={!isCrypto ? "contained" : "outlined"}
+              size="small"
+              startIcon={<ShowChartIcon />}
+              sx={{ borderRadius: "10px", fontWeight: 700 }}
+            >
+              Stocks
+            </Button>
+          </Box>
+
+          {/* Color Legend */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, flexWrap: "wrap" }}>
+            <Typography variant="caption" sx={{ fontWeight: 700, color: "#64748B" }}>
+              LEGEND:
+            </Typography>
+            <Chip
+              label="> +3% Gain"
+              size="small"
+              sx={{ bgcolor: "rgba(16, 185, 129, 0.22)", color: "#059669", fontWeight: 700, fontSize: "0.72rem" }}
+            />
+            <Chip
+              label="0 to +3% Gain"
+              size="small"
+              sx={{ bgcolor: "rgba(16, 185, 129, 0.12)", color: "#059669", fontWeight: 700, fontSize: "0.72rem" }}
+            />
+            <Chip
+              label="0 to -3% Drop"
+              size="small"
+              sx={{ bgcolor: "rgba(239, 68, 68, 0.12)", color: "#EF4444", fontWeight: 700, fontSize: "0.72rem" }}
+            />
+            <Chip
+              label="< -3% Drop"
+              size="small"
+              sx={{ bgcolor: "rgba(220, 38, 38, 0.22)", color: "#DC2626", fontWeight: 700, fontSize: "0.72rem" }}
+            />
+          </Box>
+        </Paper>
+
+        {/* Heatmap Grid */}
+        <Grid container spacing={2.5}>
+          {displayData.map((el, i) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={el.id || el.symbol || i}>
+              <HeatmapCard el={el} isProps={isCrypto} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      <Footer />
+    </Box>
   );
 }
 

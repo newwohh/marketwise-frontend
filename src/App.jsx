@@ -1,11 +1,15 @@
 import React from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import AppRoutes from "./routes/AppRoutes";
+import theme from "./styles/Theme";
 
 function App() {
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <AppRoutes />
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
 

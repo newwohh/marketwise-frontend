@@ -1,243 +1,161 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import Collapse from "@mui/material/Collapse";
-import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-import { Box, Container, ThemeProvider, useTheme } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+} from "@mui/material";
+import SchoolIcon from "@mui/icons-material/School";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import CalculateIcon from "@mui/icons-material/Calculate";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Link as RouterLink } from "react-router-dom";
 
-import useContentTopStyles from "../../../../styles/Home/ContentTop";
-import { contenTopData } from "../../../../dev-data/data";
-import ContentTopCard from "./ContentTopCard";
+const features = [
+  {
+    icon: <SchoolIcon sx={{ fontSize: 28, color: "#2563EB" }} />,
+    bg: "rgba(37, 99, 235, 0.08)",
+    border: "rgba(37, 99, 235, 0.2)",
+    title: "Trading Academy",
+    desc: "Master market fundamentals, candlestick patterns, and risk control with curated, interactive learning paths.",
+    link: "/education",
+    cta: "Explore Lessons",
+  },
+  {
+    icon: <TrendingUpIcon sx={{ fontSize: 28, color: "#10B981" }} />,
+    bg: "rgba(16, 185, 129, 0.08)",
+    border: "rgba(16, 185, 129, 0.2)",
+    title: "Portfolio Intelligence",
+    desc: "Uncover macro trends, analyze sectoral momentum, and optimize your asset allocation with institutional data.",
+    link: "/grow",
+    cta: "Explore Strategies",
+  },
+  {
+    icon: <CalculateIcon sx={{ fontSize: 28, color: "#8B5CF6" }} />,
+    bg: "rgba(139, 92, 246, 0.08)",
+    border: "rgba(139, 92, 246, 0.2)",
+    title: "Investment Simulator",
+    desc: "Backtest your ideas and model compounding portfolio returns against real-world assets without capital risk.",
+    link: "/investsimulator",
+    cta: "Launch Simulator",
+  },
+];
 
 function ContentTop() {
-  const [expanded, setExpanded] = React.useState(false);
-  const handleExpandClick = () => setExpanded(!expanded);
-  const [expanded1, setExpanded1] = React.useState(false);
-  const handleExpandClick1 = () => setExpanded1(!expanded1);
-  const [expanded2, setExpanded2] = React.useState(false);
-  const handleExpandClick2 = () => setExpanded2(!expanded2);
-  const contentTopClasses = useContentTopStyles;
-  const theme = useTheme();
   return (
-    <React.Fragment>
-      <section style={contentTopClasses.section}>
-        <div style={contentTopClasses.firstdiv}>
+    <Box
+      component="section"
+      sx={{
+        py: { xs: 8, md: 12 },
+        backgroundColor: "#FFFFFF",
+        borderBottom: "1px solid #E2E8F0",
+      }}
+    >
+      <Container maxWidth="lg">
+        {/* Section Header */}
+        <Box sx={{ textAlign: "center", maxWidth: 680, mx: "auto", mb: { xs: 5, md: 8 } }}>
           <Typography
-            variant="h3"
-            align="center"
-            textAlign="center"
+            variant="caption"
             sx={{
-              fontFamily: "Arial",
-              color: "#002244",
-              fontWeight: 1000,
-              "@media (max-width: 1000px)": {
-                fontSize: "25px",
-              },
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "#2563EB",
+              fontWeight: 700,
+              display: "block",
+              mb: 1,
             }}
           >
-            Explore endless possiblities with MarketWise
+            Comprehensive Ecosystem
           </Typography>
-          <Container
+          <Typography
+            variant="h2"
             sx={{
-              // width: "350",
-              display: "flex",
-              justifyContent: "space-around",
-              justifyItems: "center",
-              alignItems: "center",
-              textAlign: "center",
-              marginTop: "50px",
-              "@media (max-width: 1000px)": {
-                flexDirection: "column",
-              },
+              fontSize: { xs: "1.85rem", md: "2.5rem" },
+              fontWeight: 800,
+              color: "#0F172A",
+              mb: 2,
             }}
           >
-            <Card
-              sx={{
-                height: 350,
-                width: "300vh",
-                marginRight: 5,
-                backgroundColor: "#F0F8FF",
-                color: "#002244",
-                transition: "transform 0.3s",
-                "&:hover": {
-                  boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
-                },
-                "@media (max-width: 1000px)": {
-                  marginTop: "30px",
-                  marginRight: 0,
+            Explore Endless Possibilities with MarketWise
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#64748B", lineHeight: 1.6 }}>
+            Every tool you need to track global markets, analyze market cycles, and refine your trading strategies in one unified interface.
+          </Typography>
+        </Box>
+
+        {/* 3-Column Features Grid */}
+        <Grid container spacing={3.5}>
+          {features.map((feat, idx) => (
+            <Grid item xs={12} md={4} key={idx}>
+              <Card
+                sx={{
+                  height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  width: "300px",
-                  height: "350px",
-                  alignItems: "center",
-                },
-              }}
-              onMouseEnter={handleExpandClick1}
-              onMouseLeave={handleExpandClick1}
-            >
-              <CardHeader />
-              <CardContent>
-                <ThemeProvider theme={theme}>
-                  <Typography variant="h5">Learn with MarketWise</Typography>
-                </ThemeProvider>
-                <Typography variant="body2">
-                  MarketWise is the ultimate platform for anyone looking to
-                  learn about trading. With its comprehensive resources,
-                  including up-to-date news, analysis, and expert insights on
-                  forex, cryptocurrency, and the stock market, you'll have
-                  everything you need to get started and succeed in trading.
-                </Typography>
-              </CardContent>
-              <Collapse in={expanded1} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Link href="/education" sx={contentTopClasses.firstcardlinks}>
-                    Learn More
-                  </Link>
-                </CardContent>
-              </Collapse>
-            </Card>
-            <Card
-              sx={{
-                backgroundColor: "#F0F8FF",
-                width: "300vh",
-                marginRight: 5,
-                height: 350,
-                transition: "transform 0.3s",
-                color: "#002244",
-                "&:hover": {
-                  boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
-                },
-                "@media (max-width: 1000px)": {
-                  marginTop: "30px",
-                  marginRight: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "300px",
-                  height: "350px",
-                  alignItems: "center",
-                },
-              }}
-              onMouseEnter={handleExpandClick}
-              onMouseLeave={handleExpandClick}
-            >
-              <CardHeader />
-              <CardContent>
-                <ThemeProvider theme={theme}>
-                  <Typography variant="h5">Grow with MarketWise</Typography>
-                </ThemeProvider>
-                <Typography variant="body2">
-                  Our platform provides traders and investors with advanced
-                  tools to track, analyze and monitor their investments. With
-                  MarketWise, you can stay up-to-date with the latest market
-                  trends, analyze historical data, and make informed investment
-                  decisions.
-                </Typography>
-              </CardContent>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Link to="/grow" sx={contentTopClasses.firstcardlinks}>
-                    Learn More
-                  </Link>
-                </CardContent>
-              </Collapse>
-            </Card>
-            <Card
-              sx={{
-                width: "300vh",
-                marginRight: 5,
-                height: 350,
-                backgroundColor: "#F0F8FF",
-                color: "#002244",
-                transition: "transform 0.3s",
-                "&:hover": {
-                  boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
-                },
-                "@media (max-width: 1000px)": {
-                  marginTop: "30px",
-                  marginRight: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "300px",
-                  height: "350px",
-                  alignItems: "center",
-                },
-              }}
-              onMouseEnter={handleExpandClick2}
-              onMouseLeave={handleExpandClick2}
-            >
-              <CardHeader />
-              <CardContent sx={{ color: "#002244" }}>
-                <ThemeProvider theme={theme}>
-                  <Typography variant="h5">
-                    Dive into endless opportunities
+                  justifyContent: "space-between",
+                  p: { xs: 3, md: 3.5 },
+                  borderRadius: "18px",
+                  border: "1px solid #E2E8F0",
+                  backgroundColor: "#FFFFFF",
+                  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+                  transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
+                  "&:hover": {
+                    transform: "translateY(-4px)",
+                    boxShadow: "0 12px 24px -6px rgba(0, 0, 0, 0.08)",
+                    borderColor: feat.border,
+                  },
+                }}
+              >
+                <CardContent sx={{ p: "0 !important" }}>
+                  <Box
+                    sx={{
+                      width: 52,
+                      height: 52,
+                      borderRadius: "12px",
+                      backgroundColor: feat.bg,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      mb: 2.5,
+                    }}
+                  >
+                    {feat.icon}
+                  </Box>
+                  <Typography
+                    variant="h5"
+                    sx={{ fontWeight: 700, color: "#0F172A", mb: 1.5, fontSize: "1.25rem" }}
+                  >
+                    {feat.title}
                   </Typography>
-                </ThemeProvider>
-                <Typography variant="body2">
-                  With MarketWise, you can dive into the world of trading and
-                  unlock your potential for financial growth.
-                </Typography>
-              </CardContent>
-              <Collapse in={expanded2} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Link href="/explore" sx={contentTopClasses.firstcardlinks}>
-                    Learn More
-                  </Link>
+                  <Typography variant="body2" sx={{ color: "#64748B", lineHeight: 1.65, mb: 3 }}>
+                    {feat.desc}
+                  </Typography>
                 </CardContent>
-              </Collapse>
-            </Card>
-          </Container>
-        </div>
-        <div style={contentTopClasses.seconddivmain}>
-          <div style={contentTopClasses.secondivtitle}>
-            <div>
-              <Typography
-                variant="h3"
-                sx={{
-                  fontFamily: "Arial",
-                  color: "#002244",
-                  fontWeight: 1000,
-                  "@media (max-width: 1000px)": {
-                    fontSize: "25px",
-                  },
-                }}
-              >
-                Trusted Market Tracker
-              </Typography>
-              <Link
-                to="/user_protection"
-                style={contentTopClasses.secondivlink}
-              >
-                Learn More
-              </Link>
-            </div>
-            <div style={contentTopClasses.securecontentdiv}>
-              <Box
-                sx={{
-                  "@media (max-width: 1000px)": {
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  },
-                }}
-              >
-                {contenTopData.map((el, i) => {
-                  return (
-                    <ContentTopCard
-                      title={el.title}
-                      description={el.description}
-                      i={i}
-                    />
-                  );
-                })}
-              </Box>
-            </div>
-          </div>
-        </div>
-      </section>
-    </React.Fragment>
+
+                <Button
+                  component={RouterLink}
+                  to={feat.link}
+                  endIcon={<ArrowForwardIcon sx={{ fontSize: "16px !important" }} />}
+                  sx={{
+                    alignSelf: "flex-start",
+                    p: 0,
+                    fontWeight: 700,
+                    fontSize: "0.9rem",
+                    color: "#2563EB",
+                    "&:hover": { backgroundColor: "transparent", color: "#1D4ED8" },
+                  }}
+                >
+                  {feat.cta}
+                </Button>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }
 

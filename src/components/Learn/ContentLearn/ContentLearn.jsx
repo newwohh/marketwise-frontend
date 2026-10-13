@@ -1,284 +1,137 @@
-import React, { useRef } from "react";
-import useLearnContentStyles from "../../../styles/Learn/LearnContentStyles";
+import React from "react";
 import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Stack,
+  Box,
+  Container,
   Typography,
+  Chip,
+  Paper,
+  Grid,
 } from "@mui/material";
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
-import StarIcon from "@mui/icons-material/Star";
-import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import SchoolIcon from "@mui/icons-material/School";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
-import MonitorIcon from "@mui/icons-material/Monitor";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import AutoStoriesIcon from "@mui/icons-material/AutoStories";
+import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import MonitorIcon from "@mui/icons-material/Monitor";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import { contentLearnData } from "../../../dev-data/data";
 import ContentSection from "./ContentSection";
 
 function ContentLearn() {
-  const managerisk = useRef();
-  const whatistrading = useRef();
-  const tradingacc = useRef();
-  const learnread = useRef();
-  const practicetrading = useRef();
-  const learnanalyse = useRef();
-  const LearnContentClasses = useLearnContentStyles;
+  const sectionIds = [
+    "what-is-trading",
+    "open-account",
+    "read-trading",
+    "learn-analyze",
+    "practice-trading",
+    "manage-risk",
+  ];
 
-  // const refs = [
-  //   whatistrading,
-  //   tradingacc,
-  //   learnread,
-  //   learnanalyse,
-  //   practicetrading,
-  //   managerisk,
-  // ];
+  const quickJump = [
+    { label: "What is Trading", id: "what-is-trading", icon: <ShowChartIcon fontSize="small" /> },
+    { label: "Trading Accounts", id: "open-account", icon: <AccountBalanceIcon fontSize="small" /> },
+    { label: "Market Reading", id: "read-trading", icon: <AutoStoriesIcon fontSize="small" /> },
+    { label: "Technical Analysis", id: "learn-analyze", icon: <LocalLibraryIcon fontSize="small" /> },
+    { label: "Practice Simulator", id: "practice-trading", icon: <MonitorIcon fontSize="small" /> },
+    { label: "Risk Management", id: "manage-risk", icon: <ShieldOutlinedIcon fontSize="small" /> },
+  ];
 
-  console.log(whatistrading);
+  const handleScrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
-    <Box sx={LearnContentClasses.mains}>
-      <Box sx={LearnContentClasses.section}>
-        <Box sx={LearnContentClasses.titledivlearn}>
-          <Box sx={LearnContentClasses.introdiv}>
-            <Typography
-              variant="h2"
-              sx={{ fontFamily: "Helvetica" }}
-              align="left"
-            >
-              MarketWise: The Ultimate Guide to Trading
-            </Typography>
-            <Typography align="left">
-              Welcome to the MarketWise, your one-stop shop for learning about
-              cryptocurrency, forex, and stock exchange trading. Whether you're
-              a beginner or a seasoned investor, we have the resources you need
-              to succeed.
-            </Typography>
-            <Typography align="left">
-              Our website offers a variety of features to help you learn about
-              the markets, including:
-            </Typography>
-            <List sx={{ textAlign: "center" }}>
-              <ListItem>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText sx={{ fontWeight: 600 }}>
-                  Real-time market data
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText>News and analysis from experts</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText>
-                  A community of traders to connect with
-                </ListItemText>
-              </ListItem>
-            </List>
-            <Typography align="left">
-              We believe that everyone should have access to the tools they need
-              to make informed investment decisions. That's why we offer our
-              website for free. So what are you waiting for? Start learning
-              today! Here are some additional details about the features we
-              offer:
-            </Typography>
-            <List sx={{ textAlign: "center" }}>
-              <ListItem>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText sx={{ fontWeight: 600 }}>
-                  <Typography
-                    variant="h6"
-                    sx={{ textDecoration: "underline", fontWeight: 600 }}
-                  >
-                    Real-time market data
-                  </Typography>
-                  We provide real-time market data for all major
-                  cryptocurrencies, forex pairs, and stock exchanges. This data
-                  can be used to track the markets and make informed trading
-                  decisions.
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText>
-                  <Typography
-                    variant="h6"
-                    sx={{ textDecoration: "underline", fontWeight: 600 }}
-                  >
-                    News and analysis from experts
-                  </Typography>
-                  We provide news and analysis from leading financial experts.
-                  This information can help you stay up-to-date on the latest
-                  market trends and make informed investment decisions.
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText>
-                  <Typography
-                    variant="h6"
-                    sx={{ textDecoration: "underline", fontWeight: 600 }}
-                  >
-                    Educational resources for beginners
-                  </Typography>
-                  We offer a variety of educational resources for beginners,
-                  including articles, videos, and tutorials. These resources can
-                  help you learn about the markets and get started with trading.{" "}
-                </ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText>
-                  <Typography
-                    variant="h6"
-                    sx={{ textDecoration: "underline", fontWeight: 600 }}
-                  >
-                    A community of traders to connect with
-                  </Typography>
-                  We have a community of traders who are always willing to help
-                  each other. This community can be a great resource for
-                  learning about the markets and getting advice from experienced
-                  traders.{" "}
-                </ListItemText>
-              </ListItem>
-            </List>
-          </Box>
-        </Box>
-      </Box>
-      <Box sx={LearnContentClasses.navtolearn}>
-        <Box
-          sx={{
-            marginTop: "100px",
-            width: "100%",
-            height: "100px",
-            backgroundColor: "#5D76A9",
-            borderRadius: "14px",
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            "@media (max-width:1000px)": {
-              height: "300px",
-            },
-          }}
-        >
-          <Stack
-            direction="row"
+    <Box component="main" sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#F8FAFC" }}>
+      <Container maxWidth="lg">
+        {/* Header */}
+        <Box sx={{ textAlign: "center", maxWidth: 740, mx: "auto", mb: { xs: 5, md: 8 } }}>
+          <Chip
+            icon={<SchoolIcon sx={{ fontSize: "16px !important", color: "#2563EB" }} />}
+            label="TRADING ACADEMY & KNOWLEDGE BASE"
+            size="small"
             sx={{
-              columnGap: "15px",
-              "@media (max-width:1000px)": {
-                display: "grid",
-                rowGap: "5px",
-                gridTemplateColumns: "200px",
-              },
+              fontWeight: 800,
+              fontSize: "0.72rem",
+              bgcolor: "rgba(37, 99, 235, 0.08)",
+              color: "#2563EB",
+              mb: 2,
+              borderRadius: "6px",
+            }}
+          />
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: "2.1rem", md: "3rem" },
+              color: "#0F172A",
+              letterSpacing: "-0.03em",
+              mb: 2,
             }}
           >
-            <Chip
-              icon={<ShowChartIcon />}
-              label="What is Trading"
-              sx={{
-                color: "white",
-                height: "40px",
-                width: "150px",
-                cursor: "pointer",
-              }}
-              onClick={() =>
-                whatistrading.current.scrollIntoView({ behavior: "smooth" })
-              }
-            />
-            <Chip
-              icon={<AccountBalanceIcon />}
-              label="Open a Trading Account"
-              sx={{
-                color: "white",
-                height: "40px",
-                width: "150px",
-                cursor: "pointer",
-              }}
-              onClick={() =>
-                tradingacc.current.scrollIntoView({ behavior: "smooth" })
-              }
-            />
-            <Chip
-              icon={<AutoStoriesIcon />}
-              label="Read About Trading"
-              sx={{
-                color: "white",
-                height: "40px",
-                width: "190px",
-                cursor: "pointer",
-              }}
-              onClick={() =>
-                learnread.current.scrollIntoView({ behavior: "smooth" })
-              }
-            />
-
-            <Chip
-              icon={<LocalLibraryIcon />}
-              label="Learn to Analyze"
-              sx={{
-                color: "white",
-                height: "40px",
-                width: "150px",
-                cursor: "pointer",
-              }}
-              onClick={() =>
-                learnanalyse.current.scrollIntoView({ behavior: "smooth" })
-              }
-            />
-            <Chip
-              icon={<MonitorIcon />}
-              label="Practice Trading"
-              sx={{
-                color: "white",
-                height: "40px",
-                width: "150px",
-                cursor: "pointer",
-              }}
-              onClick={() =>
-                practicetrading.current.scrollIntoView({ behavior: "smooth" })
-              }
-            />
-            <Chip
-              icon={<ErrorOutlineIcon />}
-              label="How to Manage Risk"
-              sx={{
-                color: "white",
-                height: "40px",
-                width: "150px",
-                cursor: "pointer",
-              }}
-              onClick={() =>
-                managerisk.current.scrollIntoView({ behavior: "smooth" })
-              }
-            />
-          </Stack>
+            The Ultimate Guide to Trading
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#64748B", lineHeight: 1.7, fontSize: "1.05rem" }}>
+            Whether you are taking your first steps into crypto or refining equity swing trading strategies, our structured curriculum provides actionable principles.
+          </Typography>
         </Box>
-      </Box>
-      <Box sx={LearnContentClasses.learncontentdiv}>
-        {contentLearnData.map((el, i) => (
-          <ContentSection el={el} i={i} key={i} />
-        ))}
-      </Box>
+
+        {/* Quick Jump Bar */}
+        <Paper
+          elevation={0}
+          sx={{
+            p: 2.5,
+            mb: 6,
+            borderRadius: "18px",
+            border: "1px solid #E2E8F0",
+            backgroundColor: "#FFFFFF",
+            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+          }}
+        >
+          <Typography variant="caption" sx={{ fontWeight: 800, color: "#64748B", letterSpacing: "0.08em", display: "block", mb: 1.5, textTransform: "uppercase" }}>
+            Curriculum Quick Navigation
+          </Typography>
+          <Grid container spacing={1.5}>
+            {quickJump.map((item, idx) => (
+              <Grid item xs={6} sm={4} md={2} key={idx}>
+                <Chip
+                  icon={item.icon}
+                  label={item.label}
+                  clickable
+                  onClick={() => handleScrollTo(item.id)}
+                  sx={{
+                    width: "100%",
+                    height: 38,
+                    fontWeight: 700,
+                    fontSize: "0.78rem",
+                    bgcolor: "#F8FAFC",
+                    border: "1px solid #E2E8F0",
+                    color: "#334155",
+                    "&:hover": {
+                      bgcolor: "rgba(37, 99, 235, 0.08)",
+                      borderColor: "#2563EB",
+                      color: "#2563EB",
+                    },
+                  }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Paper>
+
+        {/* Curriculum Sections */}
+        <Box>
+          {contentLearnData.map((el, i) => (
+            <ContentSection
+              el={el}
+              key={i}
+              sectionId={sectionIds[i] || `section-${i}`}
+            />
+          ))}
+        </Box>
+      </Container>
     </Box>
   );
 }

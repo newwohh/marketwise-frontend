@@ -1,20 +1,21 @@
 import React from "react";
+import Box from "@mui/material/Box";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
+import Footer from "../components/Home/Footer/Footer";
 import ContentExplore from "../components/Explore/ContentExplore";
-import FooterLearn from "../components/Learn/Footer/FooterLearn";
 import { titleHandler } from "../handler/titleHandler";
 import { useScrollToTop } from "../actions/actions";
 
 function Explore() {
   useScrollToTop();
-  titleHandler("Explore");
+  titleHandler("Explore Markets");
 
   return (
-    <React.Fragment>
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <NavBar />
       <ContentExplore />
-      <FooterLearn />
-    </React.Fragment>
+      <Footer />
+    </Box>
   );
 }
 

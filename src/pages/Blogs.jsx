@@ -1,20 +1,21 @@
 import React from "react";
-import SignInNavbar from "../components/SignIn/SignInNavBar";
+import Box from "@mui/material/Box";
+import NavBar from "../components/Home/Header/NavBar/NavBar";
+import Footer from "../components/Home/Footer/Footer";
 import BlogsContent from "../components/Blogs/BlogsContent";
-import FooterLearn from "../components/Learn/Footer/FooterLearn";
 import { useScrollToTop } from "../actions/actions";
 import { titleHandler } from "../handler/titleHandler";
 
 function Blogs() {
   useScrollToTop();
-  titleHandler("Blogs");
+  titleHandler("Market Blogs");
 
   return (
-    <React.Fragment>
-      <SignInNavbar />
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <NavBar />
       <BlogsContent />
-      <FooterLearn />
-    </React.Fragment>
+      <Footer />
+    </Box>
   );
 }
 

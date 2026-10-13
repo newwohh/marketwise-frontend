@@ -1,21 +1,21 @@
 import React from "react";
-import HeaderLearn from "../components/Learn/HeaderLearn/HeaderLearn";
+import Box from "@mui/material/Box";
+import NavBar from "../components/Home/Header/NavBar/NavBar";
+import Footer from "../components/Home/Footer/Footer";
 import ContentLearn from "../components/Learn/ContentLearn/ContentLearn";
-import FooterLearn from "../components/Learn/Footer/FooterLearn";
 import { titleHandler } from "../handler/titleHandler";
+import { useScrollToTop } from "../actions/actions";
 
 function Learn() {
-  titleHandler("Learn");
+  titleHandler("Trading Academy");
+  useScrollToTop();
+
   return (
-    <React.Fragment>
-      <header>
-        <HeaderLearn />
-      </header>
-      <main>
-        <ContentLearn />
-      </main>
-      <FooterLearn />
-    </React.Fragment>
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <NavBar />
+      <ContentLearn />
+      <Footer />
+    </Box>
   );
 }
 

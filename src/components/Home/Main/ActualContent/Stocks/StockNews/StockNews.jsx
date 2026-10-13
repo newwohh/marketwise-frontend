@@ -1,91 +1,100 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Box, Container, Typography, Button, Grid } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { getStockNews } from "../../../../../../reducers/reducers";
-import { CircularProgress, ThemeProvider, Typography } from "@mui/material";
-import theme from "../../../../../../styles/Theme";
-import useStockNews from "../../../../../../styles/Home/StockNewsStyle";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/grid";
-import { Link } from "react-router-dom";
 import StockNewsCard from "./StockNewsCard";
 
 function StockNews() {
-  const StockNewsClasses = useStockNews;
   const dispatch = useDispatch();
   const { stocknews } = useSelector((state) => state.marketwise);
-  const getProducts = React.useCallback(() => {
+
+  const fetchNews = useCallback(() => {
     dispatch(getStockNews());
   }, [dispatch]);
 
   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+    fetchNews();
+  }, [fetchNews]);
 
-  let stockNews = stocknews;
+  const articles = Array.isArray(stocknews) ? stocknews.slice(0, 6) : [];
+
   return (
-    <div style={StockNewsClasses.containerdiv}>
-      <div style={StockNewsClasses.newsdiv}>
-        <div>
-          <ThemeProvider theme={theme}>
+    <Box
+      component="section"
+      sx={{
+        py: { xs: 8, md: 10 },
+        backgroundColor: "#FFFFFF",
+        borderBottom: "1px solid #E2E8F0",
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            justifyContent: "space-between",
+            alignItems: { xs: "flex-start", sm: "flex-end" },
+            gap: 2,
+            mb: 4,
+          }}
+        >
+          <Box>
             <Typography
-              variant="h2"
+              variant="caption"
               sx={{
-                "&:hover": {
-                  color: "#002244",
-                },
-                "@media (max-width: 1000px)": {
-                  fontSize: "25px",
-                },
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "#2563EB",
+                fontWeight: 700,
+                display: "block",
+                mb: 1,
               }}
             >
-              <Link to="/stocks" style={StockNewsClasses.titlelink}>
-                Stocks
-                <ArrowForwardIosIcon
-                  sx={{
-                    marginLeft: "10px",
-                    "@media (max-width: 1000px)": {
-                      height: "12px",
-                      marginLeft: "0px",
-                    },
-                  }}
-                />
-              </Link>
+              Equity Wire
             </Typography>
-            <Typography variant="p" sx={{ color: "#002244" }}>
-              What's Hot in Stock Market
+            <Typography
+              variant="h3"
+              sx={{
+                fontSize: { xs: "1.75rem", md: "2.25rem" },
+                fontWeight: 800,
+                color: "#0F172A",
+              }}
+            >
+              Stock Market Headlines
             </Typography>
-          </ThemeProvider>
-        </div>
-      </div>
-      <div style={StockNewsClasses.newscontent}>
-        <Swiper
-          modules={[A11y, Navigation, Autoplay]}
-          navigation
-          rewind
-          slidesPerView={1}
-          spaceBetween={10}
-          autoplay={{ delay: 7000, pauseOnMouseEnter: true }}
-          breakpoints={{ 801: { slidesPerView: 3, autoplay: { enabled: false } } }}
-          style={{ height: "600px", marginInline: "min(100px, 5vw)" }}
-        >
-          {stocknews === undefined || stocknews === [] ? (
-            <CircularProgress />
-          ) : (
-            stockNews.map((el, i) => {
-              return (
-                <SwiperSlide key={i}>
-                  <StockNewsCard el={el} i={i} />
-                </SwiperSlide>
-              );
-            })
-          )}
-        </Swiper>
-      </div>
-    </div>
+            <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5 }}>
+              Earnings releases, institutional movements, and global business headlines.
+            </Typography>
+          </Box>
+
+          <Button
+            component={RouterLink}
+            to="/stocks"
+            variant="outlined"
+            endIcon={<ArrowForwardIcon />}
+            sx={{
+              borderRadius: "10px",
+              fontWeight: 600,
+              color: "#2563EB",
+              borderColor: "#CBD5E1",
+              "&:hover": { borderColor: "#2563EB", backgroundColor: "rgba(37, 99, 235, 0.04)" },
+            }}
+          >
+            All Equities
+          </Button>
+        </Box>
+
+        <Grid container spacing={3}>
+          {articles.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <StockNewsCard el={item} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }
 

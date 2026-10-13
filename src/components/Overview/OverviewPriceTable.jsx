@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import {
   Button,
   Paper,
@@ -7,128 +8,146 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Chip,
+  Box,
+  Typography,
 } from "@mui/material";
-import React, { useContext, useRef } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { MyContext } from "../../context/Context";
 import { subscribeNew } from "../../api";
 
-function OverviewPriceTable(props) {
+function OverviewPriceTable({ title, prices }) {
   const { user } = useContext(MyContext);
-  const nameref = useRef(0);
+  const rows = Array.isArray(prices) ? prices : [];
 
   return (
     <TableContainer
       component={Paper}
+      elevation={0}
       sx={{
-        backgroundColor: "#F0F8FF",
-        "@media (max-width:1000px)": {
-          width: "300px",
-        },
+        borderRadius: "16px",
+        border: "1px solid #E2E8F0",
+        backgroundColor: "#FFFFFF",
       }}
     >
-      <Table
-        sx={{
-          backgroundColor: "#F0F8FF",
-          "@media (max-width:1000px)": {
-            width: "300px",
-          },
-        }}
-      >
-        <TableHead>
+      <Table sx={{ minWidth: 680 }}>
+        <TableHead sx={{ backgroundColor: "#F8FAFC" }}>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="right">
-              {props.title === "Crypto" ? "Rank" : "Asset"}
+            <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>ASSET</TableCell>
+            <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>SYMBOL</TableCell>
+            <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+              PRICE (USD)
             </TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">
-              {" "}
-              {props.title === "Crypto" ? "Symbol" : "Type"}
+            <TableCell align="center" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+              {title === "Crypto" ? "24H / RANK" : "SECURITY TYPE"}
             </TableCell>
-            <TableCell align="right">tab</TableCell>
+            <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+              ACTIONS
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.prices.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{
-                "&:hover": {
-                  backgroundColor: "#E1EBEE",
-                },
-              }}
-            >
-              <TableCell>
-                <Button
-                  ref={nameref}
-                  href={`cryptocurrency/chart/${row.symbol}`}
-                  variant="outlined"
-                  sx={{
-                    borderColor: "#002244",
-                    borderRadius: "15px",
-                    width: "150px",
-                    color: "#002244",
-                    "&:hover": {
-                      backgroundColor: "#002244",
-                      color: "white",
-                      borderColor: "#002244",
-                    },
-                    "@media (max-width:1000px)": {
-                      height: "50px",
-                      fontSize: 10,
-                      overflow: "auto",
-                    },
-                  }}
-                >
-                  {row.name}
-                </Button>
-              </TableCell>
-              <TableCell component="th" scope="row" align="right">
-                {row.rank ? row.rank : "Stocks"}
-              </TableCell>
-              <TableCell align="right">
-                {row.price ? row.price : row.price_usd}
-              </TableCell>
-              <TableCell align="right">
-                <Button
-                  href={`cryptocurrency/chart/${row.symbol}`}
-                  target="_blank"
-                  sx={{
-                    borderColor: "#002244",
-                    width: "150px",
-                    color: "#002244",
-                  }}
-                >
-                  {row.type ? row.type : row.symbol}
-                </Button>
-              </TableCell>
-              <TableCell align="right">
-                <Button
-                  sx={{
-                    borderColor: "#002244",
-                    borderRadius: "15px",
-                    width: "150px",
-                    color: "#002244",
-                    "&:hover": {
-                      backgroundColor: "#002244",
-                      color: "white",
-                      borderColor: "#002244",
-                    },
-                  }}
-                  onClick={() =>
-                    subscribeNew(
-                      "market",
-                      row.name,
-                      user,
-                      row.price || row.price_usd
-                    )
-                  }
-                >
-                  Subscribe
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
+          {rows.map((row, idx) => {
+            const rawPrice = row.price_usd || row.price || "0";
+            const formattedPrice = Number(rawPrice).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 4,
+            });
+            const assetName = row.name || `Asset ${idx + 1}`;
+            const symbol = row.symbol || row.ticker || "N/A";
+            const chartId = row.id || symbol.toLowerCase();
+
+            return (
+              <TableRow
+                key={row.id || row.name || idx}
+                sx={{
+                  transition: "background-color 0.15s ease",
+                  "&:hover": { backgroundColor: "#F8FAFC" },
+                }}
+              >
+                <TableCell>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: "#0F172A" }}>
+                    {assetName}
+                  </Typography>
+                </TableCell>
+
+                <TableCell>
+                  <Chip
+                    label={symbol}
+                    size="small"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: "0.75rem",
+                      backgroundColor: "rgba(37, 99, 235, 0.08)",
+                      color: "#2563EB",
+                      borderRadius: "6px",
+                    }}
+                  />
+                </TableCell>
+
+                <TableCell align="right">
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: 700, color: "#0F172A", fontFamily: "monospace" }}
+                  >
+                    ${formattedPrice}
+                  </Typography>
+                </TableCell>
+
+                <TableCell align="center">
+                  <Chip
+                    label={title === "Crypto" ? `#${row.rank || idx + 1}` : row.type || "Common Stock"}
+                    size="small"
+                    sx={{
+                      fontWeight: 600,
+                      fontSize: "0.75rem",
+                      backgroundColor: "#F1F5F9",
+                      color: "#475569",
+                      borderRadius: "6px",
+                    }}
+                  />
+                </TableCell>
+
+                <TableCell align="right">
+                  <Box sx={{ display: "inline-flex", gap: 1, alignItems: "center" }}>
+                    <Button
+                      component={RouterLink}
+                      to={`/cryptocurrency/chart/${chartId}`}
+                      size="small"
+                      variant="outlined"
+                      startIcon={<ShowChartIcon fontSize="small" />}
+                      sx={{
+                        borderRadius: "8px",
+                        fontSize: "0.78rem",
+                        borderColor: "#CBD5E1",
+                        color: "#2563EB",
+                        "&:hover": { borderColor: "#2563EB", backgroundColor: "rgba(37, 99, 235, 0.04)" },
+                      }}
+                    >
+                      Chart
+                    </Button>
+                    {user && (
+                      <Button
+                        size="small"
+                        variant="contained"
+                        startIcon={<StarBorderIcon fontSize="small" />}
+                        onClick={() => subscribeNew("market", assetName, user, rawPrice)}
+                        sx={{
+                          borderRadius: "8px",
+                          fontSize: "0.78rem",
+                          boxShadow: "none",
+                        }}
+                      >
+                        Watch
+                      </Button>
+                    )}
+                  </Box>
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>

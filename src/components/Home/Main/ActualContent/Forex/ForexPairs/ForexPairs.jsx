@@ -1,147 +1,278 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getForexData } from "../../../../../../reducers/reducers";
-import Typography from "@mui/material/Typography";
-import useForexDataStyles from "../../../../../../styles/Home/ForexData";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+} from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import ArticleIcon from "@mui/icons-material/Article";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/grid";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Box, Link, ThemeProvider } from "@mui/material";
-import theme from "../../../../../../styles/Theme";
-import chatsupport from "../../../../../../assets/5114855.jpg";
-import faq from "../../../../../../assets/5066368.jpg";
-import blog from "../../../../../../assets/5396346.jpg";
+import { getForexData } from "../../../../../../reducers/reducers";
 import ForexCard from "./ForexCard";
 
 function ForexPairs() {
   const dispatch = useDispatch();
   const { forexdata } = useSelector((state) => state.marketwise);
+
   const getProducts = useCallback(() => dispatch(getForexData()), [dispatch]);
+
   useEffect(() => {
     getProducts();
   }, [getProducts]);
-  const forexDataClass = useForexDataStyles;
-  const forexCardData = forexdata;
+
+  const pairs = Array.isArray(forexdata) && forexdata.length > 0 ? forexdata : [];
+
   return (
-    <div style={forexDataClass.containerdiv}>
-      <div style={forexDataClass.titlediv}>
-        <ThemeProvider theme={theme}>
+    <Box component="section" sx={{ py: { xs: 8, md: 10 }, backgroundColor: "#F8FAFC" }}>
+      <Container maxWidth="lg">
+        {/* Forex Header */}
+        <Box sx={{ mb: 4 }}>
           <Typography
-            variant="h2"
+            variant="caption"
             sx={{
-              marginTop: "100px",
-              color: "white",
-              "@media (max-width : 1000px)": {
-                fontSize: "25px",
-              },
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "#2563EB",
+              fontWeight: 700,
+              display: "block",
+              mb: 1,
             }}
           >
-            <Link sx={forexDataClass.titlelink}>
-              Forex{" "}
-              <ArrowForwardIosIcon
-                sx={{
-                  marginLeft: "-10px",
-                  "@media (max-width : 1000px)": {
-                    height: "9px",
-                    marginLeft: "-10px",
-                  },
-                }}
-              />
-            </Link>
+            Foreign Exchange
           </Typography>
           <Typography
-            variant="p"
+            variant="h3"
             sx={{
-              color: "#002244",
-              "@media (max-width : 1000px)": {
-                fontSize: "10px",
-              },
+              fontSize: { xs: "1.75rem", md: "2.25rem" },
+              fontWeight: 800,
+              color: "#0F172A",
             }}
           >
-            Know all the exchanges available
+            Currency Pairs & Crosses
           </Typography>
-        </ThemeProvider>
-      </div>
-      <Box sx={{ margin: 10 }}>
-        <Swiper
-          modules={[A11y, Navigation, Autoplay]}
-          navigation
-          rewind
-          slidesPerView={1}
-          spaceBetween={15}
-          autoplay={{ delay: 2000, pauseOnMouseEnter: true }}
-          breakpoints={{ 701: { slidesPerView: 5, autoplay: { enabled: false } } }}
-        >
-          {forexCardData.map((el, i) => (
-            <SwiperSlide key={i}>
-              {<ForexCard data={el} i={i} />}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Box>
-      <Box sx={forexDataClass.lastcontainer}>
-        <Box>
-          <div>
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: 1000, color: "#002244" }}
+          <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5 }}>
+            Real-time interbank foreign exchange rates and liquid global currency pairs.
+          </Typography>
+        </Box>
+
+        {/* Forex Slider */}
+        {pairs.length > 0 ? (
+          <Box sx={{ mb: 8 }}>
+            <Swiper
+              modules={[A11y, Navigation, Autoplay]}
+              navigation
+              rewind
+              slidesPerView={1}
+              spaceBetween={20}
+              autoplay={{ delay: 3000, pauseOnMouseEnter: true }}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                960: { slidesPerView: 4 },
+              }}
+              style={{ paddingBottom: "10px" }}
             >
-              Need help?
-            </Typography>
-          </div>
+              {pairs.map((el, i) => (
+                <SwiperSlide key={i}>
+                  <ForexCard data={el} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
+        ) : null}
+
+        {/* Support & Resource Cards */}
+        <Box sx={{ mt: 6 }}>
+          <Typography
+            variant="caption"
+            sx={{
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "#64748B",
+              fontWeight: 700,
+              display: "block",
+              mb: 1,
+              textAlign: "center",
+            }}
+          >
+            Need Guidance?
+          </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              textAlign: "center",
+              fontWeight: 800,
+              color: "#0F172A",
+              mb: 4,
+            }}
+          >
+            Trader Support & Community
+          </Typography>
+
+          <Grid container spacing={3}>
+            {/* Blog Card */}
+            <Grid item xs={12} md={4}>
+              <Card
+                sx={{
+                  p: 3,
+                  borderRadius: "16px",
+                  border: "1px solid #E2E8F0",
+                  backgroundColor: "#FFFFFF",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  transition: "all 0.25s ease",
+                  "&:hover": { transform: "translateY(-3px)", borderColor: "#93C5FD" },
+                }}
+              >
+                <CardContent sx={{ p: "0 !important" }}>
+                  <Box
+                    sx={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: "12px",
+                      backgroundColor: "rgba(37, 99, 235, 0.08)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#2563EB",
+                      mb: 2,
+                    }}
+                  >
+                    <ArticleIcon />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: "#0F172A", mb: 1 }}>
+                    Market Intelligence Blog
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#64748B", lineHeight: 1.6, mb: 2 }}>
+                    Deep dives on macro policy, technical setups, and algorithmic strategies from experienced contributors.
+                  </Typography>
+                </CardContent>
+                <Button
+                  component={RouterLink}
+                  to="/blogs"
+                  endIcon={<ArrowForwardIcon sx={{ fontSize: 16 }} />}
+                  sx={{ alignSelf: "flex-start", p: 0, fontWeight: 700, color: "#2563EB" }}
+                >
+                  Read Articles
+                </Button>
+              </Card>
+            </Grid>
+
+            {/* FAQ Card */}
+            <Grid item xs={12} md={4}>
+              <Card
+                sx={{
+                  p: 3,
+                  borderRadius: "16px",
+                  border: "1px solid #E2E8F0",
+                  backgroundColor: "#FFFFFF",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  transition: "all 0.25s ease",
+                  "&:hover": { transform: "translateY(-3px)", borderColor: "#93C5FD" },
+                }}
+              >
+                <CardContent sx={{ p: "0 !important" }}>
+                  <Box
+                    sx={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: "12px",
+                      backgroundColor: "rgba(16, 185, 129, 0.08)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#10B981",
+                      mb: 2,
+                    }}
+                  >
+                    <HelpOutlineIcon />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: "#0F172A", mb: 1 }}>
+                    Help Center & FAQs
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#64748B", lineHeight: 1.6, mb: 2 }}>
+                    Got questions regarding platform capabilities, subscription plans, or simulator metrics? Check our guides.
+                  </Typography>
+                </CardContent>
+                <Button
+                  component={RouterLink}
+                  to="/faq"
+                  endIcon={<ArrowForwardIcon sx={{ fontSize: 16 }} />}
+                  sx={{ alignSelf: "flex-start", p: 0, fontWeight: 700, color: "#10B981" }}
+                >
+                  View FAQ
+                </Button>
+              </Card>
+            </Grid>
+
+            {/* AI Assistant Card */}
+            <Grid item xs={12} md={4}>
+              <Card
+                sx={{
+                  p: 3,
+                  borderRadius: "16px",
+                  border: "1px solid #E2E8F0",
+                  backgroundColor: "#FFFFFF",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  transition: "all 0.25s ease",
+                  "&:hover": { transform: "translateY(-3px)", borderColor: "#93C5FD" },
+                }}
+              >
+                <CardContent sx={{ p: "0 !important" }}>
+                  <Box
+                    sx={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: "12px",
+                      backgroundColor: "rgba(139, 92, 246, 0.08)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#8B5CF6",
+                      mb: 2,
+                    }}
+                  >
+                    <SupportAgentIcon />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: "#0F172A", mb: 1 }}>
+                    24/7 AI Market Assistant
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#64748B", lineHeight: 1.6, mb: 2 }}>
+                    Get real-time conversational assistance on tickers, terminologies, and platform guidance whenever you need.
+                  </Typography>
+                </CardContent>
+                <Button
+                  component={RouterLink}
+                  to="/chat"
+                  endIcon={<ArrowForwardIcon sx={{ fontSize: 16 }} />}
+                  sx={{ alignSelf: "flex-start", p: 0, fontWeight: 700, color: "#8B5CF6" }}
+                >
+                  Chat with AI
+                </Button>
+              </Card>
+            </Grid>
+          </Grid>
         </Box>
-        <Box sx={forexDataClass.seconddiv}>
-          <Box sx={forexDataClass.carddiv}>
-            <div>
-              <img src={blog} alt="blog" style={{ width: 100, height: 100 }} />
-            </div>
-            <Box sx={forexDataClass.seconddatasubdiv}>
-              <Typography variant="h6">Blog</Typography>
-              <Typography variant="p">
-                Stay up to date with the latest stories and commentary.
-              </Typography>
-              <Link href="/blogs" sx={forexDataClass.lastdivlink}>
-                Learn More
-              </Link>
-            </Box>
-          </Box>
-          <Box sx={forexDataClass.carddiv}>
-            <div>
-              <img src={faq} alt="faq" style={{ width: 100, height: 100 }} />
-            </div>
-            <Box sx={forexDataClass.seconddatasubdiv}>
-              <Typography variant="h6">FAQs</Typography>
-              <Typography variant="p">
-                View FAQs for detailed instructions on specific features.
-              </Typography>
-              <Link href="/faq" sx={forexDataClass.lastdivlink}>
-                Learn more
-              </Link>
-            </Box>
-          </Box>
-          <Box sx={forexDataClass.carddiv}>
-            <div>
-              <img
-                src={chatsupport}
-                alt="chat-support"
-                style={{ width: 100, height: 100 }}
-              />
-            </div>
-            <Box sx={forexDataClass.seconddatasubdiv}>
-              <Typography variant="h6">24/7 Chat Support</Typography>
-              <Typography variant="p">
-                Get 24/7 chat support with our friendly customer service agents
-                at your service.
-              </Typography>
-              <Link sx={forexDataClass.lastdivlink}>Chat now</Link>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-    </div>
+      </Container>
+    </Box>
   );
 }
 

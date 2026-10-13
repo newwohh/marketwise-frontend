@@ -1,137 +1,200 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  Box,
-  Button,
   Card,
   CardContent,
-  Modal,
   Typography,
+  Box,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Chip,
+  IconButton,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-import useCryptoNewsStyles from "../../../../../../styles/Home/CryptoNewsStyles";
+import CloseIcon from "@mui/icons-material/Close";
+import LaunchIcon from "@mui/icons-material/Launch";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
-const style = {
-  overflow: "scroll",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 800,
-  height: "800px",
-  backgroundColor: "white",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-  zIndex: 1,
-  opacity: 1,
-};
+function CryptoNewsCard({ news }) {
+  const [modalOpen, setModalOpen] = useState(false);
 
-function CryptoNewsCard(props) {
-  const CryptoNewsClasses = useCryptoNewsStyles;
+  if (!news) return null;
 
-  const [open, setOpen] = React.useState(false);
-  const [cryptoNewsModal, setCryptoNewsModal] = React.useState({
-    title: "",
-    description: "",
-    content: "",
-    author: "",
-  });
-  const handleOpen = (el) => {
-    setCryptoNewsModal({
-      title: el.title,
-      description: el.description,
-      content: el.content,
-      author: el.author,
-    });
-    setOpen(true);
-  };
-  const handleClose = () => setOpen(false);
+  const title = news.title || "Market Update";
+  const source = news.source_id || news.creator?.[0] || news.author || "Crypto Desk";
+  const pubDate = news.pubDate ? new Date(news.pubDate).toLocaleDateString() : "Recent";
+  const description = news.description || news.content || "Click to read full coverage of this market event.";
 
   return (
-    <Card
-      sx={{
-        height: "200px",
-        cursor: "pointer",
-        marginRight: "50px",
-        border: "1px solid #F0F0F0",
-        backgroundColor: "#F0F8FF",
-        boxShadow: "none",
-        color: "#002244",
-        marginBottom: "10px",
-        "&:hover": { color: "" },
-        "@media (max-width: 1000px)": {
-          width: "150px",
-          height: "350px",
-          marginRight: "0px",
-          border: "none",
-          overflow: "scroll",
-        },
-      }}
-    >
-      <CardContent
+    <>
+      <Card
         sx={{
-          "@media (max-width: 1000px)": {
-            width: "150px",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          p: 2.5,
+          borderRadius: "16px",
+          border: "1px solid #E2E8F0",
+          backgroundColor: "#FFFFFF",
+          transition: "all 0.25s ease",
+          "&:hover": {
+            transform: "translateY(-3px)",
+            boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.08)",
+            borderColor: "#93C5FD",
           },
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: 700,
-            fontSize: "15px",
-            "&:hover": { textDecoration: "underline" },
-          }}
-        >
-          <Link
-            onClick={() => handleOpen(props.news)}
+        <CardContent sx={{ p: "0 !important" }}>
+          {/* Metadata Bar */}
+          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 1.5 }}>
+            <Chip
+              label={source}
+              size="small"
+              sx={{
+                height: 22,
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                backgroundColor: "rgba(37, 99, 235, 0.08)",
+                color: "#2563EB",
+                borderRadius: "6px",
+              }}
+            />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, color: "#94A3B8" }}>
+              <AccessTimeIcon sx={{ fontSize: 13 }} />
+              <Typography variant="caption" sx={{ fontSize: "0.75rem" }}>
+                {pubDate}
+              </Typography>
+            </Box>
+          </Box>
+
+          {/* Title */}
+          <Typography
+            variant="subtitle1"
+            onClick={() => setModalOpen(true)}
             sx={{
-              "&:hover": { textDecoration: "underline" },
-              color: "#002244",
-              textDecoration: "none",
+              fontWeight: 700,
+              color: "#0F172A",
+              fontSize: "0.98rem",
+              lineHeight: 1.4,
+              mb: 1,
+              cursor: "pointer",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              "&:hover": { color: "#2563EB" },
             }}
           >
-            {props.news.title}
-          </Link>
-        </Typography>
-        <Typography variant="p" sx={{ fontSize: "12px" }}>
-          {props.news.description} <br></br>
-        </Typography>
-        <Button
-          href={props.news.link}
-          sx={{
-            color: "white",
-            "&:hover": { color: "white" },
-            borderRadius: "13px",
-            height: "30px",
-          }}
-        >
-          Click To Know More
-        </Button>
-      </CardContent>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        style={CryptoNewsClasses.modalStyle}
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {cryptoNewsModal.author}
+            {title}
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {cryptoNewsModal.title}
+
+          {/* Description */}
+          <Typography
+            variant="body2"
+            sx={{
+              color: "#64748B",
+              fontSize: "0.85rem",
+              lineHeight: 1.5,
+              display: "-webkit-box",
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {description}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {cryptoNewsModal.description}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {cryptoNewsModal.content}
-          </Typography>
+        </CardContent>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2, pt: 1.5, borderTop: "1px solid #F1F5F9" }}>
+          <Button
+            size="small"
+            onClick={() => setModalOpen(true)}
+            sx={{
+              p: 0,
+              fontSize: "0.8rem",
+              fontWeight: 600,
+              color: "#2563EB",
+              "&:hover": { backgroundColor: "transparent", color: "#1D4ED8" },
+            }}
+          >
+            Quick View
+          </Button>
+
+          {news.link && (
+            <IconButton
+              component="a"
+              href={news.link}
+              target="_blank"
+              rel="noreferrer"
+              size="small"
+              sx={{ color: "#94A3B8", "&:hover": { color: "#2563EB" } }}
+            >
+              <LaunchIcon sx={{ fontSize: 16 }} />
+            </IconButton>
+          )}
         </Box>
-      </Modal>
-    </Card>
+      </Card>
+
+      {/* Reader Modal */}
+      <Dialog
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        maxWidth="md"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: "18px",
+            p: 1,
+          },
+        }}
+      >
+        <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", pb: 1 }}>
+          <Box sx={{ pr: 2 }}>
+            <Chip
+              label={source}
+              size="small"
+              sx={{
+                mb: 1,
+                fontWeight: 700,
+                backgroundColor: "rgba(37, 99, 235, 0.1)",
+                color: "#2563EB",
+              }}
+            />
+            <Typography variant="h6" sx={{ fontWeight: 800, color: "#0F172A", lineHeight: 1.3 }}>
+              {title}
+            </Typography>
+          </Box>
+          <IconButton onClick={() => setModalOpen(false)} size="small">
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers sx={{ borderColor: "#F1F5F9" }}>
+          <Typography variant="body1" sx={{ color: "#334155", lineHeight: 1.8, fontSize: "0.95rem" }}>
+            {news.content || description}
+          </Typography>
+        </DialogContent>
+        <DialogActions sx={{ px: 3, py: 2 }}>
+          {news.link && (
+            <Button
+              component="a"
+              href={news.link}
+              target="_blank"
+              rel="noreferrer"
+              variant="contained"
+              endIcon={<LaunchIcon />}
+              sx={{ borderRadius: "8px" }}
+            >
+              Read Full Source
+            </Button>
+          )}
+          <Button onClick={() => setModalOpen(false)} sx={{ color: "#64748B" }}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 }
 

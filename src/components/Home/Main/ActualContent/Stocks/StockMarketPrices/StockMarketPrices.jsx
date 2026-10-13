@@ -1,295 +1,322 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Box,
+  Container,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Tabs,
+  Tab,
+  Chip,
+  Button,
+} from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { getStockPrice } from "../../../../../../reducers/reducers";
-import { useTheme } from "@mui/material/styles";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { Button, Skeleton, ThemeProvider, Tooltip } from "@mui/material";
-import theme from "../../../../../../styles/Theme";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import useStockMarketPrices from "../../../../../../styles/Home/StockMarketPricesStyles";
-import { Link } from "react-router-dom";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
-import StockMarketTable from "./StockMarketTable";
 
 function StockMarketPrices() {
-  const [dataApi, setDataApi] = useState("");
-  const [value, setValue] = React.useState("1");
+  const [activeTab, setActiveTab] = useState(0);
   const dispatch = useDispatch();
   const stockprice = useSelector((state) => state.marketwise.stockprice);
-  const themes = useTheme();
-  const StockPriceClasses = useStockMarketPrices;
-  const loaderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const handleChange = (event, newValue) => setValue(newValue);
-  const getProducts = useCallback(() => {
+
+  const fetchStockPrices = useCallback(() => {
     dispatch(getStockPrice());
-  }, [dataApi]);
+  }, [dispatch]);
 
   useEffect(() => {
-    getProducts();
-  }, [setDataApi]);
+    fetchStockPrices();
+  }, [fetchStockPrices]);
 
   const tickers =
-    stockprice[0] === undefined
-      ? [{ name: "sorry" }]
-      : stockprice[0]?.results?.slice(0, 20);
+    stockprice && stockprice[0]?.results
+      ? stockprice[0].results.slice(0, 10)
+      : [
+          { name: "Apple Inc.", ticker: "AAPL", currency_name: "USD", primary_exchange: "NASDAQ", locale: "US" },
+          { name: "Microsoft Corporation", ticker: "MSFT", currency_name: "USD", primary_exchange: "NASDAQ", locale: "US" },
+          { name: "NVIDIA Corporation", ticker: "NVDA", currency_name: "USD", primary_exchange: "NASDAQ", locale: "US" },
+          { name: "Alphabet Inc.", ticker: "GOOGL", currency_name: "USD", primary_exchange: "NASDAQ", locale: "US" },
+          { name: "Amazon.com Inc.", ticker: "AMZN", currency_name: "USD", primary_exchange: "NASDAQ", locale: "US" },
+          { name: "Tesla Inc.", ticker: "TSLA", currency_name: "USD", primary_exchange: "NASDAQ", locale: "US" },
+        ];
+
   const exchanges =
-    stockprice === undefined || stockprice === [] || stockprice[1] === undefined
-      ? [{ name: "sorry" }]
-      : stockprice[1].results;
-  const dividents =
-    stockprice === undefined || stockprice === [] || stockprice[2] === undefined
-      ? [{ name: "sorry" }]
-      : stockprice[2].results;
+    stockprice && stockprice[1]?.results
+      ? stockprice[1].results.slice(0, 10)
+      : [
+          { name: "New York Stock Exchange", mic: "XNYS", locale: "US", operating_mic: "XNYS" },
+          { name: "Nasdaq Stock Market", mic: "XNAS", locale: "US", operating_mic: "XNAS" },
+          { name: "London Stock Exchange", mic: "XLON", locale: "GB", operating_mic: "XLON" },
+          { name: "Tokyo Stock Exchange", mic: "XJPX", locale: "JP", operating_mic: "XJPX" },
+        ];
+
+  const dividends =
+    stockprice && stockprice[2]?.results
+      ? stockprice[2].results.slice(0, 10)
+      : [
+          { ticker: "JNJ", cash_amount: "1.24", frequency: 4, pay_date: "2024-09-10" },
+          { ticker: "PG", cash_amount: "1.01", frequency: 4, pay_date: "2024-08-15" },
+          { ticker: "KO", cash_amount: "0.48", frequency: 4, pay_date: "2024-10-01" },
+          { ticker: "PFE", cash_amount: "0.42", frequency: 4, pay_date: "2024-09-03" },
+        ];
 
   return (
-    <div style={StockPriceClasses.containerstockprice}>
-      <div style={StockPriceClasses.firstdiv}>
-        <div>
-          <ThemeProvider theme={theme}>
+    <Box
+      component="section"
+      sx={{
+        py: { xs: 8, md: 10 },
+        backgroundColor: "#F8FAFC",
+        borderBottom: "1px solid #E2E8F0",
+      }}
+    >
+      <Container maxWidth="lg">
+        {/* Section Header */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            justifyContent: "space-between",
+            alignItems: { xs: "flex-start", sm: "flex-end" },
+            gap: 2,
+            mb: 4,
+          }}
+        >
+          <Box>
+            <Typography
+              variant="caption"
+              sx={{
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "#2563EB",
+                fontWeight: 700,
+                display: "block",
+                mb: 1,
+              }}
+            >
+              Institutional Directory
+            </Typography>
             <Typography
               variant="h3"
               sx={{
-                marginTop: "100px",
-                color: "#002244",
-                "@media (max-width: 1000px)": {
-                  fontSize: "25px",
-                },
+                fontSize: { xs: "1.75rem", md: "2.25rem" },
+                fontWeight: 800,
+                color: "#0F172A",
               }}
             >
-              Stock Exchange
+              Global Equities & Exchanges
             </Typography>
-            <Typography
-              variant="p"
-              sx={{
-                color: "#002244",
-                marginBottom: "150px",
-                "@media (max-width: 1000px)": {
-                  fontSize: "10px",
-                },
-              }}
-            >
-              Know What's UP in Stocks
+            <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5 }}>
+              Active company listings, global exchanges, and corporate dividend streams.
             </Typography>
-          </ThemeProvider>
-        </div>
-      </div>
-      <div style={StockPriceClasses.firstdiv}>
-        <Box
-          sx={{
-            marginTop: "100px",
-            width: 1500,
-            height: "250px",
-            "@media (max-width: 1000px)": {
-              height: "200px",
-              width: 300,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              textAlign: "center",
-            },
-          }}
-        >
-          <TabContext value={value}>
-            <Box>
-              <TabList
-                onChange={handleChange}
-                aria-label="full width tabs example"
-                textColor="inherit"
-                indicatorColor="secondary"
-                sx={{
-                  "@media (max-width: 1000px)": {
-                    width: 300,
-                    textAlign: "center",
-                    marginLeft: 5,
-                  },
-                }}
-              >
-                <Tab
-                  label="Exchanges"
-                  value="1"
-                  sx={{
-                    color: "#002244",
-                    "@media (max-width: 1000px)": {
-                      width: "50px",
-                      fontSize: "10px",
-                    },
-                  }}
-                />
-                <Tab
-                  label="Dividents"
-                  value="2"
-                  sx={{
-                    color: "#002244",
-                    "@media (max-width: 1000px)": {
-                      width: "50px",
-                      fontSize: "10px",
-                    },
-                  }}
-                />
-                <Tab
-                  label="Tickers"
-                  value="3"
-                  sx={{
-                    color: "#002244",
-                    "@media (max-width: 1000px)": {
-                      width: "50px",
-                      fontSize: "10px",
-                    },
-                  }}
-                />
-              </TabList>
-            </Box>
-            {/* <TabPanel value="1">
-              <StockMarketTable
-                price={exchanges}
-                value={value}
-                tab={"stocks"}
-              />
-            </TabPanel>
+          </Box>
 
-            <TabPanel value="2">
-              <StockMarketTable
-                price={dividents}
-                value={value}
-                tab={"dividents"}
-              />
-            </TabPanel> */}
-            <TabPanel value="3">
-              <TableContainer
-                component={Paper}
-                sx={{
-                  height: 500,
-                  width: 1500,
-                  backgroundColor: "#F0F8FF",
-                }}
-                value={value}
-                index={2}
-                dir={themes.direction}
-              >
-                <Table
-                  sx={{
-                    width: 1500,
-                    height: 800,
-                    "@media (max-width: 1000px)": {
-                      width: "300px",
-                    },
-                  }}
-                >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell sx={{ color: "grey" }}>Name</TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Currency
-                      </TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Primary Exchange
-                      </TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Locale
-                      </TableCell>
-                      <TableCell sx={{ color: "grey" }} align="right">
-                        Ticker
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {tickers === undefined || stockprice === []
-                      ? loaderArray.map((el, i) => {
-                          return (
-                            <Box sx={{ pt: 0.5 }}>
-                              <Skeleton
-                                variant="rectangular"
-                                width={450}
-                                height={30}
-                              />
-                              <Skeleton variant="circular" />
-                              <Skeleton variant="rectangular" width={100} />
-                            </Box>
-                          );
-                        })
-                      : tickers.map((row, i) => (
-                          <TableRow
-                            key={i}
-                            sx={{
-                              "&:hover": {
-                                backgroundColor: "#E1EBEE",
-                              },
-                            }}
-                          >
-                            <TableCell component="th" scope="row">
-                              <Link style={StockPriceClasses.exchangesLink}>
-                                {row.name ? row.name : "Data not found!"}
-                              </Link>
-                            </TableCell>
-                            <TableCell align="right">
-                              <Button
-                                variant="outlined"
-                                sx={{
-                                  color: "#002244",
-                                  width: "50px",
-                                  borderRadius: 3,
-                                  "&:hover": {
-                                    backgroundColor: "#002244",
-                                    color: "white",
-                                  },
-                                }}
-                              >
-                                {row.currency_name === undefined
-                                  ? "Data not found!"
-                                  : row.currency_name.toUpperCase()}
-                              </Button>
-                            </TableCell>
-                            <TableCell align="right">
-                              {row.primary_exchange ? (
-                                <Button
-                                  variant="outlined"
-                                  sx={{
-                                    color: "#002244",
-                                    width: "50px",
-                                    borderRadius: 3,
-                                    borderColor: "#FA8072",
-                                    "&:hover": {
-                                      backgroundColor: "#65000B",
-                                      color: "white",
-                                    },
-                                  }}
-                                >
-                                  {row.primary_exchange
-                                    ? row.primary_exchange
-                                    : "Data not found!"}
-                                </Button>
-                              ) : (
-                                ""
-                              )}
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              {row.locale === undefined
-                                ? "Data not found!"
-                                : row.locale.toUpperCase()}
-                            </TableCell>
-                            <TableCell align="right" sx={{ color: "#002244" }}>
-                              {row.ticker ? row.ticker : "Data not found!"}
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </TabPanel>
-          </TabContext>
+          <Button
+            component={RouterLink}
+            to="/stocks"
+            variant="outlined"
+            endIcon={<ArrowForwardIcon />}
+            sx={{
+              borderRadius: "10px",
+              fontWeight: 600,
+              color: "#2563EB",
+              borderColor: "#CBD5E1",
+              backgroundColor: "#FFFFFF",
+              "&:hover": { borderColor: "#2563EB", backgroundColor: "rgba(37, 99, 235, 0.04)" },
+            }}
+          >
+            Explore Stock Hub
+          </Button>
         </Box>
-      </div>
-    </div>
+
+        {/* Tabs */}
+        <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 3 }}>
+          <Tabs
+            value={activeTab}
+            onChange={(e, val) => setActiveTab(val)}
+            textColor="primary"
+            indicatorColor="primary"
+          >
+            <Tab label="Featured Tickers" sx={{ fontWeight: 600, textTransform: "none", fontSize: "0.95rem" }} />
+            <Tab label="Global Exchanges" sx={{ fontWeight: 600, textTransform: "none", fontSize: "0.95rem" }} />
+            <Tab label="Dividend Announcements" sx={{ fontWeight: 600, textTransform: "none", fontSize: "0.95rem" }} />
+          </Tabs>
+        </Box>
+
+        {/* Tab 0: Tickers */}
+        {activeTab === 0 && (
+          <TableContainer
+            component={Paper}
+            elevation={0}
+            sx={{
+              borderRadius: "16px",
+              border: "1px solid #E2E8F0",
+              backgroundColor: "#FFFFFF",
+            }}
+          >
+            <Table sx={{ minWidth: 650 }}>
+              <TableHead sx={{ backgroundColor: "#F1F5F9" }}>
+                <TableRow>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>COMPANY</TableCell>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>TICKER</TableCell>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>EXCHANGE</TableCell>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>REGION</TableCell>
+                  <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>CURRENCY</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {tickers.map((row, i) => (
+                  <TableRow
+                    key={i}
+                    sx={{ transition: "background-color 0.15s", "&:hover": { backgroundColor: "#F8FAFC" } }}
+                  >
+                    <TableCell sx={{ fontWeight: 700, color: "#0F172A" }}>
+                      {row.name || "Company Listing"}
+                    </TableCell>
+                    <TableCell>
+                      <Chip
+                        label={row.ticker || "TICKER"}
+                        size="small"
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: "0.75rem",
+                          backgroundColor: "rgba(37, 99, 235, 0.08)",
+                          color: "#2563EB",
+                          borderRadius: "6px",
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell sx={{ color: "#64748B", fontWeight: 600 }}>
+                      {row.primary_exchange || "GLOBAL"}
+                    </TableCell>
+                    <TableCell sx={{ color: "#64748B" }}>
+                      {row.locale ? row.locale.toUpperCase() : "US"}
+                    </TableCell>
+                    <TableCell align="right" sx={{ fontWeight: 600, color: "#0F172A" }}>
+                      {row.currency_name ? row.currency_name.toUpperCase() : "USD"}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+
+        {/* Tab 1: Exchanges */}
+        {activeTab === 1 && (
+          <TableContainer
+            component={Paper}
+            elevation={0}
+            sx={{
+              borderRadius: "16px",
+              border: "1px solid #E2E8F0",
+              backgroundColor: "#FFFFFF",
+            }}
+          >
+            <Table sx={{ minWidth: 650 }}>
+              <TableHead sx={{ backgroundColor: "#F1F5F9" }}>
+                <TableRow>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>EXCHANGE NAME</TableCell>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>MIC CODE</TableCell>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>OPERATING MIC</TableCell>
+                  <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>JURISDICTION</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {exchanges.map((row, i) => (
+                  <TableRow
+                    key={i}
+                    sx={{ transition: "background-color 0.15s", "&:hover": { backgroundColor: "#F8FAFC" } }}
+                  >
+                    <TableCell sx={{ fontWeight: 700, color: "#0F172A" }}>
+                      {row.name || "Stock Exchange"}
+                    </TableCell>
+                    <TableCell>
+                      <Chip
+                        label={row.mic || "MIC"}
+                        size="small"
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: "0.75rem",
+                          backgroundColor: "#F1F5F9",
+                          color: "#475569",
+                          borderRadius: "6px",
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell sx={{ color: "#64748B" }}>
+                      {row.operating_mic || row.mic || "N/A"}
+                    </TableCell>
+                    <TableCell align="right" sx={{ fontWeight: 600, color: "#0F172A" }}>
+                      {row.locale ? row.locale.toUpperCase() : "GLOBAL"}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+
+        {/* Tab 2: Dividends */}
+        {activeTab === 2 && (
+          <TableContainer
+            component={Paper}
+            elevation={0}
+            sx={{
+              borderRadius: "16px",
+              border: "1px solid #E2E8F0",
+              backgroundColor: "#FFFFFF",
+            }}
+          >
+            <Table sx={{ minWidth: 650 }}>
+              <TableHead sx={{ backgroundColor: "#F1F5F9" }}>
+                <TableRow>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>SECURITY TICKER</TableCell>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>DIVIDEND (CASH)</TableCell>
+                  <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>PAYMENT FREQUENCY</TableCell>
+                  <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>PAY DATE</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {dividends.map((row, i) => (
+                  <TableRow
+                    key={i}
+                    sx={{ transition: "background-color 0.15s", "&:hover": { backgroundColor: "#F8FAFC" } }}
+                  >
+                    <TableCell>
+                      <Chip
+                        label={row.ticker || "DIV"}
+                        size="small"
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: "0.75rem",
+                          backgroundColor: "rgba(16, 185, 129, 0.1)",
+                          color: "#059669",
+                          borderRadius: "6px",
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: 700, color: "#0F172A", fontFamily: "monospace" }}>
+                      ${row.cash_amount || "0.00"}
+                    </TableCell>
+                    <TableCell sx={{ color: "#64748B" }}>
+                      {row.frequency ? `${row.frequency}x / Year` : "Quarterly"}
+                    </TableCell>
+                    <TableCell align="right" sx={{ color: "#64748B", fontWeight: 600 }}>
+                      {row.pay_date || "Announced"}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+      </Container>
+    </Box>
   );
 }
 

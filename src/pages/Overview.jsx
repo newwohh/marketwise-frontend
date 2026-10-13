@@ -1,152 +1,180 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import {
+  Box,
+  Container,
+  Typography,
+  Tabs,
+  Tab,
+  Grid,
+  Card,
+  CardContent,
+  Divider,
+  Chip,
+} from "@mui/material";
+import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
 import NavBar from "../components/Home/Header/NavBar/NavBar";
-import useOverviewStyles from "../styles/Overview/Overview";
-import { Divider, Grid, ThemeProvider } from "@mui/material";
-import theme from "../styles/Theme";
-import { Outlet, useLocation } from "react-router-dom";
+import Footer from "../components/Home/Footer/Footer";
 import OverviewNewsCard from "../components/Overview/OverviewNewsCard";
 import OverviewPriceTable from "../components/Overview/OverviewPriceTable";
-import { useScrollToTop, TabPanel } from "../actions/actions";
+import { useScrollToTop } from "../actions/actions";
 import { titleHandler } from "../handler/titleHandler";
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
 function Overview(props) {
-  titleHandler("Overview");
   useScrollToTop();
-  const OverviewClasses = useOverviewStyles;
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  let prices, news, title, about;
-  if (props.crypto) {
-    prices = props.crypto;
-    news =
-      props.cryptonews.results === undefined
-        ? [{ name: "name" }]
-        : props.cryptonews.results;
+  const [activeTab, setActiveTab] = useState(0);
 
-    title = "Crypto";
-    about =
-      "A cryptocurrency is a fully decentralized, secure, digital currency whose creation is controlled by cryptography – and the industry is almost as popular as a high school quarterback these days. They're not issued or regulated by a central bank, and their prices are purely based on supply and demand. Of course, Bitcoin was the OG crypto, launched in 2009, but there have been a multitude of currencies released since then and the market's overall value is now around the $1tn mark. This page will show you ideas, financials, news, and more for the cryptocurrency market. ";
-  } else if (props.stocks !== props.crypto) {
-    prices = props.stocks[0] === undefined ? [] : props.stocks[2];
-    console.log(prices);
-    news = props.stocknews;
-    title = "Stocks";
-    about =
-      "Stocks, or equities, are shares of ownership that entitle the holder to a part of a company's assets and earnings, and they're bought and sold on the stock market. With 60 major stock exchanges globally, 16 of which have a market cap of over $1tn, the stock market offers opportunities for everyone. The US market hosts multiple globally renowned exchanges and has a reputation for trading strong, high-quality securities featuring some of the world's most actively traded companies. This page will show you ideas, financials, news, and more for the US stock market. ";
-  } else if (props.forex) {
-    prices = props.forex;
+  const isCrypto = Boolean(props.crypto);
+  const pageTitle = isCrypto ? "Cryptocurrency" : "Stock Market";
+  titleHandler(`${pageTitle} Overview`);
+
+  let prices = [];
+  let news = [];
+  let aboutText = "";
+
+  if (isCrypto) {
+    prices = props.crypto || [];
+    news = props.cryptonews?.results || [];
+    aboutText =
+      "Cryptocurrencies operate on distributed public ledger technologies, securing transactions through modern cryptography. As decentralized digital currencies and smart-contract networks, their market capitalizations and spot order books react dynamically to global liquidity cycles.";
+  } else {
+    prices = props.stocks && props.stocks[0] ? props.stocks[0].results || [] : [];
+    news = props.stocknews || [];
+    aboutText =
+      "Public equity securities represent proportional fractional ownership in global enterprises. Traded across major exchanges like the NYSE and NASDAQ, equities reflect corporate fundamentals, forward earnings multiples, and macro market conditions.";
   }
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  };
-  console.log(prices, news);
 
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <ScrollToTop />
-        <NavBar />
-        <main style={OverviewClasses.overviewmain}>
-          <Box sx={OverviewClasses.contentdiv}>
-            <Box
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#F8FAFC" }}>
+      <NavBar />
+
+      <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 }, flexGrow: 1 }}>
+        {/* Page Header */}
+        <Box sx={{ mb: 4 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+            <Chip
+              icon={
+                isCrypto ? (
+                  <CurrencyBitcoinIcon sx={{ fontSize: "16px !important", color: "#F59E0B" }} />
+                ) : (
+                  <ShowChartIcon sx={{ fontSize: "16px !important", color: "#10B981" }} />
+                )
+              }
+              label={isCrypto ? "Digital Assets Hub" : "Global Equities Hub"}
+              size="small"
               sx={{
-                "@media (max-width:1000px)": {
-                  fontSize: 20,
-                  marginLeft: 2,
-                  marginBottom: 5,
-                },
+                fontWeight: 700,
+                fontSize: "0.75rem",
+                backgroundColor: isCrypto ? "rgba(245, 158, 11, 0.1)" : "rgba(16, 185, 129, 0.1)",
+                color: isCrypto ? "#D97706" : "#059669",
+                borderRadius: "6px",
+              }}
+            />
+          </Box>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: "2rem", md: "2.75rem" },
+              color: "#0F172A",
+              letterSpacing: "-0.03em",
+            }}
+          >
+            {pageTitle} Overview
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#64748B", mt: 0.5, maxWidth: 800 }}>
+            Real-time market depth, live spot valuations, and latest news headlines updated 24/7.
+          </Typography>
+        </Box>
+
+        {/* Content Layout with Main and Sidebar */}
+        <Grid container spacing={4}>
+          <Grid item xs={12} lg={8.5}>
+            {/* Tabs */}
+            <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 3 }}>
+              <Tabs
+                value={activeTab}
+                onChange={(e, val) => setActiveTab(val)}
+                textColor="primary"
+                indicatorColor="primary"
+              >
+                <Tab
+                  label={`Live ${pageTitle} Quotes`}
+                  sx={{ fontWeight: 700, textTransform: "none", fontSize: "0.95rem" }}
+                />
+                <Tab
+                  label="Latest Market News"
+                  sx={{ fontWeight: 700, textTransform: "none", fontSize: "0.95rem" }}
+                />
+              </Tabs>
+            </Box>
+
+            {/* Tab 0: Price Table */}
+            {activeTab === 0 && (
+              <Box>
+                <OverviewPriceTable title={isCrypto ? "Crypto" : "Stocks"} prices={prices} />
+              </Box>
+            )}
+
+            {/* Tab 1: News Grid */}
+            {activeTab === 1 && (
+              <Grid container spacing={3}>
+                {news.map((item, idx) => (
+                  <Grid item xs={12} sm={6} key={item.article_id || idx}>
+                    <OverviewNewsCard el={item} />
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+          </Grid>
+
+          {/* Right Sidebar: Market Intel */}
+          <Grid item xs={12} lg={3.5}>
+            <Card
+              sx={{
+                p: 3.5,
+                borderRadius: "18px",
+                border: "1px solid #E2E8F0",
+                backgroundColor: "#FFFFFF",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+                position: { lg: "sticky" },
+                top: { lg: 100 },
               }}
             >
-              <Typography variant="p" sx={{ color: "grey" }}>
-                Markets
-              </Typography>
-              <Typography
-                variant="h3"
-                sx={{
-                  "@media (max-width:1000px)": {
-                    fontSize: 20,
-                  },
-                }}
-              >
-                {props.crypto ? "Cryptocurrency" : "Stock Market"}
-              </Typography>
-            </Box>
-            <Box sx={OverviewClasses.introoverview}>
-              <div>
-                <Box
-                  sx={{
-                    width: "1200px",
-                    marginTop: "50px",
-                    backgroundColor: "#F0F8FF",
-                    "@media (max-width:1000px)": {
-                      width: "300px",
-                    },
-                  }}
-                >
-                  <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                    <Tabs
-                      value={value}
-                      onChange={handleChange}
-                      aria-label="basic tabs example"
-                    >
-                      <Tab label="News" />
-                      <Tab label={title} />
-                      <Tab label="Item Three" />
-                    </Tabs>
-                  </Box>
-                  <TabPanel value={value} index={0}>
-                    <Grid
-                      container
-                      spacing={{ xs: 2, md: 3, sm: 1 }}
-                      columns={{ xs: 1, sm: 1, md: 12 }}
-                    >
-                      {news.map((el, i) => {
-                        return (
-                          <Grid item xs={2} sm={4} md={4} key={i}>
-                            <OverviewNewsCard el={el} />
-                          </Grid>
-                        );
-                      })}
-                    </Grid>
-                  </TabPanel>
-                  <TabPanel value={value} index={1}>
-                    <OverviewPriceTable title={title} prices={prices} />
-                  </TabPanel>
-                  <TabPanel value={value} index={2}>
-                    Item Three
-                  </TabPanel>
-                </Box>
-              </div>
-              <div style={OverviewClasses.overviewrightsection}>
-                <Typography sx={{ color: "#002244" }}>About</Typography>
-                <Divider />
-                <Typography variant="p" sx={{ color: "grey" }}>
-                  {about}
+              <CardContent sx={{ p: "0 !important" }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 800, color: "#0F172A", mb: 1 }}>
+                  Market Intelligence Brief
                 </Typography>
-              </div>
-            </Box>
-          </Box>
-          <Outlet />
-        </main>
-      </ThemeProvider>
-    </React.Fragment>
+                <Divider sx={{ mb: 2 }} />
+                <Typography variant="body2" sx={{ color: "#475569", lineHeight: 1.7, mb: 3 }}>
+                  {aboutText}
+                </Typography>
+
+                <Box sx={{ p: 2, borderRadius: "12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+                  <Typography variant="caption" sx={{ fontWeight: 700, color: "#2563EB", textTransform: "uppercase" }}>
+                    Pro Tip
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5, fontSize: "0.825rem" }}>
+                    Use the Chart button on any quote row to view deep technical indicators and historical price action.
+                  </Typography>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
+
+      <Footer />
+    </Box>
   );
 }
+
+Overview.propTypes = {
+  crypto: PropTypes.array,
+  cryptonews: PropTypes.object,
+  stocks: PropTypes.array,
+  stocknews: PropTypes.array,
+};
 
 export default Overview;

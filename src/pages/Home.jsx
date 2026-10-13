@@ -10,8 +10,8 @@ function Home() {
   titleHandler("Home");
   return (
     <React.Fragment>
-      <header>
-        <NavBar />
+      <header style={{ position: "relative" }}>
+        <NavBar transparent />
         <HeroSection />
       </header>
       <Main />

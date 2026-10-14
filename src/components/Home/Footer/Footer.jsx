@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import logo from "../../../assets/profit(1).png";
+import logo from "../../../assets/logo.png";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -42,7 +42,7 @@ function Footer() {
                 component="img"
                 src={logo}
                 alt="MarketWise Logo"
-                sx={{ width: 36, height: 36, borderRadius: "8px" }}
+                sx={{ width: 36, height: 36, borderRadius: "9px", objectFit: "contain", boxShadow: "0 0 12px rgba(37, 99, 235, 0.25)" }}
               />
               <Typography
                 variant="h6"

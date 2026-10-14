@@ -12,7 +12,7 @@ import {
   Grid,
 } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import logo from "../../assets/profit(1).png";
+import logo from "../../assets/logo.png";
 import { postNewUser } from "../../api";
 
 function SignUpContent() {
@@ -73,7 +73,7 @@ function SignUpContent() {
                 component="img"
                 src={logo}
                 alt="MarketWise"
-                sx={{ width: 48, height: 48, borderRadius: "12px", mb: 1.5 }}
+                sx={{ width: 48, height: 48, borderRadius: "12px", objectFit: "contain", boxShadow: "0 0 16px rgba(37, 99, 235, 0.2)", mb: 1.5 }}
               />
               <Typography variant="h4" sx={{ fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>
                 Create Your Account

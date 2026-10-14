@@ -35,7 +35,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import logo from "../../../../assets/profit(1).png";
+import logo from "../../../../assets/logo.png";
 import { MyContext } from "../../../../context/Context";
 import { userLogout } from "../../../../api";
 
@@ -137,10 +137,11 @@ function NavBar({ transparent } = {}) {
               src={logo}
               alt="MarketWise Logo"
               sx={{
-                width: 38,
-                height: 38,
-                borderRadius: "10px",
-                boxShadow: "0 2px 8px rgba(37, 99, 235, 0.15)",
+                width: 36,
+                height: 36,
+                borderRadius: "9px",
+                objectFit: "contain",
+                boxShadow: "0 0 12px rgba(37, 99, 235, 0.25)",
               }}
             />
             <Typography
@@ -534,7 +535,7 @@ function NavBar({ transparent } = {}) {
       >
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Box component="img" src={logo} alt="MarketWise" sx={{ width: 32, height: 32 }} />
+            <Box component="img" src={logo} alt="MarketWise" sx={{ width: 32, height: 32, borderRadius: "8px", objectFit: "contain" }} />
             <Typography variant="h6" sx={{ fontWeight: 800, color: "#F8FAFC" }}>
               MarketWise
             </Typography>

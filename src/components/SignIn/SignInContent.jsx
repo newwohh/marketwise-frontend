@@ -15,7 +15,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import logo from "../../assets/profit(1).png";
+import logo from "../../assets/logo.png";
 import { signInAUser } from "../../api";
 
 function SignInContent() {
@@ -66,7 +66,7 @@ function SignInContent() {
                 component="img"
                 src={logo}
                 alt="MarketWise"
-                sx={{ width: 48, height: 48, borderRadius: "12px", mb: 1.5 }}
+                sx={{ width: 48, height: 48, borderRadius: "12px", objectFit: "contain", boxShadow: "0 0 16px rgba(37, 99, 235, 0.2)", mb: 1.5 }}
               />
               <Typography variant="h4" sx={{ fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>
                 Welcome Back

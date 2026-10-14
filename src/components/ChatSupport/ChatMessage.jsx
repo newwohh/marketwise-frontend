@@ -21,9 +21,9 @@ function ChatMessage({ user, message }) {
           sx={{
             width: 28,
             height: 28,
-            bgcolor: "#2563EB",
+            bgcolor: "#10B981",
             color: "#FFFFFF",
-            boxShadow: "0 2px 6px rgba(37, 99, 235, 0.25)",
+            boxShadow: "0 2px 6px rgba(16, 185, 129, 0.25)",
           }}
         >
           <SupportAgentIcon sx={{ fontSize: 16 }} />
@@ -35,9 +35,9 @@ function ChatMessage({ user, message }) {
           maxWidth: "78%",
           p: 1.75,
           borderRadius: isUser ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
-          backgroundColor: isUser ? "#2563EB" : "#F1F5F9",
+          backgroundColor: isUser ? "#10B981" : "#F1F5F9",
           color: isUser ? "#FFFFFF" : "#0F172A",
-          boxShadow: isUser ? "0 2px 8px rgba(37, 99, 235, 0.2)" : "0 1px 2px rgba(0, 0, 0, 0.04)",
+          boxShadow: isUser ? "0 2px 8px rgba(16, 185, 129, 0.25)" : "0 1px 2px rgba(0, 0, 0, 0.04)",
           border: isUser ? "none" : "1px solid #E2E8F0",
         }}
       >

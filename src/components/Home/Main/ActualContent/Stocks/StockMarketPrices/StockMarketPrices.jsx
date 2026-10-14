@@ -70,7 +70,7 @@ function StockMarketPrices() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        backgroundColor: "#0B0F19",
+        backgroundColor: "#131722",
         borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
@@ -92,7 +92,7 @@ function StockMarketPrices() {
               sx={{
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
-                color: "#60A5FA",
+                color: "#34D399",
                 fontWeight: 700,
                 display: "block",
                 mb: 1,
@@ -124,11 +124,11 @@ function StockMarketPrices() {
             sx={{
               borderRadius: "10px",
               fontWeight: 600,
-              color: "#60A5FA",
+              color: "#34D399",
               borderColor: "rgba(255, 255, 255, 0.18)",
-              backgroundColor: "rgba(15, 23, 42, 0.6)",
+              backgroundColor: "rgba(30, 34, 45, 0.6)",
               backdropFilter: "blur(8px)",
-              "&:hover": { borderColor: "#60A5FA", backgroundColor: "rgba(37, 99, 235, 0.15)" },
+              "&:hover": { borderColor: "#34D399", backgroundColor: "rgba(16, 185, 129, 0.12)" },
             }}
           >
             Explore Stock Hub
@@ -146,9 +146,9 @@ function StockMarketPrices() {
                 textTransform: "none",
                 fontSize: "0.95rem",
                 color: "#94A3B8",
-                "&.Mui-selected": { color: "#60A5FA" },
+                "&.Mui-selected": { color: "#34D399" },
               },
-              "& .MuiTabs-indicator": { backgroundColor: "#60A5FA" },
+              "& .MuiTabs-indicator": { backgroundColor: "#34D399" },
             }}
           >
             <Tab label="Featured Tickers" />
@@ -165,13 +165,13 @@ function StockMarketPrices() {
             sx={{
               borderRadius: "16px",
               border: "1px solid rgba(255, 255, 255, 0.08)",
-              backgroundColor: "rgba(15, 23, 42, 0.75)",
+              backgroundColor: "rgba(30, 34, 45, 0.75)",
               backdropFilter: "blur(12px)",
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
             }}
           >
             <Table sx={{ minWidth: 650 }}>
-              <TableHead sx={{ backgroundColor: "rgba(11, 15, 25, 0.85)" }}>
+              <TableHead sx={{ backgroundColor: "rgba(19, 23, 34, 0.95)" }}>
                 <TableRow>
                   <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>COMPANY</TableCell>
                   <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>TICKER</TableCell>
@@ -186,7 +186,7 @@ function StockMarketPrices() {
                     key={i}
                     sx={{
                       transition: "background-color 0.15s",
-                      "&:hover": { backgroundColor: "rgba(30, 41, 59, 0.45)" },
+                      "&:hover": { backgroundColor: "rgba(42, 46, 57, 0.45)" },
                       "& td": { borderBottom: "1px solid rgba(255, 255, 255, 0.06)" },
                     }}
                   >
@@ -200,10 +200,10 @@ function StockMarketPrices() {
                         sx={{
                           fontWeight: 700,
                           fontSize: "0.75rem",
-                          backgroundColor: "rgba(37, 99, 235, 0.15)",
-                          color: "#60A5FA",
+                          backgroundColor: "rgba(16, 185, 129, 0.15)",
+                          color: "#34D399",
                           borderRadius: "6px",
-                          border: "1px solid rgba(59, 130, 246, 0.3)",
+                          border: "1px solid rgba(16, 185, 129, 0.3)",
                         }}
                       />
                     </TableCell>
@@ -231,13 +231,13 @@ function StockMarketPrices() {
             sx={{
               borderRadius: "16px",
               border: "1px solid rgba(255, 255, 255, 0.08)",
-              backgroundColor: "rgba(15, 23, 42, 0.75)",
+              backgroundColor: "rgba(30, 34, 45, 0.75)",
               backdropFilter: "blur(12px)",
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
             }}
           >
             <Table sx={{ minWidth: 650 }}>
-              <TableHead sx={{ backgroundColor: "rgba(11, 15, 25, 0.85)" }}>
+              <TableHead sx={{ backgroundColor: "rgba(19, 23, 34, 0.95)" }}>
                 <TableRow>
                   <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>EXCHANGE NAME</TableCell>
                   <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>MIC CODE</TableCell>
@@ -251,7 +251,7 @@ function StockMarketPrices() {
                     key={i}
                     sx={{
                       transition: "background-color 0.15s",
-                      "&:hover": { backgroundColor: "rgba(30, 41, 59, 0.45)" },
+                      "&:hover": { backgroundColor: "rgba(42, 46, 57, 0.45)" },
                       "& td": { borderBottom: "1px solid rgba(255, 255, 255, 0.06)" },
                     }}
                   >
@@ -293,13 +293,13 @@ function StockMarketPrices() {
             sx={{
               borderRadius: "16px",
               border: "1px solid rgba(255, 255, 255, 0.08)",
-              backgroundColor: "rgba(15, 23, 42, 0.75)",
+              backgroundColor: "rgba(30, 34, 45, 0.75)",
               backdropFilter: "blur(12px)",
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
             }}
           >
             <Table sx={{ minWidth: 650 }}>
-              <TableHead sx={{ backgroundColor: "rgba(11, 15, 25, 0.85)" }}>
+              <TableHead sx={{ backgroundColor: "rgba(19, 23, 34, 0.95)" }}>
                 <TableRow>
                   <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>SECURITY TICKER</TableCell>
                   <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>DIVIDEND (CASH)</TableCell>
@@ -313,7 +313,7 @@ function StockMarketPrices() {
                     key={i}
                     sx={{
                       transition: "background-color 0.15s",
-                      "&:hover": { backgroundColor: "rgba(30, 41, 59, 0.45)" },
+                      "&:hover": { backgroundColor: "rgba(42, 46, 57, 0.45)" },
                       "& td": { borderBottom: "1px solid rgba(255, 255, 255, 0.06)" },
                     }}
                   >

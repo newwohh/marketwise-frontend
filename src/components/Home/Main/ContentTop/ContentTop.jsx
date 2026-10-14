@@ -70,7 +70,7 @@ function ContentTop() {
     <Box
       component="section"
       sx={{
-        backgroundColor: "#080B11",
+        backgroundColor: "#131722",
         position: "relative",
         overflow: "hidden",
         borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
@@ -84,7 +84,7 @@ function ContentTop() {
           py: 1.2,
           borderTop: "1px solid rgba(255, 255, 255, 0.08)",
           borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
-          backgroundColor: "rgba(11, 15, 25, 0.8)",
+          backgroundColor: "rgba(19, 23, 34, 0.95)",
           backdropFilter: "blur(12px)",
           position: "relative",
           maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)",
@@ -184,10 +184,10 @@ function ContentTop() {
               px: 2,
               py: 0.6,
               borderRadius: "9999px",
-              backgroundColor: "rgba(37, 99, 235, 0.12)",
-              border: "1px solid rgba(59, 130, 246, 0.3)",
+              backgroundColor: "rgba(16, 185, 129, 0.12)",
+              border: "1px solid rgba(16, 185, 129, 0.3)",
               mb: 2.5,
-              boxShadow: "0 0 20px rgba(37, 99, 235, 0.2)",
+              boxShadow: "0 0 20px rgba(16, 185, 129, 0.2)",
             }}
           >
             <FiberManualRecordIcon sx={{ fontSize: 10, color: "#34D399" }} />
@@ -197,7 +197,7 @@ function ContentTop() {
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#93C5FD",
+                color: "#34D399",
                 fontSize: "0.72rem",
               }}
             >
@@ -220,7 +220,7 @@ function ContentTop() {
             <Box
               component="span"
               sx={{
-                background: "linear-gradient(135deg, #60A5FA 0%, #38BDF8 50%, #34D399 100%)",
+                background: "linear-gradient(135deg, #10B981 0%, #34D399 50%, #F59E0B 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -272,15 +272,15 @@ function ContentTop() {
                   fontWeight: 700,
                   fontSize: { xs: "0.82rem", sm: "0.88rem" },
                   textTransform: "none",
-                  backgroundColor: isActive ? "rgba(37, 99, 235, 0.2)" : "rgba(15, 23, 42, 0.6)",
-                  color: isActive ? "#60A5FA" : "#94A3B8",
+                  backgroundColor: isActive ? "rgba(16, 185, 129, 0.15)" : "rgba(30, 34, 45, 0.6)",
+                  color: isActive ? "#34D399" : "#94A3B8",
                   border: "1px solid",
-                  borderColor: isActive ? "rgba(59, 130, 246, 0.5)" : "rgba(255, 255, 255, 0.08)",
-                  boxShadow: isActive ? "0 0 16px rgba(37, 99, 235, 0.25)" : "none",
+                  borderColor: isActive ? "rgba(16, 185, 129, 0.5)" : "rgba(255, 255, 255, 0.08)",
+                  boxShadow: isActive ? "0 0 16px rgba(16, 185, 129, 0.25)" : "none",
                   transition: "all 0.2s ease",
                   "&:hover": {
-                    backgroundColor: isActive ? "rgba(37, 99, 235, 0.25)" : "rgba(255, 255, 255, 0.05)",
-                    color: isActive ? "#93C5FD" : "#FFFFFF",
+                    backgroundColor: isActive ? "rgba(16, 185, 129, 0.2)" : "rgba(255, 255, 255, 0.05)",
+                    color: isActive ? "#34D399" : "#FFFFFF",
                   },
                 }}
               >
@@ -295,8 +295,8 @@ function ContentTop() {
           sx={{
             borderRadius: "20px",
             border: "1px solid rgba(255, 255, 255, 0.12)",
-            backgroundColor: "#0B0F19",
-            boxShadow: "0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(37, 99, 235, 0.1)",
+            backgroundColor: "#1E222D",
+            boxShadow: "0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.08)",
             overflow: "hidden",
             position: "relative",
           }}
@@ -310,7 +310,7 @@ function ContentTop() {
               px: { xs: 2, sm: 3 },
               py: 1.5,
               borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
-              backgroundColor: "rgba(15, 23, 42, 0.8)",
+              backgroundColor: "rgba(23, 27, 38, 0.95)",
             }}
           >
             {/* macOS traffic lights & title */}
@@ -350,8 +350,8 @@ function ContentTop() {
                       fontWeight: 700,
                       borderRadius: "6px",
                       color: activeTimeframe === tf ? "#FFFFFF" : "#64748B",
-                      backgroundColor: activeTimeframe === tf ? "#2563EB" : "transparent",
-                      "&:hover": { backgroundColor: activeTimeframe === tf ? "#1D4ED8" : "rgba(255, 255, 255, 0.05)" },
+                      backgroundColor: activeTimeframe === tf ? "#10B981" : "transparent",
+                      "&:hover": { backgroundColor: activeTimeframe === tf ? "#059669" : "rgba(255, 255, 255, 0.05)" },
                     }}
                   >
                     {tf}
@@ -409,7 +409,7 @@ function ContentTop() {
                     <Typography variant="caption" sx={{ color: "#64748B", fontSize: "0.68rem", display: "block" }}>
                       24H VOLUME
                     </Typography>
-                    <Typography variant="caption" sx={{ color: "#60A5FA", fontWeight: 700, fontFamily: "monospace", fontSize: "0.85rem" }}>
+                    <Typography variant="caption" sx={{ color: "#34D399", fontWeight: 700, fontFamily: "monospace", fontSize: "0.85rem" }}>
                       32,450 BTC
                     </Typography>
                   </Box>
@@ -422,7 +422,7 @@ function ContentTop() {
                   height: { xs: 220, sm: 300, md: 340 },
                   width: "100%",
                   position: "relative",
-                  backgroundColor: "rgba(2, 6, 23, 0.75)",
+                  backgroundColor: "rgba(19, 23, 34, 0.95)",
                   borderRadius: "14px",
                   p: 2,
                   border: "1px solid rgba(255, 255, 255, 0.05)",
@@ -573,14 +573,14 @@ function ContentTop() {
                   variant="contained"
                   endIcon={<ArrowForwardIcon />}
                   sx={{
-                    background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+                    background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
                     fontWeight: 700,
                     borderRadius: "10px",
                     px: 3,
                     py: 1,
                     textTransform: "none",
-                    boxShadow: "0 0 20px rgba(37, 99, 235, 0.4)",
-                    "&:hover": { background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)" },
+                    boxShadow: "0 0 20px rgba(16, 185, 129, 0.4)",
+                    "&:hover": { background: "linear-gradient(135deg, #34D399 0%, #10B981 100%)", boxShadow: "0 0 25px rgba(16, 185, 129, 0.6)" },
                   }}
                 >
                   Launch Supercharts
@@ -602,7 +602,7 @@ function ContentTop() {
                   </Typography>
                 </Box>
                 <Box sx={{ display: "flex", gap: 1 }}>
-                  <Chip label="Crypto Volume" size="small" sx={{ backgroundColor: "rgba(37, 99, 235, 0.2)", color: "#60A5FA", fontWeight: 700 }} />
+                  <Chip label="Crypto Volume" size="small" sx={{ backgroundColor: "rgba(16, 185, 129, 0.15)", color: "#34D399", fontWeight: 700 }} />
                   <Chip label="S&P 500" size="small" sx={{ backgroundColor: "rgba(255, 255, 255, 0.05)", color: "#94A3B8", fontWeight: 600 }} />
                 </Box>
               </Box>
@@ -831,7 +831,7 @@ function ContentTop() {
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <Box sx={{ p: 2.5, borderRadius: "14px", backgroundColor: "rgba(15, 23, 42, 0.75)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+                  <Box sx={{ p: 2.5, borderRadius: "14px", backgroundColor: "rgba(30, 34, 45, 0.75)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
                     <Typography variant="caption" sx={{ color: "#94A3B8", fontWeight: 600 }}>
                       WIN RATE (30D)
                     </Typography>
@@ -844,11 +844,11 @@ function ContentTop() {
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <Box sx={{ p: 2.5, borderRadius: "14px", backgroundColor: "rgba(15, 23, 42, 0.75)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+                  <Box sx={{ p: 2.5, borderRadius: "14px", backgroundColor: "rgba(30, 34, 45, 0.75)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
                     <Typography variant="caption" sx={{ color: "#94A3B8", fontWeight: 600 }}>
                       PROFIT FACTOR
                     </Typography>
-                    <Typography variant="h4" sx={{ fontWeight: 800, color: "#60A5FA", fontFamily: "monospace", my: 0.5 }}>
+                    <Typography variant="h4" sx={{ fontWeight: 800, color: "#34D399", fontFamily: "monospace", my: 0.5 }}>
                       2.65
                     </Typography>
                     <Typography variant="caption" sx={{ color: "#94A3B8" }}>
@@ -859,7 +859,7 @@ function ContentTop() {
               </Grid>
 
               {/* Active Open Simulated Trades Strip */}
-              <Box sx={{ backgroundColor: "rgba(2, 6, 23, 0.6)", borderRadius: "12px", p: 2, border: "1px solid rgba(255, 255, 255, 0.06)" }}>
+              <Box sx={{ backgroundColor: "rgba(19, 23, 34, 0.6)", borderRadius: "12px", p: 2, border: "1px solid rgba(255, 255, 255, 0.06)" }}>
                 <Typography variant="caption" sx={{ color: "#64748B", fontWeight: 700, letterSpacing: "0.06em", display: "block", mb: 1.5 }}>
                   ACTIVE SIMULATED POSITIONS
                 </Typography>
@@ -870,7 +870,7 @@ function ContentTop() {
                     { asset: "EUR/USD", side: "SHORT", size: "100K UNITS", entry: "1.0920", pnl: "+$480.00", pnlPct: "+0.44%", green: true },
                   ].map((trade, i) => (
                     <Grid item xs={12} md={4} key={i}>
-                      <Box sx={{ p: 1.5, borderRadius: "8px", backgroundColor: "rgba(15, 23, 42, 0.6)", border: "1px solid rgba(255, 255, 255, 0.05)", display: "flex", justifyContent: "space-between" }}>
+                      <Box sx={{ p: 1.5, borderRadius: "8px", backgroundColor: "rgba(30, 34, 45, 0.6)", border: "1px solid rgba(255, 255, 255, 0.05)", display: "flex", justifyContent: "space-between" }}>
                         <Box>
                           <Typography variant="body2" sx={{ fontWeight: 800, color: "#FFFFFF" }}>
                             {trade.asset} <span style={{ color: "#34D399", fontSize: "0.75rem" }}>{trade.side}</span>
@@ -930,7 +930,7 @@ function ContentTop() {
                     From candlestick psychology to risk algorithms and macroeconomic liquidity.
                   </Typography>
                 </Box>
-                <Chip label="40+ MODULES" size="small" sx={{ backgroundColor: "rgba(37, 99, 235, 0.2)", color: "#60A5FA", fontWeight: 800 }} />
+                <Chip label="40+ MODULES" size="small" sx={{ backgroundColor: "rgba(16, 185, 129, 0.15)", color: "#34D399", fontWeight: 800 }} />
               </Box>
 
               <Grid container spacing={2.5}>
@@ -941,7 +941,7 @@ function ContentTop() {
                     desc: "Analyze candlestick anatomy, liquidity sweeps, order blocks, and key support-resistance confluence.",
                     lessons: "14 Lessons · 3 Quizzes",
                     level: "FOUNDATIONAL",
-                    badgeColor: "#60A5FA",
+                    badgeColor: "#34D399",
                   },
                   {
                     module: "MODULE 02",
@@ -949,7 +949,7 @@ function ContentTop() {
                     desc: "Master Kelly criterion, max drawdown mitigation, capital preservation rules, and portfolio hedging.",
                     lessons: "10 Lessons · 4 Case Studies",
                     level: "INTERMEDIATE",
-                    badgeColor: "#34D399",
+                    badgeColor: "#10B981",
                   },
                   {
                     module: "MODULE 03",
@@ -965,7 +965,7 @@ function ContentTop() {
                       sx={{
                         p: 3,
                         borderRadius: "14px",
-                        backgroundColor: "rgba(15, 23, 42, 0.7)",
+                        backgroundColor: "rgba(30, 34, 45, 0.7)",
                         border: "1px solid rgba(255, 255, 255, 0.08)",
                         height: "100%",
                         display: "flex",
@@ -1018,12 +1018,14 @@ function ContentTop() {
                   variant="contained"
                   endIcon={<ArrowForwardIcon />}
                   sx={{
-                    background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+                    background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
                     fontWeight: 700,
                     borderRadius: "10px",
                     px: 3,
                     py: 1,
                     textTransform: "none",
+                    boxShadow: "0 0 20px rgba(16, 185, 129, 0.35)",
+                    "&:hover": { background: "linear-gradient(135deg, #34D399 0%, #10B981 100%)", boxShadow: "0 0 25px rgba(16, 185, 129, 0.55)" },
                   }}
                 >
                   Start Learning Now

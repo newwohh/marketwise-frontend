@@ -31,7 +31,7 @@ function CryptoNews() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        backgroundColor: "#0E1424",
+        backgroundColor: "#131722",
         borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
@@ -87,7 +87,7 @@ function CryptoNews() {
               fontWeight: 600,
               color: "#F59E0B",
               borderColor: "rgba(255, 255, 255, 0.18)",
-              backgroundColor: "rgba(15, 23, 42, 0.6)",
+              backgroundColor: "rgba(30, 34, 45, 0.6)",
               backdropFilter: "blur(8px)",
               "&:hover": { borderColor: "#F59E0B", backgroundColor: "rgba(245, 158, 11, 0.15)" },
             }}

@@ -17,7 +17,7 @@ function Footer() {
     display: "block",
     transition: "color 0.2s ease",
     "&:hover": {
-      color: "#60A5FA",
+      color: "#34D399",
     },
   };
 
@@ -25,9 +25,9 @@ function Footer() {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#0B0F19",
+        backgroundColor: "#131722",
         color: "#F8FAFC",
-        borderTop: "1px solid #1E293B",
+        borderTop: "1px solid rgba(255, 255, 255, 0.08)",
         pt: { xs: 8, md: 10 },
         pb: 5,
         mt: "auto",
@@ -42,7 +42,7 @@ function Footer() {
                 component="img"
                 src={logo}
                 alt="MarketWise Logo"
-                sx={{ width: 36, height: 36, borderRadius: "9px", objectFit: "contain", boxShadow: "0 0 12px rgba(37, 99, 235, 0.25)" }}
+                sx={{ width: 36, height: 36, borderRadius: "9px", objectFit: "contain", boxShadow: "0 0 12px rgba(16, 185, 129, 0.25)" }}
               />
               <Typography
                 variant="h6"

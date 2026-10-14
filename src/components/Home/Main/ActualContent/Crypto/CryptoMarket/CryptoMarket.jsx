@@ -39,7 +39,7 @@ function CryptoMarket() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        backgroundColor: "#0B0F19",
+        backgroundColor: "#131722",
         borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
@@ -95,7 +95,7 @@ function CryptoMarket() {
               fontWeight: 600,
               color: "#F59E0B",
               borderColor: "rgba(255, 255, 255, 0.18)",
-              backgroundColor: "rgba(15, 23, 42, 0.6)",
+              backgroundColor: "rgba(30, 34, 45, 0.6)",
               backdropFilter: "blur(8px)",
               "&:hover": { borderColor: "#F59E0B", backgroundColor: "rgba(245, 158, 11, 0.15)" },
             }}
@@ -111,14 +111,14 @@ function CryptoMarket() {
           sx={{
             borderRadius: "16px",
             border: "1px solid rgba(255, 255, 255, 0.08)",
-            backgroundColor: "rgba(15, 23, 42, 0.75)",
+            backgroundColor: "rgba(30, 34, 45, 0.75)",
             backdropFilter: "blur(12px)",
             boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
             overflowX: "auto",
           }}
         >
           <Table sx={{ minWidth: 680 }}>
-            <TableHead sx={{ backgroundColor: "rgba(11, 15, 25, 0.85)" }}>
+            <TableHead sx={{ backgroundColor: "rgba(19, 23, 34, 0.95)" }}>
               <TableRow>
                 <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", width: 70, borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                   #
@@ -156,7 +156,7 @@ function CryptoMarket() {
                     key={coin.id || index}
                     sx={{
                       transition: "background-color 0.15s ease",
-                      "&:hover": { backgroundColor: "rgba(30, 41, 59, 0.45)" },
+                      "&:hover": { backgroundColor: "rgba(42, 46, 57, 0.45)" },
                       "& td": { borderBottom: "1px solid rgba(255, 255, 255, 0.06)" },
                     }}
                   >
@@ -170,11 +170,11 @@ function CryptoMarket() {
                           sx={{
                             width: 32,
                             height: 32,
-                            bgcolor: "rgba(37, 99, 235, 0.15)",
-                            color: "#60A5FA",
+                            bgcolor: "rgba(16, 185, 129, 0.15)",
+                            color: "#34D399",
                             fontWeight: 700,
                             fontSize: "0.8rem",
-                            border: "1px solid rgba(59, 130, 246, 0.3)",
+                            border: "1px solid rgba(16, 185, 129, 0.3)",
                           }}
                         >
                           {coin.symbol ? coin.symbol.slice(0, 3) : "COIN"}
@@ -245,8 +245,8 @@ function CryptoMarket() {
                         sx={{
                           borderRadius: "8px",
                           fontWeight: 600,
-                          color: "#60A5FA",
-                          "&:hover": { backgroundColor: "rgba(37, 99, 235, 0.15)" },
+                          color: "#34D399",
+                          "&:hover": { backgroundColor: "rgba(16, 185, 129, 0.12)" },
                         }}
                       >
                         Analyze

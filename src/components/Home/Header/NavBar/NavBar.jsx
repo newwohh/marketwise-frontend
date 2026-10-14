@@ -141,7 +141,7 @@ function NavBar({ transparent } = {}) {
                 height: 36,
                 borderRadius: "9px",
                 objectFit: "contain",
-                boxShadow: "0 0 12px rgba(37, 99, 235, 0.25)",
+                boxShadow: "0 0 12px rgba(16, 185, 129, 0.25)",
               }}
             />
             <Typography
@@ -151,8 +151,8 @@ function NavBar({ transparent } = {}) {
                 fontSize: "1.25rem",
                 letterSpacing: "-0.03em",
                 background: isLanding
-                  ? "linear-gradient(135deg, #FFFFFF 0%, #60A5FA 100%)"
-                  : "linear-gradient(135deg, #0F172A 0%, #2563EB 100%)",
+                  ? "linear-gradient(135deg, #FFFFFF 0%, #34D399 100%)"
+                  : "linear-gradient(135deg, #131722 0%, #10B981 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -166,9 +166,9 @@ function NavBar({ transparent } = {}) {
                 height: 20,
                 fontSize: "0.65rem",
                 fontWeight: 700,
-                backgroundColor: isLanding ? "rgba(96, 165, 250, 0.15)" : "rgba(37, 99, 235, 0.1)",
-                color: isLanding ? "#60A5FA" : "#2563EB",
-                border: isLanding ? "1px solid rgba(96, 165, 250, 0.3)" : "none",
+                backgroundColor: isLanding ? "rgba(16, 185, 129, 0.15)" : "rgba(16, 185, 129, 0.1)",
+                color: isLanding ? "#34D399" : "#10B981",
+                border: isLanding ? "1px solid rgba(16, 185, 129, 0.3)" : "none",
                 borderRadius: "6px",
               }}
             />
@@ -181,13 +181,13 @@ function NavBar({ transparent } = {}) {
               to="/"
               sx={{
                 color: isActive("/")
-                  ? (isLanding ? "#60A5FA" : "#2563EB")
+                  ? (isLanding ? "#34D399" : "#10B981")
                   : (isLanding ? "#CBD5E1" : "#475569"),
                 fontWeight: isActive("/") ? 700 : 500,
                 px: 1.5,
                 "&:hover": {
-                  color: isLanding ? "#FFFFFF" : "#2563EB",
-                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(37, 99, 235, 0.04)",
+                  color: isLanding ? "#FFFFFF" : "#10B981",
+                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(16, 185, 129, 0.06)",
                 },
               }}
             >
@@ -200,13 +200,13 @@ function NavBar({ transparent } = {}) {
               endIcon={<KeyboardArrowDownIcon sx={{ fontSize: 18, color: isLanding ? "#94A3B8" : "inherit" }} />}
               sx={{
                 color: ["/cryptocurrency", "/stocks", "/heatmap/cryptocurrency", "/heatmap/stocks"].includes(location.pathname)
-                  ? (isLanding ? "#60A5FA" : "#2563EB")
+                  ? (isLanding ? "#34D399" : "#10B981")
                   : (isLanding ? "#CBD5E1" : "#475569"),
                 fontWeight: 500,
                 px: 1.5,
                 "&:hover": {
-                  color: isLanding ? "#FFFFFF" : "#2563EB",
-                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(37, 99, 235, 0.04)",
+                  color: isLanding ? "#FFFFFF" : "#10B981",
+                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(16, 185, 129, 0.06)",
                 },
               }}
             >
@@ -268,13 +268,13 @@ function NavBar({ transparent } = {}) {
               endIcon={<KeyboardArrowDownIcon sx={{ fontSize: 18, color: isLanding ? "#94A3B8" : "inherit" }} />}
               sx={{
                 color: ["/investsimulator", "/education", "/grow"].includes(location.pathname)
-                  ? (isLanding ? "#60A5FA" : "#2563EB")
+                  ? (isLanding ? "#34D399" : "#10B981")
                   : (isLanding ? "#CBD5E1" : "#475569"),
                 fontWeight: 500,
                 px: 1.5,
                 "&:hover": {
-                  color: isLanding ? "#FFFFFF" : "#2563EB",
-                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(37, 99, 235, 0.04)",
+                  color: isLanding ? "#FFFFFF" : "#10B981",
+                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(16, 185, 129, 0.06)",
                 },
               }}
             >
@@ -290,7 +290,9 @@ function NavBar({ transparent } = {}) {
                   mt: 1.5,
                   minWidth: 230,
                   borderRadius: "14px",
-                  border: "1px solid #E2E8F0",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  backgroundColor: "#1E222D",
+                  color: "#F8FAFC",
                   p: 0.5,
                 },
               }}
@@ -302,9 +304,9 @@ function NavBar({ transparent } = {}) {
                 sx={{ borderRadius: "8px", py: 1 }}
               >
                 <ListItemIcon>
-                  <CalculateIcon fontSize="small" sx={{ color: "#2563EB" }} />
+                  <CalculateIcon fontSize="small" sx={{ color: "#10B981" }} />
                 </ListItemIcon>
-                <ListItemText primary="Invest Simulator" secondary="Paper trade & forecast" />
+                <ListItemText primary="Invest Simulator" secondary="Paper trade & forecast" secondaryTypographyProps={{ color: "#94A3B8" }} />
               </MenuItem>
               <MenuItem
                 component={RouterLink}
@@ -313,9 +315,9 @@ function NavBar({ transparent } = {}) {
                 sx={{ borderRadius: "8px", py: 1 }}
               >
                 <ListItemIcon>
-                  <SchoolIcon fontSize="small" sx={{ color: "#8B5CF6" }} />
+                  <SchoolIcon fontSize="small" sx={{ color: "#34D399" }} />
                 </ListItemIcon>
-                <ListItemText primary="Learn Academy" secondary="Trading fundamentals" />
+                <ListItemText primary="Learn Academy" secondary="Trading fundamentals" secondaryTypographyProps={{ color: "#94A3B8" }} />
               </MenuItem>
               <MenuItem
                 component={RouterLink}
@@ -324,9 +326,9 @@ function NavBar({ transparent } = {}) {
                 sx={{ borderRadius: "8px", py: 1 }}
               >
                 <ListItemIcon>
-                  <ArticleIcon fontSize="small" sx={{ color: "#06B6D4" }} />
+                  <ArticleIcon fontSize="small" sx={{ color: "#10B981" }} />
                 </ListItemIcon>
-                <ListItemText primary="Portfolio Growth" secondary="Strategy insights" />
+                <ListItemText primary="Portfolio Growth" secondary="Strategy insights" secondaryTypographyProps={{ color: "#94A3B8" }} />
               </MenuItem>
             </Menu>
 
@@ -335,13 +337,13 @@ function NavBar({ transparent } = {}) {
               to="/subscription"
               sx={{
                 color: isActive("/subscription")
-                  ? (isLanding ? "#60A5FA" : "#2563EB")
+                  ? (isLanding ? "#34D399" : "#10B981")
                   : (isLanding ? "#CBD5E1" : "#475569"),
                 fontWeight: isActive("/subscription") ? 700 : 500,
                 px: 1.5,
                 "&:hover": {
-                  color: isLanding ? "#FFFFFF" : "#2563EB",
-                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(37, 99, 235, 0.04)",
+                  color: isLanding ? "#FFFFFF" : "#10B981",
+                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(16, 185, 129, 0.06)",
                 },
               }}
             >
@@ -352,13 +354,13 @@ function NavBar({ transparent } = {}) {
               to="/about"
               sx={{
                 color: isActive("/about")
-                  ? (isLanding ? "#60A5FA" : "#2563EB")
+                  ? (isLanding ? "#34D399" : "#10B981")
                   : (isLanding ? "#CBD5E1" : "#475569"),
                 fontWeight: isActive("/about") ? 700 : 500,
                 px: 1.5,
                 "&:hover": {
-                  color: isLanding ? "#FFFFFF" : "#2563EB",
-                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(37, 99, 235, 0.04)",
+                  color: isLanding ? "#FFFFFF" : "#10B981",
+                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(16, 185, 129, 0.06)",
                 },
               }}
             >
@@ -369,13 +371,13 @@ function NavBar({ transparent } = {}) {
               to="/chat"
               sx={{
                 color: isActive("/chat")
-                  ? (isLanding ? "#60A5FA" : "#2563EB")
+                  ? (isLanding ? "#34D399" : "#10B981")
                   : (isLanding ? "#CBD5E1" : "#475569"),
                 fontWeight: isActive("/chat") ? 700 : 500,
                 px: 1.5,
                 "&:hover": {
-                  color: isLanding ? "#FFFFFF" : "#2563EB",
-                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(37, 99, 235, 0.04)",
+                  color: isLanding ? "#FFFFFF" : "#10B981",
+                  backgroundColor: isLanding ? "rgba(255, 255, 255, 0.08)" : "rgba(16, 185, 129, 0.06)",
                 },
               }}
             >
@@ -391,16 +393,16 @@ function NavBar({ transparent } = {}) {
                   onClick={(e) => setUserAnchor(e.currentTarget)}
                   sx={{
                     p: 0.5,
-                    border: isLanding ? "2px solid rgba(255, 255, 255, 0.25)" : "2px solid #E2E8F0",
+                    border: isLanding ? "2px solid rgba(255, 255, 255, 0.25)" : "2px solid rgba(16, 185, 129, 0.3)",
                     transition: "border-color 0.2s",
-                    "&:hover": { borderColor: "#2563EB" },
+                    "&:hover": { borderColor: "#10B981" },
                   }}
                 >
                   <Avatar
                     sx={{
                       width: 36,
                       height: 36,
-                      bgcolor: "#2563EB",
+                      bgcolor: "#10B981",
                       fontWeight: 700,
                       fontSize: "0.95rem",
                     }}
@@ -488,14 +490,14 @@ function NavBar({ transparent } = {}) {
                     px: 2.5,
                     py: 0.85,
                     borderRadius: "10px",
-                    fontWeight: 600,
-                    backgroundColor: "#2563EB",
+                    fontWeight: 700,
+                    backgroundColor: "#10B981",
                     color: "#FFFFFF",
                     boxShadow: isLanding
-                      ? "0 4px 14px rgba(37, 99, 235, 0.45)"
-                      : "0 4px 12px rgba(37, 99, 235, 0.25)",
+                      ? "0 4px 14px rgba(16, 185, 129, 0.4)"
+                      : "0 4px 12px rgba(16, 185, 129, 0.25)",
                     "&:hover": {
-                      backgroundColor: "#1D4ED8",
+                      backgroundColor: "#059669",
                     },
                   }}
                 >
@@ -604,7 +606,7 @@ function NavBar({ transparent } = {}) {
               sx={{ borderRadius: "8px", py: 1 }}
             >
               <ListItemIcon sx={{ minWidth: 36 }}>
-                <CalculateIcon fontSize="small" sx={{ color: "#2563EB" }} />
+                <CalculateIcon fontSize="small" sx={{ color: "#34D399" }} />
               </ListItemIcon>
               <ListItemText primary="Simulator" />
             </ListItemButton>
@@ -701,10 +703,10 @@ function NavBar({ transparent } = {}) {
                 onClick={() => setMobileOpen(false)}
                 sx={{
                   borderRadius: "10px",
-                  backgroundColor: "#2563EB",
+                  backgroundColor: "#10B981",
                   color: "#FFFFFF",
                   fontWeight: 700,
-                  "&:hover": { backgroundColor: "#1D4ED8" },
+                  "&:hover": { backgroundColor: "#059669" },
                 }}
               >
                 Get Started

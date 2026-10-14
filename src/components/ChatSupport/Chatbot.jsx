@@ -65,7 +65,7 @@ function ChatbotSupport() {
         <Container maxWidth="md" sx={{ py: 6, flexGrow: 1, display: "flex", flexDirection: "column" }}>
           <Box sx={{ mb: 3, textAlign: "center" }}>
             <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1, mb: 1 }}>
-              <SmartToyIcon sx={{ color: "#2563EB", fontSize: 28 }} />
+              <SmartToyIcon sx={{ color: "#10B981", fontSize: 28 }} />
               <Typography variant="h4" sx={{ fontWeight: 800, color: "#0F172A" }}>
                 MarketWise AI Assistant
               </Typography>
@@ -165,11 +165,11 @@ function ChatbotSupport() {
                 onClick={onSend}
                 disabled={!text.trim()}
                 sx={{
-                  bgcolor: "#2563EB",
+                  bgcolor: "#10B981",
                   color: "#FFFFFF",
                   p: 1.25,
                   borderRadius: "12px",
-                  "&:hover": { bgcolor: "#1D4ED8" },
+                  "&:hover": { bgcolor: "#059669" },
                   "&.Mui-disabled": { bgcolor: "#E2E8F0", color: "#94A3B8" },
                 }}
               >
@@ -206,7 +206,7 @@ function ChatbotSupport() {
             sx={{
               px: 2.5,
               py: 2,
-              background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)",
+              background: "linear-gradient(135deg, #131722 0%, #1E222D 100%)",
               color: "#FFFFFF",
               display: "flex",
               justifyContent: "space-between",
@@ -271,11 +271,11 @@ function ChatbotSupport() {
               onClick={onSend}
               disabled={!text.trim()}
               sx={{
-                bgcolor: "#2563EB",
+                bgcolor: "#10B981",
                 color: "#FFFFFF",
                 p: 1,
                 borderRadius: "10px",
-                "&:hover": { bgcolor: "#1D4ED8" },
+                "&:hover": { bgcolor: "#059669" },
                 "&.Mui-disabled": { bgcolor: "#E2E8F0", color: "#94A3B8" },
               }}
             >
@@ -285,14 +285,14 @@ function ChatbotSupport() {
         </Paper>
       ) : (
         <Fab
-          color="primary"
           onClick={() => setOpen(true)}
           sx={{
             width: 56,
             height: 56,
-            boxShadow: "0 8px 24px rgba(37, 99, 235, 0.4)",
-            background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
-            "&:hover": { background: "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)" },
+            color: "#FFFFFF",
+            boxShadow: "0 8px 24px rgba(16, 185, 129, 0.4)",
+            background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+            "&:hover": { background: "linear-gradient(135deg, #34D399 0%, #10B981 100%)" },
           }}
         >
           <ChatIcon />

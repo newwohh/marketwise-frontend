@@ -83,7 +83,7 @@ function HeroSection() {
       component="section"
       sx={{
         position: "relative",
-        background: "#080B11",
+        background: "#131722",
         color: "#FFFFFF",
         pt: { xs: 14, sm: 16, md: 19 },
         pb: { xs: 10, md: 15 },
@@ -126,7 +126,7 @@ function HeroSection() {
           width: "100%",
           height: "100%",
           background:
-            "radial-gradient(130% 100% at 50% 15%, rgba(8, 11, 17, 0.45) 0%, rgba(2, 6, 23, 0.85) 65%, #020617 100%)",
+            "radial-gradient(130% 100% at 50% 15%, rgba(19, 23, 34, 0.45) 0%, rgba(14, 17, 26, 0.88) 65%, #0B0E14 100%)",
           zIndex: 1,
           pointerEvents: "none",
         }}
@@ -152,7 +152,7 @@ function HeroSection() {
         }}
       />
 
-      {/* Ambient Blue/Indigo Glow */}
+      {/* Ambient Mint / Emerald Glow */}
       <Box
         sx={{
           position: "absolute",
@@ -162,7 +162,7 @@ function HeroSection() {
           width: { xs: 350, md: 800 },
           height: { xs: 350, md: 600 },
           background:
-            "radial-gradient(circle, rgba(37, 99, 235, 0.28) 0%, rgba(99, 102, 241, 0.1) 50%, transparent 75%)",
+            "radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(34, 171, 148, 0.08) 50%, transparent 75%)",
           filter: "blur(75px)",
           zIndex: 1,
           pointerEvents: "none",
@@ -176,16 +176,16 @@ function HeroSection() {
             icon={<BoltIcon sx={{ fontSize: "16px !important", color: "#F59E0B" }} />}
             label="TradingView Architecture • Institutional Precision • Real-Time Stream"
             sx={{
-              backgroundColor: "rgba(15, 23, 42, 0.85)",
+              backgroundColor: "rgba(30, 34, 45, 0.85)",
               backdropFilter: "blur(12px)",
-              border: "1px solid rgba(59, 130, 246, 0.35)",
+              border: "1px solid rgba(16, 185, 129, 0.35)",
               color: "#E2E8F0",
               fontWeight: 600,
               fontSize: { xs: "0.75rem", sm: "0.825rem" },
               py: 2.2,
               px: 1.5,
               borderRadius: "50px",
-              boxShadow: "0 0 25px rgba(37, 99, 235, 0.2)",
+              boxShadow: "0 0 25px rgba(16, 185, 129, 0.2)",
             }}
           />
         </Box>
@@ -209,7 +209,7 @@ function HeroSection() {
             key={keywordIndex}
             sx={{
               display: "inline-block",
-              background: "linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%)",
+              background: "linear-gradient(135deg, #10B981 0%, #34D399 50%, #F59E0B 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               animation: "hero-fade 400ms ease-out both",
@@ -278,7 +278,7 @@ function HeroSection() {
                 </Box>
               }
               sx={{
-                backgroundColor: "rgba(15, 23, 42, 0.75)",
+                backgroundColor: "rgba(30, 34, 45, 0.75)",
                 backdropFilter: "blur(8px)",
                 border: "1px solid rgba(255, 255, 255, 0.1)",
                 py: 2,
@@ -286,8 +286,8 @@ function HeroSection() {
                 borderRadius: "20px",
                 transition: "all 0.2s ease",
                 "&:hover": {
-                  backgroundColor: "rgba(37, 99, 235, 0.18)",
-                  borderColor: "rgba(96, 165, 250, 0.4)",
+                  backgroundColor: "rgba(16, 185, 129, 0.15)",
+                  borderColor: "rgba(16, 185, 129, 0.4)",
                   transform: "translateY(-1px)",
                 },
               }}
@@ -318,11 +318,11 @@ function HeroSection() {
               fontSize: "1.025rem",
               fontWeight: 700,
               borderRadius: "12px",
-              background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
-              boxShadow: "0 4px 24px rgba(37, 99, 235, 0.45)",
+              background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+              boxShadow: "0 4px 24px rgba(16, 185, 129, 0.4)",
               "&:hover": {
-                background: "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
-                boxShadow: "0 6px 28px rgba(37, 99, 235, 0.6)",
+                background: "linear-gradient(135deg, #34D399 0%, #10B981 100%)",
+                boxShadow: "0 6px 28px rgba(16, 185, 129, 0.55)",
                 transform: "translateY(-2px)",
               },
             }}
@@ -347,7 +347,7 @@ function HeroSection() {
               backgroundColor: "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(12px)",
               "&:hover": {
-                borderColor: "#60A5FA",
+                borderColor: "#10B981",
                 backgroundColor: "rgba(255, 255, 255, 0.1)",
                 transform: "translateY(-2px)",
               },
@@ -398,7 +398,7 @@ function HeroSection() {
                     to="/cryptocurrency"
                     sx={{
                       textDecoration: "none",
-                      backgroundColor: "rgba(15, 23, 42, 0.72)",
+                      backgroundColor: "rgba(30, 34, 45, 0.72)",
                       backdropFilter: "blur(14px)",
                       border: "1px solid rgba(255, 255, 255, 0.09)",
                       borderRadius: "14px",
@@ -410,8 +410,8 @@ function HeroSection() {
                       transition: "all 0.25s ease",
                       "&:hover": {
                         transform: "translateY(-3px)",
-                        borderColor: "#3B82F6",
-                        backgroundColor: "rgba(15, 23, 42, 0.88)",
+                        borderColor: "#10B981",
+                        backgroundColor: "rgba(30, 34, 45, 0.9)",
                         boxShadow: "0 8px 24px rgba(0, 0, 0, 0.45)",
                       },
                     }}

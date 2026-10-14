@@ -25,7 +25,7 @@ function StockNews() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        backgroundColor: "#0E1424",
+        backgroundColor: "#131722",
         borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
@@ -46,7 +46,7 @@ function StockNews() {
               sx={{
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
-                color: "#60A5FA",
+                color: "#34D399",
                 fontWeight: 700,
                 display: "block",
                 mb: 1,
@@ -78,11 +78,11 @@ function StockNews() {
             sx={{
               borderRadius: "10px",
               fontWeight: 600,
-              color: "#60A5FA",
+              color: "#34D399",
               borderColor: "rgba(255, 255, 255, 0.18)",
-              backgroundColor: "rgba(15, 23, 42, 0.6)",
+              backgroundColor: "rgba(30, 34, 45, 0.6)",
               backdropFilter: "blur(8px)",
-              "&:hover": { borderColor: "#60A5FA", backgroundColor: "rgba(37, 99, 235, 0.15)" },
+              "&:hover": { borderColor: "#34D399", backgroundColor: "rgba(16, 185, 129, 0.12)" },
             }}
           >
             All Equities

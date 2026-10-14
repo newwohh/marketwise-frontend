@@ -4,9 +4,9 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#2563EB",
-      light: "#3B82F6",
-      dark: "#1D4ED8",
+      main: "#10B981",
+      light: "#34D399",
+      dark: "#059669",
       contrastText: "#FFFFFF",
     },
     secondary: {
@@ -108,10 +108,10 @@ const theme = createTheme({
           },
         },
         containedPrimary: {
-          background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+          background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
           "&:hover": {
-            background: "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
-            boxShadow: "0 4px 12px rgba(37, 99, 235, 0.25)",
+            background: "linear-gradient(135deg, #34D399 0%, #10B981 100%)",
+            boxShadow: "0 4px 12px rgba(16, 185, 129, 0.35)",
           },
         },
       },

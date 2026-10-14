@@ -34,15 +34,15 @@ function StockNewsCard({ el }) {
           flexDirection: "column",
           borderRadius: "16px",
           border: "1px solid rgba(255, 255, 255, 0.08)",
-          backgroundColor: "rgba(15, 23, 42, 0.75)",
+          backgroundColor: "rgba(30, 34, 45, 0.75)",
           backdropFilter: "blur(12px)",
           overflow: "hidden",
           transition: "all 0.25s ease",
           "&:hover": {
             transform: "translateY(-4px)",
             boxShadow: "0 14px 28px -6px rgba(0, 0, 0, 0.45)",
-            borderColor: "rgba(96, 165, 250, 0.5)",
-            backgroundColor: "rgba(22, 33, 56, 0.88)",
+            borderColor: "rgba(16, 185, 129, 0.5)",
+            backgroundColor: "rgba(30, 34, 45, 0.95)",
           },
         }}
       >
@@ -51,7 +51,7 @@ function StockNewsCard({ el }) {
           height="180"
           image={image}
           alt={title}
-          sx={{ objectFit: "cover", backgroundColor: "#1E293B" }}
+          sx={{ objectFit: "cover", backgroundColor: "#1E222D" }}
         />
         <CardContent
           sx={{
@@ -63,7 +63,7 @@ function StockNewsCard({ el }) {
           }}
         >
           <Box>
-            <Typography variant="caption" sx={{ color: "#60A5FA", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", mb: 0.5, display: "block" }}>
+            <Typography variant="caption" sx={{ color: "#34D399", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", mb: 0.5, display: "block" }}>
               {author}
             </Typography>
             <Typography
@@ -79,7 +79,7 @@ function StockNewsCard({ el }) {
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
-                "&:hover": { color: "#60A5FA" },
+                "&:hover": { color: "#34D399" },
               }}
             >
               {title}
@@ -104,7 +104,7 @@ function StockNewsCard({ el }) {
             <Button
               size="small"
               onClick={() => setOpen(true)}
-              sx={{ p: 0, fontWeight: 700, color: "#60A5FA", fontSize: "0.8rem", "&:hover": { color: "#93C5FD" } }}
+              sx={{ p: 0, fontWeight: 700, color: "#34D399", fontSize: "0.8rem", "&:hover": { color: "#6EE7B7" } }}
             >
               Read Summary
             </Button>
@@ -115,7 +115,7 @@ function StockNewsCard({ el }) {
                 target="_blank"
                 rel="noreferrer"
                 size="small"
-                sx={{ color: "#94A3B8", "&:hover": { color: "#60A5FA" } }}
+                sx={{ color: "#94A3B8", "&:hover": { color: "#34D399" } }}
               >
                 <LaunchIcon sx={{ fontSize: 16 }} />
               </IconButton>
@@ -133,7 +133,7 @@ function StockNewsCard({ el }) {
         PaperProps={{
           sx: {
             borderRadius: "18px",
-            backgroundColor: "#0F172A",
+            backgroundColor: "#1E222D",
             color: "#F8FAFC",
             border: "1px solid rgba(255, 255, 255, 0.12)",
           },
@@ -141,7 +141,7 @@ function StockNewsCard({ el }) {
       >
         <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", pb: 1 }}>
           <Box sx={{ pr: 2 }}>
-            <Typography variant="caption" sx={{ color: "#60A5FA", fontWeight: 700 }}>
+            <Typography variant="caption" sx={{ color: "#34D399", fontWeight: 700 }}>
               {author}
             </Typography>
             <Typography variant="h6" sx={{ fontWeight: 800, color: "#F8FAFC", lineHeight: 1.3 }}>
@@ -174,7 +174,11 @@ function StockNewsCard({ el }) {
               rel="noreferrer"
               variant="contained"
               endIcon={<LaunchIcon />}
-              sx={{ borderRadius: "8px", backgroundColor: "#2563EB" }}
+              sx={{
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+                "&:hover": { background: "linear-gradient(135deg, #34D399 0%, #10B981 100%)" },
+              }}
             >
               Original Source
             </Button>

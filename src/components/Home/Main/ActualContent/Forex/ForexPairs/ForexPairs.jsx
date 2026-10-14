@@ -38,7 +38,7 @@ function ForexPairs() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        background: "linear-gradient(180deg, #0B0F19 0%, #080B11 100%)",
+        backgroundColor: "#131722",
         borderTop: "1px solid rgba(255, 255, 255, 0.05)",
       }}
     >
@@ -81,7 +81,7 @@ function ForexPairs() {
               mb: 8,
               "& .swiper-button-next, & .swiper-button-prev": {
                 color: "#F8FAFC",
-                backgroundColor: "rgba(15, 23, 42, 0.85)",
+                backgroundColor: "rgba(30, 34, 45, 0.85)",
                 border: "1px solid rgba(255, 255, 255, 0.12)",
                 width: 38,
                 height: 38,
@@ -93,7 +93,7 @@ function ForexPairs() {
                 },
                 "&:hover": {
                   color: "#34D399",
-                  backgroundColor: "rgba(30, 41, 59, 0.95)",
+                  backgroundColor: "rgba(42, 46, 57, 0.95)",
                   borderColor: "rgba(52, 211, 153, 0.5)",
                 },
               },
@@ -158,7 +158,7 @@ function ForexPairs() {
                   p: 3.5,
                   borderRadius: "16px",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
-                  backgroundColor: "rgba(15, 23, 42, 0.65)",
+                  backgroundColor: "rgba(30, 34, 45, 0.65)",
                   backdropFilter: "blur(12px)",
                   height: "100%",
                   display: "flex",
@@ -167,8 +167,8 @@ function ForexPairs() {
                   transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
                   "&:hover": {
                     transform: "translateY(-4px)",
-                    borderColor: "rgba(96, 165, 250, 0.4)",
-                    boxShadow: "0 12px 28px -6px rgba(0, 0, 0, 0.5), 0 0 16px rgba(59, 130, 246, 0.12)",
+                    borderColor: "rgba(52, 211, 153, 0.4)",
+                    boxShadow: "0 12px 28px -6px rgba(0, 0, 0, 0.5), 0 0 16px rgba(16, 185, 129, 0.12)",
                   },
                 }}
               >
@@ -178,11 +178,11 @@ function ForexPairs() {
                       width: 44,
                       height: 44,
                       borderRadius: "12px",
-                      backgroundColor: "rgba(59, 130, 246, 0.12)",
+                      backgroundColor: "rgba(16, 185, 129, 0.12)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: "#60A5FA",
+                      color: "#34D399",
                       mb: 2,
                     }}
                   >
@@ -203,8 +203,8 @@ function ForexPairs() {
                     alignSelf: "flex-start",
                     p: 0,
                     fontWeight: 700,
-                    color: "#60A5FA",
-                    "&:hover": { color: "#93C5FD", backgroundColor: "transparent" },
+                    color: "#34D399",
+                    "&:hover": { color: "#6EE7B7", backgroundColor: "transparent" },
                   }}
                 >
                   Read Articles
@@ -219,7 +219,7 @@ function ForexPairs() {
                   p: 3.5,
                   borderRadius: "16px",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
-                  backgroundColor: "rgba(15, 23, 42, 0.65)",
+                  backgroundColor: "rgba(30, 34, 45, 0.65)",
                   backdropFilter: "blur(12px)",
                   height: "100%",
                   display: "flex",
@@ -280,7 +280,7 @@ function ForexPairs() {
                   p: 3.5,
                   borderRadius: "16px",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
-                  backgroundColor: "rgba(15, 23, 42, 0.65)",
+                  backgroundColor: "rgba(30, 34, 45, 0.65)",
                   backdropFilter: "blur(12px)",
                   height: "100%",
                   display: "flex",

@@ -37,14 +37,14 @@ function CryptoNewsCard({ news }) {
           p: 2.5,
           borderRadius: "16px",
           border: "1px solid rgba(255, 255, 255, 0.08)",
-          backgroundColor: "rgba(15, 23, 42, 0.75)",
+          backgroundColor: "rgba(30, 34, 45, 0.75)",
           backdropFilter: "blur(12px)",
           transition: "all 0.25s ease",
           "&:hover": {
             transform: "translateY(-3px)",
             boxShadow: "0 14px 28px -6px rgba(0, 0, 0, 0.45)",
             borderColor: "rgba(245, 158, 11, 0.4)",
-            backgroundColor: "rgba(22, 33, 56, 0.88)",
+            backgroundColor: "rgba(30, 34, 45, 0.95)",
           },
         }}
       >
@@ -150,7 +150,7 @@ function CryptoNewsCard({ news }) {
           sx: {
             borderRadius: "18px",
             p: 1,
-            backgroundColor: "#0F172A",
+            backgroundColor: "#1E222D",
             color: "#F8FAFC",
             border: "1px solid rgba(255, 255, 255, 0.12)",
           },
@@ -191,7 +191,12 @@ function CryptoNewsCard({ news }) {
               rel="noreferrer"
               variant="contained"
               endIcon={<LaunchIcon />}
-              sx={{ borderRadius: "8px", backgroundColor: "#2563EB" }}
+              sx={{
+                borderRadius: "8px",
+                background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+                fontWeight: 700,
+                "&:hover": { background: "linear-gradient(135deg, #34D399 0%, #10B981 100%)" },
+              }}
             >
               Read Full Source
             </Button>

@@ -15,7 +15,7 @@ function ForexCard({ data }) {
       sx={{
         borderRadius: "16px",
         border: "1px solid rgba(255, 255, 255, 0.08)",
-        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backgroundColor: "rgba(30, 34, 45, 0.75)",
         backdropFilter: "blur(12px)",
         p: 2.5,
         height: "100%",

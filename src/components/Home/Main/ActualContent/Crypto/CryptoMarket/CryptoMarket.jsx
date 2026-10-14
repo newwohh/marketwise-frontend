@@ -39,8 +39,8 @@ function CryptoMarket() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        backgroundColor: "#F8FAFC",
-        borderBottom: "1px solid #E2E8F0",
+        backgroundColor: "#0B0F19",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
       <Container maxWidth="lg">
@@ -60,8 +60,8 @@ function CryptoMarket() {
               variant="caption"
               sx={{
                 textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "#2563EB",
+                letterSpacing: "0.12em",
+                color: "#F59E0B",
                 fontWeight: 700,
                 display: "block",
                 mb: 1,
@@ -74,12 +74,13 @@ function CryptoMarket() {
               sx={{
                 fontSize: { xs: "1.75rem", md: "2.25rem" },
                 fontWeight: 800,
-                color: "#0F172A",
+                color: "#F8FAFC",
+                letterSpacing: "-0.02em",
               }}
             >
               Top Cryptocurrencies
             </Typography>
-            <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5 }}>
+            <Typography variant="body2" sx={{ color: "#94A3B8", mt: 0.5 }}>
               Live spot market prices, volume metrics, and 24-hour performance.
             </Typography>
           </Box>
@@ -92,10 +93,11 @@ function CryptoMarket() {
             sx={{
               borderRadius: "10px",
               fontWeight: 600,
-              color: "#2563EB",
-              borderColor: "#CBD5E1",
-              backgroundColor: "#FFFFFF",
-              "&:hover": { borderColor: "#2563EB", backgroundColor: "rgba(37, 99, 235, 0.04)" },
+              color: "#F59E0B",
+              borderColor: "rgba(255, 255, 255, 0.18)",
+              backgroundColor: "rgba(15, 23, 42, 0.6)",
+              backdropFilter: "blur(8px)",
+              "&:hover": { borderColor: "#F59E0B", backgroundColor: "rgba(245, 158, 11, 0.15)" },
             }}
           >
             View All Markets
@@ -108,30 +110,32 @@ function CryptoMarket() {
           elevation={0}
           sx={{
             borderRadius: "16px",
-            border: "1px solid #E2E8F0",
-            backgroundColor: "#FFFFFF",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+            backgroundColor: "rgba(15, 23, 42, 0.75)",
+            backdropFilter: "blur(12px)",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
             overflowX: "auto",
           }}
         >
           <Table sx={{ minWidth: 680 }}>
-            <TableHead sx={{ backgroundColor: "#F1F5F9" }}>
+            <TableHead sx={{ backgroundColor: "rgba(11, 15, 25, 0.85)" }}>
               <TableRow>
-                <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem", width: 70 }}>
+                <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", width: 70, borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                   #
                 </TableCell>
-                <TableCell sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+                <TableCell sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                   ASSET
                 </TableCell>
-                <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+                <TableCell align="right" sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                   PRICE (USD)
                 </TableCell>
-                <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+                <TableCell align="right" sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                   24H CHANGE
                 </TableCell>
-                <TableCell align="right" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+                <TableCell align="right" sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                   7D CHANGE
                 </TableCell>
-                <TableCell align="center" sx={{ fontWeight: 700, color: "#475569", fontSize: "0.8rem" }}>
+                <TableCell align="center" sx={{ fontWeight: 700, color: "#94A3B8", fontSize: "0.8rem", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                   CHART
                 </TableCell>
               </TableRow>
@@ -152,10 +156,11 @@ function CryptoMarket() {
                     key={coin.id || index}
                     sx={{
                       transition: "background-color 0.15s ease",
-                      "&:hover": { backgroundColor: "#F8FAFC" },
+                      "&:hover": { backgroundColor: "rgba(30, 41, 59, 0.45)" },
+                      "& td": { borderBottom: "1px solid rgba(255, 255, 255, 0.06)" },
                     }}
                   >
-                    <TableCell sx={{ color: "#64748B", fontWeight: 600 }}>
+                    <TableCell sx={{ color: "#94A3B8", fontWeight: 600 }}>
                       {coin.rank || index + 1}
                     </TableCell>
 
@@ -165,19 +170,20 @@ function CryptoMarket() {
                           sx={{
                             width: 32,
                             height: 32,
-                            bgcolor: "rgba(37, 99, 235, 0.1)",
-                            color: "#2563EB",
+                            bgcolor: "rgba(37, 99, 235, 0.15)",
+                            color: "#60A5FA",
                             fontWeight: 700,
                             fontSize: "0.8rem",
+                            border: "1px solid rgba(59, 130, 246, 0.3)",
                           }}
                         >
                           {coin.symbol ? coin.symbol.slice(0, 3) : "COIN"}
                         </Avatar>
                         <Box>
-                          <Typography variant="body2" sx={{ fontWeight: 700, color: "#0F172A" }}>
+                          <Typography variant="body2" sx={{ fontWeight: 700, color: "#F8FAFC" }}>
                             {coin.name}
                           </Typography>
-                          <Typography variant="caption" sx={{ color: "#64748B", fontWeight: 600 }}>
+                          <Typography variant="caption" sx={{ color: "#94A3B8", fontWeight: 600 }}>
                             {coin.symbol}
                           </Typography>
                         </Box>
@@ -187,7 +193,7 @@ function CryptoMarket() {
                     <TableCell align="right">
                       <Typography
                         variant="body2"
-                        sx={{ fontWeight: 700, color: "#0F172A", fontFamily: "monospace" }}
+                        sx={{ fontWeight: 700, color: "#F8FAFC", fontFamily: "monospace" }}
                       >
                         ${priceFormatted}
                       </Typography>
@@ -205,8 +211,9 @@ function CryptoMarket() {
                         label={`${is24Pos ? "+" : ""}${change24.toFixed(2)}%`}
                         size="small"
                         sx={{
-                          backgroundColor: is24Pos ? "rgba(16, 185, 129, 0.1)" : "rgba(239, 68, 68, 0.1)",
-                          color: is24Pos ? "#059669" : "#DC2626",
+                          backgroundColor: is24Pos ? "rgba(16, 185, 129, 0.15)" : "rgba(239, 68, 68, 0.15)",
+                          color: is24Pos ? "#34D399" : "#F87171",
+                          border: is24Pos ? "1px solid rgba(16, 185, 129, 0.3)" : "1px solid rgba(239, 68, 68, 0.3)",
                           fontWeight: 700,
                           fontSize: "0.75rem",
                           borderRadius: "6px",
@@ -219,7 +226,7 @@ function CryptoMarket() {
                         variant="caption"
                         sx={{
                           fontWeight: 600,
-                          color: is7dPos ? "#059669" : "#DC2626",
+                          color: is7dPos ? "#34D399" : "#F87171",
                           fontFamily: "monospace",
                         }}
                       >
@@ -238,8 +245,8 @@ function CryptoMarket() {
                         sx={{
                           borderRadius: "8px",
                           fontWeight: 600,
-                          color: "#2563EB",
-                          "&:hover": { backgroundColor: "rgba(37, 99, 235, 0.08)" },
+                          color: "#60A5FA",
+                          "&:hover": { backgroundColor: "rgba(37, 99, 235, 0.15)" },
                         }}
                       >
                         Analyze

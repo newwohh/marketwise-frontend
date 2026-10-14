@@ -36,13 +36,15 @@ function CryptoNewsCard({ news }) {
           justifyContent: "space-between",
           p: 2.5,
           borderRadius: "16px",
-          border: "1px solid #E2E8F0",
-          backgroundColor: "#FFFFFF",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
+          backgroundColor: "rgba(15, 23, 42, 0.75)",
+          backdropFilter: "blur(12px)",
           transition: "all 0.25s ease",
           "&:hover": {
             transform: "translateY(-3px)",
-            boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.08)",
-            borderColor: "#93C5FD",
+            boxShadow: "0 14px 28px -6px rgba(0, 0, 0, 0.45)",
+            borderColor: "rgba(245, 158, 11, 0.4)",
+            backgroundColor: "rgba(22, 33, 56, 0.88)",
           },
         }}
       >
@@ -56,8 +58,9 @@ function CryptoNewsCard({ news }) {
                 height: 22,
                 fontSize: "0.7rem",
                 fontWeight: 700,
-                backgroundColor: "rgba(37, 99, 235, 0.08)",
-                color: "#2563EB",
+                backgroundColor: "rgba(245, 158, 11, 0.15)",
+                color: "#FBBF24",
+                border: "1px solid rgba(245, 158, 11, 0.3)",
                 borderRadius: "6px",
               }}
             />
@@ -75,7 +78,7 @@ function CryptoNewsCard({ news }) {
             onClick={() => setModalOpen(true)}
             sx={{
               fontWeight: 700,
-              color: "#0F172A",
+              color: "#F8FAFC",
               fontSize: "0.98rem",
               lineHeight: 1.4,
               mb: 1,
@@ -84,7 +87,7 @@ function CryptoNewsCard({ news }) {
               WebkitLineClamp: 2,
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
-              "&:hover": { color: "#2563EB" },
+              "&:hover": { color: "#FBBF24" },
             }}
           >
             {title}
@@ -94,7 +97,7 @@ function CryptoNewsCard({ news }) {
           <Typography
             variant="body2"
             sx={{
-              color: "#64748B",
+              color: "#94A3B8",
               fontSize: "0.85rem",
               lineHeight: 1.5,
               display: "-webkit-box",
@@ -107,7 +110,7 @@ function CryptoNewsCard({ news }) {
           </Typography>
         </CardContent>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2, pt: 1.5, borderTop: "1px solid #F1F5F9" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2, pt: 1.5, borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
           <Button
             size="small"
             onClick={() => setModalOpen(true)}
@@ -115,8 +118,8 @@ function CryptoNewsCard({ news }) {
               p: 0,
               fontSize: "0.8rem",
               fontWeight: 600,
-              color: "#2563EB",
-              "&:hover": { backgroundColor: "transparent", color: "#1D4ED8" },
+              color: "#FBBF24",
+              "&:hover": { backgroundColor: "transparent", color: "#FDE68A" },
             }}
           >
             Quick View
@@ -129,7 +132,7 @@ function CryptoNewsCard({ news }) {
               target="_blank"
               rel="noreferrer"
               size="small"
-              sx={{ color: "#94A3B8", "&:hover": { color: "#2563EB" } }}
+              sx={{ color: "#94A3B8", "&:hover": { color: "#FBBF24" } }}
             >
               <LaunchIcon sx={{ fontSize: 16 }} />
             </IconButton>
@@ -147,6 +150,9 @@ function CryptoNewsCard({ news }) {
           sx: {
             borderRadius: "18px",
             p: 1,
+            backgroundColor: "#0F172A",
+            color: "#F8FAFC",
+            border: "1px solid rgba(255, 255, 255, 0.12)",
           },
         }}
       >
@@ -158,20 +164,21 @@ function CryptoNewsCard({ news }) {
               sx={{
                 mb: 1,
                 fontWeight: 700,
-                backgroundColor: "rgba(37, 99, 235, 0.1)",
-                color: "#2563EB",
+                backgroundColor: "rgba(245, 158, 11, 0.15)",
+                color: "#FBBF24",
+                border: "1px solid rgba(245, 158, 11, 0.3)",
               }}
             />
-            <Typography variant="h6" sx={{ fontWeight: 800, color: "#0F172A", lineHeight: 1.3 }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: "#F8FAFC", lineHeight: 1.3 }}>
               {title}
             </Typography>
           </Box>
-          <IconButton onClick={() => setModalOpen(false)} size="small">
+          <IconButton onClick={() => setModalOpen(false)} size="small" sx={{ color: "#94A3B8" }}>
             <CloseIcon />
           </IconButton>
         </DialogTitle>
-        <DialogContent dividers sx={{ borderColor: "#F1F5F9" }}>
-          <Typography variant="body1" sx={{ color: "#334155", lineHeight: 1.8, fontSize: "0.95rem" }}>
+        <DialogContent dividers sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
+          <Typography variant="body1" sx={{ color: "#CBD5E1", lineHeight: 1.8, fontSize: "0.95rem" }}>
             {news.content || description}
           </Typography>
         </DialogContent>
@@ -184,12 +191,12 @@ function CryptoNewsCard({ news }) {
               rel="noreferrer"
               variant="contained"
               endIcon={<LaunchIcon />}
-              sx={{ borderRadius: "8px" }}
+              sx={{ borderRadius: "8px", backgroundColor: "#2563EB" }}
             >
               Read Full Source
             </Button>
           )}
-          <Button onClick={() => setModalOpen(false)} sx={{ color: "#64748B" }}>
+          <Button onClick={() => setModalOpen(false)} sx={{ color: "#94A3B8" }}>
             Close
           </Button>
         </DialogActions>

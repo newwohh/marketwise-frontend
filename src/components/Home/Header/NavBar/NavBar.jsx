@@ -525,23 +525,25 @@ function NavBar({ transparent } = {}) {
         PaperProps={{
           sx: {
             width: 290,
-            p: 2,
-            backgroundColor: "#FFFFFF",
+            p: 2.5,
+            backgroundColor: "#0B0F19",
+            color: "#F8FAFC",
+            borderLeft: "1px solid rgba(255, 255, 255, 0.08)",
           },
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Box component="img" src={logo} alt="MarketWise" sx={{ width: 32, height: 32 }} />
-            <Typography variant="h6" sx={{ fontWeight: 800, color: "#0F172A" }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: "#F8FAFC" }}>
               MarketWise
             </Typography>
           </Box>
-          <IconButton onClick={() => setMobileOpen(false)} size="small">
+          <IconButton onClick={() => setMobileOpen(false)} size="small" sx={{ color: "#94A3B8", "&:hover": { color: "#FFFFFF" } }}>
             <CloseIcon />
           </IconButton>
         </Box>
-        <Divider sx={{ mb: 2 }} />
+        <Divider sx={{ mb: 2, borderColor: "rgba(255, 255, 255, 0.08)" }} />
 
         <List sx={{ p: 0 }}>
           <ListItem disablePadding>
@@ -661,7 +663,7 @@ function NavBar({ transparent } = {}) {
         </List>
 
         <Box sx={{ mt: "auto", pt: 3 }}>
-          <Divider sx={{ mb: 2 }} />
+          <Divider sx={{ mb: 2, borderColor: "rgba(255, 255, 255, 0.08)" }} />
           {user ? (
             <Button
               fullWidth
@@ -681,7 +683,12 @@ function NavBar({ transparent } = {}) {
                 to="/login"
                 variant="outlined"
                 onClick={() => setMobileOpen(false)}
-                sx={{ borderRadius: "10px" }}
+                sx={{
+                  borderRadius: "10px",
+                  borderColor: "rgba(255, 255, 255, 0.2)",
+                  color: "#F8FAFC",
+                  "&:hover": { borderColor: "#FFFFFF", backgroundColor: "rgba(255, 255, 255, 0.05)" },
+                }}
               >
                 Sign In
               </Button>
@@ -691,7 +698,13 @@ function NavBar({ transparent } = {}) {
                 to="/sign-up"
                 variant="contained"
                 onClick={() => setMobileOpen(false)}
-                sx={{ borderRadius: "10px" }}
+                sx={{
+                  borderRadius: "10px",
+                  backgroundColor: "#2563EB",
+                  color: "#FFFFFF",
+                  fontWeight: 700,
+                  "&:hover": { backgroundColor: "#1D4ED8" },
+                }}
               >
                 Get Started
               </Button>

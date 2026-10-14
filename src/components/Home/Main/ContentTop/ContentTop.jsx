@@ -16,27 +16,27 @@ import { Link as RouterLink } from "react-router-dom";
 
 const features = [
   {
-    icon: <SchoolIcon sx={{ fontSize: 28, color: "#2563EB" }} />,
-    bg: "rgba(37, 99, 235, 0.08)",
-    border: "rgba(37, 99, 235, 0.2)",
+    icon: <SchoolIcon sx={{ fontSize: 28, color: "#60A5FA" }} />,
+    bg: "rgba(37, 99, 235, 0.15)",
+    border: "rgba(59, 130, 246, 0.4)",
     title: "Trading Academy",
     desc: "Master market fundamentals, candlestick patterns, and risk control with curated, interactive learning paths.",
     link: "/education",
     cta: "Explore Lessons",
   },
   {
-    icon: <TrendingUpIcon sx={{ fontSize: 28, color: "#10B981" }} />,
-    bg: "rgba(16, 185, 129, 0.08)",
-    border: "rgba(16, 185, 129, 0.2)",
+    icon: <TrendingUpIcon sx={{ fontSize: 28, color: "#34D399" }} />,
+    bg: "rgba(16, 185, 129, 0.15)",
+    border: "rgba(16, 185, 129, 0.4)",
     title: "Portfolio Intelligence",
     desc: "Uncover macro trends, analyze sectoral momentum, and optimize your asset allocation with institutional data.",
     link: "/grow",
     cta: "Explore Strategies",
   },
   {
-    icon: <CalculateIcon sx={{ fontSize: 28, color: "#8B5CF6" }} />,
-    bg: "rgba(139, 92, 246, 0.08)",
-    border: "rgba(139, 92, 246, 0.2)",
+    icon: <CalculateIcon sx={{ fontSize: 28, color: "#A78BFA" }} />,
+    bg: "rgba(139, 92, 246, 0.15)",
+    border: "rgba(139, 92, 246, 0.4)",
     title: "Investment Simulator",
     desc: "Backtest your ideas and model compounding portfolio returns against real-world assets without capital risk.",
     link: "/investsimulator",
@@ -50,8 +50,10 @@ function ContentTop() {
       component="section"
       sx={{
         py: { xs: 8, md: 12 },
-        backgroundColor: "#FFFFFF",
-        borderBottom: "1px solid #E2E8F0",
+        background: "linear-gradient(180deg, #080B11 0%, #0B0F19 100%)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Container maxWidth="lg">
@@ -61,8 +63,8 @@ function ContentTop() {
             variant="caption"
             sx={{
               textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              color: "#2563EB",
+              letterSpacing: "0.12em",
+              color: "#60A5FA",
               fontWeight: 700,
               display: "block",
               mb: 1,
@@ -75,13 +77,14 @@ function ContentTop() {
             sx={{
               fontSize: { xs: "1.85rem", md: "2.5rem" },
               fontWeight: 800,
-              color: "#0F172A",
+              color: "#F8FAFC",
+              letterSpacing: "-0.025em",
               mb: 2,
             }}
           >
             Explore Endless Possibilities with MarketWise
           </Typography>
-          <Typography variant="body1" sx={{ color: "#64748B", lineHeight: 1.6 }}>
+          <Typography variant="body1" sx={{ color: "#94A3B8", lineHeight: 1.65 }}>
             Every tool you need to track global markets, analyze market cycles, and refine your trading strategies in one unified interface.
           </Typography>
         </Box>
@@ -98,14 +101,16 @@ function ContentTop() {
                   justifyContent: "space-between",
                   p: { xs: 3, md: 3.5 },
                   borderRadius: "18px",
-                  border: "1px solid #E2E8F0",
-                  backgroundColor: "#FFFFFF",
-                  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  backgroundColor: "rgba(15, 23, 42, 0.75)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
                   transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
                   "&:hover": {
                     transform: "translateY(-4px)",
-                    boxShadow: "0 12px 24px -6px rgba(0, 0, 0, 0.08)",
+                    boxShadow: "0 16px 32px -8px rgba(0, 0, 0, 0.5)",
                     borderColor: feat.border,
+                    backgroundColor: "rgba(22, 33, 56, 0.88)",
                   },
                 }}
               >
@@ -120,17 +125,18 @@ function ContentTop() {
                       alignItems: "center",
                       justifyContent: "center",
                       mb: 2.5,
+                      border: `1px solid ${feat.border}`,
                     }}
                   >
                     {feat.icon}
                   </Box>
                   <Typography
                     variant="h5"
-                    sx={{ fontWeight: 700, color: "#0F172A", mb: 1.5, fontSize: "1.25rem" }}
+                    sx={{ fontWeight: 700, color: "#F8FAFC", mb: 1.5, fontSize: "1.25rem" }}
                   >
                     {feat.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "#64748B", lineHeight: 1.65, mb: 3 }}>
+                  <Typography variant="body2" sx={{ color: "#94A3B8", lineHeight: 1.65, mb: 3 }}>
                     {feat.desc}
                   </Typography>
                 </CardContent>
@@ -144,8 +150,8 @@ function ContentTop() {
                     p: 0,
                     fontWeight: 700,
                     fontSize: "0.9rem",
-                    color: "#2563EB",
-                    "&:hover": { backgroundColor: "transparent", color: "#1D4ED8" },
+                    color: "#60A5FA",
+                    "&:hover": { backgroundColor: "transparent", color: "#93C5FD" },
                   }}
                 >
                   {feat.cta}

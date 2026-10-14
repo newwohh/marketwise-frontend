@@ -33,14 +33,16 @@ function StockNewsCard({ el }) {
           display: "flex",
           flexDirection: "column",
           borderRadius: "16px",
-          border: "1px solid #E2E8F0",
-          backgroundColor: "#FFFFFF",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
+          backgroundColor: "rgba(15, 23, 42, 0.75)",
+          backdropFilter: "blur(12px)",
           overflow: "hidden",
           transition: "all 0.25s ease",
           "&:hover": {
             transform: "translateY(-4px)",
-            boxShadow: "0 12px 24px -6px rgba(0, 0, 0, 0.08)",
-            borderColor: "#93C5FD",
+            boxShadow: "0 14px 28px -6px rgba(0, 0, 0, 0.45)",
+            borderColor: "rgba(96, 165, 250, 0.5)",
+            backgroundColor: "rgba(22, 33, 56, 0.88)",
           },
         }}
       >
@@ -49,7 +51,7 @@ function StockNewsCard({ el }) {
           height="180"
           image={image}
           alt={title}
-          sx={{ objectFit: "cover", backgroundColor: "#F1F5F9" }}
+          sx={{ objectFit: "cover", backgroundColor: "#1E293B" }}
         />
         <CardContent
           sx={{
@@ -61,7 +63,7 @@ function StockNewsCard({ el }) {
           }}
         >
           <Box>
-            <Typography variant="caption" sx={{ color: "#2563EB", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", mb: 0.5, display: "block" }}>
+            <Typography variant="caption" sx={{ color: "#60A5FA", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", mb: 0.5, display: "block" }}>
               {author}
             </Typography>
             <Typography
@@ -69,7 +71,7 @@ function StockNewsCard({ el }) {
               onClick={() => setOpen(true)}
               sx={{
                 fontWeight: 700,
-                color: "#0F172A",
+                color: "#F8FAFC",
                 lineHeight: 1.35,
                 mb: 1,
                 cursor: "pointer",
@@ -77,7 +79,7 @@ function StockNewsCard({ el }) {
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
-                "&:hover": { color: "#2563EB" },
+                "&:hover": { color: "#60A5FA" },
               }}
             >
               {title}
@@ -85,7 +87,7 @@ function StockNewsCard({ el }) {
             <Typography
               variant="body2"
               sx={{
-                color: "#64748B",
+                color: "#94A3B8",
                 fontSize: "0.85rem",
                 lineHeight: 1.5,
                 display: "-webkit-box",
@@ -98,11 +100,11 @@ function StockNewsCard({ el }) {
             </Typography>
           </Box>
 
-          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2, pt: 1.5, borderTop: "1px solid #F1F5F9" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2, pt: 1.5, borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
             <Button
               size="small"
               onClick={() => setOpen(true)}
-              sx={{ p: 0, fontWeight: 700, color: "#2563EB", fontSize: "0.8rem" }}
+              sx={{ p: 0, fontWeight: 700, color: "#60A5FA", fontSize: "0.8rem", "&:hover": { color: "#93C5FD" } }}
             >
               Read Summary
             </Button>
@@ -113,7 +115,7 @@ function StockNewsCard({ el }) {
                 target="_blank"
                 rel="noreferrer"
                 size="small"
-                sx={{ color: "#94A3B8", "&:hover": { color: "#2563EB" } }}
+                sx={{ color: "#94A3B8", "&:hover": { color: "#60A5FA" } }}
               >
                 <LaunchIcon sx={{ fontSize: 16 }} />
               </IconButton>
@@ -128,22 +130,29 @@ function StockNewsCard({ el }) {
         onClose={() => setOpen(false)}
         maxWidth="sm"
         fullWidth
-        PaperProps={{ sx: { borderRadius: "18px" } }}
+        PaperProps={{
+          sx: {
+            borderRadius: "18px",
+            backgroundColor: "#0F172A",
+            color: "#F8FAFC",
+            border: "1px solid rgba(255, 255, 255, 0.12)",
+          },
+        }}
       >
         <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", pb: 1 }}>
           <Box sx={{ pr: 2 }}>
-            <Typography variant="caption" sx={{ color: "#2563EB", fontWeight: 700 }}>
+            <Typography variant="caption" sx={{ color: "#60A5FA", fontWeight: 700 }}>
               {author}
             </Typography>
-            <Typography variant="h6" sx={{ fontWeight: 800, color: "#0F172A", lineHeight: 1.3 }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: "#F8FAFC", lineHeight: 1.3 }}>
               {title}
             </Typography>
           </Box>
-          <IconButton onClick={() => setOpen(false)} size="small">
+          <IconButton onClick={() => setOpen(false)} size="small" sx={{ color: "#94A3B8" }}>
             <CloseIcon />
           </IconButton>
         </DialogTitle>
-        <DialogContent dividers sx={{ borderColor: "#F1F5F9" }}>
+        <DialogContent dividers sx={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
           {image && (
             <Box
               component="img"
@@ -152,7 +161,7 @@ function StockNewsCard({ el }) {
               sx={{ width: "100%", maxHeight: 240, objectFit: "cover", borderRadius: "12px", mb: 2 }}
             />
           )}
-          <Typography variant="body1" sx={{ color: "#334155", lineHeight: 1.7 }}>
+          <Typography variant="body1" sx={{ color: "#CBD5E1", lineHeight: 1.7 }}>
             {el.content || description}
           </Typography>
         </DialogContent>
@@ -165,12 +174,12 @@ function StockNewsCard({ el }) {
               rel="noreferrer"
               variant="contained"
               endIcon={<LaunchIcon />}
-              sx={{ borderRadius: "8px" }}
+              sx={{ borderRadius: "8px", backgroundColor: "#2563EB" }}
             >
               Original Source
             </Button>
           )}
-          <Button onClick={() => setOpen(false)} sx={{ color: "#64748B" }}>
+          <Button onClick={() => setOpen(false)} sx={{ color: "#94A3B8" }}>
             Close
           </Button>
         </DialogActions>

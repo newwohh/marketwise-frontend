@@ -14,18 +14,19 @@ function ForexCard({ data }) {
     <Card
       sx={{
         borderRadius: "16px",
-        border: "1px solid #E2E8F0",
-        backgroundColor: "#FFFFFF",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
+        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backdropFilter: "blur(12px)",
         p: 2.5,
         height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        transition: "all 0.25s ease",
+        transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
         "&:hover": {
-          transform: "translateY(-3px)",
-          boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.08)",
-          borderColor: "#93C5FD",
+          transform: "translateY(-4px)",
+          boxShadow: "0 12px 24px -6px rgba(0, 0, 0, 0.6), 0 0 16px rgba(16, 185, 129, 0.12)",
+          borderColor: "rgba(52, 211, 153, 0.4)",
         },
       }}
     >
@@ -33,14 +34,14 @@ function ForexCard({ data }) {
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
           <Box
             sx={{
-              width: 36,
-              height: 36,
+              width: 38,
+              height: 38,
               borderRadius: "10px",
-              backgroundColor: "rgba(37, 99, 235, 0.08)",
+              backgroundColor: "rgba(16, 185, 129, 0.12)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#2563EB",
+              color: "#34D399",
             }}
           >
             <CurrencyExchangeIcon fontSize="small" />
@@ -51,25 +52,26 @@ function ForexCard({ data }) {
             sx={{
               fontSize: "0.7rem",
               fontWeight: 700,
-              backgroundColor: "#F1F5F9",
-              color: "#475569",
+              backgroundColor: "rgba(255, 255, 255, 0.06)",
+              color: "#94A3B8",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
               borderRadius: "6px",
             }}
           />
         </Box>
 
-        <Typography variant="h5" sx={{ fontWeight: 800, color: "#0F172A", letterSpacing: "-0.01em", mb: 1 }}>
+        <Typography variant="h5" sx={{ fontWeight: 800, color: "#F8FAFC", letterSpacing: "-0.01em", mb: 1 }}>
           {symbol}
         </Typography>
 
         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-          <Typography variant="caption" sx={{ color: "#64748B", fontWeight: 600 }}>
+          <Typography variant="caption" sx={{ color: "#94A3B8", fontWeight: 600 }}>
             {base}
           </Typography>
-          <Typography variant="caption" sx={{ color: "#CBD5E1" }}>
+          <Typography variant="caption" sx={{ color: "#64748B" }}>
             /
           </Typography>
-          <Typography variant="caption" sx={{ color: "#64748B", fontWeight: 600 }}>
+          <Typography variant="caption" sx={{ color: "#34D399", fontWeight: 600 }}>
             {quote}
           </Typography>
         </Box>

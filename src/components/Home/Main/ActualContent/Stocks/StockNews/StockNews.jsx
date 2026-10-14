@@ -25,8 +25,8 @@ function StockNews() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        backgroundColor: "#FFFFFF",
-        borderBottom: "1px solid #E2E8F0",
+        backgroundColor: "#0E1424",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
       <Container maxWidth="lg">
@@ -45,8 +45,8 @@ function StockNews() {
               variant="caption"
               sx={{
                 textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "#2563EB",
+                letterSpacing: "0.12em",
+                color: "#60A5FA",
                 fontWeight: 700,
                 display: "block",
                 mb: 1,
@@ -59,12 +59,13 @@ function StockNews() {
               sx={{
                 fontSize: { xs: "1.75rem", md: "2.25rem" },
                 fontWeight: 800,
-                color: "#0F172A",
+                color: "#F8FAFC",
+                letterSpacing: "-0.02em",
               }}
             >
               Stock Market Headlines
             </Typography>
-            <Typography variant="body2" sx={{ color: "#64748B", mt: 0.5 }}>
+            <Typography variant="body2" sx={{ color: "#94A3B8", mt: 0.5 }}>
               Earnings releases, institutional movements, and global business headlines.
             </Typography>
           </Box>
@@ -77,9 +78,11 @@ function StockNews() {
             sx={{
               borderRadius: "10px",
               fontWeight: 600,
-              color: "#2563EB",
-              borderColor: "#CBD5E1",
-              "&:hover": { borderColor: "#2563EB", backgroundColor: "rgba(37, 99, 235, 0.04)" },
+              color: "#60A5FA",
+              borderColor: "rgba(255, 255, 255, 0.18)",
+              backgroundColor: "rgba(15, 23, 42, 0.6)",
+              backdropFilter: "blur(8px)",
+              "&:hover": { borderColor: "#60A5FA", backgroundColor: "rgba(37, 99, 235, 0.15)" },
             }}
           >
             All Equities

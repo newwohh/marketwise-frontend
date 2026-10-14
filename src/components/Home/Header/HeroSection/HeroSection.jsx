@@ -109,8 +109,8 @@ function HeroSection() {
           height: "100%",
           objectFit: "cover",
           zIndex: 0,
-          opacity: 0.42,
-          filter: "brightness(0.75) contrast(1.2)",
+          opacity: 0.52,
+          filter: "brightness(0.85) contrast(1.12)",
           pointerEvents: "none",
         }}
       >
@@ -126,7 +126,7 @@ function HeroSection() {
           width: "100%",
           height: "100%",
           background:
-            "radial-gradient(130% 100% at 50% 15%, rgba(19, 23, 34, 0.45) 0%, rgba(14, 17, 26, 0.88) 65%, #0B0E14 100%)",
+            "radial-gradient(130% 100% at 50% 15%, rgba(19, 23, 34, 0.35) 0%, rgba(19, 23, 34, 0.78) 65%, #131722 100%)",
           zIndex: 1,
           pointerEvents: "none",
         }}
